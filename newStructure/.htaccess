@@ -1,0 +1,201 @@
+Options -Indexes
+
+
+
+########################################
+
+RewriteEngine On
+
+
+
+# RewriteBase - Production
+
+RewriteCond %{HTTP_HOST} !^tecnosoftcomputers.com/acf/newStructure.*$ [NC]
+
+
+
+########################################
+
+<FilesMatch ".(eot|otf|ttf|woff|woff2)">
+
+    Header always set Access-Control-Allow-Origin "*"
+
+</FilesMatch>
+
+
+
+#operations
+
+RewriteRule ^dashboard/$ %{ENV:REWRITEBASE}index.php?mostrar=operations [L]
+
+RewriteRule ^close/$ %{ENV:REWRITEBASE}index.php?mostrar=operations&opcion=close [L]
+
+RewriteRule ^reestablecerSistema/$ %{ENV:REWRITEBASE}index.php?mostrar=operations&opcion=reestablecerSistema [L]
+
+
+
+#accounts
+
+RewriteRule ^accountsList/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts [L]
+
+RewriteRule ^accountsCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=create [L]
+
+RewriteRule ^accountsUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=update&id=$1 [L]
+
+RewriteRule ^accountsDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=delete&id=$1 [L]
+
+
+
+
+
+#systemCharts
+
+RewriteRule ^systemChartsList/$ %{ENV:REWRITEBASE}index.php?mostrar=systemCharts [L]
+
+RewriteRule ^systemChartsReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=systemCharts&opcion=report&tipo=$1 [L]
+
+
+
+#currencies
+
+RewriteRule ^currenciesList/$ %{ENV:REWRITEBASE}index.php?mostrar=currencies [L]
+
+RewriteRule ^currenciesCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=currencies&opcion=create [L]
+
+RewriteRule ^currenciesUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=currencies&opcion=update&id=$1 [L]
+
+RewriteRule ^currenciesDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=currencies&opcion=delete&id=$1 [L]
+
+RewriteRule ^currenciesReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=currencies&opcion=report&tipo=$1 [L]
+
+
+
+#clients
+
+RewriteRule ^clientsList/$ %{ENV:REWRITEBASE}index.php?mostrar=clients [L]
+
+RewriteRule ^clientsCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=clients&opcion=create [L]
+
+RewriteRule ^clientsUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=clients&opcion=update&id=$1 [L]
+
+RewriteRule ^clientsDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=clients&opcion=delete&id=$1 [L]
+
+RewriteRule ^clientsReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=clients&opcion=report&tipo=$1 [L]
+
+
+
+#activities
+
+RewriteRule ^activitiesList/$ %{ENV:REWRITEBASE}index.php?mostrar=activities [L]
+
+RewriteRule ^activitiesCreateError/$ %{ENV:REWRITEBASE}index.php?mostrar=activities&opcion=createError [L]
+
+RewriteRule ^activitiesCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=activities&opcion=create [L]
+
+RewriteRule ^activitiesUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=activities&opcion=update&id=$1 [L]
+
+RewriteRule ^activitiesDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=activities&opcion=delete&id=$1 [L]
+
+RewriteRule ^activitiesReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=activities&opcion=report&tipo=$1 [L]
+
+
+
+#stateClient
+
+RewriteRule ^typeClientsList/$ %{ENV:REWRITEBASE}index.php?mostrar=typeClients [L]
+
+RewriteRule ^typeClientsCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=typeClients&opcion=create [L]
+
+RewriteRule ^typeClientsUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeClients&opcion=update&id=$1 [L]
+
+RewriteRule ^typeClientsDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeClients&opcion=delete&id=$1 [L]
+
+RewriteRule ^typeClientsReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeClients&opcion=report&tipo=$1 [L]
+
+
+
+#creditDestinations
+
+RewriteRule ^creditDestsList/$ %{ENV:REWRITEBASE}index.php?mostrar=creditDestinations [L]
+
+RewriteRule ^creditDestsCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=creditDestinations&opcion=create [L]
+
+RewriteRule ^creditDestsUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=creditDestinations&opcion=update&id=$1 [L]
+
+RewriteRule ^creditDestsDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=creditDestinations&opcion=delete&id=$1 [L]
+
+RewriteRule ^creditDestsReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=creditDestinations&opcion=report&tipo=$1 [L]
+
+
+
+#typesCalculations
+
+RewriteRule ^typeCalList/$ %{ENV:REWRITEBASE}index.php?mostrar=typesCalculations [L]
+
+RewriteRule ^typeCalCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=typesCalculations&opcion=create [L]
+
+RewriteRule ^typeCalUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typesCalculations&opcion=update&id=$1 [L]
+
+RewriteRule ^typeCalDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typesCalculations&opcion=delete&id=$1 [L]
+
+RewriteRule ^typeCalReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typesCalculations&opcion=report&tipo=$1 [L]
+
+
+
+#TypeIdentification
+
+RewriteRule ^typeIdentsList/$ %{ENV:REWRITEBASE}index.php?mostrar=typeIdentification [L]
+
+RewriteRule ^typeIdentsCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=typeIdentification&opcion=create [L]
+
+RewriteRule ^typeIdentsUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeIdentification&opcion=update&id=$1 [L]
+
+RewriteRule ^typeIdentsDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeIdentification&opcion=delete&id=$1 [L]
+
+RewriteRule ^typeIdentsReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeIdentification&opcion=report&tipo=$1 [L]
+
+
+
+#creditOfficers
+
+RewriteRule ^creditOfficersList/$ %{ENV:REWRITEBASE}index.php?mostrar=creditOfi [L]
+
+RewriteRule ^creditOfficersCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=creditOfi&opcion=create [L]
+
+RewriteRule ^creditOfficersUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=creditOfi&opcion=update&id=$1 [L]
+
+RewriteRule ^creditOfficersDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=creditOfi&opcion=delete&id=$1 [L]
+
+RewriteRule ^creditOfficersReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=creditOfi&opcion=report&tipo=$1 [L]
+
+
+
+#products
+
+RewriteRule ^productsList/$ %{ENV:REWRITEBASE}index.php?mostrar=products [L]
+
+RewriteRule ^productsCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=products&opcion=create [L]
+
+RewriteRule ^productsUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=products&opcion=update&id=$1 [L]
+
+RewriteRule ^productsDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=products&opcion=delete&id=$1 [L]
+
+RewriteRule ^productsReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=products&opcion=report&tipo=$1 [L]
+
+
+
+#productsParameters
+
+RewriteRule ^productsParametersList/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters [L]
+
+RewriteRule ^productsParametersCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters&opcion=create [L]
+
+RewriteRule ^productsParametersUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters&opcion=update&id=$1 [L]
+
+RewriteRule ^productsParametersDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters&opcion=delete&id=$1 [L]
+
+RewriteRule ^productsParametersReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters&opcion=report&tipo=$1 [L]
+
+#journalEntries
+RewriteRule ^journalEntries/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalEntries [L]
+RewriteRule ^saveJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveJournal [L]

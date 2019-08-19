@@ -1,0 +1,9 @@
+[10-Apr-2019 22:45:21 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/expriceitec/public_html/Tecnicentro/produccion/datos/clases/reporte.php on line 23
+[10-Apr-2019 22:46:03 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/expriceitec/public_html/Tecnicentro/produccion/datos/clases/reporte.php on line 23
+[10-Apr-2019 22:47:12 UTC] PHP Fatal error:  Class 'ZipArchive' not found in /home/expriceitec/public_html/Tecnicentro/produccion/datos/clases/Classes/PHPExcel/Writer/Excel2007.php on line 227
+[10-Apr-2019 22:47:14 UTC] PHP Fatal error:  Class 'ZipArchive' not found in /home/expriceitec/public_html/Tecnicentro/produccion/datos/clases/Classes/PHPExcel/Writer/Excel2007.php on line 227
+[10-Apr-2019 22:47:24 UTC] PHP Fatal error:  Class 'ZipArchive' not found in /home/expriceitec/public_html/Tecnicentro/produccion/datos/clases/Classes/PHPExcel/Writer/Excel2007.php on line 227
+[10-Apr-2019 22:47:54 UTC] PHP Fatal error:  Class 'ZipArchive' not found in /home/expriceitec/public_html/Tecnicentro/produccion/datos/clases/Classes/PHPExcel/Writer/Excel2007.php on line 227
+[10-Apr-2019 22:48:55 UTC] PHP Fatal error:  Class 'ZipArchive' not found in /home/expriceitec/public_html/Tecnicentro/produccion/datos/clases/Classes/PHPExcel/Writer/Excel2007.php on line 227
+[10-Apr-2019 22:49:32 UTC] PHP Fatal error:  Class 'ZipArchive' not found in /home/expriceitec/public_html/Tecnicentro/produccion/datos/clases/Classes/PHPExcel/Writer/Excel2007.php on line 227
+[10-Apr-2019 22:51:12 UTC] PHP Fatal error:  Class 'ZipArchive' not found in /home/expriceitec/public_html/Tecnicentro/produccion/datos/clases/Classes/PHPExcel/Writer/Excel2007.php on line 227

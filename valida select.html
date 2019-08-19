@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<TITLE>VALIDAR FORMULARIOS</TITLE>
+
+<script type="text/javascript">
+
+    function validarforma(pagina){
+        if (pagina.vr.value==""){
+            alert("Falta Valor ");
+            pagina.vr.focus();
+            return false;
+        }
+        if (pagina.variable.value==""){
+            alert("Falta Variable ");
+            pagina.variable.focus();
+            return false;
+        }
+
+        if (confirm("Datos Correctos","Mensaje")){ return true; }
+
+        return false;
+    }
+</script>
+
+</HEAD>
+
+<form name=forma method="POST" action="mailto:login@servidor.com" onsubmit='return validarforma(this); return false;'>
+
+<TABLE align=center>
+    <TR align=middle>
+    <TH colspan=4>EJEMPLO DE VALIDAR UN FORMULARIO
+    </TH>
+    </TR>
+
+
+    <TR>
+    <TH>Valor</TH>
+    <TD>
+    <Select name=vr>
+         <option></option>
+         <option>Valor UNO</option>
+         <option>Valor DOS</option>
+         <option>Valor TRES</option>
+    </Select>
+    </TD>
+    </TR>
+
+    <TR>
+    <TH>Variable</TH>
+    <TD>
+    <input name=variable>
+    </TD>
+    </TR>
+
+    <TR align=middle>
+    <TH colspan=4>
+    <input type=submit value="Enviar Datos">
+    <input type=Reset value="Limpiar Datos">
+    </TH>
+    </TR>
+
+</TABLE>
+
+</form>
+
+</HTML>

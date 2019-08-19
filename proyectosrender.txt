@@ -1,0 +1,11 @@
+server: privafl-700
+server ftp: ftp.proyectosrender.com
+user ftp: gerente@proyectosrender.com
+pass ftp: Reyes09032003
+user db: proyecto_gerente
+passw: Reyes09032003
+
+
+correo:
+gerente@proyectosrender.com
+pass: Reyes09032003pr

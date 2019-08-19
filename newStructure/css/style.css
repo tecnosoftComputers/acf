@@ -1,0 +1,42 @@
+.help-block{
+    margin-bottom: 0px;
+    font-size: 12px;
+    margin-top: 0px;
+}
+
+p,form{
+    margin-bottom: 0px;
+}
+
+.modal-header{
+	background: #1e6cb6;
+	color:white;
+}
+
+.modal-header .close {
+
+    color: white;
+}
+
+.control2{
+	font-size: 12px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	height: 27px;
+}
+
+.dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover{
+	color: #fff5f5;
+	background: #bfb9b9;
+}
+
+.dataTables_empty{
+	text-align: center;
+}
+
+.btn-small{
+
+    padding-left: 3px;
+    padding-right: 3px;
+	float:left;
+}

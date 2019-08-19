@@ -1,0 +1,10 @@
+[02-Aug-2019 10:45:12 UTC] PHP Notice:  Undefined variable: fflush in /home/tecnoso1/public_html/acf/controlador/c_files/add_accounts.php on line 81
+[02-Aug-2019 10:52:41 UTC] PHP Notice:  Undefined variable: fflush in /home/tecnoso1/public_html/acf/controlador/c_files/add_accounts.php on line 81
+[02-Aug-2019 10:53:35 UTC] PHP Notice:  Undefined variable: fflush in /home/tecnoso1/public_html/acf/controlador/c_files/add_accounts.php on line 81
+[02-Aug-2019 10:55:11 UTC] PHP Notice:  Undefined variable: fflush in /home/tecnoso1/public_html/acf/controlador/c_files/add_accounts.php on line 81
+[02-Aug-2019 10:55:30 UTC] PHP Notice:  Undefined variable: fflush in /home/tecnoso1/public_html/acf/controlador/c_files/add_accounts.php on line 81
+[02-Aug-2019 10:59:05 UTC] PHP Notice:  Undefined variable: fflush in /home/tecnoso1/public_html/acf/controlador/c_files/add_accounts.php on line 81
+[02-Aug-2019 10:59:40 UTC] PHP Notice:  Undefined variable: fflush in /home/tecnoso1/public_html/acf/controlador/c_files/add_accounts.php on line 81
+[02-Aug-2019 11:01:54 UTC] PHP Notice:  Undefined variable: fflush in /home/tecnoso1/public_html/acf/controlador/c_files/add_accounts.php on line 81
+[13-Aug-2019 20:54:33 UTC] PHP Notice:  Undefined index:  in /home/tecnoso1/public_html/acf/controlador/c_files/add_vouchers.php on line 20
+[13-Aug-2019 20:54:33 UTC] PHP Notice:  Undefined index:  in /home/tecnoso1/public_html/acf/controlador/c_files/add_vouchers.php on line 20

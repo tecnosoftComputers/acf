@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />
+        <meta charset="utf-8" />
+
+        <title>PROBANDO 1, 2, 3 ...</title>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('#cadena').attr("disabled", true);
+                $('#comercio').attr("disabled", true);
+
+                $('#compania').keyup(function () {
+                    var value = $(this).val();
+                    if (value.length == 0) {
+                        $('#cadena').val('');
+                        $('#comercio').val('');
+                        $('#cadena').attr("disabled", true);
+                        $('#comercio').attr("disabled", true);
+                    }
+                    else
+                        $('#cadena').removeAttr("disabled");
+                });
+
+                $('#cadena').keyup(function () {
+                    var value = $(this).val();
+                    if (value.length == 0) {
+                        $('#comercio').val('');
+                        $('#comercio').attr("disabled", true);
+                    }
+                    else
+                        $('#comercio').removeAttr("disabled");
+                });
+            });
+        </script>
+
+    </head>
+
+  <body>
+    <div id="body">
+        <form name="formFiltro">
+            <input type="text" id="compania"/>
+            <input type="text" id="cadena" />
+            <input type="text" id="comercio" />
+        </form>
+    </div>
+  </body>
+</html>

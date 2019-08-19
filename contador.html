@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+  <input type="text">
+  <p></p>
+<script>
+window.onload = (function(){
+try{
+    $("input").on('keyup', function(){
+        var value = $(this).val().length;
+        $("p").html(value);
+    }).keyup();
+}catch(e){}});
+</script>
+</body>
+</html>
