@@ -41,5 +41,16 @@ class Modelo_ChartAccount{
     if(count($datos)==0){return false;}
     return $result = $GLOBALS['db']->insert('dp01a110',$datos);
   }
+
+  public static function report($accfrom='', $accto=''){
+    $sql = "SELECT CODIGO, NOMBRE FROM dp01a110";
+    if (!empty($accfrom)){
+      $sql .= " WHERE CODIGO_AUX >= '".$accfrom."'";
+    }
+    if (!empty($accto)){
+      $sql .= " AND CODIGO_AUX <= '".$accto."'";
+    }
+    return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
+  }
 }  
 ?>

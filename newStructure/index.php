@@ -1,5 +1,4 @@
 <?php
-
 require_once 'constantes.php';
 require_once 'init.php';
 
@@ -69,6 +68,9 @@ function obtieneControlador($nombre){
     break;
     case 'productsParameters':
       return 'ProductsParameters';
+    break;
+    case 'reports':
+      return 'Reports';
     break;
     default:
       return 'Operations'; 
