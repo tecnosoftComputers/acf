@@ -2,6 +2,11 @@ $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip(); 
 });
 
+function enviarForm(){
+  console.log($('#x').val());console.log($('#y').val());
+  $('#form_g').submit();
+}
+
 function soloNumeros(evt){
   var charCode = (evt.which) ? evt.which : event.keyCode
   if (charCode > 31 && (charCode < 48 || charCode > 57))

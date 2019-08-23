@@ -4,7 +4,10 @@ class Controlador_Reports extends Controlador_Base {
   public $objExcel;
   public $objPdf;
   
-  public function construirPagina(){  
+
+  public function construirPagina(){   
+
+    $_SESSION['acfSession']['id_empresa'] = 4;
     $tags = array();    
     if(!Utils::estaLogueado()){
       header("Location: ../login.php");

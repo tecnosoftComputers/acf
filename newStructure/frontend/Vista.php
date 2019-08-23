@@ -109,11 +109,11 @@ class Vista {
     <span class="icon-bar"></span>
     </button>
     </div>
-    <form action="'.PUERTO.'://'.PREVIOUS_SYSTEM.'controlador/c_sesion/generar.php" class="navbar-form" method="request">
+    <form id="form_g" action="'.PUERTO.'://'.PREVIOUS_SYSTEM.'controlador/c_sesion/generar.php" class="navbar-form" method="POST">
     <ul class="nav navbar-top-links navbar-right">
     <li class=""><a style="font-size: 22px; font-weight: bold; color:#c61818" href="?cid=dashboard/init">ACF</a></li>
     <li class="">
-    <select name="y" class="form-control" onchange="this.form.submit()" style="width: 200px;">';
+    <select id="y" name="y" class="form-control" onchange="enviarForm()" style="width: 200px;">';
     foreach ($all_upde as $vale_conf) {
       if ($acceso == $vale_conf['id_config']){ 
         $menu .= '<option value="'.$vale_conf['id_config'].'" style="font-size: 15px;" selected="" disabled> 
@@ -124,12 +124,12 @@ class Vista {
       } 
     } 
     $menu .= '</select>
-    <noscript><input type="submit" value="Submit" /></noscript>
+   
     </li>
 
     <li class="">
-    <form action="'.PUERTO.'://'.PREVIOUS_SYSTEM.'controlador/c_sesion/generar.php" class="navbar-form" method="request">
-    <select name="x" class="form-control" onchange="this.form.submit()" style="width: 300px;">';
+
+    <select id="x" name="x" class="form-control" onchange="enviarForm()" style="width: 300px;">';
     foreach ($all_upd as $vale){ 
       if ($id_empresa == $vale['id_empresa']) { 
         $menu .= '<option value="'.$vale['id_empresa'].'" style="font-size: 15px;" selected="">'.$vale['nombre_empresa'].'</option>';
@@ -139,7 +139,7 @@ class Vista {
       } 
     } 
     $menu .= '</select>
-    <noscript><input type="submit" value="Submit" /></noscript>
+   
     </li></form>';
     
     $modules = Modelo_Module::searchModules();

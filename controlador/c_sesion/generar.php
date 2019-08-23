@@ -1,6 +1,5 @@
 <?php
-
-    @session_start();
+@session_start();
     //if (isset($_REQUEST['y'])) { // CAMBIO DE MODULO
             $num = $_REQUEST['y'];
             $num2 = $_REQUEST['x'];

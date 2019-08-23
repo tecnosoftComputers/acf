@@ -77,7 +77,7 @@ $all_upde = $upde->fetchAll(PDO::FETCH_ASSOC);
 </head>
 </script>
 <body >
-    <form action="../../../controlador/c_sesion/generar.php" class="navbar-form" method="request">
+    <form id="form_g" action="../../../controlador/c_sesion/generar.php" class="navbar-form" method="request">
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="border-bottom:1px solid #b1d09e; margin-bottom: -60px">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -91,7 +91,7 @@ $all_upde = $upde->fetchAll(PDO::FETCH_ASSOC);
     <li class=""><a style="font-size: 22px; font-weight: bold; color:#c61818" href="?cid=dashboard/init">ACF</a></li>
     <li class="">
         
-            <select name="y" class="form-control" onchange='this.form.submit()' style="width: 200px;">
+            <select name="y" class="form-control" onchange='enviar()' style="width: 200px;">
             <?php foreach ((array )$all_upde as $vale_conf) { ?>
                 <?php if ($id_param == $vale_conf['id_config']){ ?>
                     <option value="<?php
@@ -108,7 +108,7 @@ $all_upde = $upde->fetchAll(PDO::FETCH_ASSOC);
     
     <li class="">
       
-            <select name="x" class="form-control" onchange='this.form.submit()' style="width: 300px;">
+            <select name="x" class="form-control" onchange='enviar()' style="width: 300px;">
             <?php foreach ( (array) $all_upd as $vale){ ?>
             <?php if ($elvalor == $vale['id_empresa']) { ?>
                     <option value="<?php echo $vale['id_empresa']; ?>" style="font-size: 15px;" selected=""> <?php
@@ -164,6 +164,10 @@ function openNav() {
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+}
+
+function enviar(){
+  $('#form_g').submit();
 }
 </script>
 </nav><br /><br /><br />
