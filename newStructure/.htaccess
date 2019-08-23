@@ -133,4 +133,4 @@ RewriteRule ^report/chartaccount/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar
 RewriteRule ^report/chartaccount/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=$1 [L]
 RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=search [L]
 RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount [L]
->>>>>>> FF
+
