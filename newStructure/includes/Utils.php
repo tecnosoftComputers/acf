@@ -26,12 +26,16 @@ class Utils{
   static public function createSession(){               
     //ini_set("session.cookie_lifetime","900");
     //ini_set("session.gc_maxlifetime","900");
+  /*  session_id('acfSession');
+    session_name('acfSession');*/
     session_start();  
-    /*print_r($_SESSION);*/
-    /*echo $_SESSION['correo'] = $_SESSION['correo'];
-    echo $_SESSION['usuario'] = $_SESSION['usuario'];
-    echo $_SESSION['lasesion'] = $_SESSION['lasesion'];*/
-        
+
+    $_SESSION['acfSession']['correo'] = $_SESSION['correo'];
+    $_SESSION['acfSession']['usuario'] = $_SESSION['usuario'];
+    $_SESSION['acfSession']['lasesion'] = $_SESSION['lasesion'];
+    $_SESSION['acfSession']['elrol'] = $_SESSION['elrol'];
+    $_SESSION['acfSession']['persona'] = $_SESSION['persona'];
+    $_SESSION['acfSession']['id_empresa'] = $_SESSION['id_empresa'];
   } 
  
   static public function getArrayParam($paramName,$array, $default=false){
@@ -627,7 +631,7 @@ public static function validarCelularConvencional($contenido){
 
   public static function estaLogueado(){ 
     
-    if ( !isset($_SESSION) || !isset($_SESSION['usuario'] )){            
+    if ( !isset($_SESSION) || !isset($_SESSION['acfSession']['usuario'] )){            
       return false;
     }else{
         return true;

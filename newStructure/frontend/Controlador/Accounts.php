@@ -4,47 +4,69 @@ class Controlador_Accounts extends Controlador_Base {
   public function construirPagina(){
   
     $tags = array();    
-
+ 
     if(!Utils::estaLogueado()){
-      header("Location: ../login.php");
+      header("Location: ".PUERTO."://".PREVIOUS_SYSTEM."login.php");
     } 
+
+    if(!empty($_SESSION['id_empresa'])){
+      $_SESSION['acfSession']['id_empresa'] = $_SESSION['id_empresa'];
+    }
 
     $opcion = Utils::getParam('opcion','',$this->data); 
     switch($opcion){
+      case 'deleteMemorice':
+        $id = Utils::getParam('id', '', $this->data); 
+        $id = Utils::desencriptar($id);
+        $datos = array('MEMORICE'=>0);
+        $journal = Modelo_Seat::updateJournal($id,$datos);
+        $_SESSION['acfSession']['mostrar_exito'] = 'The journal was removed from the memorized';
+        Utils::doRedirect(PUERTO.'://'.HOST.'/journalEntries/');
+      break;
+      case 'deleteJournal':
+        $id = Utils::getParam('id', '', $this->data); 
+        $id = Utils::desencriptar($id);
+        $journal = Modelo_Seat::deleteJournal($id);
+        $movi = Modelo_Dpmovimi::deleteMovimi($id);
+        Utils::doRedirect(PUERTO.'://'.HOST.'/journalEntries/');
+      break;
+      case 'annulJournal':
+        $id = Utils::getParam('id', '', $this->data); 
+        $id = Utils::desencriptar($id);
+        $datos = array('ANULADO'=>1,'FECHAANU'=>date('Y-m-d'),'HORAANU'=>date('h:i:s'),'USUANU'=>$_SESSION['acfSession']['usuario']);
+        $journal = Modelo_Seat::updateJournal($id,$datos);
+        Utils::doRedirect(PUERTO.'://'.HOST.'/journalEntries/');
+      break;
+      case 'searchJournal':
+        $id = Utils::getParam('id', '', $this->data); 
+        $type = Utils::getParam('type', '', $this->data); 
+
+        if($type == ''){
+          $id = Utils::desencriptar($id);
+          $type = false;
+        }
+        
+        $journal = Modelo_Seat::searchJournal($type,$id);
+        $movi = Modelo_Dpmovimi::searchMovimi($type,$id);
+        Vista::renderJSON(array('journal' => $journal, 'movi'=>$movi));
+      break;
       case 'journalEntries': 
 
-        $userid = $_SESSION['usuario'];
+        $userid = $_SESSION['acfSession']['usuario'];
         $one = Modelo_ChartAccount::searchChartAccount();
         $fetch_dp = Modelo_TypeSeat::searchSeat();
-        $data_last = Modelo_Seat::searchLastSeat()['final'];
-        $asi = Modelo_Dpmovimi::searchMinSeat()['minimo'];
         $bene = Modelo_Beneficiary::searchBeneficiary();
-        $all_send = Modelo_Dpmovimi::search();
+        $all_send = Modelo_Seat::searchMemorice();
+        $typeTrans = Modelo_TabGeneral::search('tab_trans');
 
-        // Rueda transaccional
-        $fav = Modelo_Dpmovimi::searchMaxAux()['favorito'];
-
-        if ($fav == "" || $fav == 0) {
-          $lande = 1;
-          $land = str_pad($lande,8, "0", STR_PAD_LEFT);
-        }else{
-          $lande = $fav+1;
-          $land = str_pad($lande,8, "0", STR_PAD_LEFT);
-        }
-
-        $fila = 1;
+        $fila = 0;
         $tags = array('userid'=>$userid,
                       'one'=>$one,
                       'fetch_dp'=>$fetch_dp,
-                      'data_last'=>$data_last,
                       'all_send'=>$all_send,
-                      'asi'=>$asi,
                       'bene'=>$bene,
-                      'fav'=>$fav,
-                      'land'=>$land,
-                      'lande'=>$lande,
                       'fila'=>$fila,
-                      'tip'=>'EGRE'
+                      'typeTrans'=>$typeTrans
                     );
 
         $tags["template_js"][] = "journalEntries";
@@ -53,48 +75,20 @@ class Controlador_Accounts extends Controlador_Base {
         Vista::render('journalEntries', $tags);  
       break;
       case 'saveJournal':
-        try{
-
-          $GLOBALS['db']->beginTrans();
-
-          echo '<br>'.$numero_secuencial = Modelo_Dpmovimi::searchSequential()['ultimo'];      
-          echo '<br>'.$cont = Modelo_Seat::searchMaxCont()['suma'];   
-
-          $datos = array('TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$_POST['number'],'CONCEPTO'=>$_POST['_memo'],'BENEFICIAR'=>$_POST['benef'],'AUX'=>$_POST['fav'],'ESTADO'=>'I','SECUENCIAL'=>$numero_secuencial,'DB'=>1,'CR'=>0);
-
-          if(!Modelo_Dpmovimi::insert($datos)){
-            throw new Exception('Error creating the seat, try again.');
-          }
-
-          $registros = count($_POST['_accountycode']);
-
-          for ($key = 0; $key < $registros; $key++) { 
-
-            $datos = array('TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$_POST['number'],'DESC_ASI'=>$_POST['el_memo'][$key],'BENEFICIAR'=>$_POST['benef'],'DEBITOS'=>$_POST['el_debit'][$key],'CREDITOS'=>$_POST['el_credit'][$key],'IDCONT'=>$cont+($key+1),'account_aux'=>$_POST['_accountycode'][$key],'account_n_aux'=>$_POST['_accountyname'][$key]); 
-
-            if(!Modelo_Seat::insert($datos)){
-              throw new Exception('Error creating the seat, try again.');
-            }
-          }
-
-          if(!Modelo_TypeSeat::increaseSeat($_POST['_seleccion'],$_POST['_actual'])){
-            throw new Exception('The seat could not be updated, try again.');
-          }
-          
-          $_SESSION['mostrar_exito'] = "The journal saved successfully"; 
-          $GLOBALS['db']->commit();
-          Utils::doRedirect(PUERTO.'://'.HOST.'/journalEntries/');
-
-        }catch(Exception $e){
-          $GLOBALS['db']->rollback();
-          $_SESSION['mostrar_error'] = $e->getMessage();           
-        }
+        self::save(0);
       break;
-      case 'memoriceJournal':
+      case 'saveMemoriceJournal':
+        self::save(1);
       break;
       case 'updateJournal':
+        self::update(0);
       break;
-      case 'deleteJournal':
+      case 'updateMemoriceJournal':
+        self::update(1);
+      break;
+      case 'searchAccountsDetail';
+        $accountsDetail = Modelo_ChartAccount::searchAccountsDetail();
+        Vista::renderJSON(array('accountsDetail' => $accountsDetail));
       break;
       case 'search': 
         $match = Utils::getParam('match', '', $this->data); 
@@ -107,8 +101,8 @@ class Controlador_Accounts extends Controlador_Base {
       break;
       case 'searchType': 
         $type = Utils::getParam('type', '', $this->data); 
-        $types = Modelo_Seat::searchSeat($type);
-        Vista::renderJSON(array('number' => $types));
+        $types = Modelo_TypeSeat::searchSeatType($type);
+        Vista::renderJSON(array('number' => $types['seat'], 'name'=>$types['name']));
       break;
       case 'create': 
         $view = 'accountsCreate'; 
@@ -128,13 +122,13 @@ class Controlador_Accounts extends Controlador_Base {
             if(!Modelo_ChartAccount::insert($datos)){
               throw new Exception('The account could not be created, try again.');
             }
-            $_SESSION['mostrar_exito'] = 'The account was successfully created.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The account was successfully created.';
             $GLOBALS['db']->commit();
             Utils::doRedirect(PUERTO.'://'.HOST.'/accountsList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
-            $_SESSION['mostrar_error'] = $e->getMessage();           
+            $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
         }
 
@@ -166,13 +160,13 @@ class Controlador_Accounts extends Controlador_Base {
             if(!Modelo_ChartAccount::setUpdate($id,$datos)){
               throw new Exception('The account could not be edited, try again.');
             }
-            $_SESSION['mostrar_exito'] = 'The account was successfully edited.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The account was successfully edited.';
             $GLOBALS['db']->commit();
             Utils::doRedirect(PUERTO.'://'.HOST.'/accountsList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
-            $_SESSION['mostrar_error'] = $e->getMessage();           
+            $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
         }
         $accounts = Modelo_ChartAccount::getUpdate($id);
@@ -202,7 +196,7 @@ class Controlador_Accounts extends Controlador_Base {
               if(!Modelo_ChartAccount::delete($id)){
                 throw new Exception('The account could not be deleted, try again.');
               }
-              $_SESSION['mostrar_exito'] = 'The account was successfully delete.';
+              $_SESSION['acfSession']['mostrar_exito'] = 'The account was successfully delete.';
               $GLOBALS['db']->commit();
               Utils::doRedirect(PUERTO.'://'.HOST.'/accountsList/');
             /*}else{
@@ -211,7 +205,7 @@ class Controlador_Accounts extends Controlador_Base {
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
-            $_SESSION['mostrar_error'] = $e->getMessage();           
+            $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
         }
         $accounts = Modelo_ChartAccount::getUpdate($id);
@@ -228,7 +222,7 @@ class Controlador_Accounts extends Controlador_Base {
         Vista::render('accounts', $tags);
       break;
       default:  
-        $userid = $_SESSION['usuario']; 
+        $userid = $_SESSION['acfSession']['usuario']; 
         $usuario = Modelo_User::searchUsuario($userid);
         $chartAccount = Modelo_ChartAccount::searchChartAccount();
       	$tags = array('one'=>$chartAccount,
@@ -236,8 +230,116 @@ class Controlador_Accounts extends Controlador_Base {
                       'username'=>$usuario['namesurname']);
         Vista::render('accountsList', $tags);
       break;
+    }  
+  }
+
+  public function save($memorice){
+
+    try{
+
+      $GLOBALS['db']->beginTrans();
+
+      $cont = Modelo_Seat::searchMaxCont()['suma']+1;   
+      $bene = Modelo_Beneficiary::searchBeneficiary();
+      $benef = array_search($_POST['benef'],$bene);
+      $seat = Modelo_TypeSeat::searchSeatType($_POST['_seleccion'])['seat'];
+
+      $registros = count($_POST['codep']);
+      $sum_db = $sum_cr = 0;
+      for ($key = 0; $key < $registros; $key++) { 
+
+        $db = $_POST['el_debit'][$key];
+        $cr = $_POST['el_credit'][$key];
+
+        $sum_db += $db;
+        $sum_cr += $cr;
+
+        if($cr > 0){
+          $importe = '-'.$cr;
+        }else{
+          $importe = $db;
+        }
+
+        $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$seat,'CONCEPTO'=>$_POST['el_memo'][$key],'CODID'=>$benef,'DB'=>$db,'CR'=>$cr, 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'CODIGO'=>$_POST['_accountycode'][$key],'CODMOV'=>$_POST['codep'][$key],'CERRADO'=>(int)1,'TIPO'=>$_POST['el_type'][$key],'REFER'=>$_POST['el_ref'][$key],'GRUPOCON'=>$_POST['_trans'][$key],'IMPORTE'=>$importe); 
+        
+        if(!Modelo_Dpmovimi::insert($datos)){
+          throw new Exception('Error creating the detail, try again.');
+        }
+      }
+
+      $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$seat,'DESC_ASI'=>$_POST['_memo'],'BENEFICIAR'=>$_POST['benef'],'DEBITOS'=>$sum_db,'CREDITOS'=>$sum_cr,'USER_ID'=>$_SESSION['acfSession']['usuario'],'TIPO_MON'=>'DOL', 'CERRADO'=>(int)1, 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'FACTOR'=>'1', 'MEMORICE'=>$memorice, 'CEDRUC'=>$benef);
+
+      if(!Modelo_Seat::insert($datos)){
+        throw new Exception('Error creating the seat, try again.');
+      }
+
+
+      if(!Modelo_TypeSeat::increaseSeat($_POST['_seleccion'],$seat)){
+        throw new Exception('The seat could not be updated, try again.');
+      }
+      
+      $_SESSION['acfSession']['mostrar_exito'] = "The journal saved successfully"; 
+      $GLOBALS['db']->commit();
+
+    }catch(Exception $e){
+      $GLOBALS['db']->rollback();
+      $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
     }
-    
+    Utils::doRedirect(PUERTO.'://'.HOST.'/journalEntries/');
+  }
+
+  public function update($memorice){
+
+    try{ 
+
+      $GLOBALS['db']->beginTrans();
+
+      $bene = Modelo_Beneficiary::searchBeneficiary();
+      $benef = array_search($_POST['benef'],$bene);
+      $cont =  Utils::desencriptar($_POST['idcont']);
+      $seat = $_POST['_actual'];
+      
+      if(!Modelo_Dpmovimi::deleteMovimi($cont)){
+        throw new Exception('Error could not erase data.');
+      }
+
+      $registros = count($_POST['codep']);
+      $sum_db = $sum_cr = 0;
+      for ($key = 0; $key < $registros; $key++) { 
+
+        $db = $_POST['el_debit'][$key];
+        $cr = $_POST['el_credit'][$key];
+
+        $sum_db += $db;
+        $sum_cr += $cr;
+
+        if($cr > 0){
+          $importe = '-'.$cr;
+        }else{
+          $importe = $db;
+        }
+
+        $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$seat,'CONCEPTO'=>$_POST['el_memo'][$key],'CODID'=>$benef,'DB'=>$db,'CR'=>$cr, 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'CODIGO'=>$_POST['_accountycode'][$key],'CODMOV'=>$_POST['codep'][$key],'CERRADO'=>(int)1,'TIPO'=>$_POST['el_type'][$key],'REFER'=>$_POST['el_ref'][$key],'GRUPOCON'=>$_POST['_trans'][$key],'IMPORTE'=>$importe); 
+
+        if(!Modelo_Dpmovimi::insert($datos)){
+          throw new Exception('Error creating the detail, try again.');
+        }
+      }
+
+      $datos = array('TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'DESC_ASI'=>$_POST['_memo'],'BENEFICIAR'=>$_POST['benef'],'DEBITOS'=>number_format($sum_db, 2),'CREDITOS'=>number_format($sum_cr, 2),'USER_ID'=>$_SESSION['acfSession']['usuario'], 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'], 'CEDRUC'=>$benef, 'MEMORICE'=>$memorice, 'ANULADO'=>0);
+
+      if(!Modelo_Seat::updateJournal($cont,$datos)){
+        throw new Exception('Error creating the seat, try again.');
+      }
+
+      $_SESSION['acfSession']['mostrar_exito'] = 'The Journal was successfully updated.';
+      $GLOBALS['db']->commit();
+    }
+    catch(Exception $e){
+      $GLOBALS['db']->rollback();
+      $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
+    }
+    Utils::doRedirect(PUERTO.'://'.HOST.'/journalEntries/');
   }
 }  
 ?>

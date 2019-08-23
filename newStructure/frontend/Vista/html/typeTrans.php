@@ -1,5 +1,5 @@
 <div id="page-wrapper"><br />
-    <div class="alert alert-info"><p>Operations / Files / Types of Customers / <?php echo $type; ?> <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/clientsList/'; ?>">Volver</a></p></div>
+    <div class="alert alert-info"><p>Operations / Files / Type Transaction / <?php echo $type; ?> <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/typeTransList/'; ?>">Volver</a></p></div>
     <div class="row">
         <div class="col-lg-12">
             <div class="col-lg-5">
@@ -10,7 +10,7 @@
                         <form id="addForm" class="form-horizontal" method="post" action="<?php echo PUERTO."://".HOST.'/'.$view.'/'.Utils::encriptar($rows['CODIGO']).'/'; ?>" onsubmit="return validarFormulario()">
 
                             <fieldset>
-                                <legend class="mibread"><strong>Types of Customers</strong></legend>
+                                <legend class="mibread"><strong>Type</strong></legend>
 
                                 <div class="form-group" id="seccion_number">
                                     <label class="col-md-4 control-label" for="code">Code: </label>
@@ -35,18 +35,18 @@
                                     <?php if($type == 'Update'){ ?>
                                         <input type="hidden" name="save" id="save" value="1">
                                         <button style="float: left;" type="submit" id="update" name="update" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
-                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/clientsList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
+                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeTransList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
                                         &nbsp;
                                         <a id="clean" style="float: right; margin-right: 10px;" class="btn btn-success"><span class="fa fa-repeat"></span> Clean</a>
                                     <?php }else if($type == 'Delete'){ ?>
                                         <input type="hidden" name="save" id="save" value="1">
                                         <button style="float: left;" type="submit" id="delete" name="delete" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-remove"></span> Delete</button>
-                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/clientsList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
+                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeTransList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
                                         &nbsp;
                                     <?php }else{ ?>
                                         <input type="hidden" name="create" id="create" value="1">
                                         <button style="float: left;" type="submit" id="update" name="update" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
-                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/clientsList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
+                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeTransList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
                                         &nbsp;
                                         <a id="clean" style="float: right; margin-right: 10px;" class="btn btn-success"><span class="fa fa-repeat"></span> Clean</a>
                                     <?php } ?>

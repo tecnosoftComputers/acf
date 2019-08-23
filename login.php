@@ -52,7 +52,7 @@ try {
                     }
                     
                     $_SESSION['lasesion'] = $premier_sesion;
-                    $_SESSION['id_empresa'] = $id_empresa;
+                    $_SESSION["id_empresa"] = $id_empresa;
 
                     // Crud -> Insert quien inicio sesion a la tabla sesion
                     

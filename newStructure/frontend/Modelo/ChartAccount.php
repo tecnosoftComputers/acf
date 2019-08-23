@@ -13,10 +13,15 @@ class Modelo_ChartAccount{
       $rs = $GLOBALS['db']->auto_array($sql,array(),true);
       $response = array();
       foreach ($rs as $key => $value) {
-        $response[] = array("value"=>/*str_replace('.', '', */$value['CODIGO']/*)*/,"label"=>$value['CODIGO'].' - '.$value['NOMBRE']);
+        $response[] = array("value"=>$value['CODIGO'],"label"=>$value['CODIGO'].' - '.$value['NOMBRE']);
       } 
     }
     return $response;
+  }
+
+  public static function searchAccountsDetail(){
+    $sql = "SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1";
+    return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
   }
 
   public static function getUpdate($codigo){

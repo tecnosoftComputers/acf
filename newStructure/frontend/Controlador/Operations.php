@@ -4,9 +4,9 @@ class Controlador_Operations extends Controlador_Base {
   public function construirPagina(){
   
     $tags = array();         
- 
+
     if(!Utils::estaLogueado()){
-      header("Location: ../login.php");
+      header("Location: ".PUERTO."://".PREVIOUS_SYSTEM."login.php");
     } 
 
     $opcion = Utils::getParam('opcion','',$this->data);
@@ -15,10 +15,8 @@ class Controlador_Operations extends Controlador_Base {
         self::reestablecerSistema();
       break;
       case 'close':
-        session_start();
-        session_unset();
         session_destroy();
-        header("Location: ../../login.php");
+        header("Location: ".PUERTO."://".PREVIOUS_SYSTEM."/login.php");
       break;
       default:          
       	$tags = array();

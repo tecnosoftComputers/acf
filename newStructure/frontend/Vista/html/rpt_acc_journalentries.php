@@ -1,3 +1,4 @@
+<?php #print_r($_SESSION); ?>
 <div id="page-wrapper"><br />
   <div class="alert alert-info"><p>Accounting / Report / Journal Entries</p></div>
   <div class="row">
