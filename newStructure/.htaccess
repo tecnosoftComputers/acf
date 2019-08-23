@@ -10,7 +10,7 @@ RewriteEngine On
 
 # RewriteBase - Production
 
-RewriteCond %{HTTP_HOST} !^tecnosoftcomputers.com/acf/newStructure.*$ [NC]
+#RewriteCond %{HTTP_HOST} !^tecnosoftcomputers.com/acf/newStructure.*$ [NC]
 
 
 
@@ -199,3 +199,18 @@ RewriteRule ^productsParametersReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar
 #journalEntries
 RewriteRule ^journalEntries/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalEntries [L]
 RewriteRule ^saveJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveJournal [L]
+
+#reports
+#journal entries
+RewriteRule ^report/journalentries/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=search [L]
+RewriteRule ^report/journalentries/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&typeseat=$2&datefrom=$3&dateto=$4&seatfrom=$5&seatto=$6 [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&typeseat=$2&datefrom=$3&dateto=$4&seatfrom=$5 [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&typeseat=$2&datefrom=$3&dateto=$4 [L]
+
+#chart account
+RewriteRule ^report/chartaccount/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=$1&accfrom=$2&accto=$3 [L]
+RewriteRule ^report/chartaccount/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=$1&accfrom=$2 [L]
+RewriteRule ^report/chartaccount/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=$1 [L]
+RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=search [L]
+RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount [L]

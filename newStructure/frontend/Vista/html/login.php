@@ -1,73 +1,4 @@
-<?php
- session_start();
- require_once ("datos/db/connect.php");
- require_once ("controlador/func.php");
- $message = "";
-
-try {
-      if(isset($_POST["login"])){
-           if(empty($_POST["username"]) || empty($_POST["password"])){
-                $message = '<label>All fields are required</label>';
-           }else{
-                $query = DBSTART::abrirDB()->prepare(
-                        "SELECT  u.id_usuario, u.correo,u.passw,u.estado,u.position,u.role,u.namesurname
-                            FROM usuarios u INNER JOIN usuarios_empresas ue ON u.id_usuario = ue.id_user
-                                  WHERE u.correo=:correo AND u.passw=:passw AND u.estado = 'A'");
-                $query->execute(
-                     array(
-                              'correo' =>       $_POST["username"],
-                              'passw'  =>       sha1($_POST["password"])
-                          )
-                );
-                $count = $query->rowCount();
-                $empresa = $query->fetch();
-
-                if($count > 0){
-                  $sql = DBSTART::abrirDB()->prepare("SELECT DISTINCT count(num_sesion) as contador FROM sesion_init");
-                    $sql->execute();
-                    $cant = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-                    foreach((array) $cant as $val) {
-                        $sesiones = $val['contador'];
-                        $sesiones = $sesiones + 1;
-                    }
-                    $_SESSION["correo"]      = $empresa["position"];
-                    $_SESSION["usuario"]     = $empresa["id_usuario"];
-                    $_SESSION["elrol"]       = $empresa["role"];
-                    $_SESSION["persona"]     = $empresa["namesurname"];
-                    // Nuevo iniciar con la empresa
-                    //$_SESSION["empresas"]    = $empresa["id_empresa"];
-                    
-                    $estado = 'I'; // ultimo cambio
-                    la_sesion($sesiones, $_SESSION["usuario"], $estado, DBSTART::abrirDB());
-
-                    // generar un clave encriptada de sesion para extreerla
-                    $solucion = DBSTART::abrirDB()->prepare("SELECT * FROM sesion_init WHERE num_sesion='$sesiones'");
-                    $solucion->execute();
-                    $ext = $solucion->fetchAll(PDO::FETCH_ASSOC);
-
-                    foreach((array) $ext as $premier) {
-                      $premier_sesion = $premier['num_sesion'];
-                      $id_empresa = $premier['id_empresa'];
-                    }
-                    
-                    $_SESSION['lasesion'] = $premier_sesion;
-                    $_SESSION['id_empresa'] = $id_empresa;
-
-                    // Crud -> Insert quien inicio sesion a la tabla sesion
-                    
-                    header("location:inicializador/vistas/app/in.php");
-                }else {
-                     $message = '<div class="alert alert-danger">Datos Incorrectos</div>';  
-                }
-           }
-      }
- }
- catch(PDOException $error){
-      $message = $error->getMessage();
- }
- ?>
- <!DOCTYPE html>  
+<!DOCTYPE html>  
  <html style="">
       <head>
            <title>LOGIN | ACF</title>  
@@ -152,16 +83,16 @@ body {
     <div class="col-md-4 login-sec">
         <h2 class="text-center">Login Now</h2>
          
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" class="login-form" method="post">
+        <form action="<?php echo PUERTO."://".HOST."/login/"; ?>" class="login-form" method="post">
           <?php if(isset($message)){ echo '<label class="text-danger">'.$message.'</label>'; }?>
           <div class="form-group">
             <label for="exampleInputEmail1" class="">Usuario</label>
-            <input type="text" class="form-control" placeholder="" name="username" />
+            <input type="text" class="form-control" placeholder="" name="username" id="username" />
             
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="">Password</label>
-            <input type="password" class="form-control" placeholder="" name="password" />
+            <input type="password" class="form-control" placeholder="" name="password" id="password" />
           </div>
 
             <div class="form-check">

@@ -94,6 +94,8 @@ class Vista {
     $sesion = Modelo_SesionInit::buscarSesion($lasesion);
     $acceso = $sesion['modulo'];
     $id_empresa = $sesion['id_empresa'];
+    
+    $_SESSION['acfSession']['id_empresa'] = $id_empresa; 
 
     $all_upde = Modelo_UserModel::searchUserMod($user);
     $all_upd = Modelo_UserCompanie::searchUserComp($user);
@@ -232,8 +234,7 @@ class Vista {
 
     <ul class="dropdown-menu dropdown-messages">';
     foreach ((array)$all_sql as $data_sql) {
-
-      if($acceso == 3 || ($acceso == 1 && $modulo == 4)){
+      if($acceso == 3 || ($acceso == 1 && $modulo == 4) || ($acceso == 1 && $modulo == 5)){
         $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
       } else{
         $enlace = PUERTO.'://'.PREVIOUS_SYSTEM.'inicializador/vistas/app/in.php'.$data_sql['src_head'];
