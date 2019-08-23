@@ -3,7 +3,7 @@
 	class CONFIG {
 		CONST AMBIENTE = 'Desarrollo';
 		CONST SERVIDOR_HOST = '';
-        CONST SERVER = 'mysql:host=imbabura2;dbname=tecnoso1_acf';
-		CONST USUARIO = 'tecnoso1_tecnosoft';
-		CONST PASSW = '$cambio2015$x';
+        CONST SERVER = 'mysql:host=localhost;dbname=tecnoso1_acf';
+		CONST USUARIO = 'root';
+		CONST PASSW = '';
 	}

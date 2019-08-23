@@ -1,4 +1,5 @@
 <?php    
+    define('NEW_SYSTEM','http://localhost/fernando/acf/newStructure/');
     function head_init($role,$db, $acceso) {
     // Mostrar items del modulo
     $sql = $db->prepare("SELECT * FROM permisos p
@@ -50,7 +51,7 @@
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
                     <?php if($acceso = 1){
-                        $enlace = 'http://tecnosoftcomputers.com/acf/newStructure/'.$data_sql['src_head'];
+                        $enlace = NEW_SYSTEM.$data_sql['src_head'];
                       } else{
                         $enlace = $data_sql['src_head'];
                       }
@@ -250,10 +251,11 @@ function la_sesion($access, $user, $std, $db) {
                 
                 foreach((array) $row_ext as $ladata){
                     $el_acceso = $ladata['initial_system'];
+                    $la_empresa = $ladata['initial_system'];
                 }
 
-            $sql = $db->prepare("INSERT INTO sesion_init (num_sesion,id_user, modulo, estado_init) VALUES 
-                                    ('$access','$user','$el_acceso','$std')");
+            $sql = $db->prepare("INSERT INTO sesion_init (num_sesion,id_user, modulo,id_empresa, estado_init) VALUES 
+                                    ('$access','$user','$el_acceso','$la_empresa','$std')");
             $sql->execute();
         }
         

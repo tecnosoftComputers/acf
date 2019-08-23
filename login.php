@@ -48,9 +48,11 @@ try {
 
                     foreach((array) $ext as $premier) {
                       $premier_sesion = $premier['num_sesion'];
+                      $id_empresa = $premier['id_empresa'];
                     }
                     
                     $_SESSION['lasesion'] = $premier_sesion;
+                    $_SESSION["id_empresa"] = $id_empresa;
 
                     // Crud -> Insert quien inicio sesion a la tabla sesion
                     
