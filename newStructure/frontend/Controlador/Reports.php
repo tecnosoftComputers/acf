@@ -12,7 +12,8 @@ class Controlador_Reports extends Controlador_Base {
     $option = Utils::getParam('option','',$this->data); 
     switch($option){
       case 'journalEntries': 
-        $action = Utils::getParam('action','',$this->data);    
+        $action = Utils::getParam('action','',$this->data); 
+        //echo $_SESSION['acfSession']['id_empresa'];   
         if ($action == "search"){
           $aux_datefrom = Utils::getParam('datefrom','',$this->data);
           $datefrom = (!empty($aux_datefrom)) ? date("Y-m-d", strtotime($aux_datefrom)) : date('Y-m-d'); 
@@ -23,6 +24,7 @@ class Controlador_Reports extends Controlador_Base {
           $seatfrom = (!empty($seatfrom)) ? str_pad($seatfrom,8, "0", STR_PAD_LEFT) : '';
           $seatto = Utils::getParam('seatto','',$this->data); 
           $seatto = (!empty($seatto)) ? str_pad($seatto,8, "0", STR_PAD_LEFT) : ''; 
+
           $tags["datefrom"] = $aux_datefrom;  
           $tags["dateto"] = $aux_dateto; 
           $tags["datefromdb"] = strtotime($datefrom); 
@@ -72,16 +74,16 @@ class Controlador_Reports extends Controlador_Base {
             foreach($results as $key=>$value){                            
               if ($value["ASIENTO"] != $seataux){
                 if (!empty($key)){ 
-                  $pdf->SetXY(210, $pdf->GetY());                  
-                  $pdf->Cell(40, 5,'____________________',0,0);
-                  $pdf->Cell(40, 5,'____________________',0,0);
-                  $pdf->Cell(189  ,5,'',0,1);                  
-                  $pdf->SetXY(210, $pdf->GetY());                  
-                  $pdf->Cell(40 ,5,number_format($acum_debits,2),0,0);
-                  $pdf->Cell(40 ,5,number_format($acum_credit*-1,2),0,0);                  
-                  $pdf->Cell(189  ,5,'',0,1);                  
-                  $pdf->Cell(189  ,5,'',0,1);                  
-                  $pdf->Cell(189  ,5,'',0,1);                                    
+                  $this->objPdf->SetXY(210, $this->objPdf->GetY());                  
+                  $this->objPdf->Cell(40, 5,'____________________',0,0);
+                  $this->objPdf->Cell(40, 5,'____________________',0,0);
+                  $this->objPdf->Cell(189  ,5,'',0,1);                  
+                  $this->objPdf->SetXY(210, $this->objPdf->GetY());                  
+                  $this->objPdf->Cell(40 ,5,number_format($acum_debits,2),0,0);
+                  $this->objPdf->Cell(40 ,5,number_format($acum_credit*-1,2),0,0);                  
+                  $this->objPdf->Cell(189  ,5,'',0,1);                  
+                  $this->objPdf->Cell(189  ,5,'',0,1);                  
+                  $this->objPdf->Cell(189  ,5,'',0,1);                                    
                 }                                                
                 $this->objPdf->Cell(30 ,5,"Date: ".date("m/d/Y",strtotime($value["FECHA_ASI"])),0,0);
                 $this->objPdf->Cell(50 ,5,"No. ".$typeseat." ".$value["ASIENTO"],0,0);
@@ -204,8 +206,8 @@ class Controlador_Reports extends Controlador_Base {
                   ->setCellValue('C'.$cont, $item["DESC_ASI"])                                    
                   ;    
                 $seataux = $item["ASIENTO"]; 
-                $acum_debit = 0;
-                $acum_credit = 0;                
+                $acum_debits = 0;
+                $acum_credits = 0;                
                 $cont++; 
               }
               
@@ -378,7 +380,8 @@ class Controlador_Reports extends Controlador_Base {
     $this->objPdf->Cell(59 ,5,$info_company["telefono_empresa"],0,1);//end of line
     $this->objPdf->Cell(189  ,10,'',0,1); //end of line
     $this->objPdf->SetFont('Arial','B',10);   
-    $this->objPdf->Cell(250 ,5,$title,0,1);//end of line           
+    $this->objPdf->Cell(246 ,5,$title,0,0);//end of line 
+    $this->objPdf->Cell(250 ,5,'Page: '.$this->objPdf->PageNo(),0,1);              
     $this->objPdf->SetFont('Arial','',11);
     $this->objPdf->Cell(11 ,5,'From:',0,0);
     $this->objPdf->Cell(28 ,5, $from ,0,0);

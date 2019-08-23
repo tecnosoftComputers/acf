@@ -94,7 +94,7 @@ class Vista {
     $sesion = Modelo_SesionInit::buscarSesion($lasesion);
     $acceso = $sesion['modulo'];
     $id_empresa = $sesion['id_empresa'];
-    
+        
     $_SESSION['acfSession']['id_empresa'] = $id_empresa; 
 
     $all_upde = Modelo_UserModel::searchUserMod($user);

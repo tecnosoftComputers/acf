@@ -1,2137 +1,490 @@
-[2019/08/22 03:20:28] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:20:28] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:20:29] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:21:06] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:21:06] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:21:06] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:23:41] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:23:41] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:23:41] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:26:21] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:26:21] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:26:21] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:26:29] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:26:29] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:26:30] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:28:19] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:28:19] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:28:19] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:41:43] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:41:43] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:41:43] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:54:17] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:54:17] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:54:17] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:54:24] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:54:24] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:54:24] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:55:48] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:55:48] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:55:49] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:56:31] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:56:31] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:56:31] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:57:21] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:57:21] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:57:21] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:58:13] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:58:13] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:58:13] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:58:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:58:37] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:58:37] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 03:59:18] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 03:59:18] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 03:59:18] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:00:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:00:05] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:00:05] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:00:55] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:00:55] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:00:56] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:01:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:01:37] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:01:38] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:04:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:04:01] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:04:02] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:04:43] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:04:43] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:04:44] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:05:27] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:05:27] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:05:27] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:06:24] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:06:24] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:06:24] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:07:14] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:07:14] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:07:14] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:08:25] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:08:25] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:08:25] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:09:40] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 01:28:22] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 01:28:22] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 01:28:22] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 01:28:33] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 01:28:33] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 01:28:34] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 01:28:40] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 01:28:40] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 01:28:41] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 01:28:48] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 01:28:48] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 01:28:49] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 01:28:58] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 01:28:58] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 01:28:59] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 01:29:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 01:29:05] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 01:29:06] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 01:29:25] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 01:29:25] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 01:29:26] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 01:30:03] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 01:30:03] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 01:30:03] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 01:36:22] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 01:36:22] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:09:40] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM permisos p
+[2019/08/23 01:36:23] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM permisos p
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM permisos p
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM permisos p
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM permisos p
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:09:40] SQL Query: SELECT * FROM permisos p
+[2019/08/23 01:36:23] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:10:04] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:10:04] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 02:01:33] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:10:04] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:33] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:10:04] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:33] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:10:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:10:07] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:10:08] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:10:21] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:10:21] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:10:21] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:11:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:11:07] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:11:07] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 02:01:47] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 02:01:47] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 02:01:47] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 02:01:48] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:11:07] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 02:01:48] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:11:07] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:11:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:48] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 02:01:48] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:11:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:48] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:11:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:48] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:11:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:48] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:11:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:48] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:11:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:01:48] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:11:09] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:11:09] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:11:09] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:11:09] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 02:02:22] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:11:09] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:11:09] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:11:09] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:22] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:11:09] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:11:09] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:11:09] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:11:09] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:11:09] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:22] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:11:11] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:11:11] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:11:11] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:16:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:16:05] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:16:05] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:17:13] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:17:13] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:17:13] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:17:58] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:17:58] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:17:58] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:21:50] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:21:50] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:21:50] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:23:50] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:23:50] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:23:50] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:24:39] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:24:39] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:24:39] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:25:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:25:37] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:25:38] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:26:24] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:26:24] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:26:24] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:26:53] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:26:53] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:26:53] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:27:23] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:27:23] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:27:23] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:28:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 02:02:30] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:28:07] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:30] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:28:07] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:30] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:28:28] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:28:28] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 02:02:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:28:28] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:37] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:28:28] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:02:37] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:28:32] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:28:32] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:28:32] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:29:48] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:29:48] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:29:48] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:30:40] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:30:40] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:30:40] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:34:03] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:34:03] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:34:03] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:36:17] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:36:17] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:36:17] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:37:58] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:37:58] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 02:03:00] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:37:58] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:03:00] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:37:58] SQL Query: SELECT * FROM permisos p
+[2019/08/23 02:03:00] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:38:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:38:01] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:38:01] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:41:20] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:41:20] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:41:20] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:41:42] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:41:42] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:41:42] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:42:51] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:42:51] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:42:51] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:43:32] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:43:32] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:43:32] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:44:12] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:44:12] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:44:13] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:45:09] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:45:09] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:45:10] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:46:46] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:46:46] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:46:47] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:51:18] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:51:18] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:51:18] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 03:30:39] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:51:18] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:51:18] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:51:18] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:39] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:51:18] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:51:18] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:51:18] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:51:18] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:51:18] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:39] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:51:21] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:51:21] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:51:21] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:51:21] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 03:30:53] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 03:30:53] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			  FROM dpmovimi m 
+			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
+			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
+			  WHERE c.ID_EMPRESA = '1' AND m.ID_EMPRESA = '1' AND 
+			        c.FECHA_ASI BETWEEN '2019-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:51:21] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:51:21] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:51:21] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:55] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:51:21] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:51:21] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:51:21] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:51:21] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:51:21] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:30:55] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:51:23] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:51:23] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/22 04:51:23] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 04:54:23] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 03:31:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:54:23] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:05] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:54:23] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:05] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:55:27] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:55:27] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+[2019/08/23 03:31:25] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 03:31:25] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
 			  FROM dpmovimi m 
 			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
 			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
 			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=166
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM usuarios_modulos eu 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/22 04:55:27] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:26] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:55:27] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:31:26] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/22 04:55:30] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 04:55:30] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+[2019/08/23 03:31:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 03:31:37] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
 			  FROM dpmovimi m 
 			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
 			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
 			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 04:55:30] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/22 05:00:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/22 05:00:37] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 03:31:38] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 03:31:51] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 03:31:51] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
 			  FROM dpmovimi m 
 			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
 			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
 			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-22' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/22 05:00:37] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 08:58:38] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 08:58:38] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 08:58:38] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 08:58:38] SQL Query: SELECT * FROM usuarios_modulos eu 
+			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' ORDER BY c.FECHA_ASI, c.ASIENTO
+[2019/08/23 03:31:51] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 03:35:08] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 03:35:08] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 03:35:08] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 08:58:38] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 03:35:09] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 08:58:38] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 08:58:38] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:09] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 03:35:09] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 08:58:38] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:09] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 08:58:39] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:09] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 08:58:39] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:09] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 08:58:39] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:09] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 08:58:39] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:09] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 08:59:10] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 08:59:11] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM usuarios_modulos eu 
+[2019/08/23 03:35:11] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 03:35:11] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
+[2019/08/23 03:35:11] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
+[2019/08/23 03:35:11] SQL Query: SELECT * FROM usuarios_modulos eu 
             INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN config e on e.id_config = eu.modulos
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM usuarios_empresas eu 
+[2019/08/23 03:35:11] SQL Query: SELECT * FROM usuarios_empresas eu 
     		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
             INNER JOIN empresa e ON e.id_empresa = eu.empresas 
             WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 08:59:11] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:11] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/23 03:35:11] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:11] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:11] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:11] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:11] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 08:59:11] SQL Query: SELECT * FROM permisos p
+[2019/08/23 03:35:11] SQL Query: SELECT * FROM permisos p
       		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
       		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:00:48] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:00:48] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:00:49] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:02:08] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:02:08] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:02:09] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:04:00] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:04:00] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:04:00] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:04:00] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:04:00] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:04:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:04:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:04:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:04:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:04:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:04:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:04:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:04:05] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110 WHERE CODIGO_AUX >= '2'
-[2019/08/23 09:04:05] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:04:05] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:04:05] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:04:05] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:04:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:04:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:04:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:04:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:04:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:04:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:04:08] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:04:08] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110 WHERE CODIGO_AUX >= '2'
-[2019/08/23 09:04:08] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:05:39] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:05:39] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:05:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:05:57] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:05:57] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:05:57] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:05:57] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:06:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:06:01] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:06:01] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:08:35] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:08:35] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:08:36] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:09:38] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:09:38] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:09:38] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:09:39] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:09:39] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:09:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:09:39] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:09:45] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:09:45] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110 WHERE CODIGO_AUX >= '1145' AND CODIGO_AUX <= '1145'
-[2019/08/23 09:09:45] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:09:45] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:09:45] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:09:45] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:09:45] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:45] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:45] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:45] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:45] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:09:45] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:09:51] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:09:51] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110 WHERE CODIGO_AUX >= '114' AND CODIGO_AUX <= '114'
-[2019/08/23 09:09:51] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:09:51] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:09:51] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:09:51] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:09:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:09:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:09:53] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:09:53] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110 WHERE CODIGO_AUX >= '114'
-[2019/08/23 09:09:53] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:09:53] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:09:53] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:09:53] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:09:53] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:53] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:53] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:53] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:09:53] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:09:53] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:10:00] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:10:00] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110 WHERE CODIGO_AUX >= '114' AND CODIGO_AUX <= '2'
-[2019/08/23 09:10:00] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:10:00] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:10:00] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:10:00] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:10:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:10:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:10:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:10:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:10:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:10:00] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:10:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:10:05] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110 WHERE CODIGO_AUX >= '11' AND CODIGO_AUX <= '2'
-[2019/08/23 09:10:05] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:10:05] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:10:05] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:10:05] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:10:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:10:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:10:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:10:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:10:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:10:05] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:10:09] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:10:09] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110 WHERE CODIGO_AUX >= '11' AND CODIGO_AUX <= '2'
-[2019/08/23 09:10:09] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:16:31] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:16:31] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:16:31] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:17:21] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:17:21] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:17:21] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 09:17:22] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 09:17:22] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:17:22] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 09:17:22] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 09:17:22] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:17:22] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:17:22] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:17:22] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 09:17:22] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:17:22] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 09:17:25] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:17:25] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:17:25] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:18:08] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:18:08] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:18:08] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:20:11] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:20:11] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:20:12] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:20:55] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:20:55] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:20:55] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:29:54] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:29:54] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:29:55] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:34:57] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:34:57] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:34:58] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:39:35] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:39:35] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:39:35] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:39:51] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:39:51] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:39:52] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:40:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:40:07] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:40:07] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:40:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:40:37] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:40:38] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:40:57] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:40:57] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:40:58] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:42:00] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:42:00] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:42:01] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:48:38] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:48:38] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:48:38] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:57:08] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:57:08] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:57:08] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 09:59:09] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 09:59:09] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 09:59:09] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:02:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:02:01] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:02:01] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:08:00] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:08:00] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:08:00] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:10:34] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:10:34] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:10:34] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:11:43] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:11:43] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:11:43] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:12:43] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:12:43] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:12:43] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:14:38] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:14:38] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:14:38] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:15:34] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:15:34] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:15:34] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:18:09] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:18:09] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:18:09] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:20:04] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:20:04] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:20:04] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:23:39] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:23:39] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:23:39] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:24:22] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:24:22] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:24:22] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:25:40] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:25:40] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:25:40] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:26:47] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:26:47] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 10:26:47] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:37:58] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:37:58] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 10:37:58] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 10:37:58] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 10:37:58] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 10:37:58] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 10:37:58] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 10:37:58] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 10:37:58] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 10:37:58] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 10:37:58] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 10:38:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:38:01] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:38:01] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 10:38:01] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 10:38:01] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 10:38:01] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 10:38:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 10:38:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 10:38:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 10:38:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 10:38:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 10:38:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 10:38:03] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:38:03] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:38:03] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:38:34] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:38:34] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:38:34] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:39:58] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:39:58] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:39:58] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:40:32] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:40:32] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:40:32] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:41:03] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:41:03] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:41:03] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:42:38] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:42:38] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:42:38] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:43:49] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:43:49] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:43:49] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:45:15] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:45:15] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:45:15] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:45:57] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:45:57] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:45:57] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:46:42] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:46:42] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:46:42] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:47:52] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:47:52] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:47:52] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:48:13] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:48:13] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:48:13] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:48:27] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:48:27] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:48:27] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:49:29] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:49:29] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:49:29] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:50:13] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:50:13] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:50:13] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:50:52] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:50:52] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:50:52] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:53:38] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:53:38] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:53:38] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:54:51] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:54:51] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:54:51] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:55:39] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:55:39] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:55:39] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 10:56:26] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 10:56:26] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 10:56:26] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:00:02] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:00:02] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 11:00:02] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:03:50] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:03:50] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 11:03:50] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:06:03] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:06:03] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:06:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:06:22] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:06:22] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:06:23] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:06:23] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:06:25] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:06:25] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:06:25] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:06:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:06:37] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:06:38] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:06:52] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:06:52] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:06:52] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:07:02] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:07:02] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:07:03] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:12:59] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:12:59] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:12:59] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:13:42] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:13:42] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:13:43] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:13:59] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:13:59] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:13:59] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:20:16] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:20:16] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:20:16] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:22:24] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:22:24] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:22:24] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:22:26] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:22:27] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 11:22:27] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:36:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:36:01] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:36:01] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:36:01] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:36:01] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:36:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:36:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:36:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:36:01] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:36:02] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:36:02] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:36:03] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:36:03] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 11:36:03] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:36:03] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:36:03] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:36:03] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:36:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:36:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:36:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:36:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:36:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:36:03] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:36:06] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:36:06] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 11:36:06] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:38:51] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:38:51] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:38:51] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:39:13] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:39:13] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:39:13] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:39:13] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:39:15] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:39:15] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:39:15] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:41:46] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:41:46] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:41:46] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:41:47] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:41:47] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:41:47] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:41:47] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:41:47] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:41:47] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:41:47] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:41:47] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:41:48] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:41:48] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 11:41:48] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:41:48] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:41:48] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:41:48] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:41:48] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:41:48] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:41:48] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:41:48] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:41:48] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:41:48] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:41:50] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:41:50] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 11:41:50] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:44:21] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:44:21] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 11:44:21] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:45:17] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:45:17] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:45:17] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:45:34] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:45:34] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 11:45:34] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:45:34] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 11:45:36] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:45:36] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:45:36] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 11:49:27] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 11:49:27] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 11:49:27] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:04:52] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:04:52] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 12:04:52] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:04:52] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:04:52] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 12:04:52] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:04:52] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:04:52] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:04:52] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:04:52] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:04:52] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:04:54] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:04:54] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 12:04:54] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 12:04:54] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:04:54] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:04:54] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 12:04:54] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:04:54] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:04:54] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:04:54] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:04:54] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:04:54] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:04:56] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:04:56] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 12:04:56] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:10:58] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:10:58] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 12:10:58] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:12:12] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:12:12] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 12:12:13] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:47:13] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:47:13] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 12:47:13] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:47:14] A1
-[2019/08/23 12:47:14] ACCOUNT
-[2019/08/23 12:47:14] B2
-[2019/08/23 12:47:14] NAME ACCOUNT
-[2019/08/23 12:50:18] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:50:18] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:50:18] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:50:35] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:50:35] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:50:35] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:50:35] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:50:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:50:37] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 12:50:37] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:50:38] A1
-[2019/08/23 12:50:38] 
-[2019/08/23 12:50:38] B2
-[2019/08/23 12:50:38] 
-[2019/08/23 12:50:38] C3
-[2019/08/23 12:50:38] 
-[2019/08/23 12:50:38] D4
-[2019/08/23 12:50:38] 
-[2019/08/23 12:50:38] E5
-[2019/08/23 12:50:38] 
-[2019/08/23 12:52:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:52:07] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 12:52:07] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:52:07] A1
-[2019/08/23 12:52:07] ACCOUNT
-[2019/08/23 12:52:07] B2
-[2019/08/23 12:52:07] NAME ACCOUNT
-[2019/08/23 12:52:07] C3
-[2019/08/23 12:52:07] CONCEPT
-[2019/08/23 12:52:07] D4
-[2019/08/23 12:52:07] DEBIT
-[2019/08/23 12:52:07] E5
-[2019/08/23 12:52:07] CREDIT
-[2019/08/23 12:53:26] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:53:26] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 12:53:26] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:53:26] A1
-[2019/08/23 12:53:26] ACCOUNT
-[2019/08/23 12:53:26] B2
-[2019/08/23 12:53:26] NAME ACCOUNT
-[2019/08/23 12:53:26] C3
-[2019/08/23 12:53:26] CONCEPT
-[2019/08/23 12:53:26] D4
-[2019/08/23 12:53:26] DEBIT
-[2019/08/23 12:53:26] E5
-[2019/08/23 12:53:26] CREDIT
-[2019/08/23 12:54:39] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:54:39] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 12:54:39] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:54:39] A1
-[2019/08/23 12:54:39] ACCOUNT
-[2019/08/23 12:54:39] B2
-[2019/08/23 12:54:39] NAME ACCOUNT
-[2019/08/23 12:54:39] C3
-[2019/08/23 12:54:39] CONCEPT
-[2019/08/23 12:54:39] D4
-[2019/08/23 12:54:39] DEBIT
-[2019/08/23 12:54:39] E5
-[2019/08/23 12:54:39] CREDIT
-[2019/08/23 12:55:50] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:55:50] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 12:55:50] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:56:24] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:56:24] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 12:56:24] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:56:24] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:56:24] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 12:56:24] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:56:24] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:56:24] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:56:24] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:56:24] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:56:24] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:56:26] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:56:26] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 12:56:26] SQL Query: SELECT * FROM sesion_init WHERE num_sesion=167
-[2019/08/23 12:56:26] SQL Query: SELECT * FROM usuarios_modulos eu 
-            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN config e on e.id_config = eu.modulos
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:56:26] SQL Query: SELECT * FROM usuarios_empresas eu 
-    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
-            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
-            WHERE eu.id_user = '1' AND eu.estado='A'
-[2019/08/23 12:56:26] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
-[2019/08/23 12:56:26] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:56:26] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:56:26] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:56:26] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
-[2019/08/23 12:56:26] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:56:26] SQL Query: SELECT * FROM permisos p
-      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
-      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
-[2019/08/23 12:56:28] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:56:28] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 12:56:28] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:58:06] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:58:06] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
-[2019/08/23 12:58:06] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
-[2019/08/23 12:58:47] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
-[2019/08/23 12:58:47] SQL Query: SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
-			  FROM dpmovimi m 
-			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
-			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
-			  WHERE c.ID_EMPRESA = '4' AND m.ID_EMPRESA = '4' AND 
-			        c.FECHA_ASI BETWEEN '2018-01-01' AND '2019-08-23' AND m.TIPO_ASI = 'IG' AND c.ASIENTO >= '00001145' AND c.ASIENTO <= '00001145' ORDER BY c.FECHA_ASI, c.ASIENTO
-[2019/08/23 12:58:48] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
+[2019/08/23 03:35:13] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Reports'
+[2019/08/23 03:35:13] SQL Query: SELECT CODIGO, NOMBRE FROM dp01a110
+[2019/08/23 03:35:13] SQL Query: SELECT * FROM empresa WHERE id_empresa= 4
