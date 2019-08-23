@@ -54,42 +54,42 @@ class Vista {
   
   private static function obtieneMsgError(){
     $msg = "";
-    if( isset($_SESSION['mostrar_error']) && !empty($_SESSION['mostrar_error']) ){
-      $msg = $_SESSION['mostrar_error'];
+    if( isset($_SESSION['acfSession']['mostrar_error']) && !empty($_SESSION['acfSession']['mostrar_error']) ){
+      $msg = $_SESSION['acfSession']['mostrar_error'];
       $msg = str_replace (array("\r\n", "\n", "\r"), '', $msg);
       $msg = htmlentities($msg, ENT_QUOTES, 'UTF-8');
-      unset($_SESSION['mostrar_error']);
+      unset($_SESSION['acfSession']['mostrar_error']);
     }
     return $msg;
   }
   
   private static function obtieneMsgExito(){
     $msg = "";
-    if( isset($_SESSION['mostrar_exito']) && !empty($_SESSION['mostrar_exito']) ){
-      $msg = $_SESSION['mostrar_exito'];
+    if( isset($_SESSION['acfSession']['mostrar_exito']) && !empty($_SESSION['acfSession']['mostrar_exito']) ){
+      $msg = $_SESSION['acfSession']['mostrar_exito'];
       $msg = str_replace (array("\r\n", "\n", "\r"), '', $msg);
       $msg = htmlentities($msg, ENT_QUOTES, 'UTF-8');
-      unset($_SESSION['mostrar_exito']);
+      unset($_SESSION['acfSession']['mostrar_exito']);
     }
     return $msg;
   } 
 
   private static function obtieneMsgNotif(){
     $msg = "";    
-    if( isset($_SESSION['mostrar_notif']) && !empty($_SESSION['mostrar_notif']) ){
-      $msg = $_SESSION['mostrar_notif'];
+    if( isset($_SESSION['acfSession']['mostrar_notif']) && !empty($_SESSION['acfSession']['mostrar_notif']) ){
+      $msg = $_SESSION['acfSession']['mostrar_notif'];
       $msg = str_replace (array("\r\n", "\n", "\r"), '', $msg);
       $msg = htmlentities($msg, ENT_QUOTES, 'UTF-8');
-      unset($_SESSION['mostrar_notif']);
+      unset($_SESSION['acfSession']['mostrar_notif']);
     }
     return $msg;
   }  
 
   private static function obtieneMenu($deshabilitarmenu){
   
-    $role        = $_SESSION['correo'];
-    $user       = $_SESSION['usuario'];
-    $lasesion   = $_SESSION['lasesion'];
+    $role        = $_SESSION['acfSession']['correo'];
+    $user       = $_SESSION['acfSession']['usuario'];
+    $lasesion   = $_SESSION['acfSession']['lasesion'];
 
     $sesion = Modelo_SesionInit::buscarSesion($lasesion);
     $acceso = $sesion['modulo'];
@@ -107,10 +107,10 @@ class Vista {
     <span class="icon-bar"></span>
     </button>
     </div>
-    <ul class="nav navbar-top-links navbar-right">
-    <li class=""><a style="font-size: 22px; font-weight: bold; color:#dec437" href="?cid=dashboard/init">ACF</a></li>
-    <li class="">
     <form action="'.PUERTO.'://'.PREVIOUS_SYSTEM.'controlador/c_sesion/generar.php" class="navbar-form" method="request">
+    <ul class="nav navbar-top-links navbar-right">
+    <li class=""><a style="font-size: 22px; font-weight: bold; color:#c61818" href="?cid=dashboard/init">ACF</a></li>
+    <li class="">
     <select name="y" class="form-control" onchange="this.form.submit()" style="width: 200px;">';
     foreach ($all_upde as $vale_conf) {
       if ($acceso == $vale_conf['id_config']){ 
@@ -123,7 +123,6 @@ class Vista {
     } 
     $menu .= '</select>
     <noscript><input type="submit" value="Submit" /></noscript>
-    </form>
     </li>
 
     <li class="">
@@ -139,8 +138,7 @@ class Vista {
     } 
     $menu .= '</select>
     <noscript><input type="submit" value="Submit" /></noscript>
-    </form>
-    </li>';
+    </li></form>';
     
     $modules = Modelo_Module::searchModules();
 
@@ -155,13 +153,13 @@ class Vista {
       }
     }
 
-    $menu .= '<li><a><i class="fa fa-user"></i>'.strtoupper($_SESSION["elrol"]).'</a></li>
+    $menu .= '<li><a><i class="fa fa-user"></i>'.strtoupper($_SESSION['acfSession']["elrol"]).'</a></li>
     <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
     <i class="fa fa-sign-in fa-fw"></i>
     </a>
     <ul class="dropdown-menu dropdown-user">
-    <li><a href="">'.strtoupper($_SESSION["persona"]).'</a></li>
+    <li><a href="">'.strtoupper($_SESSION['acfSession']["persona"]).'</a></li>
     <li><a href="'.PUERTO.'://'.HOST.'/reestablecerSistema/"><i class="fa fa-eye fa-fw"></i> RESTABLECER SISTEMA</a></li>
     <li class="divider"></li> 
     <li><a href="'.PUERTO.'://'.HOST.'/close/"><i class="fa fa-sign-out fa-fw"></i> CERRAR SESIÓN</a></li>
@@ -175,7 +173,7 @@ class Vista {
     <div class="sidebar-nav navbar-collapse">
     <ul class="nav" id="side-menu">
     <li><a href="?cid=dashboard/init"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>';
-    if ($_SESSION['correo'] == 1){
+    if ($_SESSION['acfSession']['correo'] == 1){
 
       foreach ($modules as $key => $value) {
 

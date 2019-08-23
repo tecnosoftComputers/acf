@@ -1,5 +1,5 @@
 <div id="page-wrapper"><br />
-    <div class="alert alert-info"><p>Operations / Files / System Charts <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/systemChartsList/'; ?>">Volver</a></p></div>
+    <div class="alert alert-info"><p>Operations / Files / System Charts / Officer Credit <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/systemChartsList/'; ?>">Volver</a></p></div>
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -11,7 +11,7 @@
                     </div>
                     
                     <ul class="nav nav-pills">
-                        <li style="width: auto;" <?php if(!$error){ echo 'class="active"'; } ?>><a id="list" href="#home-pills" data-toggle="tab"><i class="fa fa-th-list"></i> List Official Credit </a></li>
+                        <li style="width: auto;" <?php if(!$error){ echo 'class="active"'; } ?>><a id="list" href="#home-pills" data-toggle="tab"><i class="fa fa-th-list"></i> List Credit Official Credit </a></li>
                         <li style="width: auto;" <?php if($error){ echo 'class="active"'; } ?>><a id="new" href="#form-pills" data-toggle="tab"><i class="fa fa-plus-square-o"></i> New Credit Officer</a></li>
                     </ul>
 

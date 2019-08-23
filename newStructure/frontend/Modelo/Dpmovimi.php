@@ -8,11 +8,11 @@ class Modelo_Dpmovimi{
 		return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
 	}
 
-	public static function searchSequential(){
+	/*public static function searchSequential(){
 
 	   $sql = "SELECT IF(MAX(SECUENCIAL)='' OR MAX(SECUENCIAL)= 0,1,MAX(SECUENCIAL)+1) AS ultimo FROM dpmovimi";
 	   return $rs = $GLOBALS['db']->auto_array($sql,array(),false);
-	}
+	}*/
 
 	public static function searchMinSeat(){
 
@@ -20,17 +20,25 @@ class Modelo_Dpmovimi{
 		return $rs = $GLOBALS['db']->auto_array($sql,array(),false);
 	}
 
-	public static function searchMaxAux(){
+	public static function searchMovimi($type=false,$id){
+		
+		$sql = "SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ";
 
-		$sql = "SELECT MAX(AUX) AS favorito FROM dpmovimi";
-		return $rs = $GLOBALS['db']->auto_array($sql,array(),false);
+		if($type != false){
+	      $sql .= "ASIENTO like '%$id' AND TIPO_ASI = '$type'";
+	    }else{
+	      $sql .= "IDCONT = '$id'";
+	    }
+
+		return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
 	}
 
-	public static function searchJournal($id){
+	public static function deleteMovimi($id){
 
-		$sql = "SELECT TIPO_ASI,CONCEPTO FROM dpmovimi WHERE ASIENTO like '$id'";
-		return $rs = $GLOBALS['db']->auto_array($sql,array(),false);
-	}
+	    if(empty($id)){return false;}
+	    return $GLOBALS['db']->delete('dpmovimi',"IDCONT ='$id'");
+	 }
+
 
 	public static function insert($datos){
 	    if(count($datos)==0){return false;}

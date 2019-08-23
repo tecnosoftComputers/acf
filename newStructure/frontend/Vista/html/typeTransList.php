@@ -1,17 +1,17 @@
 <div id="page-wrapper"><br />
-    <div class="alert alert-info"><p>Operations / Files / System Charts / Types of Identification <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/systemChartsList/'; ?>">Volver</a></p></div>
+    <div class="alert alert-info"><p>Operations / Files / System Charts / Type Transaction <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/systemChartsList/'; ?>">Volver</a></p></div>
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body" style="height: 500px; overflow: auto;">
 
                     <div id="export" <?php if($error){ echo 'style="display:none"'; } ?>>
-                        <span id="pdf" style="float: right; margin-left: 10px"><a href="<?php echo PUERTO."://".HOST.'/typeIdentsReport/excel/'; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
-                        <span id="excel" style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeIdentsReport/pdf/'; ?>" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
+                        <span id="pdf" style="float: right; margin-left: 10px"><a href="<?php echo PUERTO."://".HOST.'/typeTransReport/excel/'; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
+                        <span id="excel" style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeTransReport/pdf/'; ?>" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
                     </div>
                     
                     <ul class="nav nav-pills">
-                        <li style="width: auto;" <?php if(!$error){ echo 'class="active"'; } ?>><a id="list" href="#home-pills" data-toggle="tab"><i class="fa fa-th-list"></i> List Types of Identification</a></li>
+                        <li style="width: auto;" <?php if(!$error){ echo 'class="active"'; } ?>><a id="list" href="#home-pills" data-toggle="tab"><i class="fa fa-th-list"></i> List Type Transaction </a></li>
                         <li style="width: auto;" <?php if($error){ echo 'class="active"'; } ?>><a id="new" href="#form-pills" data-toggle="tab"><i class="fa fa-plus-square-o"></i> New Type</a></li>
                     </ul>
 
@@ -19,7 +19,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade <?php if(!$error){ echo 'in active'; } ?>" id="home-pills">
                             <br>
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="typeIdents">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="typeTrans">
                                 <thead>
                                     <tr>
                                         <th align="center" width=220>Code</th>
@@ -29,12 +29,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach( (array) $typeIdents as $registro2 ){ ?>
+                                    <?php foreach( (array) $typeTrans as $registro2 ){ ?>
                                         <tr class='odd gradeX' data-toggle="collapse" data-target="#demo<?php echo $registro2['CODIGO']; ?>" class="accordion-toggle">
                                             <td><?php echo $registro2['CODIGO'] ?></td>
                                             <td><?php echo utf8_encode($registro2['NOMBRE']) ?></td>
-                                            <td align="center"><a href="<?php echo PUERTO."://".HOST.'/typeIdentsUpdate/'.Utils::encriptar($registro2['CODIGO']).'/'; ?>"><i class="fa fa-edit"></i></a></td>
-                                            <td align="center"><a href="<?php echo PUERTO."://".HOST.'/typeIdentsDelete/'.Utils::encriptar($registro2['CODIGO']).'/'; ?>"><i class="fa fa-trash"></i></a></td>    
+                                            <td align="center"><a href="<?php echo PUERTO."://".HOST.'/typeTransUpdate/'.Utils::encriptar($registro2['CODIGO']).'/'; ?>"><i class="fa fa-edit"></i></a></td>
+                                            <td align="center"><a href="<?php echo PUERTO."://".HOST.'/typeTransDelete/'.Utils::encriptar($registro2['CODIGO']).'/'; ?>"><i class="fa fa-trash"></i></a></td>    
                                         </tr>
                                     <?php } ?>
                                 </tbody>
@@ -50,7 +50,7 @@
                                         <form id="addForm" class="form-horizontal" method="post" action="<?php echo PUERTO."://".HOST.'/'.$view.'/'; ?>" onsubmit="return validarFormulario()">
 
                                             <fieldset>
-                                                <legend class="mibread"><strong>Types of Identification</strong></legend>
+                                                <legend class="mibread"><strong>Type</strong></legend>
 
                                                 <div class="form-group" id="seccion_number">
                                                     <label class="col-md-4 control-label" for="name">Code: </label>
@@ -75,23 +75,22 @@
                                                     <?php if($type == 'Update'){ ?>
                                                         <input type="hidden" name="save" id="save" value="1">
                                                         <button style="float: left;" type="submit" id="update" name="update" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
-                                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeIdentsList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
+                                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeTransList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
                                                         &nbsp;
                                                         <a id="clean" style="float: right; margin-right: 10px;" class="btn btn-success"><span class="fa fa-repeat"></span> Clean</a>
                                                     <?php }else if($type == 'Delete'){ ?>
                                                         <input type="hidden" name="save" id="save" value="1">
                                                         <button style="float: left;" type="submit" id="delete" name="delete" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-remove"></span> Delete</button>
-                                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeIdentsList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
+                                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeTransList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
                                                         &nbsp;
                                                     <?php }else{ ?>
                                                         <input type="hidden" name="create" id="create" value="1">
                                                         <button style="float: left;" type="submit" id="update" name="update" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
-                                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeIdentsList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
+                                                        <span style="float: right"><a href="<?php echo PUERTO."://".HOST.'/typeTransList/'; ?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
                                                         &nbsp;
                                                         <a id="clean" style="float: right; margin-right: 10px;" class="btn btn-success"><span class="fa fa-repeat"></span> Clean</a>
                                                     <?php } ?>
                                                 </div>
-
                                             </fieldset>
                                         </form>
                                     </div>

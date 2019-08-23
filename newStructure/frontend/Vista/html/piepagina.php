@@ -202,18 +202,6 @@
                         <div class="panel-body">
                            <div class="tab-content">
                                 <div class="tab-pane fade in active" id="contentBody">
-                                    <!--<table id="accounts" class="display table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Number</th>
-                                                <th>Name</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="contentBody">
-                                            
-                                        </tbody>
-                                    </table>-->
                                 </div>
                             </div>
                         </div>

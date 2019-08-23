@@ -32,7 +32,7 @@
                                     <label class="col-md-4 control-label" for="factor">Factor: </label>
                                     <div class="col-md-8">
                                         <div id="err_factor" class="help-block with-errors"></div>
-                                        <input id="factor" name="factor" type="text" class="form-control input-sm" maxlength="30" value="<?php echo $rows['FACTOR']; ?>" <?php if($type == 'Delete'){ echo 'disabled="true" readonly="true"'; } ?>/>
+                                        <input id="factor" name="factor" type="text" class="form-control input-sm" maxlength="30" value="<?php echo $rows['FACTOR']; ?>" <?php if($type == 'Delete'){ echo 'disabled="true" readonly="true"'; } ?> onkeypress="return soloNumerosPunto(this);"/>
                                     </div>
                                 </div>
 
@@ -48,7 +48,7 @@
                                     <label class="col-md-4 control-label" for="tenth">Tenth: </label>
                                     <div class="col-md-8">
                                         <div id="err_tenth" class="help-block with-errors"></div>
-                                        <input id="tenth" name="tenth" type="text" class="form-control input-sm" maxlength="30" value="<?php echo $rows['DECIMA']; ?>" <?php if($type == 'Delete'){ echo 'disabled="true" readonly="true"'; } ?>/>
+                                        <input id="tenth" name="tenth" type="text" class="form-control input-sm" maxlength="30" value="<?php echo $rows['DECIMA']; ?>" <?php if($type == 'Delete'){ echo 'disabled="true" readonly="true"'; } ?> onkeypress="return soloNumeros(this);"/>
                                     </div>
                                 </div>
 

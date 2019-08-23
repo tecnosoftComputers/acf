@@ -2,7 +2,7 @@
 
 require_once 'constantes.php';
 require_once 'init.php';
-//print_r($_SESSION);
+
 dispatch();
 $GLOBALS['db']->close();
 
@@ -20,7 +20,7 @@ function dispatch() {
 
     $tabla = Modelo_SystemCharts::searchCode($controlador_nombre); 
     if(!empty($tabla)){
-      $_SESSION['tabla'] = $tabla;
+      $_SESSION['acfSession']['tabla'] = $tabla;
     }else{
     }
     return $controlador->construirPagina(); 
@@ -57,6 +57,9 @@ function obtieneControlador($nombre){
     break;
     case 'typesCalculations':
       return 'CAL';
+    break;
+    case 'typeTrans':
+      return 'TRA';
     break;
     case 'products':
       return 'PRO';

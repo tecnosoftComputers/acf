@@ -6,11 +6,11 @@ class Controlador_PRO extends Controlador_Base {
     $tags = array();    
 
     if(!Utils::estaLogueado()){
-      header("Location: ../login.php");
+      header("Location: ".PUERTO."://".PREVIOUS_SYSTEM."login.php");
     } 
 
     $opcion = Utils::getParam('opcion','',$this->data); 
-    $tabla = $_SESSION['tabla'];
+    $tabla = $_SESSION['acfSession']['tabla'];
     switch($opcion){
       case 'create': 
         $view = 'productsCreate'; 
@@ -26,13 +26,13 @@ class Controlador_PRO extends Controlador_Base {
             if(!Modelo_TabGeneral::insert($datos,$tabla)){
               throw new Exception('The product could not be created, try again.');
             }
-            $_SESSION['mostrar_exito'] = 'The product was successfully created.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The product was successfully created.';
             $GLOBALS['db']->commit();
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
-            $_SESSION['mostrar_error'] = $e->getMessage(); 
-            $_SESSION['error'] = true;         
+            $_SESSION['acfSession']['mostrar_error'] = $e->getMessage(); 
+            $_SESSION['acfSession']['error'] = true;         
           }
           Utils::doRedirect(PUERTO.'://'.HOST.'/productsList/');
         }
@@ -61,13 +61,13 @@ class Controlador_PRO extends Controlador_Base {
             if(!Modelo_TabGeneral::setUpdate($id,$datos,$tabla)){
               throw new Exception('The product could not be edited, try again.');
             }
-            $_SESSION['mostrar_exito'] = 'The product was successfully edited.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The product was successfully edited.';
             $GLOBALS['db']->commit();
             Utils::doRedirect(PUERTO.'://'.HOST.'/productsList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
-            $_SESSION['mostrar_error'] = $e->getMessage();           
+            $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
         }
         $products = Modelo_TabGeneral::getUpdate($id,$tabla);
@@ -93,13 +93,13 @@ class Controlador_PRO extends Controlador_Base {
             if(!Modelo_TabGeneral::delete($id,$tabla)){
               throw new Exception('The product could not be deleted, try again.');
             }
-            $_SESSION['mostrar_exito'] = 'The product was successfully delete.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The product was successfully delete.';
             $GLOBALS['db']->commit();
             Utils::doRedirect(PUERTO.'://'.HOST.'/productsList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
-            $_SESSION['mostrar_error'] = $e->getMessage();           
+            $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
         }
         $products = Modelo_TabGeneral::getUpdate($id,$tabla);
@@ -244,12 +244,12 @@ class Controlador_PRO extends Controlador_Base {
       break;
       default:  
 
-        if(isset($_SESSION['error']) && $_SESSION['error'] == true){
+        if(isset($_SESSION['acfSession']['error']) && $_SESSION['acfSession']['error'] == true){
           $error = true;
         }else{
           $error = false;
         }
-        unset($_SESSION['error']);
+        unset($_SESSION['acfSession']['error']);
 
 
         $products = Modelo_TabGeneral::search($tabla);

@@ -11,7 +11,6 @@ function soloNumeros(evt){
 
 function soloNumerosPunto(evt){
   var charCode = (evt.which) ? evt.which : event.keyCode
-  console.log(charCode);
   if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 46)
     return false;
   return true;
@@ -305,7 +304,7 @@ function loadModal(name_field,name_field2,permission1,permission2,search){
 
                 if((newvar == '.' && permission1 == true) || (newvar != '.' && permission2 == true) || (permission1 == true && permission2 == true)){
                   
-                  html += '<td width=40 data-toggle="modal" data-target="#myModal"> <a href="javascript:select(\''+field_name+'\',\''+field_name2+'\',\''+cod_aux+'\',\''+name+'\');"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></a></td>';
+                  html += '<td width=40 data-toggle="modal" data-target="#myModal"> <a href="javascript:select(\''+field_name+'\',\''+field_name2+'\',\''+cod+'\',\''+name+'\');"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></a></td>';
                 }else{
                   html += '<td width=40><a title="Error, no puede seleccionar una cuenta mayor" class="unselectable" href="#"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></td>';
                 }
@@ -377,7 +376,7 @@ function searchAccount(name_field,name_field2,permission1,permission2){
                     }
 
                     if((newvar == '.' && permission1 && !permission2) || (newvar != '.' && !permission1 && permission2) || (permission1 && permission2)){
-                      html += '<td width=40 data-toggle="modal" data-target="#myModal"> <a href="javascript:select(\''+name_field+'\',\''+name_field2+'\',\''+cod_aux+'\',\''+name+'\');"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></a></td>';
+                      html += '<td width=40 data-toggle="modal" data-target="#myModal"> <a href="javascript:select(\''+name_field+'\',\''+name_field2+'\',\''+cod+'\',\''+name+'\');"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></a></td>';
                     }else{
                 html += '<td width=40><a title="Error, no puede seleccionar una cuenta mayor" class="unselectable" href="#"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></td>';
                     }
@@ -400,10 +399,10 @@ function searchAccount(name_field,name_field2,permission1,permission2){
 function select(field_name,field_name2,code,name){
 
   var re = /\./gi;
+  $('#codepp').val(code);
   $(field_name).val(code.replace(re,''));
 
   if(field_name2 != '#false'){
     $(field_name2).val(name);
   }
 }
-

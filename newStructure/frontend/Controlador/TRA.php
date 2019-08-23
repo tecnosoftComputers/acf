@@ -1,5 +1,5 @@
 <?php
-class Controlador_Currencies extends Controlador_Base {
+class Controlador_TRA extends Controlador_Base {
   
   public function construirPagina(){
   
@@ -10,41 +10,40 @@ class Controlador_Currencies extends Controlador_Base {
     } 
 
     $opcion = Utils::getParam('opcion','',$this->data); 
-    $state = array('1'=>'Active','0'=>'Inactive');
+    $tabla = $_SESSION['acfSession']['tabla'];
     switch($opcion){
       case 'create': 
-        $view = 'currenciesCreate'; 
+        $view = 'typeTransCreate'; 
         
         if(Utils::getParam('create') == 1){
           try{ 
-            $campos = array('name'=>1,'type'=>1,'factor'=>1,'symbol'=>1,'tenth'=>1,'state'=>1);
+            $campos = array('code'=>1,'name'=>1);
             $data = $this->camposRequeridos($campos);
-            $datos = array('NOMBREMON'=>$data['name'],'TIPO_MON'=>$data['type'],'SIMBOLO'=>$data['symbol'],'DECIMA'=>$data['tenth'],'FACTOR'=>$data['factor'],'ESTADOMON'=>(int)$data['state']);
+            $datos = array('CODIGO'=>$data['code'],'NOMBRE'=>$data['name']);
 
             $GLOBALS['db']->beginTrans();
-            if(!Modelo_Currencies::insert($datos)){
-              throw new Exception('The currency could not be created, try again.');              
-            }
-            $_SESSION['acfSession']['mostrar_exito'] = 'The currency was successfully created.';
-            $GLOBALS['db']->commit();
             
+            if(!Modelo_TabGeneral::insert($datos,$tabla)){
+              throw new Exception('The type could not be created, try again.');
+            }
+            $_SESSION['acfSession']['mostrar_exito'] = 'The type was successfully created.';
+            $GLOBALS['db']->commit();
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
             $_SESSION['acfSession']['mostrar_error'] = $e->getMessage(); 
-            $_SESSION['acfSession']['error'] = true;          
+            $_SESSION['acfSession']['error'] = true;         
           }
-          Utils::doRedirect(PUERTO.'://'.HOST.'/currenciesList/');
+          Utils::doRedirect(PUERTO.'://'.HOST.'/typeTransList/');
         }
 
         $tags = array('type'=>'Create',
-                      'state'=>$state,
                       'view'=>$view);
 
-        $tags["template_js"][] = "currencies";
+        $tags["template_js"][] = "typeTrans";
         $tags["template_css"][] = "";
 
-        Vista::render('currencies', $tags);  
+        Vista::render('typeTrans', $tags);  
       break;
       case 'update':
 
@@ -53,36 +52,34 @@ class Controlador_Currencies extends Controlador_Base {
 
         if(Utils::getParam('save') == 1){
           try{ 
-
-            $campos = array('name'=>1,'type'=>1,'factor'=>1,'symbol'=>1,'tenth'=>1,'state'=>1);
-
+            $campos = array('name'=>1);
             $data = $this->camposRequeridos($campos);
-            $datos = array('NOMBREMON'=>$data['name'],'TIPO_MON'=>$data['type'],'SIMBOLO'=>$data['symbol'],'DECIMA'=>$data['tenth'],'FACTOR'=>$data['factor'],'ESTADOMON'=>(int)$data['state']);
+            $datos = array('NOMBRE'=>$data['name']);
 
             $GLOBALS['db']->beginTrans();
-            if(!Modelo_Currencies::setUpdate($id,$datos)){
-              throw new Exception('The currency could not be edited, try again.');
+
+            if(!Modelo_TabGeneral::setUpdate($id,$datos,$tabla)){
+              throw new Exception('The type could not be edited, try again.');
             }
-            $_SESSION['acfSession']['mostrar_exito'] = 'The currency was successfully edited.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The type was successfully edited.';
             $GLOBALS['db']->commit();
-            Utils::doRedirect(PUERTO.'://'.HOST.'/currenciesList/');
+            Utils::doRedirect(PUERTO.'://'.HOST.'/typeTransList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
             $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
         }
-        $currencies = Modelo_Currencies::getUpdate($id);
-        $view = 'currenciesUpdate';
-        $tags = array('rows'=>$currencies,
+        $typeTrans = Modelo_TabGeneral::getUpdate($id,$tabla);
+        $view = 'typeTransUpdate';
+        $tags = array('rows'=>$typeTrans,
                       'type'=>'Update',
-                      'state'=>$state,
                       'view'=>$view);
 
-        $tags["template_js"][] = "currencies";
+        $tags["template_js"][] = "typeTrans";
         $tags["template_css"][] = "";
 
-        Vista::render('currencies', $tags);
+        Vista::render('typeTrans', $tags);
       break;
       case 'delete':
 
@@ -93,34 +90,33 @@ class Controlador_Currencies extends Controlador_Base {
           try{ 
             
             $GLOBALS['db']->beginTrans();
-            if(!Modelo_Currencies::delete($id)){
-              throw new Exception('The currency could not be deleted, try again.');
+            if(!Modelo_TabGeneral::delete($id,$tabla)){
+              throw new Exception('The type could not be deleted, try again.');
             }
-            $_SESSION['acfSession']['mostrar_exito'] = 'The currency was successfully delete.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The type was successfully delete.';
             $GLOBALS['db']->commit();
-            Utils::doRedirect(PUERTO.'://'.HOST.'/currenciesList/');
+            Utils::doRedirect(PUERTO.'://'.HOST.'/typeTransList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
             $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
         }
-        $currencies = Modelo_Currencies::getUpdate($id);
-        $view = 'currenciesDelete';
-        $tags = array('rows'=>$currencies,
+        $typeTrans = Modelo_TabGeneral::getUpdate($id,$tabla);
+        $view = 'typeTransDelete';
+        $tags = array('rows'=>$typeTrans,
                       'type'=>'Delete',
-                      'state'=>$state,
                       'view'=>$view);
 
-        $tags["template_js"][] = "currencies";
+        $tags["template_js"][] = "typeTrans";
         $tags["template_css"][] = "";
 
-        Vista::render('currencies', $tags);
+        Vista::render('typeTrans', $tags);
       break;
       case 'report':
 
-        $currencies = Modelo_Currencies::search();
-        $nombre_archivo = 'currencies_List';
+        $typeTrans = Modelo_TabGeneral::search($tabla);
+        $nombre_archivo = 'typeTrans_List';
         $tipo = Utils::getParam('tipo','',$this->data);
 
         if($tipo == 'excel'){
@@ -128,9 +124,9 @@ class Controlador_Currencies extends Controlador_Base {
           $objPHPExcel = new PHPExcel();
           $objPHPExcel->getProperties()
             ->setCreator("Lcda. Mariana Vera")
-            ->setTitle("currencies List")
-            ->setSubject("currencies List")
-            ->setCategory("currencies List");
+            ->setTitle("typeTrans List")
+            ->setSubject("typeTrans List")
+            ->setCategory("typeTrans List");
 
             $BStyle = array(
             'borders' => array(
@@ -162,13 +158,13 @@ class Controlador_Currencies extends Controlador_Base {
           $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
           $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', 'CURRENCIES LIST');
+              ->setCellValue('A1', 'typeTrans LIST');
 
           $objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true); 
 
           $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A2', 'TYPE')
-              ->setCellValue('B2', 'NAME')
+              ->setCellValue('A2', 'CODE')
+              ->setCellValue('B2', 'NAMES')
               ;
 
           $objPHPExcel->getActiveSheet()->getStyle('A2:B2')->getFont()->setBold(true);
@@ -189,13 +185,13 @@ class Controlador_Currencies extends Controlador_Base {
               ),
           );
 
-          foreach ($currencies as $key => $item) {
+          foreach ($typeTrans as $key => $item) {
 
             $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->applyFromArray($BStyle);
             $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->applyFromArray($styleArray);
             $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A'.$cont, $item['TIPO_MON'])
-            ->setCellValue('B'.$cont, $item['NOMBREMON'])
+            ->setCellValue('A'.$cont, $item['CODIGO'])
+            ->setCellValue('B'.$cont, $item['NOMBRE'])
             ;
 
             $cont++;      
@@ -218,7 +214,7 @@ class Controlador_Currencies extends Controlador_Base {
           $pdf->Cell(189  ,10,'',0,1);//end of line
 
           $pdf->Image(FRONTEND_RUTA.'imagenes/logoinicial.jpg', 139,10,50,26,'JPG');
-          $pdf->Cell(59,5,'CURRENCIES LIST',0,1);//end of line
+          $pdf->Cell(59,5,'typeTrans LIST',0,1);//end of line
           $pdf->Cell(189,10,'',0,1); //end of line
           $pdf->SetFont('Arial','B',12);
           $pdf->Ln(6);
@@ -229,11 +225,18 @@ class Controlador_Currencies extends Controlador_Base {
           $pdf->Ln(6);
 
           $pdf->SetFillColor(255,255,255);
-          foreach ($currencies as $key => $item) {
-            $pdf->SetFont('Arial','B',12);
-            $pdf->Cell(50,6,$item['TIPO_MON'],1,0,'L',1);
-            $pdf->Cell(135,6,$item['NOMBREMON'],1,0,'L',1);    
-            $pdf->Ln(6);
+          foreach ($typeTrans as $key => $item) {
+              $var = substr($item['CODIGO'], -1);
+              if ($var == '.') {
+                  $pdf->SetFont('Arial','B',12);
+                  $pdf->Cell(50,6,$item['CODIGO'],1,0,'L',1);
+                $pdf->Cell(135,6,$item['NOMBRE'],1,0,'L',1);    
+              }else{
+                  $pdf->SetFont('Arial','',12);
+                  $pdf->Cell(50,6,'     '.$item['CODIGO'],1,0,'L',1);
+                $pdf->Cell(135,6,'     '.$item['NOMBRE'],1,0,'L',1);
+              }
+              $pdf->Ln(6);
           }
 
           $pdf->Output($nombre_archivo.'.pdf','D');
@@ -248,18 +251,18 @@ class Controlador_Currencies extends Controlador_Base {
         }
         unset($_SESSION['acfSession']['error']);
 
-        $currencies = Modelo_Currencies::search();
-        $view = 'currenciesCreate'; 
-        $tags = array('currencies'=>$currencies,
+
+        $typeTrans = Modelo_TabGeneral::search($tabla);
+        $view = 'typeTransCreate'; 
+        $tags = array('typeTrans'=>$typeTrans,
                       'type'=>'Create',
                       'view'=>$view,
-                      'state'=>$state,
                       'error'=>$error);
 
-        $tags["template_js"][] = "currencies";
+        $tags["template_js"][] = "typeTrans";
         $tags["template_css"][] = "";
 
-        Vista::render('currenciesList', $tags);
+        Vista::render('typeTransList', $tags);
       break;
     }
     
