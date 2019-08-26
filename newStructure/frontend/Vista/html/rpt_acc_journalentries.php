@@ -1,4 +1,3 @@
-<?php #print_r($_SESSION); ?>
 <div id="page-wrapper"><br />
   <div class="alert alert-info"><p>Accounting / Report / Journal Entries</p></div>
   <div class="row">
@@ -6,18 +5,18 @@
     <div class="col-md-6">
       <form action="<?php echo PUERTO."://".HOST."/report/journalentries/search/";?>" method="post" class="form-horizontal">
         <fieldset>
-          <legend class="mibread"><strong>Journal Entries Report</strong></legend>
+          <legend class="mibread" style="text-align: center;"><strong>Journal Entries Report</strong></legend>
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Date From:</label>
             <div class="col-md-3">
-              <input type="text" name="datefrom" id="datefrom" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($datefrom) && !empty($datefrom)) ? $datefrom : date("m/d/Y"); ?>" />
+              <input type="text" name="datefrom" id="datefrom" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($datefrom) && !empty($datefrom)) ? $datefrom : date("m/01/Y");?>" readonly />
             </div>
           </div>
             
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Date To:</label>
             <div class="col-md-3">
-              <input type="text" name="dateto" id="dateto" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($dateto) && !empty($dateto)) ? $dateto : date("m/d/Y"); ?>" />  
+              <input type="text" name="dateto" id="dateto" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($dateto) && !empty($dateto)) ? $dateto : date("m/t/Y"); ?>" readonly />  
             </div>
           </div>
             
@@ -34,7 +33,7 @@
             </div>
             
             <div class="col-md-3">
-              <input type="text" autocomplete="off" id="seatfrom" name="seatfrom" class="form-control" maxlength="8" size="8" value="<?php echo (isset($seatfrom) && !empty($seatfrom)) ? $seatfrom : ''; ?>"/>
+              <input type="text" autocomplete="off" id="seatfrom" name="seatfrom" class="form-control" maxlength="8" size="8" value="<?php echo (isset($seatfrom) && !empty($seatfrom)) ? $seatfrom : ''; ?>" />
             </div>
           </div>
             
@@ -87,14 +86,17 @@
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
     <br>                     
-    <table width="100%" class="table table-striped table-bordered table-hover" >
+    <table width="100%" class="table table-striped table-bordered table-hover style-table" >
     <thead>
       <tr>        
-        <th align="center" width=220>ACCOUNT</th>
-        <th align="center" width=300>NAME ACCOUNT</th>
-        <th align="center">CONCEPT</th>
-        <th align="center">DEBIT</th>
-        <th align="center">CREDIT</th>          
+        <th class="style-th">ACCOUNT</th>
+        <th class="style-th">NAME ACCOUNT</th>
+        <th class="style-th">TYPE</th>
+        <th class="style-th">REFERENCE</th>
+        <th class="style-th">DOCUMENT</th>
+        <th class="style-th">CONCEPT</th>
+        <th class="style-th">DEBIT</th>
+        <th class="style-th">CREDIT</th>          
       </tr>
     </thead>
     <tbody>
@@ -105,15 +107,22 @@
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
               <td align="right"><?php echo number_format($acum_debit,2);?></td>
               <td align="right"><?php echo number_format($acum_credit*-1,2);?></td>
             </tr> 
-            <tr><td colspan="5">&nbsp;</td></tr>
+            <tr><td colspan="8">&nbsp;</td></tr>
           <?php } ?>          
           <tr style="background-color:#e5e6ed;">
-           <td>Date: <?php echo date("m/d/Y",strtotime($value["FECHA_ASI"])); ?></td>
-           <td>No. <?php echo $typeseat." ".$value["ASIENTO"]; ?></td>
-           <td colspan="3"><?php echo $value["DESC_ASI"]; ?></td>
+           <td colspan="8">
+             <strong>Date: <?php echo date("m/d/Y",strtotime($value["FECHA_ASI"])); ?>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             No. <?php echo $typeseat." ".$value["ASIENTO"]; ?>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <?php echo $value["DESC_ASI"]; ?></strong>
+           </td>           
          </tr>
         <?php 
           $seataux = $value["ASIENTO"]; 
@@ -124,7 +133,11 @@
       <tr> 
          <td><a href="javascript:void(0);"><?php echo $value["CODMOV"];?></a></td>
          <td><?php echo $value["NOMBRE"];?></td>   
-         <td><?php echo $value["CONCEPTO"];?></td>
+         <td><?php echo $value["TIPO"];?></td>
+         <td><?php echo $value["REFER"];?></td>
+         <td><a href="javascript:void(0);"><?php echo $value["DOCUMENTO"];?></a></td>
+         <td><?php echo $value["CONCEPTO"];?></td>                  
+         
          <?php 
          if ($value["IMPORTE"] > 0){ 
            $acum_debit = $value["IMPORTE"] + $acum_debit;  
@@ -141,6 +154,9 @@
       </tr>            
       <?php } ?>
       <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>

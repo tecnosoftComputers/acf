@@ -46,7 +46,8 @@ class Modelo_Dpmovimi{
 
 	public static function report($empresa,$datefrom,$dateto,$typeseat,$seatfrom='',$seatto=''){
       if (empty($empresa) || empty($datefrom) || empty($dateto) || empty($typeseat)){ return false; }       
-	  $sql = "SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.CONCEPTO, m.IMPORTE 	    
+	  $sql = "SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, 
+	                 m.CONCEPTO, m.IMPORTE, m.TIPO, m.REFER, m.DOCUMENTO	    
 			  FROM dpmovimi m 
 			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
 			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 

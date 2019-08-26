@@ -1,6 +1,9 @@
 <?php
 @session_start();
     //if (isset($_REQUEST['y'])) { // CAMBIO DE MODULO
+            //print_r($_REQUEST);
+            //echo "<script>alert('paso');</script>";         
+
             $num = $_REQUEST['y'];
             $num2 = $_REQUEST['x'];
             require_once ("../../datos/db/connect.php");
@@ -8,8 +11,14 @@
         	$env = new DBSTART;
         	$cc = $env->abrirDB();
 
+            if (!empty($num2)){
+              $_SESSION["id_empresa"] = $num2;  
+            }
+            if (!empty($num)){
+              $_SESSION["id_modulo"] = $num;     
+            }
             $lasesion  = $_SESSION['lasesion'];
-            $usuario = $_SESSION['usuario'];
+            $usuario = $_SESSION['usuario'];    
 
             $sql = $cc->prepare("UPDATE sesion_init SET modulo='$num', id_empresa='$num2'  WHERE num_sesion='$lasesion'");
 

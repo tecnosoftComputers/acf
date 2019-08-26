@@ -134,3 +134,9 @@ RewriteRule ^report/chartaccount/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=repo
 RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=search [L]
 RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount [L]
 
+#general leadger
+RewriteRule ^report/generalledger/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=generalLedger&action=search [L]
+RewriteRule ^report/generalledger/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=generalLedger [L]
+
+#balance sheet
+RewriteRule ^report/balancesheet/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=balanceSheet [L]

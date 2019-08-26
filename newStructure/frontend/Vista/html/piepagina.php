@@ -17,7 +17,9 @@
     <script src="<?php echo PUERTO."://".HOST;?>/js/flot-tooltip/jquery.flot.tooltip.min.js"></script>
     <script src="<?php echo PUERTO."://".HOST;?>/js/flot-data.js"></script>
     <script src="<?php echo PUERTO."://".HOST;?>/js/sweetalert.v2.js"></script>
-    <script src="<?php echo PUERTO."://".HOST;?>/js/bootstrap-datepicker.js"></script>
+    <!--<script src="<?php echo PUERTO."://".HOST;?>/js/bootstrap-datepicker.js"></script>-->
+    <script src="<?php echo PUERTO."://".HOST;?>/js/moment.min.js"></script>
+    <script src="<?php echo PUERTO."://".HOST;?>/js/daterangepicker.min.js"></script>
     <script src="<?php echo PUERTO."://".HOST;?>/js/jquery-ui.min.js"></script> 
     <script src="<?php echo PUERTO."://".HOST;?>/js/valida.js"></script>
     <script src="<?php echo PUERTO."://".HOST;?>/js/bootstrap-select.min.js"></script>

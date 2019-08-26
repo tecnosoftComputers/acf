@@ -57,3 +57,10 @@ ul.ui-autocomplete {
     padding-right: 20px;
 }
 
+.style-table{
+  font-size: 12px;  
+}
+
+.style-th{
+  text-align: center;    
+}

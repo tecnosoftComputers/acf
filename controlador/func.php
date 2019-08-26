@@ -86,7 +86,7 @@
         <?php foreach ((array) $all_sql as $data_sql) { ?>
             <li>
                  <?php if($acceso = 1){
-                    $enlace = 'http://localhost/fernando/acf/newStructure/'.$data_sql['src_head'];
+                    $enlace = 'http://localhost/fernanda/acf/newStructure/'.$data_sql['src_head'];
                   } else{
                     $enlace = $data_sql['src_head'];
                   }

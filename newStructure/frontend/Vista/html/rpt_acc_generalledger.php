@@ -1,11 +1,11 @@
 <div id="page-wrapper"><br />
-  <div class="alert alert-info"><p>Accounting / Report / Chart of Accounts</p></div>
+  <div class="alert alert-info"><p>Accounting / Report / General Ledger</p></div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <form action="<?php echo PUERTO."://".HOST."/report/chartaccount/search/";?>" method="post" class="form-horizontal">
+      <form action="<?php echo PUERTO."://".HOST."/report/generalledger/search/";?>" method="post" class="form-horizontal">
         <fieldset>
-          <legend class="mibread" style="text-align: center;"><strong>Chart Accounts Report</strong></legend>
+          <legend class="mibread" style="text-align: center;"><strong>General Ledger Report</strong></legend>
           
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account From:</label>
@@ -22,21 +22,33 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account To:</label>
             <div class="col-md-3">
-
               <div class="input-group"> 
                 <input maxlength="8" id="accto" name="accto" type="text" value="<?php echo (isset($accto) && !empty($accto)) ? $accto : ''; ?>" class="form-control input-sm"> 
                 <span class="input-group-btn"> 
                   <button class="btn btn-default"  type="button" data-toggle="modal" data-target="#myModal" onclick="loadModal('accto','name_',true,true,true);" ><span style="padding-top: 1px; padding-bottom: 1px" class="glyphicon glyphicon-search"></span></button> 
                 </span>
-              </div>
-              
+              </div>              
             </div>
           </div>                                            
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Date From:</label>
+            <div class="col-md-3">
+              <input type="text" name="datefrom" id="datefrom" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($datefrom) && !empty($datefrom)) ? $datefrom : date("m/01/Y");?>" readonly />
+            </div>
+          </div>
+            
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Date To:</label>
+            <div class="col-md-3">
+              <input type="text" name="dateto" id="dateto" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($dateto) && !empty($dateto)) ? $dateto : date("m/t/Y"); ?>" readonly />  
+            </div>
+          </div>
 
           <div class="modal-footer">            
             <button style="float: left;" type="submit" name="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
             <span style="float: left; margin-left: 15px;">
-              <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
+              <a href="<?php echo PUERTO."://".HOST."/report/generalledger/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
           </div>
         </fieldset>

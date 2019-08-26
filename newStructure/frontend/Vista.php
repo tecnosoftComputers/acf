@@ -91,11 +91,14 @@ class Vista {
     $user       = $_SESSION['acfSession']['usuario'];
     $lasesion   = $_SESSION['acfSession']['lasesion'];
 
-    $sesion = Modelo_SesionInit::buscarSesion($lasesion);
-    $acceso = $sesion['modulo'];
-    $id_empresa = $sesion['id_empresa'];
-        
-    $_SESSION['acfSession']['id_empresa'] = $id_empresa; 
+    //$sesion = Modelo_SesionInit::buscarSesion($lasesion);    
+    //$acceso = $sesion['modulo'];
+    $acceso = '';
+    //$id_empresa = $sesion['id_empresa'];
+    $id_empresa = $_SESSION["acfSession"]["id_empresa"];
+    $acceso = $_SESSION["acfSession"]["id_modulo"];    
+            
+    //$_SESSION['acfSession']['id_empresa'] = $id_empresa; 
 
     $all_upde = Modelo_UserModel::searchUserMod($user);
     $all_upd = Modelo_UserCompanie::searchUserComp($user);
@@ -116,19 +119,17 @@ class Vista {
     <select id="y" name="y" class="form-control" onchange="enviarForm()" style="width: 200px;">';
     foreach ($all_upde as $vale_conf) {
       if ($acceso == $vale_conf['id_config']){ 
-        $menu .= '<option value="'.$vale_conf['id_config'].'" style="font-size: 15px;" selected="" disabled> 
+        $menu .= '<option value="'.$vale_conf['id_config'].'" style="font-size: 15px;" selected=""> 
         '.$vale_conf['name_access'].'</option>';
       }else{
         $menu .= '<option value="'.$vale_conf['id_config'].'" style="font-size: 15px;"> 
         '.$vale_conf['name_access'].'</option>';
       } 
     } 
-    $menu .= '</select>
-   
+    $menu .= '</select>   
     </li>
 
     <li class="">
-
     <select id="x" name="x" class="form-control" onchange="enviarForm()" style="width: 300px;">';
     foreach ($all_upd as $vale){ 
       if ($id_empresa == $vale['id_empresa']) { 
@@ -138,8 +139,7 @@ class Vista {
         '.$vale['nombre_empresa'].'</option>';
       } 
     } 
-    $menu .= '</select>
-   
+    $menu .= '</select>   
     </li></form>';
     
     $modules = Modelo_Module::searchModules();

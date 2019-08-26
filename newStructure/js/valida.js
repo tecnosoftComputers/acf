@@ -3,7 +3,6 @@ $(document).ready(function(){
 });
 
 function enviarForm(){
-  console.log($('#x').val());console.log($('#y').val());
   $('#form_g').submit();
 }
 
