@@ -82,7 +82,7 @@
                             <option value="0" disabled selected>Select an option</option>
                             <?php foreach($bene as $key => $dem) { ?>
                               <option value="<?php echo $dem; ?>"><?php echo $key.' - '.$dem; ?></option>
-                          <?php } ?>
+                            <?php } ?>
                           </select>
                         </div>
                     </div>                        
@@ -189,13 +189,13 @@
 </form>
 <input type="hidden" name="window" id="window" value="save">
 <div class="modal fade" id="myModalRow" tabindex="-1" role="dialog" aria-labelledby="myModalRow" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 550px;">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">New entry</h4>
             </div>
-            <div class="modal-body" style="height:360px;">
+            <div class="modal-body" style="height:60%; overflow: auto">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -237,8 +237,8 @@
 
 
                                 <div class="form-group col-md-4" id="seccion_type">
-                                    <label class="col-md-8 control-label" for="type">Type: </label>
-                                    <div class="col-md-4" style="padding-left: 0px; width: 44px; padding-right: 0px;">
+                                    <label class="col-md-6 control-label" for="type">Type: </label>
+                                    <div class="col-md-6">
                                         <div id="err_type" class="help-block with-errors"></div>
                                         <input id="type" name="type" type="text" class="form-control input-sm" maxlength="2" value="" onkeyup="javascript:this.value=this.value.toUpperCase();"/>
                                     </div>
@@ -288,13 +288,13 @@
 </div>
 
 <div class="modal fade" id="myModalTrans" tabindex="-1" role="dialog" aria-labelledby="myModalTrans" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 550px;">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabelNotif">Notification</h4>
             </div>
-            <div class="modal-body" style="height:80px; overflow:auto;">
+            <div class="modal-body" style="height:20%; overflow:auto;">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-body" align="center">
@@ -304,7 +304,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <span id="excel" title="PDF" style="float: left"><a href="<?php echo PUERTO."://".HOST.'/journalVoucherReport/pdf/'; ?>" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></a></span>
+                <span id="excel" title="PDF" style="float: left"><a href="#" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
+                <span id="excel" title="EXCEL" style="float: left"><a href="#" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
                 <button type="button" class="btn btn-primary" id="btn_edit"><i class="glyphicon glyphicon-pencil"></i> Update</button>
                 <button type="button" class="btn btn-warning" id="btn_annul"><i class="glyphicon glyphicon-remove"></i> To annul</button>
                 <button type="button" class="btn btn-danger" id="btn_delete"><i class="glyphicon glyphicon-trash"></i> Delete</button>

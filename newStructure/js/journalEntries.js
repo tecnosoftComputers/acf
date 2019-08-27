@@ -246,7 +246,7 @@ function insertRow(){
   var f = numRow+1;
 
   if((account != '' && name != '' && memo != '' && (debit1 > parseFloat('0.00') || credit1 > parseFloat('0.00'))) && (data.includes(account) == true)){
-    var row = '<tr class="odd gradeX" id="num'+f+'">'+'\n';
+    var row = '<tr style="background-color: #d9f2fa" class="odd gradeX" id="num'+f+'">'+'\n';
       row += '<td>'+'\n'; 
               row += '<input class="control2" autocomplete="off" type="text" id="_accountycode'+f+'" name="_accountycode[]" value="'+account+'" readonly />'+'\n';
       row += '</td>'+'\n';
@@ -319,7 +319,7 @@ function insertRow2(account,name,type,codep,ref,memo,typeTrans,debit1,credit1){
     $('#num0').closest('tr').remove();
   }
 
-  var row = '<tr class="odd gradeX" id="num'+f+'">'+'\n';
+  var row = '<tr style="background-color: #d9f2fa" class="odd gradeX" id="num'+f+'">'+'\n';
   row += '<td>'+'\n'; 
           row += '<input class="control2 disabled" autocomplete="off" type="text" id="_accountycode'+f+'" name="_accountycode[]" value="'+account+'" readonly />'+'\n';
   row += '</td>'+'\n';
