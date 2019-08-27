@@ -135,6 +135,7 @@ RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=re
 RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount [L]
 
 #general leadger
+RewriteRule ^report/generalledger/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=generalLedger&action=$1&accfrom=$2&accto=$3&datefrom=$4&dateto=$5 [L]
 RewriteRule ^report/generalledger/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=generalLedger&action=search [L]
 RewriteRule ^report/generalledger/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=generalLedger [L]
 

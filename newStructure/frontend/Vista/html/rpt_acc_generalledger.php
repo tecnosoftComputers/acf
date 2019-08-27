@@ -9,7 +9,7 @@
           
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account From:</label>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="input-group"> 
                 <input maxlength="8" id="accfrom" name="accfrom" type="text" value="<?php echo (isset($accfrom) && !empty($accfrom)) ? $accfrom : ''; ?>" class="form-control input-sm"> 
                 <span class="input-group-btn"> 
@@ -21,7 +21,7 @@
             
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account To:</label>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="input-group"> 
                 <input maxlength="8" id="accto" name="accto" type="text" value="<?php echo (isset($accto) && !empty($accto)) ? $accto : ''; ?>" class="form-control input-sm"> 
                 <span class="input-group-btn"> 
@@ -59,52 +59,87 @@
 
   <?php 
   if (isset($results) && !empty($results)) { 
-    $url = (!empty($accfrom)) ? $accfrom."/" : "";
-    $url .= (!empty($accto)) ? $accto."/" : "";    
+    //$url = (!empty($accfrom)) ? $accfrom."/" : "";
+    //$url .= (!empty($accto)) ? $accto."/" : "";    
   ?>
   <br>
-  <span id="pdf" style="float: right; margin-left: 10px">
+  <!--<span id="pdf" style="float: right; margin-left: 10px">
     <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" target="_blank" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
   </span>
   <span id="excel" style="float: right">
     <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
   </span> 
-  <br>                   
+  <br>-->                   
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
     <br>                     
     <table width="100%" class="table table-striped table-bordered table-hover style-table" >
     <thead>
       <tr>        
-        <th class="style-th">ACCOUNT</th>
-        <th class="style-th">NAME ACCOUNT</th>        
+        <th class="style-th">DATE</th>
+        <th class="style-th">SEAT</th>        
+        <th class="style-th">TYPE SEAT</th>        
+        <th class="style-th">REFERENCE</th>
+        <th class="style-th">CONCEPT</th>
+        <th class="style-th">DEBIT</th>
+        <th class="style-th">CREDIT</th>
+        <th class="style-th">BALANCE</th>
       </tr>
     </thead>
     <tbody>
-    <?php foreach( $results as $key=>$value ){ ?>
-      <?php 
-      $nro = substr_count($value["CODIGO"],".");   
-      $lastc = substr($value["CODIGO"], -1);   
-      ?>
-      <tr>                 
+    <?php 
+    if (!empty($results)){ 
+      $account = '';      
+    ?>    
+      <?php foreach($results as $key=>$value){ ?>      
         <?php 
-        $blank_spaces = "";
-        if ($nro>1){
-          for($i=1;$i<$nro;$i++){
-            $blank_spaces .= "&nbsp;&nbsp;";
-          }
-        }   
-        if ($lastc == '.'){
-          echo "<td><strong>".$value["CODIGO"]."</strong></td>";
-          echo "<td><strong>".$blank_spaces.$value["NOMBRE"]."</strong></td>";
-        }     
-        else{
-          $blank_spaces .= "&nbsp;&nbsp;&nbsp;";
-          echo "<td>".$value["CODIGO"]."</td>";
-          echo "<td>".$blank_spaces.$value["NOMBRE"]."</td>";
-        }        
+        if ($account != $value["CODMOV"] && !empty($value["CODMOV"])){          
+          $infoaccount = Modelo_ChartAccount::getIndividual($value["CODMOV"]);
+          echo "<tr style='background-color:#e5e6ed;''>
+                  <td colspan='3'><strong>".$value["CODMOV"]."</strong></td>
+                  <td colspan='2'><strong>".$infoaccount["NOMBRE"]."</strong></td>
+                  <td colspan='2'><strong>Previous Balance:</strong></td>
+                  <td align='right'><strong>".number_format($value["balance"],2)."</strong></td>
+                </tr>";
+          $account = $value["CODMOV"];  
+          $infomov = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],
+                     $dbdatefrom,$dbdateto,'','','',$value["CODMOV"],array("c.FECHA_ASI","m.ASIENTO")); 
+          $balance = $value["balance"];
+          $acumdebit = 0;
+          $acumcredit = 0;
+          $acumbalance = 0;
+          if (!empty($infomov)){
+            foreach($infomov as $mov){
+              $debit = ($mov["IMPORTE"] > 0) ? $mov["IMPORTE"] : 0;
+              $credit = ($mov["IMPORTE"] <= 0) ? $mov["IMPORTE"] : 0;
+              $balance = $balance + $mov["IMPORTE"];
+              $acumdebit = $acumdebit + $debit;
+              $acumcredit = $acumcredit + $credit; 
+              $idmov = Utils::encriptar($mov["IDCONT"]);                      
+              echo "<tr>               
+                      <td>".date("m/d/Y",strtotime($mov["FECHA_ASI"]))."</td>
+                      <td><a onclick=\"viewJournal('".$idmov."')\">".$mov["ASIENTO"]."</a></td>
+                      <td>".$mov["TIPO_ASI"]."</td>
+                      <td>".$mov["REFER"]."</td>
+                      <td>".$mov["CONCEPTO"]."</td>
+                      <td align='right'>".number_format($debit,2)."</td>
+                      <td align='right'>".number_format($credit,2)."</td>
+                      <td align='right'>".number_format($balance,2)."</td>
+                    </tr>";             
+            }            
+          } 
+          $acumcredit = ($acumcredit >=0) ? 0 : $acumcredit*-1;
+          echo "<tr>               
+                  <td colspan='4'>&nbsp;</td>
+                  <td><strong>Current Balance:</strong></td>
+                  <td align='right'><strong>".number_format($acumdebit,2)."</strong></td>
+                  <td align='right'><strong>".number_format($acumcredit,2)."</strong></td>
+                  <td align='right'><strong>".number_format($balance,2)."</strong></td>
+                </tr>"; 
+          echo "<tr><td colspan='8'>&nbsp;</td></tr>";
+        }  
         ?>        
-      </tr>            
+      <?php } ?>
     <?php } ?>      
     </tbody>    
     </table>  

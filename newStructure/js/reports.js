@@ -7,8 +7,7 @@ $(document).ready(function(){
   });
  
   $('#typeseatfrom').change(function(){
-  	var value = $(this).val();  	
-  	//console.log(value);
+  	var value = $(this).val();  	  	
     $("#typeseatto").val(value);
   });  
 
@@ -25,7 +24,7 @@ $(document).ready(function(){
     this.value = (this.value + '').replace(/[^0-9]/g, '');    
   });
 
-   $('#accto').keyup(function (){
+  $('#accto').keyup(function (){
     this.value = (this.value + '').replace(/[^0-9]/g, '');
   });
 
@@ -39,14 +38,15 @@ $(document).ready(function(){
           match: request.term
         },
         success: function( data ) {
-          response( data );
+          response( data );          
         }
       });
     },
     minLength: 1,
     select: function( event, ui ) {
       $('#name_').val(ui.item.label.replace(ui.item.value+' - ', ''));
-      ui.item.value = ui.item.value.replace(/\./g, '');
+      ui.item.value = ui.item.value.replace(/\./g, ''); 
+      //$('#accto').val(ui.item.value);     
     },
     open: function() {
       $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
@@ -56,7 +56,7 @@ $(document).ready(function(){
     }
   }); 
 
-   $( "#accto" ).autocomplete({
+  $( "#accto" ).autocomplete({
     source: function( request, response ) {
       $.ajax({
         url: $('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=search",
@@ -81,6 +81,6 @@ $(document).ready(function(){
     close: function() {
       $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
     }
-  }); 
+  });   
 
 });
