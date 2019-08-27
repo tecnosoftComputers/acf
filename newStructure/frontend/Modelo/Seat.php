@@ -2,9 +2,13 @@
 
 class Modelo_Seat{
 
-  public static function search(){
+  public static function search($type=false,$fecha1=false,$fecha2=false){
 
     $sql = "SELECT * FROM dpcabtra";
+
+    if($type != false && $fecha1 != false && $fecha2 != false){
+      $sql .= " WHERE TIPO_ASI = '$type' AND FECHA_ASI BETWEEN '".$fecha1."' AND '".$fecha2."'";
+    }
     return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
   }
 
@@ -31,20 +35,44 @@ class Modelo_Seat{
     return $rs = $GLOBALS['db']->auto_array($sql,array(),false);
   }
 
-  public static function searchJournal($type=false,$id){
+  public static function searchJournal($type=false,$range=false,$id=false){
 
-    $sql = "SELECT * FROM dpcabtra WHERE ";
+    $sql = "SELECT * FROM dpcabtra";
 
-    if($type != false){
-      $sql .= "ASIENTO like '%$id' AND TIPO_ASI = '$type'";
+    if($type != false && $id != false){
+      $id = str_pad($id,8, "0", STR_PAD_LEFT);
+      $sql .= " WHERE ASIENTO = '$id' AND TIPO_ASI = '$type'";
+    }else if($id == ''){
+
+      if($range[0] == 'All' && $type != false){
+        $sql .= " WHERE  TIPO_ASI = '$type'";
+      }else if($range[0] != 'All'){
+        $sql .= " WHERE FECHA_ASI BETWEEN '".date('Y-m-d', strtotime($range[0]))."' AND '".date('Y-m-d', strtotime($range[1]))."'";
+        if($type != false){
+          $sql .= " AND TIPO_ASI = '$type'";
+        }
+      }
     }else{
-      $sql .= "IDCONT = '$id'";
+      $id = str_pad($id,8, "0", STR_PAD_LEFT);
+      $sql .= " WHERE IDCONT = '$id'";
     }
 
-    $rs = $GLOBALS['db']->auto_array($sql,array(),false);
-
-    if(!empty($rs)){
-      $rs['IDCONT'] = Utils::encriptar($rs['IDCONT']);
+    if($id == ''){
+      $datos = $GLOBALS['db']->auto_array($sql,array(),true);
+      $rs = array();
+      foreach ($datos as $key => $value) {
+        $rs[$key]['IDCONT'] =  Utils::encriptar($value['IDCONT']);
+        $rs[$key]['TIPO_ASI'] =  $value['TIPO_ASI'];
+        $rs[$key]['ASIENTO'] =  $value['ASIENTO'];
+        $rs[$key]['FECHA_ASI'] =  $value['FECHA_ASI'];
+        $rs[$key]['BENEFICIAR'] =  $value['BENEFICIAR'];
+      }
+    }else{
+      
+      $rs = $GLOBALS['db']->auto_array($sql,array(),false);
+      if(!empty($rs)){
+        $rs['IDCONT'] = Utils::encriptar($rs['IDCONT']);
+      }
     }
 
     return $rs;

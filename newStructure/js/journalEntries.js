@@ -6,13 +6,27 @@ var data = [];
   type_f();
   searchAccountDetail();
 
-  $('.myDatepicker').datepicker({
-      format: 'mm/dd/yyyy',
-      autoclose: true
+  $('input[name="date"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 1901,
+    autoClose: true,
   });
 
-  $('#journalList').DataTable( {
-      "paging": false
+  $('input[name="datefilter"]').daterangepicker({
+      autoUpdateInput: false,
+      locale: {
+          cancelLabel: 'Clear',
+          applyLabel: 'Ok',
+      }
+  });
+
+  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+  });
+
+  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
   });
 
   $( "#code1" ).autocomplete({
@@ -51,6 +65,10 @@ var data = [];
     }
   };
 
+  $('#journalList').DataTable({
+      "paging": false
+  });
+
   $("#_memo").keyup(function () {
     var value = $(this).val();
     $(".memo").val(value);
@@ -79,6 +97,50 @@ function type_f(){
     clearForm();
   });
 
+$('#debit').on('keyup',function(){
+  $('#credit').val('0.00');
+});
+
+$('#credit').on('keyup',function(){
+  $('#debit').val('0.00');
+});
+
+$('#btnSearch1').on('click',function(){
+  $('#myModalList').modal('show');
+});
+
+$('#btnSearch2').on('click',function(){
+
+  var type = $('#type_select').val();
+  var range = $('#datefilter').val().split(' - ');
+  $('#bodyContent').html('<tr><td colspan="5" align="center"><img src="'+$('#puerto_host').val()+'/imagenes/loading.gif" width="150" /></td></tr>');
+  $.ajax({
+    type:"POST",
+    data:{type:type, range:range},
+    dataType : 'json',
+    url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
+    success:function(r){
+      if(r.journal.length > 0){
+
+        var html = '';
+        for (var i = 0; i < r.journal.length; i++) {
+          html += '<tr>';
+          html += '<td>'+r.journal[i].TIPO_ASI+'</td>';
+          html += '<td>'+r.journal[i].ASIENTO+'</td>';
+          html += '<td>'+r.journal[i].FECHA_ASI+'</td>';
+          html += '<td>'+r.journal[i].BENEFICIAR+'</td>';
+          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal" onclick="viewJournal(\''+r.journal[i].IDCONT+'\')"><i class="fa fa-eye"></i></a></td>';
+          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal" onclick="searchJournal("",\''+r.journal[i].IDCONT+'\')"><i class="fa fa-edit"></i></a></td>';
+          html += '</tr>';
+        }
+        
+      }else{
+        html += '<tr align="center"><td colspan="5">No matching records found</td></tr>';
+      }
+      $('#bodyContent').html(html);
+    }
+  });
+});
 
 function function_credit(f){
   
@@ -140,39 +202,6 @@ function updateBalance(s1,s2,btn,btn2){
   return diff;
 }
 
-function autocompleteRow(){
-
-  $( "#code1" ).autocomplete({
-    source: function( request, response ) {
- 
-      $.ajax({
-        url: $('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=search",
-        dataType: "json",
-        type: "POST",
-        data: {
-          match: request.term
-        },
-        success: function( data ) {
-          response( data );
-        }
-      });
-
-    },
-    minLength: 1,
-    select: function( event, ui ) {
-      $('#name_').val(ui.item.label.replace(ui.item.value+' - ', ''));
-      ui.item.value = ui.item.value.replace(/\./g, '');
-    },
-    open: function() {
-      $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-    },
-    close: function() {
-      $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-    }
-  });
-}
-
-
 function reverseInput(id,btn,btn2){
 
   var temp = $('#el_debit'+id).val();
@@ -215,28 +244,28 @@ function insertRow(){
 
   var f = numRow+1;
 
-  if(numRow==0){
-    $('#num0').closest('tr').remove();
-  }
-
   if((account != '' && name != '' && memo != '' && (debit1 > parseFloat('0.00') || credit1 > parseFloat('0.00'))) && (data.includes(account) == true)){
     var row = '<tr class="odd gradeX" id="num'+f+'">'+'\n';
       row += '<td>'+'\n'; 
-              row += '<input class="control2" autocomplete="off" type="text" id="_accountycode'+f+'" name="_accountycode[]" value="'+account+'" required />'+'\n';
+              row += '<input class="control2" autocomplete="off" type="text" id="_accountycode'+f+'" name="_accountycode[]" value="'+account+'" readonly />'+'\n';
       row += '</td>'+'\n';
-      row += '<td><input class="control2" type="text" id="_accountyname'+f+'" name="_accountyname[]" autocomplete="off" value="'+name+'"  required /></td>'+'\n';
+      row += '<td><input class="control2" type="text" id="_accountyname'+f+'" name="_accountyname[]" autocomplete="off" value="'+name+'"  readonly /></td>'+'\n';
       row += '<td style="display:none"><input class="control2 type" type="hidden" id="el_type'+f+'" name="el_type[]" value="'+type+'"/>'+'\n';
       row += '<input class="control2" type="hidden" id="_references'+f+'" name="el_ref[]" value="'+ref+'" />'+'\n';
       row += '<input class="control2" type="hidden"  id="codep'+f+'" name="codep[]" value="'+codep+'" required />'+'\n';
-      row += '<input class="control2 memo" type="hidden"  id="el_memo'+f+'" name="el_memo[]" value="'+memo+'" required />'+'\n';
-      row += '<input class="control2" type="hidden"  id="_trans'+f+'" name="_trans[]" value="'+typeTrans+'" required /></td>'+'\n';
-      row += '<td ><input class="control2" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+$('#debit').val()+'" required/></td>'+'\n';
-      row += '<td><input class="control2" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+$('#credit').val()+'" required/></td>'+'\n';
+      row += '<input class="control2 memo" type="hidden"  id="el_memo'+f+'" name="el_memo[]" value="'+memo+'" />'+'\n';
+      row += '<input class="control2" type="hidden"  id="_trans'+f+'" name="_trans[]" value="'+typeTrans+'" /></td>'+'\n';
+      row += '<td><input readonly class="control2" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+$('#debit').val()+'" /></td>'+'\n';
+      row += '<td><input readonly class="control2" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+$('#credit').val()+'" /></td>'+'\n';
       row += '<td colspan="2" align="center" style="background-color: #d9f2fa;padding-top: 3px;padding-bottom: 1px;">'+'\n';
-      row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="reverse" name="reverse" title="Reverse" onclick="reverseInput('+f+',\''+'#save'+'\',\''+'#memorice'+'\')" class="btn btn-default btn-small-vertical"><i class="fa fa-refresh"></i></button>'+'\n';
       row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="edit" name="edit"  title="Update" onclick="editInputs('+f+')" class="btn btn-default btn-small-vertical"><i class="fa fa-edit"></i></button>'+'\n';
+      row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="reverse" name="reverse" title="Reverse" onclick="reverseInput('+f+',\''+'#save'+'\',\''+'#memorice'+'\')" class="btn btn-default btn-small-vertical"><i class="fa fa-refresh"></i></button>'+'\n';
       row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="dr" name="dr"  title="Delete" onclick="deleteRow('+f+',\''+'#save'+'\',\''+'#memorice'+'\')" class="btn btn-default btn-small-vertical"><i class="fa fa-trash"></i></button></td>'+'\n';
     row += '</tr>';
+
+    if(numRow==0){
+      $('#num0').closest('tr').remove();
+    }
 
     $('#journal tr:last').after(row);
     if(debit1 > parseFloat('0.00')){
@@ -245,7 +274,11 @@ function insertRow(){
       function_credit(f);
     }
 
-    recalculate('#save','#memorice');
+    if($('#window').val() == 'save'){
+      recalculate('#save','#memorice');
+    }else{
+      recalculate('#update','#memoriceUpdate');
+    }
 
     $('#numRow').val(f);
     $('#myModalRow').modal('hide');
@@ -260,24 +293,7 @@ function insertRow(){
         animation: true
       }); 
     }else{
-
-     /* if(account == ''){
-        colocaError("err_accountycode", "seccion_accountycode","can't be empty","btn_save");
-      }
-
-      if(name == ''){
-        colocaError("err_accountyname", "seccion_accountyname","can't be empty","btn_save");
-      }
-
-      if(memo == ''){
-        colocaError("err_description", "seccion_description","can't be empty","btn_save");
-      }
-
-      if(debit1 <= parseFloat('0.00') && credit1 <= parseFloat('0.00')){
-        colocaError("err_debit", "seccion_debit","It cannot be 0.00 both","btn_save");
-        colocaError("err_credit", "seccion_credit","It cannot be 0.00 both","btn_save");
-      }*/
-    
+   
       Swal.fire({      
         html: 'You must fill in the fields, account, name, memo, debit and credit.',
         imageUrl: $('#puerto_host').val()+'/imagenes/wrong-04.png',
@@ -304,19 +320,19 @@ function insertRow2(account,name,type,codep,ref,memo,typeTrans,debit1,credit1){
 
   var row = '<tr class="odd gradeX" id="num'+f+'">'+'\n';
   row += '<td>'+'\n'; 
-          row += '<input class="control2" autocomplete="off" type="text" id="_accountycode'+f+'" name="_accountycode[]" value="'+account+'" required />'+'\n';
+          row += '<input class="control2 disabled" autocomplete="off" type="text" id="_accountycode'+f+'" name="_accountycode[]" value="'+account+'" readonly />'+'\n';
   row += '</td>'+'\n';
-  row += '<td><input class="control2" type="text" id="_accountyname'+f+'" name="_accountyname[]" autocomplete="off" value="'+name+'"  required /></td>'+'\n';
+  row += '<td><input class="control2 disabled" type="text" id="_accountyname'+f+'" name="_accountyname[]" autocomplete="off" value="'+name+'" readonly /></td>'+'\n';
   row += '<td style="display:none"><input class="control2 type" type="hidden" id="el_type'+f+'" name="el_type[]" value="'+type+'"/>'+'\n';
-  row += '<input class="control2" type="hidden" id="_references'+f+'" name="el_ref[]" value="'+ref+'" />'+'\n';
-  row += '<input class="control2" type="hidden"  id="codep'+f+'" name="codep[]" value="'+codep+'" required />'+'\n';
-  row += '<input class="control2 memo" type="hidden"  id="el_memo'+f+'" name="el_memo[]" value="'+memo+'" required />'+'\n';
-  row += '<input class="control2" type="hidden"  id="_trans'+f+'" name="_trans[]" value="'+typeTrans+'" required /></td>'+'\n';
-  row += '<td ><input class="control2" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+debit1+'" onkeyup="function_debit('+f+')" required/></td>'+'\n';
-  row += '<td><input class="control2" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+credit1+'" onkeyup="function_credit('+f+')" required/></td>'+'\n';
+  row += '<input class="control2" type="hidden" id="_references'+f+'" name="el_ref[]" value="'+ref+'"/>'+'\n';
+  row += '<input class="control2" type="hidden"  id="codep'+f+'" name="codep[]" value="'+codep+'"/>'+'\n';
+  row += '<input class="control2 memo" type="hidden"  id="el_memo'+f+'" name="el_memo[]" value="'+memo+'"/>'+'\n';
+  row += '<input class="control2" type="hidden"  id="_trans'+f+'" name="_trans[]" value="'+typeTrans+'"/></td>'+'\n';
+  row += '<td><input readonly class="control2 disabled" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+debit1+'" /></td>'+'\n';
+  row += '<td><input readonly class="control2 disabled" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+credit1+'" /></td>'+'\n';
   row += '<td colspan="2" align="center" style="background-color: #d9f2fa;padding-top: 3px;padding-bottom: 1px;">'+'\n';
-  row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="reverse" name="reverse" title="Reverse" onclick="reverseInput('+f+',\''+'#update'+'\',\''+'#memoriceUpdate'+'\')" class="btn btn-default btn-small-vertical"><i class="fa fa-refresh"></i></button>'+'\n';
   row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="edit" name="edit" title="Update" onclick="editInputs('+f+')" class="btn btn-default btn-small-vertical"><i class="fa fa-edit"></i></button>'+'\n';
+  row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="reverse" name="reverse" title="Reverse" onclick="reverseInput('+f+',\''+'#update'+'\',\''+'#memoriceUpdate'+'\')" class="btn btn-default btn-small-vertical"><i class="fa fa-refresh"></i></button>'+'\n';
   row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="dr" name="dr" title="Delete" onclick="deleteRow('+f+',\''+'#update'+'\',\''+'#memoriceUpdate'+'\')" class="btn btn-default btn-small-vertical"><i class="fa fa-trash"></i></button></td>'+'\n';
   row += '</tr>';
 
@@ -440,6 +456,7 @@ $('#clear').on('click',function(){
 
 function clearForm(){
 
+  $('#window').val('save');
   $('#_memo').val('');
   var text = $("select[name=benef] option[value='0']").text();
   $('.bootstrap-select .filter-option').text(text);
@@ -551,11 +568,27 @@ function viewJournal(id){
   $('#viewJournal').modal('show');
   $.ajax({
     type:"POST",
-    data:{type:'', id:id},
+    data:{id:id},
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
     success:function(r){
-      $('#mjs3').val(r);
+      if(r.journal != ''){
+
+        $('#_number').val(r.journal.TIPO_ASI+' - '+r.journal.ASIENTO);
+        $('#_date').val(r.journal.FECHA_ASI);
+        $('#_memo2').val(r.journal.DESC_ASI);
+        $('#_benef').val(r.journal.BENEFICIAR);
+        
+        for (var i = 0; i < r.movi.length; i++) {
+          var row = '<tr class="control2">';
+          row += '<td>'+r.movi[i].CODIGO_AUX+'</td>';
+          row += '<td>'+r.movi[i].NOMBRE+'</td>';
+          row += '<td>'+r.movi[i].DB+'</td>';
+          row += '<td>'+r.movi[i].CR+'</td>';
+          row += '</tr>';
+          $('#journalView tr:last').after(row);
+        } 
+      }
     }
   });
 }
@@ -575,10 +608,11 @@ function editJournal(id){
       $('#memoriceUpdate').show();
       $('#delete').show();
       $('#reverseAll').show();
+      $('#window').val('update');
       
       if(r.journal != ''){
         $('#_actual').val(r.journal['ASIENTO']);
-        $('#_memo').val(r.journal['DESC_ASI'].trim());
+        /*$('#_memo').val(r.journal['DESC_ASI'].trim());
         var date =  new Date(r.journal['FECHA_ASI']);
 
         var day = date.getDate()+1;
@@ -616,13 +650,13 @@ function editJournal(id){
           type = movi[i].TIPO;
           codep = movi[i].CODMOV.trim();
           ref = movi[i].REFER;
-          memo = r.journal['BENEFICIAR'].trim();
+          memo = movi[i].CONCEPTO;
           typeTrans = movi[i].GRUPOCON;
           debit = movi[i].DB;
           credit = movi[i].CR;
           insertRow2(account,name,type,codep,ref,memo,typeTrans,debit,credit);
-        }
-
+        }*/
+        data_journal(r);
         $('#myModalTrans').modal('hide');
       }
     }
@@ -689,7 +723,14 @@ function save_edit(f){
   $('#_trans'+f).val($('#trans').val());
   $('#el_debit'+f).val($('#debit').val());
   $('#el_credit'+f).val($('#credit').val());
-  recalculate('#update','#memoriceUpdate');
+
+  if($('#window').val() === 'save'){
+    console.log('entro');
+    recalculate('#save','#memorice');
+  }else{
+    recalculate('#update','#memoriceUpdate');
+  }
+
   $('#myModalRow').modal('hide');
 }
 
@@ -723,3 +764,132 @@ function findAccount(elemento,valor)
   return elemento===valor;
 }
 
+function copyJournal(id){
+
+  $.ajax({
+    type:"POST",
+    data:{id:id},
+    dataType : 'json',
+    url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
+    success:function(r){
+     
+      if(r.journal != ''){
+        clearForm();
+        $('#_actual').val('');
+        data_journal(r);
+        /*$('#_memo').val(r.journal['DESC_ASI'].trim());
+        var date =  new Date(r.journal['FECHA_ASI']);
+
+        var day = date.getDate()+1;
+        var month = date.getMonth()+1;
+        if(month<10){
+          month = '0'+month;
+        }
+        var year = date.getFullYear();
+        $('#date').val(month+'/'+day+'/'+year);
+
+        var text = $("select[name=benef] option[value='"+r.journal['BENEFICIAR'].trim()+"']").text();
+        $('.bootstrap-select .filter-option').text(text);
+
+        var sel = document.getElementById( 'benef' ),
+        opts = sel.options;
+
+        for ( var i = 0; i < opts.length; i++ ) {
+            
+            if(r.journal['BENEFICIAR'].trim() != ''){ 
+              var value = r.journal['BENEFICIAR'].trim();
+            }else{
+              var value = 0;
+            }
+
+            if ( opts[i].value === value ) {
+              sel.selectedIndex = i;
+              break;
+            }
+        }
+
+        var movi =  r.movi;
+        for (var i = 0; i < movi.length; i++) {
+          account = movi[i].CODIGO_AUX.trim();
+          name = movi[i].NOMBRE.trim();
+          type = movi[i].TIPO;
+          codep = movi[i].CODMOV.trim();
+          ref = movi[i].REFER;
+          memo = movi[i].CONCEPTO;
+          typeTrans = movi[i].GRUPOCON;
+          debit = movi[i].DB;
+          credit = movi[i].CR;
+          insertRow2(account,name,type,codep,ref,memo,typeTrans,debit,credit);
+        }*/
+        recalculate('#save','#memorice');
+        $('#myModalJournal').modal('hide');
+      }else{
+        Swal.fire({      
+          html: 'Journal not found',
+          imageUrl: $('#puerto_host').val()+'/imagenes/wrong-04.png',
+          imageWidth: 75,
+          confirmButtonText: 'OK',
+          animation: true
+        }); 
+        $('#_actual').val('');
+      }
+    }
+  });
+}
+
+function data_journal(r){
+
+  $('#_memo').val(r.journal['DESC_ASI'].trim());
+  var date =  new Date(r.journal['FECHA_ASI']);
+
+  var day = date.getDate()+1;
+  var month = date.getMonth()+1;
+  if(month<10){
+    month = '0'+month;
+  }
+  var year = date.getFullYear();
+  $('#date').val(month+'/'+day+'/'+year);
+
+  if(r.journal['BENEFICIAR'].trim() == ''){
+    var text = $('select[name=benef] option[value="0"]').text();
+  }else{
+    var text = $('select[name=benef] option[value=\"'+r.journal['BENEFICIAR'].trim()+'\"]').text();
+  } 
+
+  $('.bootstrap-select .filter-option').text(text);
+
+  var sel = document.getElementById( 'benef' ),
+  opts = sel.options;
+
+  for ( var i = 0; i < opts.length; i++ ) {
+      
+      if(r.journal['BENEFICIAR'].trim() != ''){ 
+        var value = r.journal['BENEFICIAR'].trim();
+      }else{
+        var value = 0;
+      }
+
+      if ( opts[i].value === value ) {
+        sel.selectedIndex = i;
+        break;
+      }
+  }
+
+  var movi =  r.movi;
+  for (var i = 0; i < movi.length; i++) {
+    account = movi[i].CODIGO_AUX.trim();
+    name = movi[i].NOMBRE.trim();
+    type = movi[i].TIPO;
+    codep = movi[i].CODMOV.trim();
+    ref = movi[i].REFER;
+    memo = movi[i].CONCEPTO;
+    typeTrans = movi[i].GRUPOCON;
+    debit = movi[i].DB;
+    credit = movi[i].CR;
+    insertRow2(account,name,type,codep,ref,memo,typeTrans,debit,credit);
+  }
+}
+
+$('#cleanFecha').on('click',function(){
+  $('#datefilter').val('');
+});
