@@ -38,23 +38,50 @@ class Modelo_Dpmovimi{
 	    return $result = $GLOBALS['db']->insert('dpmovimi',$datos);
 	}
 
-	public static function report($empresa,$datefrom,$dateto,$typeseat,$seatfrom='',$seatto=''){
-      if (empty($empresa) || empty($datefrom) || empty($dateto) || empty($typeseat)){ return false; }       
-	  $sql = "SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, 
-	                 m.CONCEPTO, m.IMPORTE, m.TIPO, m.REFER, m.DOCUMENTO	    
+	public static function report($empresa,$datefrom,$dateto,$typeseat='',$seatfrom='',$seatto='',
+		                          $codmov='',$orderby=array()){
+      if (empty($empresa) || empty($datefrom) || empty($dateto)){ return false; }       
+	  $sql = "SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.IDCONT,
+	                 m.CONCEPTO, m.IMPORTE, m.TIPO, m.REFER, m.DOCUMENTO, m.TIPO_ASI	    
 			  FROM dpmovimi m 
 			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
 			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
 			  WHERE c.ID_EMPRESA = ? AND m.ID_EMPRESA = ? AND 
-			        c.FECHA_ASI BETWEEN ? AND ? AND m.TIPO_ASI = ? ";
+			        c.FECHA_ASI BETWEEN ? AND ? ";
+	  if (!empty($typeseat)){
+	  	$sql .= " AND m.TIPO_ASI = '".$typeseat."'";
+	  }		        
 	  if (!empty($seatfrom)){
 	  	$sql .= "AND c.ASIENTO >= '".$seatfrom."' ";
 	  }		  
 	  if (!empty($seatto)){
 	  	$sql .= "AND c.ASIENTO <= '".$seatto."' ";
-	  }      			
-	  $sql .= "ORDER BY c.FECHA_ASI, c.ASIENTO";	
-      return $GLOBALS['db']->auto_array($sql,array($empresa,$empresa,$datefrom,$dateto,$typeseat),true);
+	  } 
+	  if (!empty($codmov)){
+	  	$sql .= "AND m.CODMOV = '".$codmov."'";
+	  } 
+	  if (!empty($orderby) && count($orderby)>0){
+	  	$sql .= "ORDER BY ";	
+	  	foreach($orderby as $order){
+	  	  $sql .= $order.", "; 	
+	  	}	  	
+	  	$sql = substr($sql, 0, -2);	  	
+	  }    				  
+      return $GLOBALS['db']->auto_array($sql,array($empresa,$empresa,$datefrom,$dateto),true);
+	}
+
+	public static function reportLedger($empresa,$date,$accfrom='',$accto=''){
+	  if (empty($empresa) || empty($date)){ return false; }	
+	  $sql = "SELECT CODMOV, SUM(IMPORTE) AS balance FROM dpmovimi 
+	          WHERE ID_EMPRESA = ? AND FECHA_ASI < ? ";
+	  if (!empty($accfrom)){
+	  	$sql .= "AND CODMOV >= '".$accfrom."' ";
+	  }        
+	  if (!empty($accto)){
+	  	$sql .= "AND CODMOV <= '".$accto."' ";
+	  }
+	  $sql .= "GROUP BY CODMOV ORDER BY CODMOV";
+	  return $GLOBALS['db']->auto_array($sql,array($empresa,$date),true);	
 	}
 }  
 ?>

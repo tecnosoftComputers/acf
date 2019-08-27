@@ -131,7 +131,11 @@
         }        
       ?>              
       <tr> 
-         <td><a href="javascript:void(0);"><?php echo $value["CODMOV"];?></a></td>
+         <td>
+            <?php $codmov = str_replace(".","",trim($value["CODMOV"]));?>
+            <a href="<?php echo PUERTO."://".HOST."/report/generalledger/view/".$codmov."/".$codmov."/".$datefromdb."/".$datetodb."/";?>">
+            <?php echo $value["CODMOV"];?></a>
+         </td>
          <td><?php echo $value["NOMBRE"];?></td>   
          <td><?php echo $value["TIPO"];?></td>
          <td><?php echo $value["REFER"];?></td>
