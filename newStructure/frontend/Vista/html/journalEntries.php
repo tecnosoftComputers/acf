@@ -1,4 +1,3 @@
-<?php #echo date('Y-m-d', strtotime('08/31/2018')); ?>
 <form role="form" name="formulario" id="formulario" action="#"  method="post" >
     <div id="page-wrapper"><br />
         <div class="alert alert-info"><p>Accounting / Activities / Journal Entries / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Volver</a></p></div>
@@ -81,8 +80,8 @@
                         <div class="col-md-9" style="margin-top: 5px;">
                           <select id="benef" name="benef" class="form-control selectpicker" data-show-subtext="true" data-live-search="true">
                             <option value="0" disabled selected>Select an option</option>
-                            <?php foreach((array) $bene as $key => $dem) { ?>
-                              <option value="<?php echo $dem ?>"><?php echo $key.' - '.$dem; ?></option>
+                            <?php foreach($bene as $key => $dem) { ?>
+                              <option value="<?php echo $dem; ?>"><?php echo $key.' - '.$dem; ?></option>
                           <?php } ?>
                           </select>
                         </div>

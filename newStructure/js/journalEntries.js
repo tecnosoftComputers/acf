@@ -47,6 +47,7 @@ var data = [];
     minLength: 1,
     select: function( event, ui ) {
       $('#name_').val(ui.item.label.replace(ui.item.value+' - ', ''));
+      $('#codepp').val(ui.item.value);
       ui.item.value = ui.item.value.replace(/\./g, '');
     },
     open: function() {
@@ -65,14 +66,15 @@ var data = [];
     }
   };
 
-  $('#journalList').DataTable({
-      "paging": false
-  });
-
-  $("#_memo").keyup(function () {
+  $("#_memo").on('keyup blur',function () {
     var value = $(this).val();
     $(".memo").val(value);
   });
+
+  $('#journalList').DataTable({
+      "paging": false,
+  });
+
 
 });
 
