@@ -31,10 +31,7 @@
     <link rel="stylesheet" href="<?php echo PUERTO."://".HOST;?>/css/sweetalert.css">
     <link rel="stylesheet" href="<?php echo PUERTO."://".HOST;?>/css/daterangepicker.css">
     <link rel="stylesheet" href="<?php echo PUERTO."://".HOST;?>/css/style.css">
-    
     <link rel='stylesheet' href='<?php echo PUERTO."://".HOST;?>/css/bootstrap-select.min.css'>
-    <!--<link rel="stylesheet" href="<?php echo PUERTO."://".HOST;?>/css/bootstrap-datepicker.css">   -->
-    <link rel="stylesheet" href="<?php echo PUERTO."://".HOST;?>/css/daterangepicker.css">
     <link rel="stylesheet" href="<?php echo PUERTO."://".HOST;?>/css/jquery-ui.min.css">
     <?php
         if (isset($template_css) && is_array($template_css)){

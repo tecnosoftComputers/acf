@@ -1,0 +1,3187 @@
+[2019/08/27 12:16:16] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000956
+    [date] => 08/23/2019
+    [_memo] => prueba copiada
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba 2
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 15.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 15.00
+        )
+
+    [numRow] => 2
+    [idcont] => 447cdc2f177eae561d320e95c0f98943
+)
+
+[2019/08/27 12:16:16] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:16:16] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 12:16:16] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='2138'
+[2019/08/27 12:16:16] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('2138','EG','2019-08-23','00000956','prueba 2','000422','15.00','0.00','1','10101','1.01.01',1,'','','0','15.00')
+[2019/08/27 12:16:16] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('2138','EG','2019-08-23','00000956','prueba','000422','0.00','15.00','1','10103500101','1.01.03.50.0101',1,'','','0','-15.00')
+[2019/08/27 12:16:16] data1: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000956
+    [date] => 08/23/2019
+    [_memo] => prueba copiada
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba 2
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 15.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 15.00
+        )
+
+    [numRow] => 2
+    [idcont] => 447cdc2f177eae561d320e95c0f98943
+)
+
+[2019/08/27 12:16:16] data: Array
+(
+    [TIPO_ASI] => EG
+    [FECHA_ASI] => 2019-08-23
+    [DESC_ASI] => prueba copiada
+    [BENEFICIAR] => A.M.CAPEN'S CO. INC
+    [DEBITOS] => 15.00
+    [CREDITOS] => 15.00
+    [USER_ID] => 1
+    [ID_EMPRESA] => 1
+    [CEDRUC] => 000422
+    [MEMORICE] => 0
+    [ANULADO] => 0
+)
+
+[2019/08/27 12:16:16] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba copiada",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="15.00",CREDITOS="15.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",MEMORICE=0,ANULADO=0 WHERE IDCONT='2138'
+[2019/08/27 12:16:16] SQL Trans: COMMIT
+[2019/08/27 12:16:16] post_ant: Array
+(
+)
+
+[2019/08/27 12:16:16] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:16:16] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 12:16:16] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 12:16:16] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 12:16:16] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 12:16:17] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 12:16:17] post_ant: Array
+(
+)
+
+[2019/08/27 12:16:17] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:16:17] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 12:16:17] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:16:17] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 12:55:36] post_ant: Array
+(
+    [type] => EG
+    [id] => 956
+)
+
+[2019/08/27 12:55:36] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:36] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000956' AND TIPO_ASI = 'EG'
+[2019/08/27 12:55:36] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000956' AND TIPO_ASI = 'EG'
+[2019/08/27 12:55:38] post_ant: Array
+(
+    [id] => 447cdc2f177eae561d320e95c0f98943
+)
+
+[2019/08/27 12:55:38] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:38] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002138'
+[2019/08/27 12:55:38] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002138'
+[2019/08/27 12:55:43] post_ant: Array
+(
+    [type] => EG
+    [id] => 00000957
+)
+
+[2019/08/27 12:55:43] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:43] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000957' AND TIPO_ASI = 'EG'
+[2019/08/27 12:55:43] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000957' AND TIPO_ASI = 'EG'
+[2019/08/27 12:55:44] post_ant: Array
+(
+    [id] => e3740d81b22d500771e89371fdb3900d
+)
+
+[2019/08/27 12:55:44] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:44] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002139'
+[2019/08/27 12:55:44] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002139'
+[2019/08/27 12:55:48] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000957
+    [date] => 08/23/2019
+    [_memo] => prueba copiada correccion
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba 2
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 15.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 15.00
+        )
+
+    [numRow] => 2
+    [idcont] => e3740d81b22d500771e89371fdb3900d
+)
+
+[2019/08/27 12:55:48] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:48] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 12:55:48] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='2139'
+[2019/08/27 12:55:48] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('2139','EG','2019-08-23','00000957','prueba 2','000422','15.00','0.00','1','10101','1.01.01',1,'','','0','15.00')
+[2019/08/27 12:55:48] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('2139','EG','2019-08-23','00000957','prueba','000422','0.00','15.00','1','10103500101','1.01.03.50.0101',1,'','','0','-15.00')
+[2019/08/27 12:55:48] data1: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000957
+    [date] => 08/23/2019
+    [_memo] => prueba copiada correccion
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba 2
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 15.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 15.00
+        )
+
+    [numRow] => 2
+    [idcont] => e3740d81b22d500771e89371fdb3900d
+)
+
+[2019/08/27 12:55:48] data: Array
+(
+    [TIPO_ASI] => EG
+    [FECHA_ASI] => 2019-08-23
+    [DESC_ASI] => prueba copiada correccion
+    [BENEFICIAR] => A.M.CAPEN'S CO. INC
+    [DEBITOS] => 15.00
+    [CREDITOS] => 15.00
+    [USER_ID] => 1
+    [ID_EMPRESA] => 1
+    [CEDRUC] => 000422
+    [MEMORICE] => 0
+    [ANULADO] => 0
+)
+
+[2019/08/27 12:55:48] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba copiada correccion",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="15.00",CREDITOS="15.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",MEMORICE=0,ANULADO=0 WHERE IDCONT='2139'
+[2019/08/27 12:55:48] SQL Trans: COMMIT
+[2019/08/27 12:55:48] post_ant: Array
+(
+)
+
+[2019/08/27 12:55:48] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:48] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 12:55:48] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 12:55:48] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 12:55:48] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 12:55:50] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 12:55:50] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:50] post_ant: Array
+(
+)
+
+[2019/08/27 12:55:50] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 12:55:50] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:50] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 12:55:53] post_ant: Array
+(
+    [type] => EG
+    [id] => 957
+)
+
+[2019/08/27 12:55:53] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:53] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000957' AND TIPO_ASI = 'EG'
+[2019/08/27 12:55:53] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000957' AND TIPO_ASI = 'EG'
+[2019/08/27 12:55:54] post_ant: Array
+(
+    [id] => e3740d81b22d500771e89371fdb3900d
+)
+
+[2019/08/27 12:55:54] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:55:54] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002139'
+[2019/08/27 12:55:54] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002139'
+[2019/08/27 12:56:05] post_ant: Array
+(
+    [type] => EG
+    [id] => 00000958
+)
+
+[2019/08/27 12:56:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:56:05] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000958' AND TIPO_ASI = 'EG'
+[2019/08/27 12:56:05] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000958' AND TIPO_ASI = 'EG'
+[2019/08/27 12:56:07] post_ant: Array
+(
+    [id] => 6963a97ae5a3e1d2dc5f27ec3b725bbd
+)
+
+[2019/08/27 12:56:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:56:07] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002140'
+[2019/08/27 12:56:07] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002140'
+[2019/08/27 12:56:09] post_ant: Array
+(
+    [type] => EG
+    [id] => 00000958
+)
+
+[2019/08/27 12:56:09] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:56:09] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000958' AND TIPO_ASI = 'EG'
+[2019/08/27 12:56:09] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000958' AND TIPO_ASI = 'EG'
+[2019/08/27 12:56:10] post_ant: Array
+(
+    [id] => 6963a97ae5a3e1d2dc5f27ec3b725bbd
+)
+
+[2019/08/27 12:56:10] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:56:10] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002140'
+[2019/08/27 12:56:10] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002140'
+[2019/08/27 12:56:16] post_ant: Array
+(
+    [type] => EG
+    [id] => 00000959
+)
+
+[2019/08/27 12:56:16] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:56:16] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000959' AND TIPO_ASI = 'EG'
+[2019/08/27 12:56:16] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000959' AND TIPO_ASI = 'EG'
+[2019/08/27 12:56:17] post_ant: Array
+(
+    [id] => 6b4a4a876cf46ae873304a389bafb0f9
+)
+
+[2019/08/27 12:56:17] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:56:17] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002141'
+[2019/08/27 12:56:17] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002141'
+[2019/08/27 12:57:48] post_ant: Array
+(
+    [type] => EG
+    [id] => 00000949
+)
+
+[2019/08/27 12:57:48] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:57:48] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000949' AND TIPO_ASI = 'EG'
+[2019/08/27 12:57:48] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000949' AND TIPO_ASI = 'EG'
+[2019/08/27 12:57:52] post_ant: Array
+(
+    [type] => EG
+    [id] => 950
+)
+
+[2019/08/27 12:57:52] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:57:52] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000950' AND TIPO_ASI = 'EG'
+[2019/08/27 12:57:52] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000950' AND TIPO_ASI = 'EG'
+[2019/08/27 12:57:53] post_ant: Array
+(
+    [id] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 12:57:53] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:57:53] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002132'
+[2019/08/27 12:57:53] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002132'
+[2019/08/27 12:58:00] post_ant: Array
+(
+)
+
+[2019/08/27 12:58:00] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:58:00] data: Array
+(
+    [MEMORICE] => 0
+)
+
+[2019/08/27 12:58:00] SQL execute: UPDATE dpcabtra SET MEMORICE=0 WHERE IDCONT='1392'
+[2019/08/27 12:58:00] post_ant: Array
+(
+)
+
+[2019/08/27 12:58:00] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:58:00] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 12:58:00] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 12:58:00] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 12:58:00] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 12:58:01] post_ant: Array
+(
+)
+
+[2019/08/27 12:58:01] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 12:58:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:58:01] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 12:58:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 12:58:01] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:04:50] post_ant: Array
+(
+    [id] => bb9c896db8e2c36f5a6287d2b03544e6
+)
+
+[2019/08/27 01:04:50] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:04:50] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00000467'
+[2019/08/27 01:04:50] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00000467'
+[2019/08/27 01:04:58] post_ant: Array
+(
+    [id] => a920f6ec891b3ae39b4b48eae8f6b06d
+)
+
+[2019/08/27 01:04:58] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:04:58] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00000466'
+[2019/08/27 01:04:58] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00000466'
+[2019/08/27 01:05:01] post_ant: Array
+(
+    [type] => 
+    [id] => a920f6ec891b3ae39b4b48eae8f6b06d
+)
+
+[2019/08/27 01:05:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:05:01] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00000466'
+[2019/08/27 01:05:01] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00000466'
+[2019/08/27 01:05:03] post_ant: Array
+(
+    [id] => a920f6ec891b3ae39b4b48eae8f6b06d
+)
+
+[2019/08/27 01:05:03] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:05:03] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00000466'
+[2019/08/27 01:05:03] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00000466'
+[2019/08/27 01:05:21] post_ant: Array
+(
+    [id] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:05:21] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:05:21] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002132'
+[2019/08/27 01:05:21] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002132'
+[2019/08/27 01:05:36] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 
+    [date] => 08/23/2019
+    [_memo] => prueba editada y copiado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => a920f6ec891b3ae39b4b48eae8f6b06d
+)
+
+[2019/08/27 01:05:36] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:05:36] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:05:36] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='466'
+[2019/08/27 01:05:36] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('466','EG','2019-08-23','','prueba','000422','10.00','0.00','1','10101','1.01.01',1,'','','0','10.00')
+[2019/08/27 01:05:36] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('466','EG','2019-08-23','','prueba','000422','0.00','10.00','1','10103500101','1.01.03.50.0101',1,'','','0','-10.00')
+[2019/08/27 01:05:36] data1: Array
+(
+    [_seleccion] => EG
+    [_actual] => 
+    [date] => 08/23/2019
+    [_memo] => prueba editada y copiado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => a920f6ec891b3ae39b4b48eae8f6b06d
+)
+
+[2019/08/27 01:05:36] data: Array
+(
+    [TIPO_ASI] => EG
+    [FECHA_ASI] => 2019-08-23
+    [DESC_ASI] => prueba editada y copiado
+    [BENEFICIAR] => A.M.CAPEN'S CO. INC
+    [DEBITOS] => 10.00
+    [CREDITOS] => 10.00
+    [USER_ID] => 1
+    [ID_EMPRESA] => 1
+    [CEDRUC] => 000422
+    [MEMORICE] => 0
+    [ANULADO] => 0
+)
+
+[2019/08/27 01:05:36] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba editada y copiado",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="10.00",CREDITOS="10.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",MEMORICE=0,ANULADO=0 WHERE IDCONT='466'
+[2019/08/27 01:05:36] SQL Trans: COMMIT
+[2019/08/27 01:05:37] post_ant: Array
+(
+)
+
+[2019/08/27 01:05:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:05:37] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:05:37] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:05:37] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:05:37] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:05:37] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:05:38] post_ant: Array
+(
+)
+
+[2019/08/27 01:05:38] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:05:38] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:05:38] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:05:38] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:05:44] post_ant: Array
+(
+    [type] => EG
+    [id] => 959
+)
+
+[2019/08/27 01:05:44] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:05:44] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000959' AND TIPO_ASI = 'EG'
+[2019/08/27 01:05:44] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000959' AND TIPO_ASI = 'EG'
+[2019/08/27 01:05:45] post_ant: Array
+(
+    [id] => 6b4a4a876cf46ae873304a389bafb0f9
+)
+
+[2019/08/27 01:05:45] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:05:45] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002141'
+[2019/08/27 01:05:45] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002141'
+[2019/08/27 01:06:28] post_ant: Array
+(
+)
+
+[2019/08/27 01:06:28] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:06:28] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:06:28] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:06:28] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:06:28] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:06:28] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:06:28] post_ant: Array
+(
+)
+
+[2019/08/27 01:06:28] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:06:28] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:06:28] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:06:28] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:06:37] post_ant: Array
+(
+    [id] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:06:37] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:06:37] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002132'
+[2019/08/27 01:06:37] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002132'
+[2019/08/27 01:07:40] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 
+    [date] => 08/23/2019
+    [_memo] => prueba editada copiado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 
+)
+
+[2019/08/27 01:07:40] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:07:40] SQL Query: SELECT IF(MAX(IDCONT)='' OR MAX(IDCONT)= 0,1,MAX(IDCONT)) AS suma FROM dpcabtra
+[2019/08/27 01:07:40] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:07:40] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:07:40] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2142,'EG','2019-08-23','00000960','prueba','000422','10.00','0.00','1','10101','1.01.01',1,'','','0','10.00')
+[2019/08/27 01:07:40] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2142,'EG','2019-08-23','00000960','prueba','000422','0.00','10.00','1','10103500101','1.01.03.50.0101',1,'','','0','-10.00')
+[2019/08/27 01:07:40] SQL execute: INSERT INTO dpcabtra (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,DESC_ASI,BENEFICIAR,DEBITOS,CREDITOS,USER_ID,TIPO_MON,CERRADO,ID_EMPRESA,FACTOR,MEMORICE,CEDRUC) VALUES (2142,'EG','2019-08-23','00000960','prueba editada copiado','A.M.CAPEN'S CO. INC','10','10','1','DOL',1,'1','1',1,'000422')
+[2019/08/27 01:07:40] SQL Trans: ROLLBACK
+[2019/08/27 01:07:40] post_ant: Array
+(
+)
+
+[2019/08/27 01:07:40] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:07:40] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:07:40] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:07:40] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:07:40] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:07:41] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:07:41] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:07:41] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:07:41] post_ant: Array
+(
+)
+
+[2019/08/27 01:07:41] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:07:41] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:08:44] post_ant: Array
+(
+)
+
+[2019/08/27 01:08:44] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:08:44] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:08:44] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:08:44] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:08:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:08:45] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:08:45] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:08:45] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:08:45] post_ant: Array
+(
+)
+
+[2019/08/27 01:08:45] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:08:45] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:08:53] post_ant: Array
+(
+    [type] => 
+    [id] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:08:53] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:08:53] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002132'
+[2019/08/27 01:08:53] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002132'
+[2019/08/27 01:08:54] post_ant: Array
+(
+    [id] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:08:54] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:08:54] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002132'
+[2019/08/27 01:08:54] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002132'
+[2019/08/27 01:09:06] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000950
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:09:06] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:09:06] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:09:06] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='2132'
+[2019/08/27 01:09:06] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('2132','EG','2019-08-23','00000950','prueba','000422','10.00','0.00','1','10101','1.01.01',1,'','','0','10.00')
+[2019/08/27 01:09:06] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('2132','EG','2019-08-23','00000950','prueba','000422','0.00','10.00','1','10103500101','1.01.03.50.0101',1,'','','0','-10.00')
+[2019/08/27 01:09:06] data1: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000950
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:09:06] data: Array
+(
+    [TIPO_ASI] => EG
+    [FECHA_ASI] => 2019-08-23
+    [DESC_ASI] => prueba editado
+    [BENEFICIAR] => A.M.CAPEN'S CO. INC
+    [DEBITOS] => 10.00
+    [CREDITOS] => 10.00
+    [USER_ID] => 1
+    [ID_EMPRESA] => 1
+    [CEDRUC] => 000422
+    [MEMORICE] => 0
+    [ANULADO] => 0
+)
+
+[2019/08/27 01:09:06] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba editado",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="10.00",CREDITOS="10.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",MEMORICE=0,ANULADO=0 WHERE IDCONT='2132'
+[2019/08/27 01:09:06] SQL Trans: COMMIT
+[2019/08/27 01:09:06] post_ant: Array
+(
+)
+
+[2019/08/27 01:09:06] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:09:06] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:09:06] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:09:06] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:09:06] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:09:07] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:09:07] post_ant: Array
+(
+)
+
+[2019/08/27 01:09:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:09:07] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:09:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:09:07] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:09:10] post_ant: Array
+(
+    [type] => EG
+    [id] => 950
+)
+
+[2019/08/27 01:09:10] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:09:10] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000950' AND TIPO_ASI = 'EG'
+[2019/08/27 01:09:10] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000950' AND TIPO_ASI = 'EG'
+[2019/08/27 01:09:11] post_ant: Array
+(
+    [id] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:09:11] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:09:11] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002132'
+[2019/08/27 01:09:11] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002132'
+[2019/08/27 01:10:20] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000950
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:10:20] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:10:20] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:10:20] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='2132'
+[2019/08/27 01:10:20] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('2132','EG','2019-08-23','00000950','prueba','000422','10.00','0.00','1','10101','1.01.01',1,'','','0','10.00')
+[2019/08/27 01:10:20] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ('2132','EG','2019-08-23','00000950','prueba','000422','0.00','10.00','1','10103500101','1.01.03.50.0101',1,'','','0','-10.00')
+[2019/08/27 01:10:20] data1: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000950
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:10:20] data: Array
+(
+    [TIPO_ASI] => EG
+    [FECHA_ASI] => 2019-08-23
+    [DESC_ASI] => prueba editado
+    [BENEFICIAR] => A.M.CAPEN'S CO. INC
+    [DEBITOS] => 10.00
+    [CREDITOS] => 10.00
+    [USER_ID] => 1
+    [ID_EMPRESA] => 1
+    [CEDRUC] => 000422
+    [MEMORICE] => 1
+    [ANULADO] => 0
+)
+
+[2019/08/27 01:10:20] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba editado",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="10.00",CREDITOS="10.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",MEMORICE=1,ANULADO=0 WHERE IDCONT='2132'
+[2019/08/27 01:10:20] SQL Trans: COMMIT
+[2019/08/27 01:10:20] post_ant: Array
+(
+)
+
+[2019/08/27 01:10:20] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:10:20] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:10:20] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:10:20] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:10:20] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:10:21] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:10:21] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:10:21] post_ant: Array
+(
+)
+
+[2019/08/27 01:10:21] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:10:21] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:10:21] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:10:27] post_ant: Array
+(
+    [id] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:10:27] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:10:27] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002132'
+[2019/08/27 01:10:27] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002132'
+[2019/08/27 01:10:44] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 
+    [date] => 08/23/2019
+    [_memo] => prueba editado copiado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 
+)
+
+[2019/08/27 01:10:44] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:10:44] SQL Query: SELECT IF(MAX(IDCONT)='' OR MAX(IDCONT)= 0,1,MAX(IDCONT)) AS suma FROM dpcabtra
+[2019/08/27 01:10:44] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:10:44] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:10:44] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2142,'EG','2019-08-23','00000960','prueba','000422','10.00','0.00','1','10101','1.01.01',1,'','','0','10.00')
+[2019/08/27 01:10:44] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2142,'EG','2019-08-23','00000960','prueba','000422','0.00','10.00','1','10103500101','1.01.03.50.0101',1,'','','0','-10.00')
+[2019/08/27 01:10:44] SQL execute: INSERT INTO dpcabtra (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,DESC_ASI,BENEFICIAR,DEBITOS,CREDITOS,USER_ID,TIPO_MON,CERRADO,ID_EMPRESA,FACTOR,MEMORICE,CEDRUC) VALUES (2142,'EG','2019-08-23','00000960','prueba editado copiado','A.M.CAPEN'S CO. INC','10','10','1','DOL',1,'1','1',0,'000422')
+[2019/08/27 01:10:44] SQL Trans: ROLLBACK
+[2019/08/27 01:10:44] post_ant: Array
+(
+)
+
+[2019/08/27 01:10:44] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:10:44] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:10:44] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:10:44] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:10:44] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:10:45] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:10:45] post_ant: Array
+(
+)
+
+[2019/08/27 01:10:45] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:10:45] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:10:45] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:10:45] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:11:42] post_ant: Array
+(
+)
+
+[2019/08/27 01:11:42] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:11:42] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:11:42] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:11:42] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:11:42] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:11:43] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:11:43] post_ant: Array
+(
+)
+
+[2019/08/27 01:11:43] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:11:43] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:11:43] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:11:43] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:11:55] post_ant: Array
+(
+    [match] => 1.
+)
+
+[2019/08/27 01:11:55] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:11:55] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110 WHERE CODIGO LIKE '1.%' OR NOMBRE LIKE '%1.%'
+[2019/08/27 01:12:04] post_ant: Array
+(
+    [match] => 1.
+)
+
+[2019/08/27 01:12:04] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:12:04] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110 WHERE CODIGO LIKE '1.%' OR NOMBRE LIKE '%1.%'
+[2019/08/27 01:12:11] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 
+    [date] => 08/27/2019
+    [_memo] => dfdfgdfg
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10103500105
+            [1] => 10103500102
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Citibank
+            [1] => Bank Of America 3874
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_memo] => Array
+        (
+            [0] => dfdfgdfg
+            [1] => dfdfgdfg
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 5.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 5.00
+        )
+
+    [numRow] => 2
+    [idcont] => 
+)
+
+[2019/08/27 01:12:11] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:12:11] SQL Query: SELECT IF(MAX(IDCONT)='' OR MAX(IDCONT)= 0,1,MAX(IDCONT)) AS suma FROM dpcabtra
+[2019/08/27 01:12:11] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:12:11] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:12:11] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2142,'EG','2019-08-27','00000960','dfdfgdfg','000422','5.00','0.00','1','10103500105','',1,'','','0','5.00')
+[2019/08/27 01:12:11] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2142,'EG','2019-08-27','00000960','dfdfgdfg','000422','0.00','5.00','1','10103500102','',1,'','','0','-5.00')
+[2019/08/27 01:12:11] SQL execute: INSERT INTO dpcabtra (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,DESC_ASI,BENEFICIAR,DEBITOS,CREDITOS,USER_ID,TIPO_MON,CERRADO,ID_EMPRESA,FACTOR,MEMORICE,CEDRUC) VALUES (2142,'EG','2019-08-27','00000960','dfdfgdfg','A.M.CAPEN'S CO. INC','5','5','1','DOL',1,'1','1',0,'000422')
+[2019/08/27 01:12:11] SQL Trans: ROLLBACK
+[2019/08/27 01:12:12] post_ant: Array
+(
+)
+
+[2019/08/27 01:12:12] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:12:12] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:12:12] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:12:12] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:12:12] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:12:12] post_ant: Array
+(
+)
+
+[2019/08/27 01:12:12] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:12:12] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:12:12] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:12:12] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:12:12] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:12:53] post_ant: Array
+(
+)
+
+[2019/08/27 01:12:53] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:12:53] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:12:53] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:12:53] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:12:53] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:12:54] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:12:54] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:12:54] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:12:54] post_ant: Array
+(
+)
+
+[2019/08/27 01:12:54] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:12:54] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:12:58] post_ant: Array
+(
+    [id] => 48817027fa7e3d7df9030f1f8d0de07c
+)
+
+[2019/08/27 01:12:58] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:12:58] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002132'
+[2019/08/27 01:12:58] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002132'
+[2019/08/27 01:13:05] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 
+)
+
+[2019/08/27 01:13:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:05] SQL Query: SELECT IF(MAX(IDCONT)='' OR MAX(IDCONT)= 0,1,MAX(IDCONT)) AS suma FROM dpcabtra
+[2019/08/27 01:13:05] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:13:05] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:13:05] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2142,"EG","2019-08-23","00000960","prueba","000422","10.00","0.00","1","10101","1.01.01",1,"","","0","10.00")
+[2019/08/27 01:13:05] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2142,"EG","2019-08-23","00000960","prueba","000422","0.00","10.00","1","10103500101","1.01.03.50.0101",1,"","","0","-10.00")
+[2019/08/27 01:13:05] SQL execute: INSERT INTO dpcabtra (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,DESC_ASI,BENEFICIAR,DEBITOS,CREDITOS,USER_ID,TIPO_MON,CERRADO,ID_EMPRESA,FACTOR,MEMORICE,CEDRUC) VALUES (2142,"EG","2019-08-23","00000960","prueba editado","A.M.CAPEN'S CO. INC","10","10","1","DOL",1,"1","1",0,"000422")
+[2019/08/27 01:13:05] SQL execute: UPDATE DPNUMERO SET ASIENTO="00000960" WHERE TIPO_ASI='EG'
+[2019/08/27 01:13:05] SQL Trans: COMMIT
+[2019/08/27 01:13:05] post_ant: Array
+(
+)
+
+[2019/08/27 01:13:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:05] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:13:05] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:13:05] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:13:05] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:13:05] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:13:05] post_ant: Array
+(
+)
+
+[2019/08/27 01:13:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:05] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:13:05] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:05] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:13:09] post_ant: Array
+(
+    [type] => EG
+    [id] => 960
+)
+
+[2019/08/27 01:13:09] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:09] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000960' AND TIPO_ASI = 'EG'
+[2019/08/27 01:13:09] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000960' AND TIPO_ASI = 'EG'
+[2019/08/27 01:13:10] post_ant: Array
+(
+    [id] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:13:10] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:10] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002142'
+[2019/08/27 01:13:10] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002142'
+[2019/08/27 01:13:27] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000960
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:13:27] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:27] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:13:27] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='2142'
+[2019/08/27 01:13:27] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("2142","EG","2019-08-23","00000960","prueba","000422","10.00","0.00","1","10101","1.01.01",1,"","","0","10.00")
+[2019/08/27 01:13:27] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("2142","EG","2019-08-23","00000960","prueba","000422","0.00","10.00","1","10103500101","1.01.03.50.0101",1,"","","0","-10.00")
+[2019/08/27 01:13:27] data1: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000960
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:13:27] data: Array
+(
+    [TIPO_ASI] => EG
+    [FECHA_ASI] => 2019-08-23
+    [DESC_ASI] => prueba editado
+    [BENEFICIAR] => A.M.CAPEN'S CO. INC
+    [DEBITOS] => 10.00
+    [CREDITOS] => 10.00
+    [USER_ID] => 1
+    [ID_EMPRESA] => 1
+    [CEDRUC] => 000422
+    [MEMORICE] => 1
+    [ANULADO] => 0
+)
+
+[2019/08/27 01:13:27] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba editado",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="10.00",CREDITOS="10.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",MEMORICE=1,ANULADO=0 WHERE IDCONT='2142'
+[2019/08/27 01:13:27] SQL Trans: COMMIT
+[2019/08/27 01:13:27] post_ant: Array
+(
+)
+
+[2019/08/27 01:13:27] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:27] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:13:27] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:13:27] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:13:27] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:13:28] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:13:28] post_ant: Array
+(
+)
+
+[2019/08/27 01:13:28] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:28] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:13:28] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:28] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:13:39] post_ant: Array
+(
+    [type] => 
+    [id] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:13:39] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:39] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002142'
+[2019/08/27 01:13:39] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002142'
+[2019/08/27 01:13:41] post_ant: Array
+(
+    [id] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:13:41] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:41] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002142'
+[2019/08/27 01:13:41] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002142'
+[2019/08/27 01:13:56] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000960
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 5.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 5.00
+        )
+
+    [numRow] => 2
+    [idcont] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:13:56] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:56] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:13:56] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='2142'
+[2019/08/27 01:13:56] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("2142","EG","2019-08-23","00000960","prueba","000422","5.00","0.00","1","10101","1.01.01",1,"","","0","5.00")
+[2019/08/27 01:13:56] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("2142","EG","2019-08-23","00000960","prueba","000422","0.00","5.00","1","10103500101","1.01.03.50.0101",1,"","","0","-5.00")
+[2019/08/27 01:13:56] data1: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000960
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 5.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 5.00
+        )
+
+    [numRow] => 2
+    [idcont] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:13:56] data: Array
+(
+    [TIPO_ASI] => EG
+    [FECHA_ASI] => 2019-08-23
+    [DESC_ASI] => prueba editado
+    [BENEFICIAR] => A.M.CAPEN'S CO. INC
+    [DEBITOS] => 5.00
+    [CREDITOS] => 5.00
+    [USER_ID] => 1
+    [ID_EMPRESA] => 1
+    [CEDRUC] => 000422
+    [MEMORICE] => 0
+    [ANULADO] => 0
+)
+
+[2019/08/27 01:13:56] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba editado",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="5.00",CREDITOS="5.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",MEMORICE=0,ANULADO=0 WHERE IDCONT='2142'
+[2019/08/27 01:13:56] SQL Trans: COMMIT
+[2019/08/27 01:13:56] post_ant: Array
+(
+)
+
+[2019/08/27 01:13:56] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:56] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:13:56] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:13:56] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:13:56] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:13:56] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:13:56] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:13:56] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:13:56] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:13:56] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:13:56] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:56] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:57] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:57] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:13:57] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:13:57] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:13:57] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:13:57] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:57] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:13:57] post_ant: Array
+(
+)
+
+[2019/08/27 01:13:57] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:13:57] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:16:07] post_ant: Array
+(
+    [type] => EG
+    [id] => 960
+)
+
+[2019/08/27 01:16:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:07] SQL Query: SELECT * FROM dpcabtra WHERE ASIENTO = '00000960' AND TIPO_ASI = 'EG'
+[2019/08/27 01:16:07] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000960' AND TIPO_ASI = 'EG'
+[2019/08/27 01:16:08] post_ant: Array
+(
+    [id] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:16:08] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:08] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002142'
+[2019/08/27 01:16:08] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002142'
+[2019/08/27 01:16:10] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000960
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 5.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 5.00
+        )
+
+    [numRow] => 2
+    [idcont] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:16:10] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:10] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:16:10] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='2142'
+[2019/08/27 01:16:10] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("2142","EG","2019-08-23","00000960","prueba","000422","5.00","0.00","1","10101","1.01.01",1,"","","0","5.00")
+[2019/08/27 01:16:10] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("2142","EG","2019-08-23","00000960","prueba","000422","0.00","5.00","1","10103500101","1.01.03.50.0101",1,"","","0","-5.00")
+[2019/08/27 01:16:10] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba editado",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="5.00",CREDITOS="5.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",ANULADO=0,MEMORICE=1 WHERE IDCONT='2142'
+[2019/08/27 01:16:10] SQL Trans: COMMIT
+[2019/08/27 01:16:10] post_ant: Array
+(
+)
+
+[2019/08/27 01:16:10] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:10] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:16:10] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:16:10] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:16:10] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:16:11] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:16:11] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:11] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:16:11] post_ant: Array
+(
+)
+
+[2019/08/27 01:16:11] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:11] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:16:18] post_ant: Array
+(
+    [type] => 
+    [id] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:16:18] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:18] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002142'
+[2019/08/27 01:16:18] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002142'
+[2019/08/27 01:16:20] post_ant: Array
+(
+    [id] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:16:20] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:20] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002142'
+[2019/08/27 01:16:20] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002142'
+[2019/08/27 01:16:46] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000960
+    [date] => 08/23/2019
+    [_memo] => prueba editado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:16:46] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:46] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:16:46] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='2142'
+[2019/08/27 01:16:46] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("2142","EG","2019-08-23","00000960","prueba","000422","10.00","0.00","1","10101","1.01.01",1,"","","0","10.00")
+[2019/08/27 01:16:46] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("2142","EG","2019-08-23","00000960","prueba","000422","0.00","10.00","1","10103500101","1.01.03.50.0101",1,"","","0","-10.00")
+[2019/08/27 01:16:46] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba editado",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="10.00",CREDITOS="10.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",ANULADO=0 WHERE IDCONT='2142'
+[2019/08/27 01:16:46] SQL Trans: COMMIT
+[2019/08/27 01:16:46] post_ant: Array
+(
+)
+
+[2019/08/27 01:16:46] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:46] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:16:46] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:16:46] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:16:46] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:16:47] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:16:47] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:47] post_ant: Array
+(
+)
+
+[2019/08/27 01:16:47] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:16:47] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:47] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:16:50] post_ant: Array
+(
+    [id] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:16:50] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:16:50] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002142'
+[2019/08/27 01:16:50] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002142'
+[2019/08/27 01:17:13] post_ant: Array
+(
+    [id] => 54d86c2493f5c7310645ac202c5fbe56
+)
+
+[2019/08/27 01:17:13] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:17:13] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00002142'
+[2019/08/27 01:17:13] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00002142'
+[2019/08/27 01:17:41] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 
+    [date] => 08/23/2019
+    [_memo] => prueba editado copiado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 15.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 15.00
+        )
+
+    [numRow] => 2
+    [idcont] => 
+)
+
+[2019/08/27 01:17:41] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:17:41] SQL Query: SELECT IF(MAX(IDCONT)='' OR MAX(IDCONT)= 0,1,MAX(IDCONT)) AS suma FROM dpcabtra
+[2019/08/27 01:17:41] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:17:41] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:17:41] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2143,"EG","2019-08-23","00000961","prueba","000422","15.00","0.00","1","10101","1.01.01",1,"","","0","15.00")
+[2019/08/27 01:17:41] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES (2143,"EG","2019-08-23","00000961","prueba","000422","0.00","15.00","1","10103500101","1.01.03.50.0101",1,"","","0","-15.00")
+[2019/08/27 01:17:41] SQL execute: INSERT INTO dpcabtra (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,DESC_ASI,BENEFICIAR,DEBITOS,CREDITOS,USER_ID,TIPO_MON,CERRADO,ID_EMPRESA,FACTOR,CEDRUC) VALUES (2143,"EG","2019-08-23","00000961","prueba editado copiado","A.M.CAPEN'S CO. INC","15","15","1","DOL",1,"1","1","000422")
+[2019/08/27 01:17:41] SQL execute: UPDATE DPNUMERO SET ASIENTO="00000961" WHERE TIPO_ASI='EG'
+[2019/08/27 01:17:41] SQL Trans: COMMIT
+[2019/08/27 01:17:41] post_ant: Array
+(
+)
+
+[2019/08/27 01:17:41] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:17:41] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:17:41] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:17:41] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:17:41] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:17:42] post_ant: Array
+(
+)
+
+[2019/08/27 01:17:42] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:17:42] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:17:42] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:17:42] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:17:42] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:18:35] post_ant: Array
+(
+    [type] => IG
+    [range] => Array
+        (
+            [0] => 08/29/2018
+            [1] => 09/29/2018
+        )
+
+)
+
+[2019/08/27 01:18:35] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:18:35] SQL Query: SELECT * FROM dpcabtra WHERE FECHA_ASI BETWEEN '2018-08-29' AND '2018-09-29' AND TIPO_ASI = 'IG'
+[2019/08/27 01:18:35] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000000' AND TIPO_ASI = 'IG'
+[2019/08/27 01:18:41] post_ant: Array
+(
+    [id] => 17dd8cdbf2ef81886dfc9323d90078db
+)
+
+[2019/08/27 01:18:41] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:18:41] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00000469'
+[2019/08/27 01:18:41] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00000469'
+[2019/08/27 01:20:01] post_ant: Array
+(
+)
+
+[2019/08/27 01:20:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:01] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:20:01] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:20:01] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:20:01] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:20:02] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:20:02] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:02] post_ant: Array
+(
+)
+
+[2019/08/27 01:20:02] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:20:02] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:02] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:20:07] post_ant: Array
+(
+    [type] => 
+    [id] => a920f6ec891b3ae39b4b48eae8f6b06d
+)
+
+[2019/08/27 01:20:07] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:07] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00000466'
+[2019/08/27 01:20:07] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00000466'
+[2019/08/27 01:20:11] post_ant: Array
+(
+    [id] => a920f6ec891b3ae39b4b48eae8f6b06d
+)
+
+[2019/08/27 01:20:11] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:11] SQL Query: SELECT * FROM dpcabtra WHERE IDCONT = '00000466'
+[2019/08/27 01:20:11] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00000466'
+[2019/08/27 01:20:23] post_ant: Array
+(
+    [_seleccion] => EG
+    [_actual] => 00000838
+    [date] => 08/23/2019
+    [_memo] => prueba editado y copiado
+    [benef] => A.M.CAPEN'S CO. INC
+    [_accountycode] => Array
+        (
+            [0] => 10101
+            [1] => 10103500101
+        )
+
+    [_accountyname] => Array
+        (
+            [0] => Pretty Cash
+            [1] => Bank Of America 1709
+        )
+
+    [el_type] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [el_ref] => Array
+        (
+            [0] => 
+            [1] => 
+        )
+
+    [codep] => Array
+        (
+            [0] => 1.01.01
+            [1] => 1.01.03.50.0101
+        )
+
+    [el_memo] => Array
+        (
+            [0] => prueba
+            [1] => prueba
+        )
+
+    [_trans] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [el_debit] => Array
+        (
+            [0] => 10.00
+            [1] => 0.00
+        )
+
+    [el_credit] => Array
+        (
+            [0] => 0.00
+            [1] => 10.00
+        )
+
+    [numRow] => 2
+    [idcont] => a920f6ec891b3ae39b4b48eae8f6b06d
+)
+
+[2019/08/27 01:20:23] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:23] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:20:23] SQL execute: DELETE FROM dpmovimi WHERE IDCONT ='466'
+[2019/08/27 01:20:23] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("466","EG","2019-08-23","00000838","prueba","000422","10.00","0.00","1","10101","1.01.01",1,"","","0","10.00")
+[2019/08/27 01:20:23] SQL execute: INSERT INTO dpmovimi (IDCONT,TIPO_ASI,FECHA_ASI,ASIENTO,CONCEPTO,CODID,DB,CR,ID_EMPRESA,CODIGO,CODMOV,CERRADO,TIPO,REFER,GRUPOCON,IMPORTE) VALUES ("466","EG","2019-08-23","00000838","prueba","000422","0.00","10.00","1","10103500101","1.01.03.50.0101",1,"","","0","-10.00")
+[2019/08/27 01:20:23] SQL execute: UPDATE dpcabtra SET TIPO_ASI="EG",FECHA_ASI="2019-08-23",DESC_ASI="prueba editado y copiado",BENEFICIAR="A.M.CAPEN'S CO. INC",DEBITOS="10.00",CREDITOS="10.00",USER_ID="1",ID_EMPRESA="1",CEDRUC="000422",ANULADO=0 WHERE IDCONT='466'
+[2019/08/27 01:20:23] SQL Trans: COMMIT
+[2019/08/27 01:20:24] post_ant: Array
+(
+)
+
+[2019/08/27 01:20:24] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:24] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:20:24] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:20:24] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:20:24] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:20:25] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:20:25] post_ant: Array
+(
+)
+
+[2019/08/27 01:20:25] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:25] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:20:25] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:25] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1
+[2019/08/27 01:20:48] post_ant: Array
+(
+    [type] => 
+    [range] => Array
+        (
+            [0] => 
+        )
+
+)
+
+[2019/08/27 01:20:48] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:48] SQL Query: SELECT * FROM dpcabtra
+[2019/08/27 01:20:49] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE IDCONT = '00000000'
+[2019/08/27 01:20:57] post_ant: Array
+(
+    [type] => DI
+    [range] => Array
+        (
+            [0] => 
+        )
+
+)
+
+[2019/08/27 01:20:57] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:20:57] SQL Query: SELECT * FROM dpcabtra WHERE  TIPO_ASI = 'DI'
+[2019/08/27 01:20:57] SQL Query: SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ASIENTO = '00000000' AND TIPO_ASI = 'DI'
+[2019/08/27 01:21:01] post_ant: Array
+(
+)
+
+[2019/08/27 01:21:01] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:21:01] SQL Query: SELECT CODIGO,NOMBRE FROM dp01a110
+[2019/08/27 01:21:01] SQL Query: SELECT * FROM DPNUMERO WHERE status='A'
+[2019/08/27 01:21:01] SQL Query: SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC
+[2019/08/27 01:21:01] SQL Query: SELECT * FROM dpcabtra WHERE MEMORICE = 1
+[2019/08/27 01:21:01] SQL Query: SELECT * FROM dpcabtra WHERE TIPO_ASI = 'EG' AND FECHA_ASI BETWEEN '2018-08-27' AND '2019-08-27'
+[2019/08/27 01:21:01] SQL Query: SELECT * FROM tab_trans
+[2019/08/27 01:21:01] SQL Query: SELECT * FROM usuarios_modulos eu 
+            INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN config e on e.id_config = eu.modulos
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:21:02] SQL Query: SELECT * FROM usuarios_empresas eu 
+    		INNER JOIN usuarios u ON u.id_usuario = eu.id_user 
+            INNER JOIN empresa e ON e.id_empresa = eu.empresas 
+            WHERE eu.id_user = '1' AND eu.estado='A'
+[2019/08/27 01:21:02] SQL Query:  SELECT * FROM modulos WHERE id_modulo IN('1','3','4','5','6','7') AND estado = 'A'
+[2019/08/27 01:21:02] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='3' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:21:02] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='4' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:21:02] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='5' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:21:02] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='6' AND p.nivel='1' AND mi.acceso='1'
+[2019/08/27 01:21:02] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='7' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:21:02] SQL Query: SELECT * FROM permisos p
+      		INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
+      		WHERE p.permisos_modulo='1' AND p.nivel='1' AND mi.estado='A'
+[2019/08/27 01:21:03] post_ant: Array
+(
+    [type] => EG
+)
+
+[2019/08/27 01:21:03] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:21:03] SQL Query: SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like 'EG'
+[2019/08/27 01:21:03] post_ant: Array
+(
+)
+
+[2019/08/27 01:21:03] SQL Query: SELECT TABLE_NAME FROM system_chart WHERE CODIGO='Accounts'
+[2019/08/27 01:21:03] SQL Query: SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1

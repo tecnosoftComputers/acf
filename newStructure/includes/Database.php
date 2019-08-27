@@ -77,7 +77,7 @@ class Database{
       if(is_int($value)){
         $val_list .= $value;
       }else{       
-        $val_list .= "'".utf8_decode($value)."'";
+        $val_list .= '"'.utf8_decode($value).'"';
       }
 
       $i++;

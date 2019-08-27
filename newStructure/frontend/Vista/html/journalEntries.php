@@ -305,8 +305,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <span id="pdf" title="EXCEL" style="float: left;"><a href="<?php echo PUERTO."://".HOST.'/activitiesReport/excel/'; ?>" class="btn btn-default"><i class="fa fa-file-excel-o"></i></a></span>&nbsp; 
-                        <span id="excel" title="PDF" style="float: left"><a href="<?php echo PUERTO."://".HOST.'/activitiesReport/pdf/'; ?>" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></a></span>
+                <span id="excel" title="PDF" style="float: left"><a href="<?php echo PUERTO."://".HOST.'/journalVoucherReport/pdf/'; ?>" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></a></span>
                 <button type="button" class="btn btn-primary" id="btn_edit"><i class="glyphicon glyphicon-pencil"></i> Update</button>
                 <button type="button" class="btn btn-warning" id="btn_annul"><i class="glyphicon glyphicon-remove"></i> To annul</button>
                 <button type="button" class="btn btn-danger" id="btn_delete"><i class="glyphicon glyphicon-trash"></i> Delete</button>
@@ -419,65 +418,4 @@
             </div>
        </div>
    </div>
-</div>
-
-<div class="modal fade" id="viewJournal" tabindex="-1" role="dialog" aria-labelledby="viewJournal" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabelNotif">View Journal</h4>
-            </div>
-            <div class="modal-body" style="height:70%; overflow:auto;">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body" align="center">
-                            <div>
-                                <div class="form-group col-md-12">
-                                  <label class="col-md-2 control-label" for="number">Journal:</label>
-                                  <div class="col-md-5">
-                                      <input disabled readonly autocomplete="off" value="" id="_number" name="_number" type="text" class="form-control input-sm"/>               
-                                  </div>
-                                  <label class="col-md-1 control-label" for="name">Date: </label>
-                                  <div class="col-md-4">
-                                    <input disabled readonly value="<?php echo date("m/d/Y"); ?>" autocomplete="off" name="_date" id="_date" type="text" class="form-control"/>
-                                  </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="form-group col-md-12">
-                                    <label class="col-md-2 control-label" for="name">Memo: </label>
-                                    <div class="col-md-10">
-                                        <textarea class="form-control input-sm" disabled readonly autocomplete="off" id="_memo2" name="_memo2" placeholder="Description" rows="2" cols="50" maxlength="200" style="margin: 0px; width: 100%; height: 48px;resize: none;"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-md-12">
-                                    <label class="col-md-2 control-label" for="name">Beneficiary: </label>
-                                    <div class="col-md-10">
-                                        <input autocomplete="off" id="_benef" name="_benef" type="text" class="form-control input-sm" disabled readonly/>  
-                                    </div>
-                                </div>                        
-                            </div>
-                            <div>
-                                <table width="100%" class="table table-bordered table-hover" id="journalView">
-                                    <tr style="background: #ddd;">
-                                        <td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Account</b></td>
-                                        <td align="center" width="500" style="padding: 3px 0px 3px 0px"><b>Name</b></td>
-                                        <td align="center" style="display:none"></td>
-                                        <td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Debit</b></td>
-                                        <td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Credit</b></td>
-                                    </tr>
-                                    
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
 </div>

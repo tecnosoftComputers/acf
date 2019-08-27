@@ -277,12 +277,15 @@ class Controlador_Accounts extends Controlador_Base {
         }
       }
 
-      $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$seat,'DESC_ASI'=>$_POST['_memo'],'BENEFICIAR'=>$_POST['benef'],'DEBITOS'=>$sum_db,'CREDITOS'=>$sum_cr,'USER_ID'=>$_SESSION['acfSession']['usuario'],'TIPO_MON'=>'DOL', 'CERRADO'=>(int)1, 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'FACTOR'=>'1', 'MEMORICE'=>$memorice, 'CEDRUC'=>$benef);
+      $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$seat,'DESC_ASI'=>$_POST['_memo'],'BENEFICIAR'=>$_POST['benef'],'DEBITOS'=>$sum_db,'CREDITOS'=>$sum_cr,'USER_ID'=>$_SESSION['acfSession']['usuario'],'TIPO_MON'=>'DOL', 'CERRADO'=>(int)1, 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'FACTOR'=>'1', 'CEDRUC'=>$benef);
+
+      if($memorice == 1){
+        $datos['MEMORICE'] = $memorice;
+      }
 
       if(!Modelo_Seat::insert($datos)){
         throw new Exception('Error creating the seat, try again.');
       }
-
 
       if(!Modelo_TypeSeat::increaseSeat($_POST['_seleccion'],$seat)){
         throw new Exception('The seat could not be updated, try again.');
@@ -336,7 +339,11 @@ class Controlador_Accounts extends Controlador_Base {
         }
       }
 
-      $datos = array('TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'DESC_ASI'=>$_POST['_memo'],'BENEFICIAR'=>$_POST['benef'],'DEBITOS'=>number_format($sum_db, 2),'CREDITOS'=>number_format($sum_cr, 2),'USER_ID'=>$_SESSION['acfSession']['usuario'], 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'], 'CEDRUC'=>$benef, 'MEMORICE'=>$memorice, 'ANULADO'=>0);
+      $datos = array('TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'DESC_ASI'=>$_POST['_memo'],'BENEFICIAR'=>$_POST['benef'],'DEBITOS'=>number_format($sum_db, 2),'CREDITOS'=>number_format($sum_cr, 2),'USER_ID'=>$_SESSION['acfSession']['usuario'], 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'], 'CEDRUC'=>$benef, 'ANULADO'=>0);
+
+      if($memorice == 1){
+        $datos['MEMORICE'] = $memorice;
+      }
 
       if(!Modelo_Seat::updateJournal($cont,$datos)){
         throw new Exception('Error creating the seat, try again.');

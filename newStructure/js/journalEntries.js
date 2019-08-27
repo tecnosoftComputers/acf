@@ -86,7 +86,6 @@ function type_f(){
     url:puerto_host+"/index.php?mostrar=accounts&opcion=searchType",
     success:function(r){
       var dato = JSON.parse(r);
-      //console.log(dato);
       $('#number').val(dato.name+' Nº '+dato.number);   
     }
   });
@@ -130,7 +129,7 @@ $('#btnSearch2').on('click',function(){
           html += '<td>'+r.journal[i].FECHA_ASI+'</td>';
           html += '<td>'+r.journal[i].BENEFICIAR+'</td>';
           html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal" onclick="viewJournal(\''+r.journal[i].IDCONT+'\')"><i class="fa fa-eye"></i></a></td>';
-          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal" onclick="searchJournal("",\''+r.journal[i].IDCONT+'\')"><i class="fa fa-edit"></i></a></td>';
+          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal" onclick="searchJournal(\'\',\''+r.journal[i].IDCONT+'\')"><i class="fa fa-edit"></i></a></td>';
           html += '</tr>';
         }
         
@@ -389,7 +388,7 @@ function validateRows(){
   for (i = 1; i < myBodyElements.length; i++) {
     var inputs = myBodyElements[i].getElementsByTagName("input");
     for (var f = 0; f < inputs.length; f++) {
-      if(f != 2 && f != 3 && f != 6){
+      if(f != 2 && f != 3 && f != 4 && f != 6){
         if(f != 1 && inputs[f].value == ''){
           empty = true;
           break;
@@ -433,7 +432,8 @@ function redirect(r,e,btn,btn2){
 
   var s1 = runTable(7);
   var s2 = runTable(8);
- 
+ console.log(validateHead());
+ console.log(validateRows());
   if((!validateHead() && validateRows()) || (validateHead() && !validateRows()) || (updateBalance(s1,s2,btn,btn2) != 0)){
 
     Swal.fire({      
@@ -534,6 +534,7 @@ function searchJournal(type,id){
         clearForm();
         $('#mjs').html('Transaction found do you want?');
         $('#myModalJournal').modal('hide');
+        $('#myModalList').modal('hide');
         $('#btn_edit').attr('onclick','editJournal("'+r.journal['IDCONT']+'")');
         $('#btn_annul').attr('onclick','annulJournal("'+r.journal['IDCONT']+'")');
         $('#btn_delete').attr('onclick','deleteJournal("'+r.journal['IDCONT']+'")');
@@ -563,36 +564,6 @@ function validateDecimal(valor) {
   }
 }
 
-function viewJournal(id){
-
-  $('#viewJournal').modal('show');
-  $.ajax({
-    type:"POST",
-    data:{id:id},
-    dataType : 'json',
-    url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
-    success:function(r){
-      if(r.journal != ''){
-
-        $('#_number').val(r.journal.TIPO_ASI+' - '+r.journal.ASIENTO);
-        $('#_date').val(r.journal.FECHA_ASI);
-        $('#_memo2').val(r.journal.DESC_ASI);
-        $('#_benef').val(r.journal.BENEFICIAR);
-        
-        for (var i = 0; i < r.movi.length; i++) {
-          var row = '<tr class="control2">';
-          row += '<td>'+r.movi[i].CODIGO_AUX+'</td>';
-          row += '<td>'+r.movi[i].NOMBRE+'</td>';
-          row += '<td>'+r.movi[i].DB+'</td>';
-          row += '<td>'+r.movi[i].CR+'</td>';
-          row += '</tr>';
-          $('#journalView tr:last').after(row);
-        } 
-      }
-    }
-  });
-}
-
 function editJournal(id){
 
   $.ajax({
@@ -612,50 +583,6 @@ function editJournal(id){
       
       if(r.journal != ''){
         $('#_actual').val(r.journal['ASIENTO']);
-        /*$('#_memo').val(r.journal['DESC_ASI'].trim());
-        var date =  new Date(r.journal['FECHA_ASI']);
-
-        var day = date.getDate()+1;
-        var month = date.getMonth()+1;
-        if(month<10){
-          month = '0'+month;
-        }
-        var year = date.getFullYear();
-        $('#date').val(month+'/'+day+'/'+year);
-
-        var text = $("select[name=benef] option[value='"+r.journal['BENEFICIAR'].trim()+"']").text();
-        $('.bootstrap-select .filter-option').text(text);
-
-        var sel = document.getElementById( 'benef' ),
-        opts = sel.options;
-
-        for ( var i = 0; i < opts.length; i++ ) {
-            
-            if(r.journal['BENEFICIAR'].trim() != ''){ 
-              var value = r.journal['BENEFICIAR'].trim();
-            }else{
-              var value = 0;
-            }
-
-            if ( opts[i].value === value ) {
-              sel.selectedIndex = i;
-              break;
-            }
-        }
-
-        var movi =  r.movi;
-        for (var i = 0; i < movi.length; i++) {
-          account = movi[i].CODIGO_AUX.trim();
-          name = movi[i].NOMBRE.trim();
-          type = movi[i].TIPO;
-          codep = movi[i].CODMOV.trim();
-          ref = movi[i].REFER;
-          memo = movi[i].CONCEPTO;
-          typeTrans = movi[i].GRUPOCON;
-          debit = movi[i].DB;
-          credit = movi[i].CR;
-          insertRow2(account,name,type,codep,ref,memo,typeTrans,debit,credit);
-        }*/
         data_journal(r);
         $('#myModalTrans').modal('hide');
       }
@@ -725,7 +652,6 @@ function save_edit(f){
   $('#el_credit'+f).val($('#credit').val());
 
   if($('#window').val() === 'save'){
-    console.log('entro');
     recalculate('#save','#memorice');
   }else{
     recalculate('#update','#memoriceUpdate');
@@ -739,8 +665,8 @@ function recalculate(btn,btn2){
   var s1 = runTable(7);
   var s2 = runTable(8);
 
-  $('#tdebit').html(s2);
-  $('#tcredit').html(s1);
+  $('#tdebit').html(s1);
+  $('#tcredit').html(s2);
 
   updateBalance(s1,s2,btn,btn2);
 }
@@ -777,50 +703,6 @@ function copyJournal(id){
         clearForm();
         $('#_actual').val('');
         data_journal(r);
-        /*$('#_memo').val(r.journal['DESC_ASI'].trim());
-        var date =  new Date(r.journal['FECHA_ASI']);
-
-        var day = date.getDate()+1;
-        var month = date.getMonth()+1;
-        if(month<10){
-          month = '0'+month;
-        }
-        var year = date.getFullYear();
-        $('#date').val(month+'/'+day+'/'+year);
-
-        var text = $("select[name=benef] option[value='"+r.journal['BENEFICIAR'].trim()+"']").text();
-        $('.bootstrap-select .filter-option').text(text);
-
-        var sel = document.getElementById( 'benef' ),
-        opts = sel.options;
-
-        for ( var i = 0; i < opts.length; i++ ) {
-            
-            if(r.journal['BENEFICIAR'].trim() != ''){ 
-              var value = r.journal['BENEFICIAR'].trim();
-            }else{
-              var value = 0;
-            }
-
-            if ( opts[i].value === value ) {
-              sel.selectedIndex = i;
-              break;
-            }
-        }
-
-        var movi =  r.movi;
-        for (var i = 0; i < movi.length; i++) {
-          account = movi[i].CODIGO_AUX.trim();
-          name = movi[i].NOMBRE.trim();
-          type = movi[i].TIPO;
-          codep = movi[i].CODMOV.trim();
-          ref = movi[i].REFER;
-          memo = movi[i].CONCEPTO;
-          typeTrans = movi[i].GRUPOCON;
-          debit = movi[i].DB;
-          credit = movi[i].CR;
-          insertRow2(account,name,type,codep,ref,memo,typeTrans,debit,credit);
-        }*/
         recalculate('#save','#memorice');
         $('#myModalJournal').modal('hide');
       }else{

@@ -410,3 +410,34 @@ function select(field_name,field_name2,code,name){
     $(field_name2).val(name);
   }
 }
+
+function viewJournal(id){
+
+  $('#viewJournal').modal('show');
+  $.ajax({
+    type:"POST",
+    data:{id:id},
+    dataType : 'json',
+    url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
+    success:function(r){
+      if(r.journal != ''){
+
+        $('#_number').val(r.journal.TIPO_ASI+' - '+r.journal.ASIENTO);
+        $('#_date').val(r.journal.FECHA_ASI);
+        $('#_memo2').val(r.journal.DESC_ASI);
+        $('#_benef').val(r.journal.BENEFICIAR);
+        
+        for (var i = 0; i < r.movi.length; i++) {
+          var row = '<tr class="control2">';
+          row += '<td>'+r.movi[i].CODIGO_AUX+'</td>';
+          row += '<td>'+r.movi[i].NOMBRE+'</td>';
+          row += '<td>'+r.movi[i].DB+'</td>';
+          row += '<td>'+r.movi[i].CR+'</td>';
+          row += '</tr>';
+          $('#journalView tr:last').after(row);
+        } 
+      }
+    }
+  });
+}
+

@@ -167,7 +167,7 @@ function closeNav() {
 }
 
 function enviar(){
-  //console.log($('#x').val());console.log($('#y').val());  
+ 
   $('#form_g').submit();
 }
 </script>
