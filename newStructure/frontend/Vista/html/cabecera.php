@@ -29,6 +29,7 @@
     <link href="<?php echo PUERTO."://".HOST;?>/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo PUERTO."://".HOST;?>/css/morrisjs/morris.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo PUERTO."://".HOST;?>/css/sweetalert.css">
+    <link rel="stylesheet" href="<?php echo PUERTO."://".HOST;?>/css/daterangepicker.css">
     <link rel="stylesheet" href="<?php echo PUERTO."://".HOST;?>/css/style.css">
     
  

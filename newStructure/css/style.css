@@ -22,10 +22,12 @@ p,form{
 	font-size: 14px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
 	height: 27px;
 	width:100%;
 	background-color: #d9f2fa;
-	text-align: center
+	text-align: left
 }
 
 .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover{
@@ -57,3 +59,28 @@ ul.ui-autocomplete {
     padding-right: 20px;
 }
 
+#journalList a{
+    cursor: pointer;
+}
+
+#journalListAll a{
+    cursor: pointer;
+}
+
+#journalView td{
+    padding: 0px 2px 0px;
+    
+}
+
+#journalView input{
+    border: 0px;
+}
+
+
+#journal td{
+    padding: 0px;
+}
+
+#journal input{
+    border: 0px;
+}

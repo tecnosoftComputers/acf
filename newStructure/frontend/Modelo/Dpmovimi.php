@@ -7,12 +7,6 @@ class Modelo_Dpmovimi{
 		return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
 	}
 
-	/*public static function searchSequential(){
-
-	   $sql = "SELECT IF(MAX(SECUENCIAL)='' OR MAX(SECUENCIAL)= 0,1,MAX(SECUENCIAL)+1) AS ultimo FROM dpmovimi";
-	   return $rs = $GLOBALS['db']->auto_array($sql,array(),false);
-	}*/
-
 	public static function searchMinSeat(){
 
 		$sql = "SELECT MIN(ASIENTO) AS minimo FROM dpmovimi";
@@ -21,12 +15,12 @@ class Modelo_Dpmovimi{
 
 	public static function searchMovimi($type=false,$id){
 		
-		$sql = "SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ";
-
+		$sql = "SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ";
+		$id = str_pad($id,8, "0", STR_PAD_LEFT);
 		if($type != false){
-	      $sql .= "ASIENTO like '%$id' AND TIPO_ASI = '$type'";
+	      	$sql .= "ASIENTO = '$id' AND TIPO_ASI = '$type'";
 	    }else{
-	      $sql .= "IDCONT = '$id'";
+	      	$sql .= "IDCONT = '$id'";
 	    }
 
 		return $rs = $GLOBALS['db']->auto_array($sql,array(),true);

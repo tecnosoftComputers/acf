@@ -40,23 +40,31 @@ class Controlador_Accounts extends Controlador_Base {
       case 'searchJournal':
         $id = Utils::getParam('id', '', $this->data); 
         $type = Utils::getParam('type', '', $this->data); 
+        $range = Utils::getParam('range', '', $this->data); 
+        $movi = array();
 
         if($type == ''){
           $id = Utils::desencriptar($id);
-          $type = false;
+          $type = false;     
         }
-        
-        $journal = Modelo_Seat::searchJournal($type,$id);
+
+        if(empty($range[0])){
+          $range = array('All');
+        }
+
+        $journal = Modelo_Seat::searchJournal($type,$range,$id);
         $movi = Modelo_Dpmovimi::searchMovimi($type,$id);
         Vista::renderJSON(array('journal' => $journal, 'movi'=>$movi));
       break;
       case 'journalEntries': 
 
+        $type_default = 'EG';
         $userid = $_SESSION['acfSession']['usuario'];
         $one = Modelo_ChartAccount::searchChartAccount();
         $fetch_dp = Modelo_TypeSeat::searchSeat();
         $bene = Modelo_Beneficiary::searchBeneficiary();
         $all_send = Modelo_Seat::searchMemorice();
+        $all_send2 = Modelo_Seat::search($type_default,date("Y-m-d",strtotime(date('Y-m-d')."- 1 year")),date('Y-m-d'));
         $typeTrans = Modelo_TabGeneral::search('tab_trans');
 
         $fila = 0;
@@ -64,6 +72,8 @@ class Controlador_Accounts extends Controlador_Base {
                       'one'=>$one,
                       'fetch_dp'=>$fetch_dp,
                       'all_send'=>$all_send,
+                      'all_send2'=>$all_send2,
+                      'type_default'=>$type_default,
                       'bene'=>$bene,
                       'fila'=>$fila,
                       'typeTrans'=>$typeTrans

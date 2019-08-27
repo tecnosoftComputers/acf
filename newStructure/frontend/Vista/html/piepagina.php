@@ -21,6 +21,8 @@
     <script src="<?php echo PUERTO."://".HOST;?>/js/jquery-ui.min.js"></script> 
     <script src="<?php echo PUERTO."://".HOST;?>/js/valida.js"></script>
     <script src="<?php echo PUERTO."://".HOST;?>/js/bootstrap-select.min.js"></script>
+    <script src="<?php echo PUERTO."://".HOST;?>/js/moment.min.js"></script>
+    <script src="<?php echo PUERTO."://".HOST;?>/js/daterangepicker.min.js"></script>
 
     <?php
         if (isset($template_js) && is_array($template_js)){
