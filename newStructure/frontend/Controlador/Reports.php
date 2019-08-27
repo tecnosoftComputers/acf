@@ -13,8 +13,8 @@ class Controlador_Reports extends Controlador_Base {
     $option = Utils::getParam('option','',$this->data); 
     switch($option){
       case 'journalEntries': 
-        $action = Utils::getParam('action','',$this->data); 
-        //echo $_SESSION['acfSession']['id_empresa'];   
+        $action = Utils::getParam('action','',$this->data);
+        $orderby = array("c.FECHA_ASI", "c.ASIENTO");         
         if ($action == "search"){
           $aux_datefrom = Utils::getParam('datefrom','',$this->data);
           $datefrom = (!empty($aux_datefrom)) ? date("Y-m-d", strtotime($aux_datefrom)) : date('Y-m-d'); 
@@ -33,11 +33,12 @@ class Controlador_Reports extends Controlador_Base {
           $tags["typeseat"] = $typeseat; 
           $tags["seatfrom"] = $seatfrom;  
           $tags["seatto"] = $seatto;  
-          $tags["result"] = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],$datefrom,$dateto,$typeseat,$seatfrom,$seatto); 
+          $tags["result"] = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],$datefrom,
+                                                    $dateto,$typeseat,$seatfrom,$seatto,'',$orderby); 
           $tags["type_seats"] = Modelo_TypeSeat::searchSeat();
           $tags["template_js"][] = "reports";        
           Vista::render('rpt_acc_journalentries', $tags);
-        }
+        }        
         elseif($action == "pdf"){          
           $aux_datefrom = Utils::getParam('datefrom','',$this->data);                              
           $datefrom = (!empty($aux_datefrom)) ? date("Y-m-d", $aux_datefrom) : date('Y-m-d');                   
@@ -51,7 +52,8 @@ class Controlador_Reports extends Controlador_Base {
           $seatto = Utils::getParam('seatto','',$this->data); 
           $seatto = (!empty($seatto)) ? $seatto : '';
           $seatto = (!empty($seatto)) ? str_pad($seatto,8, "0", STR_PAD_LEFT) : '';           
-          $results = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],$datefrom,$dateto,$typeseat,$seatfrom,$seatto); 
+          $results = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],$datefrom,
+                                             $dateto,$typeseat,$seatfrom,$seatto,'',$orderby); 
                     
           $from = date("m/d/Y", strtotime($datefrom));
           $to = date("m/d/Y", strtotime($dateto));    
@@ -150,7 +152,8 @@ class Controlador_Reports extends Controlador_Base {
           $seatto = Utils::getParam('seatto','',$this->data); 
           $seatto = (!empty($seatto)) ? $seatto : '';
           $seatto = (!empty($seatto)) ? str_pad($seatto,8, "0", STR_PAD_LEFT) : '';           
-          $results = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],$datefrom,$dateto,$typeseat,$seatfrom,$seatto); 
+          $results = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],$datefrom,$dateto,
+                                             $typeseat,$seatfrom,$seatto,'',$orderby); 
                  
           $from = date("m/d/Y", strtotime($datefrom));
           $to = date("m/d/Y", strtotime($dateto));  
@@ -413,18 +416,44 @@ class Controlador_Reports extends Controlador_Base {
       break;        
       case 'generalLedger':
         $action = Utils::getParam('action','',$this->data);
+        $orderby = array("m.CODMOV, m.FECHA_ASI");         
         if ($action == "search"){
           $accfrom = Utils::getParam('accfrom','',$this->data);
           $accto = Utils::getParam('accto','',$this->data);
-          $datefrom = Utils::getParam('datefrom','',$this->data);
-          $dateto = Utils::getParam('dateto','',$this->data);
+          $aux_datefrom = Utils::getParam('datefrom','',$this->data);
+          $datefrom = (!empty($aux_datefrom)) ? date("Y-m-d", strtotime($aux_datefrom)) : date('Y-m-d'); 
+          $aux_dateto = Utils::getParam('dateto','',$this->data);
+          $dateto = (!empty($aux_dateto)) ? date("Y-m-d", strtotime($aux_dateto)) : date('Y-m-d');
+          $ccfrom = (!empty($accfrom)) ? Modelo_ChartAccount::getIndAux($accfrom)["CODIGO"]: '';
+          $ccto = (!empty($accto)) ? Modelo_ChartAccount::getIndAux($accto)["CODIGO"] : '';
           $tags["accfrom"] = $accfrom;
           $tags["accto"] = $accto;
-          $tags["datefrom"] = $datefrom;
-          $tags["dateto"] = $dateto;
-          $tags["results"] = Modelo_ChartAccount::report($accfrom,$accto,$datefrom,$dateto);
+          $tags["datefrom"] = $aux_datefrom;
+          $tags["dateto"] = $aux_dateto;
+          $tags["dbdatefrom"] = $datefrom;
+          $tags["dbdateto"] = $dateto;                    
+          $tags["results"] = Modelo_Dpmovimi::reportLedger($_SESSION['acfSession']['id_empresa'],$datefrom,$ccfrom,$ccto);
           $tags["template_js"][] = "reports";     
-          Vista::render('rpt_acc_chartaccount', $tags);
+          Vista::render('rpt_acc_generalledger', $tags);
+        }
+        elseif ($action == "view"){
+          $accfrom = Utils::getParam('accfrom','',$this->data);
+          $accto = Utils::getParam('accto','',$this->data);
+          $aux_datefrom = Utils::getParam('datefrom','',$this->data);          
+          $aux_dateto = Utils::getParam('dateto','',$this->data);          
+          $datefrom = (!empty($aux_datefrom)) ? date("Y-m-d", $aux_datefrom) : date('Y-m-d'); 
+          $dateto = (!empty($aux_dateto)) ? date("Y-m-d", $aux_dateto) : date('Y-m-d');
+          $ccfrom = (!empty($accfrom)) ? Modelo_ChartAccount::getIndAux($accfrom)["CODIGO"]: '';
+          $ccto = (!empty($accto)) ? Modelo_ChartAccount::getIndAux($accto)["CODIGO"] : '';
+          $tags["accfrom"] = $accfrom;
+          $tags["accto"] = $accto;
+          $tags["datefrom"] = (!empty($aux_datefrom)) ? date("m/d/Y",$aux_datefrom) : date("m/d/Y");
+          $tags["dateto"] = (!empty($aux_dateto)) ? date("m/d/Y",$aux_dateto) : date("m/d/Y");
+          $tags["dbdatefrom"] = $datefrom;
+          $tags["dbdateto"] = $dateto;                    
+          $tags["results"] = Modelo_Dpmovimi::reportLedger($_SESSION['acfSession']['id_empresa'],$datefrom,$ccfrom,$ccto);
+          $tags["template_js"][] = "reports";     
+          Vista::render('rpt_acc_generalledger', $tags);
         }
         elseif($action == "pdf"){
 

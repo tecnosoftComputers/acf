@@ -1,9 +1,7 @@
 <?php
-
 class Modelo_TypeSeat{
 
   public static function searchSeat(){
-
     $sql = "SELECT * FROM DPNUMERO WHERE status='A'";
     return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
   }
@@ -14,7 +12,6 @@ class Modelo_TypeSeat{
   }
 
    public static function searchSeatType($type){
-
   	$sql = "SELECT ASIENTO,NOMBRE FROM DPNUMERO WHERE TIPO_ASI like '$type'";
   	$rs = $GLOBALS['db']->auto_array($sql,array(),false);
   	if(!empty($rs)){
