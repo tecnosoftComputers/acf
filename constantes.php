@@ -1,7 +1,7 @@
 <?php
 define('PUERTO', 'http');
-define('HOST', 'localhost/fernanda/acf/newStructure'); 
-define('FRONTEND_RUTA', 'c:/xampp/htdocs/fernanda/acf/newStructure/');
+define('HOST', 'localhost/fernanda/acf'); 
+define('FRONTEND_RUTA', 'c:/xampp/htdocs/fernanda/acf/');
 //define('DBSERVIDOR', '186.3.133.147');
 //define('DBUSUARIO', 'enriqueyagual'); 
 //define('DBCLAVE', 'sulayeya');  

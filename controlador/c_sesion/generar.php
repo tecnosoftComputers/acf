@@ -25,7 +25,7 @@
             if ($sql -> execute() ) {
 
                 if($num==3){
-                    header('location: ../../newStructure/'); 
+                    header('location: ../../'); 
                     exit;
                 }else{
                     echo '<script type="text/javascript">
