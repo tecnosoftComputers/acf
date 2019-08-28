@@ -58,7 +58,7 @@ class Modelo_Dpmovimi{
 	  	$sql .= "AND c.ASIENTO <= '".$seatto."' ";
 	  } 
 	  if (!empty($codmov)){
-	  	$sql .= "AND m.CODMOV = '".$codmov."'";
+	  	$sql .= "AND m.CODMOV = '".$codmov."' ";
 	  } 
 	  if (!empty($orderby) && count($orderby)>0){
 	  	$sql .= "ORDER BY ";	

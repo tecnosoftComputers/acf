@@ -123,9 +123,10 @@ RewriteRule ^deleteMemorice/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&
 #journal entries
 RewriteRule ^report/journalentries/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=search [L]
 RewriteRule ^report/journalentries/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries [L]
-RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&typeseat=$2&datefrom=$3&dateto=$4&seatfrom=$5&seatto=$6 [L]
-RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&typeseat=$2&datefrom=$3&dateto=$4&seatfrom=$5 [L]
-RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&typeseat=$2&datefrom=$3&dateto=$4 [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&datefrom=$2&dateto=$3&typeseat=$4&seatfrom=$5&seatto=$6 [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&datefrom=$2&dateto=$3&typeseat=$4&seatfrom=$5 [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&datefrom=$2&dateto=$3&typeseat=$4 [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&datefrom=$2&dateto=$3 [L]
 
 #chart account
 RewriteRule ^report/chartaccount/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=$1&accfrom=$2&accto=$3 [L]

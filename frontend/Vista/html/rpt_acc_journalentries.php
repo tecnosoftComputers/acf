@@ -24,6 +24,7 @@
             <label class="col-md-4 control-label" for="name">Seat From:</label>
             <div class="col-md-4">
               <select name="typeseatfrom" id="typeseatfrom" class="form-control">
+                <option value="0">Select an option</option>
                 <?php if (!empty($type_seats)) { ?>
                   <?php foreach($type_seats as $val){ ?>
                     <option value="<?php echo $val['TIPO_ASI'];?>" <?php echo (isset($typeseat) && $typeseat == $val["TIPO_ASI"]) ? "selected=selected" : ""; ?>><?php echo $val['TIPO_ASI']."-".$val['NOMBRE'];?></option>
@@ -41,6 +42,7 @@
             <label class="col-md-4 control-label" for="name">Seat To:</label>
             <div class="col-md-4">
               <select name="typeseatto" id="typeseatto" class="form-control">
+                <option value="0">Select an option</option>
                 <?php if (!empty($type_seats)) { ?>
                   <?php foreach($type_seats as $val){ ?>
                     <option value="<?php echo $val['TIPO_ASI'];?>" <?php echo (isset($typeseat) && $typeseat == $val["TIPO_ASI"]) ? "selected=selected" : ""; ?>><?php echo $val['TIPO_ASI']."-".$val['NOMBRE'];?></option>
@@ -71,7 +73,8 @@
     $acum_debit = 0;
     $acum_credit = 0;
     $seataux = '';    
-    $url = $typeseat."/".$datefromdb."/".$datetodb."/";
+    $url = $datefromdb."/".$datetodb."/";
+    $url .= (!empty($typeseat)) ? $typeseat."/" : "";
     $url .= (!empty($seatfrom)) ? $seatfrom."/" : "";
     $url .= (!empty($seatto)) ? $seatto."/" : "";    
   ?>
@@ -80,7 +83,7 @@
     <a href="<?php echo PUERTO."://".HOST."/report/journalentries/excel/".$url; ?>" target="_blank" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
   </span>
   <span id="excel" style="float: right">
-    <a href="<?php echo PUERTO."://".HOST."/report/journalentries/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+    <a href="<?php echo PUERTO."://".HOST."/report/journalentries/pdf/".$url; ?>" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
   </span> 
   <br>                   
   <div class="tab-content">
@@ -93,7 +96,7 @@
         <th class="style-th">NAME ACCOUNT</th>
         <th class="style-th">TYPE</th>
         <th class="style-th">REFERENCE</th>
-        <th class="style-th">DOCUMENT</th>
+        <th class="style-th">SETTLEMENT</th>
         <th class="style-th">CONCEPT</th>
         <th class="style-th">DEBIT</th>
         <th class="style-th">CREDIT</th>          
@@ -110,8 +113,8 @@
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
-              <td align="right"><?php echo number_format($acum_debit,2);?></td>
-              <td align="right"><?php echo number_format(abs($acum_credit),2);?></td>
+              <td align="right"><strong><?php echo number_format($acum_debit,2);?></strong></td>
+              <td align="right"><strong><?php echo number_format(abs($acum_credit),2);?></strong></td>
             </tr> 
             <tr><td colspan="8">&nbsp;</td></tr>
           <?php } ?>          
@@ -164,8 +167,8 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td align="right"><?php echo number_format($acum_debit,2);?></td>
-        <td align="right"><?php echo number_format(abs($acum_credit),2);?></td>
+        <td align="right"><strong><?php echo number_format($acum_debit,2);?></strong></td>
+        <td align="right"><strong><?php echo number_format(abs($acum_credit),2);?></strong></td>
       </tr> 
     </tbody>    
     </table>  

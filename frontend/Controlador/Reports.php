@@ -45,7 +45,7 @@ class Controlador_Reports extends Controlador_Base {
           $aux_dateto = Utils::getParam('dateto','',$this->data);
           $dateto = (!empty($aux_dateto)) ? date("Y-m-d", $aux_dateto) : date('Y-m-d'); 
           $typeseat = Utils::getParam('typeseat','',$this->data);
-          $typeseat = (!empty($typeseat)) ? $typeseat : 'EGRE';         
+          //$typeseat = (!empty($typeseat)) ? $typeseat : 'EGRE';         
           $seatfrom = Utils::getParam('seatfrom','',$this->data); 
           $seatfrom = (!empty($seatfrom)) ? $seatfrom : '';
           $seatfrom = (!empty($seatfrom)) ? str_pad($seatfrom,8, "0", STR_PAD_LEFT) : '';
@@ -64,7 +64,7 @@ class Controlador_Reports extends Controlador_Base {
           $columns[] = array("width"=>45,"label"=>"NAME ACCOUNT");  
           $columns[] = array("width"=>15,"label"=>"TYPE");  
           $columns[] = array("width"=>25,"label"=>"REFERENCE");  
-          $columns[] = array("width"=>30,"label"=>"DOCUMENT");  
+          $columns[] = array("width"=>30,"label"=>"SETTLEMENT");  
           $columns[] = array("width"=>73,"label"=>"CONCEPT");  
           $columns[] = array("width"=>30,"label"=>"DEBIT");
           $columns[] = array("width"=>30,"label"=>"CREDIT");    
@@ -145,7 +145,7 @@ class Controlador_Reports extends Controlador_Base {
           $aux_dateto = Utils::getParam('dateto','',$this->data);
           $dateto = (!empty($aux_dateto)) ? date("Y-m-d", $aux_dateto) : date('Y-m-d'); 
           $typeseat = Utils::getParam('typeseat','',$this->data);
-          $typeseat = (!empty($typeseat)) ? $typeseat : 'EGRE';         
+          //$typeseat = (!empty($typeseat)) ? $typeseat : 'EGRE';         
           $seatfrom = Utils::getParam('seatfrom','',$this->data); 
           $seatfrom = (!empty($seatfrom)) ? $seatfrom : '';
           $seatfrom = (!empty($seatfrom)) ? str_pad($seatfrom,8, "0", STR_PAD_LEFT) : '';
@@ -164,7 +164,7 @@ class Controlador_Reports extends Controlador_Base {
                      'B'=>array("width"=>30,"label"=>"NAME ACCOUNT"),
                      'C'=>array("width"=>10,"label"=>"TYPE"),
                      'D'=>array("width"=>20,"label"=>"REFERENCE"),
-                     'E'=>array("width"=>20,"label"=>"DOCUMENT"),
+                     'E'=>array("width"=>20,"label"=>"SETTLEMENT"),
                      'F'=>array("width"=>50,"label"=>"CONCEPT"),
                      'G'=>array("width"=>20,"label"=>"DEBIT"),
                      'H'=>array("width"=>20,"label"=>"CREDIT")
@@ -223,8 +223,8 @@ class Controlador_Reports extends Controlador_Base {
                   $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->applyFromArray($CStyle);
                   $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->applyFromArray($AmtStyle);
                   $objPHPExcel->setActiveSheetIndex(0)              
-                    ->setCellValue('G'.$cont, number_format($acum_debits,2))
-                    ->setCellValue('H'.$cont, number_format(abs($acum_credits),2));
+                    ->setCellValue('G'.$cont, " ".number_format($acum_debits,2))
+                    ->setCellValue('H'.$cont, " ".number_format(abs($acum_credits),2));
                                     
                   $cont++;  
                   //print blank line
@@ -253,14 +253,14 @@ class Controlador_Reports extends Controlador_Base {
               
               $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':H'.$cont)->applyFromArray($styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->applyFromArray($AmtStyle); 
-              if ($item["IMPORTE"] > 0){ 
-                $debit = number_format($item['IMPORTE'],2);
-                $credit = "0.00";
+              if ($item["IMPORTE"] > 0){                 
+                $debit = " ".number_format($item['IMPORTE'],2);
+                $credit = " 0.00";
                 $acum_debits = $acum_debits + $item['IMPORTE'];
               }
               else{
-                $debit = "0.00";
-                $credit = number_format(abs($item['IMPORTE']),2); 
+                $debit = " 0.00";                
+                $credit = " ".number_format(abs($item['IMPORTE']),2); 
                 $acum_credits = $acum_credits + $item['IMPORTE'];
               }
               $objPHPExcel->getActiveSheet()->getStyle('F'.$cont)->getAlignment()->setWrapText(true);         
@@ -282,8 +282,8 @@ class Controlador_Reports extends Controlador_Base {
             $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->applyFromArray($CStyle);  
             $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->applyFromArray($AmtStyle);
             $objPHPExcel->setActiveSheetIndex(0)              
-              ->setCellValue('G'.$cont, number_format($acum_debits,2))
-              ->setCellValue('H'.$cont, number_format(abs($acum_credits),2));            
+              ->setCellValue('G'.$cont, " ".number_format($acum_debits,2))
+              ->setCellValue('H'.$cont, " ".number_format(abs($acum_credits),2));            
           }
 
           $this->outputExcel("JOURNAL_ENTRIES_REPORT");

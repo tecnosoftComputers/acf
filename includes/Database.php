@@ -8,9 +8,7 @@ class Database{
   var $server;
   var $username;
   var $password;
-
   var $dbname;
-
   var $connection;
   var $query;
   var $resultSet;
@@ -23,14 +21,12 @@ class Database{
   private $rowset = array(); 
   private $total_queries; 
   private $_trans_status; 
-
   function __construct( $server, $user, $pass, $dbname = false ){
     $this->server   = $server;
     $this->username = $user;
     $this->password = $pass;
     $this->dbname = $dbname;
   }
-
   function connect(){
     $this->connection = mysqli_connect($this->server, $this->username, $this->password) or die("No se pudo conectar a la base de datos");
     if ( $this->connection ){   
@@ -40,7 +36,6 @@ class Database{
       return false;
     }
   }
-
   function selectDB(){  
   if ( $this->dbname ){
     return mysqli_select_db($this->connection,$this->dbname)or die("No se pudo conectar a la Base de Datos");
@@ -49,17 +44,15 @@ class Database{
     return false;
   } 
   }
-
   function disconnect(){
     mysqli_close($this->connection);
   }
-
   function execute( $query ){
     $this->query = $query;        
     Utils::log("SQL execute: $query");
-	  $resultSet = mysqli_query( $this->connection,$query );
-	  $this->resultSet = $resultSet;
-	  return $resultSet;
+    $resultSet = mysqli_query( $this->connection,$query );
+    $this->resultSet = $resultSet;
+    return $resultSet;
   }
   
   function insert( $table, $data ){   
@@ -79,7 +72,6 @@ class Database{
       }else{       
         $val_list .= '"'.utf8_decode($value).'"';
       }
-
       $i++;
     }
     $query  = 'INSERT INTO ';
@@ -91,11 +83,8 @@ class Database{
     $query .= ')';
     return $this->execute( $query );
   }
-
   function insert_multiple($table,$campos,$data){   
-
     $valores = '';
-
     foreach ($data as $key => $datos) {
       if(is_string($datos)){
         $valor = utf8_decode($datos);
@@ -103,10 +92,8 @@ class Database{
         $valor = $datos;
       }
       $valores .= '('.implode(',', $valor).'),';
-
     }
     $valores = substr($valores, 0,strlen($valores)-1);
-
     $query  = 'INSERT INTO ';
     $query .= $table;
     $query .= ' (';
@@ -114,10 +101,8 @@ class Database{
     $query .= ') VALUES';
     $query .= $valores;
     $query .= ';';
-
     return $this->execute( $query );
   }
-
   function update( $table, $data, $where ){        
     $query  = "UPDATE ";
     $query .= $table;
@@ -143,11 +128,9 @@ class Database{
     $query .= $where;
     return $this->execute( $query );    
   }
-
   function rows_affected(){
     return mysqli_affected_rows($this->connection);
   }
-
   function delete( $table, $where ){
     $query  = 'DELETE FROM ';
     $query .= $table;
@@ -156,7 +139,6 @@ class Database{
     $query .= $where;
     return $this->execute( $query );
   }
-
   function getLastError(){    
    return mysqli_error($this->connection);
   }
@@ -256,6 +238,4 @@ class Database{
   }
   
 }
-
-
 ?>

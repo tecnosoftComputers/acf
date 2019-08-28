@@ -77,8 +77,8 @@
     <thead>
       <tr>        
         <th class="style-th">DATE</th>
-        <th class="style-th">SEAT</th>        
         <th class="style-th">TYPE SEAT</th>        
+        <th class="style-th">SEAT</th>        
         <th class="style-th">REFERENCE</th>
         <th class="style-th">CONCEPT</th>
         <th class="style-th">DEBIT</th>
@@ -118,8 +118,8 @@
               $idmov = Utils::encriptar($mov["IDCONT"]);                      
               echo "<tr>               
                       <td>".date("m/d/Y",strtotime($mov["FECHA_ASI"]))."</td>
-                      <td><a onclick=\"viewJournal('".$idmov."')\" style='cursor:pointer;'>".$mov["ASIENTO"]."</a></td>
                       <td>".$mov["TIPO_ASI"]."</td>
+                      <td><a onclick=\"viewJournal('".$idmov."')\" style='cursor:pointer;'>".$mov["ASIENTO"]."</a></td>                  
                       <td>".$mov["REFER"]."</td>
                       <td>".$mov["CONCEPTO"]."</td>
                       <td align='right'>".number_format($debit,2)."</td>
