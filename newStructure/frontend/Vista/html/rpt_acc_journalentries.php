@@ -111,7 +111,7 @@
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td align="right"><?php echo number_format($acum_debit,2);?></td>
-              <td align="right"><?php echo number_format($acum_credit*-1,2);?></td>
+              <td align="right"><?php echo number_format(abs($acum_credit),2);?></td>
             </tr> 
             <tr><td colspan="8">&nbsp;</td></tr>
           <?php } ?>          
@@ -153,7 +153,7 @@
            $acum_credit = $value["IMPORTE"] + $acum_credit;
          ?>
            <td align="right"><?php echo number_format(0,2); ?></td>   
-           <td align="right"><?php echo number_format($value["IMPORTE"],2);?></td>    
+           <td align="right"><?php echo number_format(abs($value["IMPORTE"]),2);?></td>    
          <?php } ?>            
       </tr>            
       <?php } ?>
@@ -165,7 +165,7 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td align="right"><?php echo number_format($acum_debit,2);?></td>
-        <td align="right"><?php echo number_format($acum_credit*-1,2);?></td>
+        <td align="right"><?php echo number_format(abs($acum_credit),2);?></td>
       </tr> 
     </tbody>    
     </table>  

@@ -93,13 +93,13 @@
     ?>    
       <?php foreach($results as $key=>$value){ ?>      
         <?php 
-        if ($account != $value["CODMOV"] && !empty($value["CODMOV"])){          
+        if ($account != $value["CODMOV"] && !empty(trim($value["CODMOV"]))){          
           $infoaccount = Modelo_ChartAccount::getIndividual($value["CODMOV"]);
           echo "<tr style='background-color:#e5e6ed;''>
                   <td colspan='3'><strong>".$value["CODMOV"]."</strong></td>
                   <td colspan='2'><strong>".$infoaccount["NOMBRE"]."</strong></td>
                   <td colspan='2'><strong>Previous Balance:</strong></td>
-                  <td align='right'><strong>".number_format($value["balance"],2)."</strong></td>
+                  <td align='right'><strong>".number_format(abs($value["balance"]),2)."</strong></td>
                 </tr>";
           $account = $value["CODMOV"];  
           $infomov = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],
@@ -118,13 +118,13 @@
               $idmov = Utils::encriptar($mov["IDCONT"]);                      
               echo "<tr>               
                       <td>".date("m/d/Y",strtotime($mov["FECHA_ASI"]))."</td>
-                      <td><a onclick=\"viewJournal('".$idmov."')\">".$mov["ASIENTO"]."</a></td>
+                      <td><a onclick=\"viewJournal('".$idmov."')\" style='cursor:pointer;'>".$mov["ASIENTO"]."</a></td>
                       <td>".$mov["TIPO_ASI"]."</td>
                       <td>".$mov["REFER"]."</td>
                       <td>".$mov["CONCEPTO"]."</td>
                       <td align='right'>".number_format($debit,2)."</td>
-                      <td align='right'>".number_format($credit,2)."</td>
-                      <td align='right'>".number_format($balance,2)."</td>
+                      <td align='right'>".number_format(abs($credit),2)."</td>
+                      <td align='right'>".number_format(abs($balance),2)."</td>
                     </tr>";             
             }            
           } 
@@ -133,8 +133,8 @@
                   <td colspan='4'>&nbsp;</td>
                   <td><strong>Current Balance:</strong></td>
                   <td align='right'><strong>".number_format($acumdebit,2)."</strong></td>
-                  <td align='right'><strong>".number_format($acumcredit,2)."</strong></td>
-                  <td align='right'><strong>".number_format($balance,2)."</strong></td>
+                  <td align='right'><strong>".number_format(abs($acumcredit),2)."</strong></td>
+                  <td align='right'><strong>".number_format(abs($balance),2)."</strong></td>
                 </tr>"; 
           echo "<tr><td colspan='8'>&nbsp;</td></tr>";
         }  

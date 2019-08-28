@@ -92,7 +92,7 @@ class Controlador_Reports extends Controlador_Base {
                   $this->objPdf->Cell(189  ,5,'',0,1);                  
                   $this->objPdf->SetXY(224, $this->objPdf->GetY());                  
                   $this->objPdf->Cell(30 ,5,number_format($acum_debits,2),0,0,'R');
-                  $this->objPdf->Cell(30 ,5,number_format($acum_credit*-1,2),0,0,'R');                  
+                  $this->objPdf->Cell(30 ,5,number_format(abs($acum_credit),2),0,0,'R');                  
                   $this->objPdf->Cell(189  ,5,'',0,1);                  
                   $this->objPdf->Cell(189  ,5,'',0,1);
                 }                     
@@ -121,7 +121,7 @@ class Controlador_Reports extends Controlador_Base {
               }
               else{
                 $this->objPdf->Cell(30 ,5,'0.00',0,0,'R');
-                $this->objPdf->Cell(30 ,5,number_format($value['IMPORTE'],2),0,0,'R');       
+                $this->objPdf->Cell(30 ,5,number_format(abs($value['IMPORTE']),2),0,0,'R');       
                 $acum_credit = $acum_credit + $value['IMPORTE'];
               }              
               $this->objPdf->Cell(189  ,5,'',0,1);//end of line              
@@ -135,7 +135,7 @@ class Controlador_Reports extends Controlador_Base {
             $this->objPdf->Cell(189  ,5,'',0,1);      
             $this->objPdf->SetXY(224, $this->objPdf->GetY());        
             $this->objPdf->Cell(30 ,5,number_format($acum_debits,2),0,0,'R');
-            $this->objPdf->Cell(30 ,5,number_format($acum_credit*-1,2),0,0,'R');            
+            $this->objPdf->Cell(30 ,5,number_format(abs($acum_credit),2),0,0,'R');            
             $this->objPdf->Output();
           }
         } 
@@ -224,7 +224,7 @@ class Controlador_Reports extends Controlador_Base {
                   $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->applyFromArray($AmtStyle);
                   $objPHPExcel->setActiveSheetIndex(0)              
                     ->setCellValue('G'.$cont, number_format($acum_debits,2))
-                    ->setCellValue('H'.$cont, number_format($acum_credits*-1,2));
+                    ->setCellValue('H'.$cont, number_format(abs($acum_credits),2));
                                     
                   $cont++;  
                   //print blank line
@@ -260,7 +260,7 @@ class Controlador_Reports extends Controlador_Base {
               }
               else{
                 $debit = "0.00";
-                $credit = number_format($item['IMPORTE'],2); 
+                $credit = number_format(abs($item['IMPORTE']),2); 
                 $acum_credits = $acum_credits + $item['IMPORTE'];
               }
               $objPHPExcel->getActiveSheet()->getStyle('F'.$cont)->getAlignment()->setWrapText(true);         
@@ -283,7 +283,7 @@ class Controlador_Reports extends Controlador_Base {
             $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->applyFromArray($AmtStyle);
             $objPHPExcel->setActiveSheetIndex(0)              
               ->setCellValue('G'.$cont, number_format($acum_debits,2))
-              ->setCellValue('H'.$cont, number_format($acum_credits*-1,2));            
+              ->setCellValue('H'.$cont, number_format(abs($acum_credits),2));            
           }
 
           $this->outputExcel("JOURNAL_ENTRIES_REPORT");
@@ -450,7 +450,7 @@ class Controlador_Reports extends Controlador_Base {
           $tags["datefrom"] = (!empty($aux_datefrom)) ? date("m/d/Y",$aux_datefrom) : date("m/d/Y");
           $tags["dateto"] = (!empty($aux_dateto)) ? date("m/d/Y",$aux_dateto) : date("m/d/Y");
           $tags["dbdatefrom"] = $datefrom;
-          $tags["dbdateto"] = $dateto;                    
+          $tags["dbdateto"] = $dateto;                             
           $tags["results"] = Modelo_Dpmovimi::reportLedger($_SESSION['acfSession']['id_empresa'],$datefrom,$ccfrom,$ccto);
           $tags["template_js"][] = "reports";     
           Vista::render('rpt_acc_generalledger', $tags);

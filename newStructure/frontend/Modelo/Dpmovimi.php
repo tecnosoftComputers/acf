@@ -80,7 +80,7 @@ class Modelo_Dpmovimi{
 	  if (!empty($accto)){
 	  	$sql .= "AND CODMOV <= '".$accto."' ";
 	  }
-	  $sql .= "GROUP BY CODMOV ORDER BY CODMOV";
+	  $sql .= "GROUP BY CODMOV HAVING balance > 0 ORDER BY CODMOV";
 	  return $GLOBALS['db']->auto_array($sql,array($empresa,$date),true);	
 	}
 }  
