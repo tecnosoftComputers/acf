@@ -9,7 +9,7 @@
           
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account From:</label>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="input-group"> 
                 <input maxlength="8" id="accfrom" name="accfrom" type="text" value="<?php echo (isset($accfrom) && !empty($accfrom)) ? $accfrom : ''; ?>" class="form-control input-sm"> 
                 <span class="input-group-btn"> 
@@ -21,7 +21,7 @@
             
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account To:</label>
-            <div class="col-md-3">
+            <div class="col-md-4">
 
               <div class="input-group"> 
                 <input maxlength="8" id="accto" name="accto" type="text" value="<?php echo (isset($accto) && !empty($accto)) ? $accto : ''; ?>" class="form-control input-sm"> 
@@ -52,7 +52,7 @@
   ?>
   <br>
   <span id="pdf" style="float: right; margin-left: 10px">
-    <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" target="_blank" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+    <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
   </span>
   <span id="excel" style="float: right">
     <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>

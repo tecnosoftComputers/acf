@@ -121,24 +121,29 @@ RewriteRule ^deleteMemorice/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&
 
 #reports
 #journal entries
-RewriteRule ^report/journalentries/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=search [L]
-RewriteRule ^report/journalentries/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries [L]
-RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&datefrom=$2&dateto=$3&typeseat=$4&seatfrom=$5&seatto=$6 [L]
-RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&datefrom=$2&dateto=$3&typeseat=$4&seatfrom=$5 [L]
-RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&datefrom=$2&dateto=$3&typeseat=$4 [L]
-RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=journalEntries&action=$1&datefrom=$2&dateto=$3 [L]
+RewriteRule ^report/journalentries/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportJournalEntries&action=search [L]
+RewriteRule ^report/journalentries/$ %{ENV:REWRITEBASE}index.php?mostrar=reportJournalEntries [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportJournalEntries&action=$1&datefrom=$2&dateto=$3&typeseat=$4&seatfrom=$5&seatto=$6 [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportJournalEntries&action=$1&datefrom=$2&dateto=$3&typeseat=$4&seatfrom=$5 [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportJournalEntries&action=$1&datefrom=$2&dateto=$3&typeseat=$4 [L]
+RewriteRule ^report/journalentries/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportJournalEntries&action=$1&datefrom=$2&dateto=$3 [L]
+
+#journal summary
+RewriteRule ^report/journalsummary/$ %{ENV:REWRITEBASE}index.php?mostrar=reportJournalSummary [L]
 
 #chart account
-RewriteRule ^report/chartaccount/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=$1&accfrom=$2&accto=$3 [L]
+RewriteRule ^report/chartaccount/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&action=$1&accfrom=$2&accto=$3 [L]
 RewriteRule ^report/chartaccount/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=$1&accfrom=$2 [L]
-RewriteRule ^report/chartaccount/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=$1 [L]
-RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&action=search [L]
-RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount [L]
+RewriteRule ^report/chartaccount/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&action=$1 [L]
+RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&action=search [L]
+RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts [L]
 
 #general leadger
-RewriteRule ^report/generalledger/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=generalLedger&action=$1&accfrom=$2&accto=$3&datefrom=$4&dateto=$5 [L]
-RewriteRule ^report/generalledger/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=generalLedger&action=search [L]
-RewriteRule ^report/generalledger/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=generalLedger [L]
+RewriteRule ^report/generalledger/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportGeneralLedger&action=$1&datefrom=$2&dateto=$3&accfrom=$4&accto=$5 [L]
+RewriteRule ^report/generalledger/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportGeneralLedger&action=$1&datefrom=$2&dateto=$3&accfrom=$4 [L]
+RewriteRule ^report/generalledger/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportGeneralLedger&action=$1&datefrom=$2&dateto=$3 [L]
+RewriteRule ^report/generalledger/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportGeneralLedger&action=search [L]
+RewriteRule ^report/generalledger/$ %{ENV:REWRITEBASE}index.php?mostrar=reportGeneralLedger [L]
 
 #balance sheet
-RewriteRule ^report/balancesheet/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=balanceSheet [L]
+RewriteRule ^report/balancesheet/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheett [L]

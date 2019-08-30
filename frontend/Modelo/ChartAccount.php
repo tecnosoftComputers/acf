@@ -39,14 +39,14 @@ class Modelo_ChartAccount{
   }
 
   public static function report($accfrom='', $accto=''){
-    $sql = "SELECT CODIGO, NOMBRE FROM dp01a110";
+    $sql = "SELECT CODIGO, NOMBRE FROM dp01a110 WHERE (CTAINACTIVA IS NULL OR CTAINACTIVA = 0)";
     if (!empty($accfrom)){
-      $sql .= " WHERE CODIGO_AUX >= '".$accfrom."'";
+      $sql .= " AND CODIGO_AUX >= '".$accfrom."'";
     }
     if (!empty($accto)){
-      $sql .= " AND CODIGO_AUX <= '".$accto."'";
+      $sql .= " AND (CODIGO_AUX <= '".$accto."' OR CODIGO_AUX LIKE '".$accto."%')";
     }
-    return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
+    return $GLOBALS['db']->auto_array($sql,array(),true);
   }
 
   public static function getIndividual($codigo){

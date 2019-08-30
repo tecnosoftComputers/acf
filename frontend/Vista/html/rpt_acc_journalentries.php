@@ -80,10 +80,10 @@
   ?>
   <br>
   <span id="pdf" style="float: right; margin-left: 10px">
-    <a href="<?php echo PUERTO."://".HOST."/report/journalentries/excel/".$url; ?>" target="_blank" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+    <a href="<?php echo PUERTO."://".HOST."/report/journalentries/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
   </span>
   <span id="excel" style="float: right">
-    <a href="<?php echo PUERTO."://".HOST."/report/journalentries/pdf/".$url; ?>" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+    <a href="<?php echo PUERTO."://".HOST."/report/journalentries/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
   </span> 
   <br>                   
   <div class="tab-content">
@@ -107,12 +107,7 @@
       <?php if ($value["ASIENTO"] != $seataux){ ?>
           <?php if (!empty($key)){ ?>
             <tr>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
+              <td colspan="6">&nbsp;</td>
               <td align="right"><strong><?php echo number_format($acum_debit,2);?></strong></td>
               <td align="right"><strong><?php echo number_format(abs($acum_credit),2);?></strong></td>
             </tr> 
@@ -136,7 +131,7 @@
       <tr> 
          <td>
             <?php $codmov = str_replace(".","",trim($value["CODMOV"]));?>
-            <a href="<?php echo PUERTO."://".HOST."/report/generalledger/view/".$codmov."/".$codmov."/".$datefromdb."/".$datetodb."/";?>">
+            <a href="<?php echo PUERTO."://".HOST."/report/generalledger/view/".$datefromdb."/".$datetodb."/".$codmov."/".$codmov."/";?>" target="_blank">
             <?php echo $value["CODMOV"];?></a>
          </td>
          <td><?php echo $value["NOMBRE"];?></td>   
@@ -161,12 +156,7 @@
       </tr>            
       <?php } ?>
       <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
+        <td colspan="6">&nbsp;</td>
         <td align="right"><strong><?php echo number_format($acum_debit,2);?></strong></td>
         <td align="right"><strong><?php echo number_format(abs($acum_credit),2);?></strong></td>
       </tr> 

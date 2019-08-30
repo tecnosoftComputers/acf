@@ -1,11 +1,11 @@
 <div id="page-wrapper"><br />
-  <div class="alert alert-info"><p>Accounting / Report / General Ledger</p></div>
+  <div class="alert alert-info"><p>Accounting / Report / Journal Entry Summary</p></div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <form action="<?php echo PUERTO."://".HOST."/report/generalledger/search/";?>" method="post" class="form-horizontal">
+      <form action="<?php echo PUERTO."://".HOST."/report/journalsummary/search/";?>" method="post" class="form-horizontal">
         <fieldset>
-          <legend class="mibread" style="text-align: center;"><strong>General Ledger Report</strong></legend>
+          <legend class="mibread" style="text-align: center;"><strong>Journal Entry Summary Report</strong></legend>
           
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account From:</label>
@@ -45,10 +45,22 @@
             </div>
           </div>
 
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Type:</label>
+            <div class="col-md-3">
+              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="option1">
+              <label class="form-check-label" for="typereport">Summarized</label>
+            </div>
+            <div class="col-md-3">
+              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="option1">
+              <label class="form-check-label" for="typereport">Detailed</label>
+            </div>
+          </div>
+
           <div class="modal-footer">            
             <button style="float: left;" type="submit" name="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
             <span style="float: left; margin-left: 15px;">
-              <a href="<?php echo PUERTO."://".HOST."/report/generalledger/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
+              <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
           </div>
         </fieldset>

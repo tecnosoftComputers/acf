@@ -79,9 +79,21 @@ function obtieneControlador($nombre){
     break;
     case 'productsParameters':
       return 'ProductsParameters';
+    break;   
+    case 'reportJournalEntries':
+      return 'ReportJournalEntries';
     break;
-    case 'reports':
-      return 'Reports';
+    case 'reportChartAccounts':
+      return 'ReportChartAccounts';
+    break;
+    case 'reportGeneralLedger':
+      return 'ReportGeneralLedger';
+    break;
+    case 'reportBalanceSheet':
+      return 'ReportBalanceSheet';
+    break;
+    case 'reportJournalSummary':
+      return 'ReportJournalSummary';
     break;
     default:
       return 'Operations'; 
