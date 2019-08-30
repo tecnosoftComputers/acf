@@ -92,8 +92,8 @@ class Modelo_Dpmovimi{
 	  return $GLOBALS['db']->execute("UPDATE dpmovimi SET IMPORTE_AN = IMPORTE, IMPORTE=0, DB=0, CR=0 WHERE IDCONT='$id'");
 	}	
 
-	public static function reportSummaryR($empresa,$datefrom,$dateto,$accfrom='',$accto=''){
-	  if (empty($empresa) || empty($datefrom) || empty($dateto)){ return false; }	
+	public static function reportSummaryS($empresa,$datefrom,$dateto,$accfrom='',$accto=''){
+	  if (empty($empresa) || empty($datefrom) || empty($dateto)){ return false; }		  
 	  $sql = "SELECT temp.CODMOV, c.NOMBRE, SUM(temp.debit) AS debit, SUM(temp.credit) AS credit
 			  FROM dp01a110 c
 			  INNER JOIN 
@@ -112,11 +112,12 @@ class Modelo_Dpmovimi{
       	$sql .= " AND (temp.CODMOV <= '".$accto."' OR temp.CODMOV LIKE '".$accto."%')";
       }
 	  $sql .= " GROUP BY temp.CODMOV ORDER BY temp.CODMOV";
+	  return $GLOBALS['db']->auto_array($sql,array(),true);
 	}
 
 	public static function reportSummaryD($empresa,$datefrom,$dateto,$accfrom='',$accto=''){
 	  if (empty($empresa) || empty($datefrom) || empty($dateto)){ return false; }	
-	  $sql = "SELECT temp.CODMOV, c.NOMBRE, temp.TIPO_ASI, 
+	  $sql = "SELECT temp.CODMOV, c.NOMBRE, temp.TIPO_ASI, t.nombre_asiento, 
 	                 SUM(temp.debit) AS debit, SUM(temp.credit) AS credit
 			  FROM dp01a110 c
 			  INNER JOIN 
@@ -126,14 +127,17 @@ class Modelo_Dpmovimi{
 				FROM dpmovimi m 
 				WHERE m.ID_EMPRESA = '".$empresa."' AND 
 				      m.FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."') AS temp
-				      ON c.CODIGO = temp.CODMOV";
+			  ON c.CODIGO = temp.CODMOV
+			  INNER JOIN activities_tipos_asientos t ON t.tp = temp.TIPO_ASI      
+			  WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0) 	      ";
       if (!empty($accfrom)){
       	$sql .= " AND temp.CODMOV >= '".$accfrom."'";
       }
       if (!empty($accto)){
       	$sql .= " AND (temp.CODMOV <= '".$accto."' OR temp.CODMOV LIKE '".$accto."%')";
       }
-	  $sql .= " GROUP BY temp.CODMOV, temp.TIPO_ASI";
+	  $sql .= " GROUP BY temp.CODMOV, temp.TIPO_ASI ORDER BY temp.CODMOV, temp.TIPO_ASI";
+	  return $GLOBALS['db']->auto_array($sql,array(),true);
     }	
 }  
 ?>

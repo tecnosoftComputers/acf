@@ -33,8 +33,8 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
   	    $this->objPdf->SetFont('Arial','',9);    
 
   	    if (!empty($results)){                      
-            foreach($results as $key=>$value){   
-            if ($this->objPdf->GetY() > 375){
+          foreach($results as $key=>$value){   
+            if ($this->objPdf->GetY() > 370){
               $this->objPdf->AddPage();
               $this->printHeaderPdf("CHART ACCOUNTS REPORT",$accfrom,$accto);   
               $this->printHeaderTablePdf($columns);              
