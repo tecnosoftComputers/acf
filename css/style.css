@@ -75,6 +75,10 @@ ul.ui-autocomplete {
     cursor: pointer;
 }
 
+#journalView a{
+    cursor: pointer;
+}
+
 #journalView td{
     padding: 0px 2px 0px;
     
