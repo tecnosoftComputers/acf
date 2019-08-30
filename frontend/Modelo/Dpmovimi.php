@@ -15,14 +15,21 @@ class Modelo_Dpmovimi{
 
 	public static function searchMovimi($type=false,$id){
 		
-		$sql = "SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO FROM dpmovimi c INNER JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ";
-		$id = str_pad($id,8, "0", STR_PAD_LEFT);
+		$sql = "SELECT c.CODMOV, c.REFER, c.GRUPOCON, c.TIPO, FORMAT(c.CR, 2) AS CR,FORMAT(c.DB, 2) AS DB,d.NOMBRE, d.CODIGO_AUX, c.CONCEPTO, c.IMPORTE, c.DOCUMENTO, c.LIQUIDA_NO, FORMAT(ABS(IMPORTE),2) as importe_format FROM dpmovimi c LEFT JOIN dp01a110 d ON c.CODMOV = d.CODIGO WHERE ";
+		
 		if($type != false){
-	      	$sql .= "ASIENTO = '$id' AND TIPO_ASI = '$type'";
+			$id = str_pad($id,8, "0", STR_PAD_LEFT);
+			if($id != '00000000'){
+				$sql .= "TIPO_ASI = '$type'";
+			}else{
+				$sql .= "ASIENTO = '$id' AND TIPO_ASI = '$type'";
+			}
+	      	
 	    }else{
 	      	$sql .= "IDCONT = '$id'";
 	    }
 
+	    $sql .= ' ORDER BY c.ASIENTO';
 		return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
 	}
 
@@ -30,7 +37,7 @@ class Modelo_Dpmovimi{
 
 	    if(empty($id)){return false;}
 	    return $GLOBALS['db']->delete('dpmovimi',"IDCONT ='$id'");
-	 }
+	}
 
 
 	public static function insert($datos){
@@ -81,26 +88,9 @@ class Modelo_Dpmovimi{
 	  return $GLOBALS['db']->auto_array($sql,array($empresa,$date,$account));	
 	}
 
-	public static function reportSummaryR($empresa,$datefrom,$dateto,$accfrom='',$accto=''){
-	  if (empty($empresa) || empty($datefrom) || empty($dateto)){ return false; }	
-	  $sql = "SELECT temp.CODMOV, c.NOMBRE, SUM(temp.debit) AS debit, SUM(temp.credit) AS credit
-			  FROM dp01a110 c
-			  INNER JOIN 
-				(SELECT m.CODMOV, m.TIPO_ASI, 
-				        IF(m.IMPORTE>0,m.IMPORTE,0) AS debit, 
-				        IF(m.IMPORTE<0,m.IMPORTE,0) AS credit
-				FROM dpmovimi m 
-				WHERE m.ID_EMPRESA = '".$empresa."' AND 
-				      m.FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."') AS temp
-				      ON c.CODIGO = temp.CODMOV 
-			  WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0)";
-      if (!empty($accfrom)){
-      	$sql .= " AND c.CODIGO >= '".$accfrom."'";
-      }
-      if (!empty($accto)){
-      	$sql .= " AND (c.CODIGO <= '".$accto."' OR c.CODIGO LIKE '".$accto."%')";
-      }
-	  $sql .= " GROUP BY c.CODMOV ORDER BY c.CODIGO";
+	public static function updateAnnul($id){
+
+		return $GLOBALS['db']->execute("UPDATE dpmovimi SET IMPORTE_AN = IMPORTE, IMPORTE=0, DB=0, CR=0 WHERE IDCONT='$id'");
 	}
 }  
 ?>

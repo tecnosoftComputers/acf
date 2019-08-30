@@ -36,8 +36,9 @@ class Utils{
     $_SESSION['acfSession']['elrol'] = $_SESSION['elrol'];
     $_SESSION['acfSession']['persona'] = $_SESSION['persona'];
     $_SESSION['acfSession']['id_empresa'] = $_SESSION['id_empresa'];    
-    $_SESSION['acfSession']['id_modulo'] = (isset($_SESSION['id_modulo'])) ? $_SESSION['id_modulo'] : 1;    
-            
+    $_SESSION['acfSession']['id_modulo'] = (isset($_SESSION['id_modulo'])) ? $_SESSION['id_modulo'] : 1;
+
+    $_SESSION['acfSession']['permission'] = Modelo_Access::searchPermission($_SESSION['acfSession']['usuario']);        
   } 
  
   static public function getArrayParam($paramName,$array, $default=false){

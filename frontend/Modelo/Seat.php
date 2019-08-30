@@ -37,7 +37,7 @@ class Modelo_Seat{
 
   public static function searchJournal($type=false,$range=false,$id=false){
 
-    $sql = "SELECT * FROM dpcabtra";
+    $sql = "SELECT *,LPAD(CEDRUC,5,0) as CEDRUC FROM dpcabtra";
 
     if($type != false && $id != false){
       $id = str_pad($id,8, "0", STR_PAD_LEFT);
@@ -53,9 +53,10 @@ class Modelo_Seat{
         }
       }
     }else{
-      $id = str_pad($id,8, "0", STR_PAD_LEFT);
       $sql .= " WHERE IDCONT = '$id'";
     }
+
+    $sql .= ' ORDER BY ASIENTO';
 
     if($id == ''){
       $datos = $GLOBALS['db']->auto_array($sql,array(),true);
@@ -65,7 +66,11 @@ class Modelo_Seat{
         $rs[$key]['TIPO_ASI'] =  $value['TIPO_ASI'];
         $rs[$key]['ASIENTO'] =  $value['ASIENTO'];
         $rs[$key]['FECHA_ASI'] =  $value['FECHA_ASI'];
+        $rs[$key]['CEDRUC'] =  $value['CEDRUC'];
         $rs[$key]['BENEFICIAR'] =  $value['BENEFICIAR'];
+        $rs[$key]['ANULADO'] =  $value['ANULADO'];
+        $rs[$key]['DOCUMENTO'] =  $value['DOCUMENTO'];
+        $rs[$key]['LIQUIDA_NO'] =  $value['LIQUIDA_NO'];
       }
     }else{
       
@@ -78,11 +83,11 @@ class Modelo_Seat{
     return $rs;
   }
 
-  public static function deleteJournal($id){
+  /*public static function deleteJournal($id){
 
     if(empty($id)){return false;}
     return $GLOBALS['db']->delete('dpcabtra',"IDCONT = '$id'");
-  }
+  }*/
 
   public static function updateJournal($id, $datos){
 

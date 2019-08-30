@@ -414,30 +414,199 @@ function select(field_name,field_name2,code,name){
 function viewJournal(id){
 
   $('#viewJournal').modal('show');
+  $('#numRow').val(0);
+
+  $('#table_view').html('');
+  var row = '';
+  row += '<table width="100%" class="table table-bordered table-hover" id="journalView">';
+    row += '<tr style="background: #ddd;" id="num0">';
+    row += '<td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Account</b></td>';
+    row += '<td align="center" width="500" style="padding: 3px 0px 3px 0px"><b>Name</b></td>';
+    row += '<td align="center" style="display:none"></td>';
+    row += '<td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Debit</b></td>';
+    row += '<td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Credit</b></td>';
+    row += '<td align="center" style="display:none"></td>';
+    row += '<td align="center" width="140" style="padding: 3px 0px 3px 0px"><b>Action</b></td>';
+  row += '</tr></table>';
+
+  $('#table_view').append(row);
+
   $.ajax({
     type:"POST",
-    data:{id:id},
+    data:{id:id, item:$('#item').val()},
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
     success:function(r){
       if(r.journal != ''){
 
+        var rule = r.rule;
+        var p = r.permission;
+        var viewF = 'onclick="viewMessage(\'You cannot execute this action\')"';
+        
         $('#_number').val(r.journal.TIPO_ASI+' - '+r.journal.ASIENTO);
         $('#_date').val(r.journal.FECHA_ASI);
         $('#_memo2').val(r.journal.DESC_ASI);
         $('#_benef').val(r.journal.BENEFICIAR);
-        
-        for (var i = 0; i < r.movi.length; i++) {
-          var row = '<tr class="control2">';
-          row += '<td>'+r.movi[i].CODIGO_AUX+'</td>';
-          row += '<td>'+r.movi[i].NOMBRE+'</td>';
-          row += '<td>'+r.movi[i].DB+'</td>';
-          row += '<td>'+r.movi[i].CR+'</td>';
-          row += '</tr>';
-          $('#journalView tr:last').after(row);
-        } 
+
+        if(p.pri == 1){
+          $('#pdf').attr('href',rule+'/pdf/'+r.journal.IDCONT+'/');
+          $('#excel').attr('href',rule+'/excel/'+r.journal.IDCONT+'/');
+        }else{
+          $('#pdf').removeAttr('href');
+          $('#excel').removeAttr('href');
+          $('#pdf').attr("onclick","viewMessage('You cannot execute this action')");
+          $('#excel').attr("onclick","viewMessage('You cannot execute this action')");
+        }
+       
+        var movi =  r.movi;
+
+        for (var i = 0; i < movi.length; i++) {
+          var account = movi[i].CODIGO_AUX.trim();
+          var name = movi[i].NOMBRE.trim();
+          var type = movi[i].TIPO;
+          var codep = movi[i].CODMOV.trim();
+          var ref = movi[i].REFER;
+          var memo = movi[i].CONCEPTO;
+          var typeTrans = movi[i].GRUPOCON;
+          var documento = movi[i].DOCUMENTO.trim();
+          var liq = movi[i].LIQUIDA_NO.trim();
+
+          if(r.movi[i].IMPORTE > 0){
+            var debit = r.movi[i].importe_format;
+            var credit = '0.00';
+          }else{
+            var debit = '0.00';
+            var credit = r.movi[i].importe_format;
+          }
+
+          insertRow3(account,name,type,codep,ref,memo,typeTrans,debit,credit,documento,liq,p.rd);
+        }
+
+        var s1 = runTableView(7);
+        var s2 = runTableView(8);
+        s1 = s1.toString();
+        s2 = s2.toString();
+        var row1 = '<tr><td colspan="2"></td><td align="right" style="border-top:1px solid #7a7777; font-size:14px;">'+format(s1)+'</td><td align="right" style="border-top:1px solid #7a7777; font-size:14px;">'+format(s2)+'</td><td></td></tr>';
+        $('#journalView tr:last').after(row1);
       }
+      $('#numRow').val(0);
     }
   });
+}
+
+function runTableView(numInput){
+
+  var sum = parseFloat('0.00');
+  var tableReg = document.getElementById('journalView');
+  var myBodyElements = tableReg.getElementsByTagName("tr");
+
+  if(myBodyElements.length >= 1){
+    for (i = 1; i < myBodyElements.length; i++) {
+      var inputs = myBodyElements[i].getElementsByTagName("input");
+      var val = inputs[numInput].value.replace(/\,/g, '');
+      sum = sum + parseFloat(val);
+    }
+  }
+
+  return sum.toFixed(2);
+}
+
+function insertRow3(account,name,type,codep,ref,memo,typeTrans,debit1,credit1,documento,liq,permisssion){
+
+  var numRow = parseInt($('#numRow').val(),10);
+  var f = numRow+1;
+  var row = '<tr style="background-color: #d9f2fa" class="odd gradeX" id="num'+f+'">'+'\n';
+  row += '<td>'+'\n'; 
+          row += '<input class="control2 disabled" autocomplete="off" type="text" id="_accountycode'+f+'" name="_accountycode[]" value="'+account+'" readonly />'+'\n';
+  row += '</td>'+'\n';
+  row += '<td><input class="control2 disabled" type="text" id="_accountyname'+f+'" name="_accountyname[]" autocomplete="off" value="'+name+'" readonly /></td>'+'\n';
+  row += '<td style="display:none"><input class="control2 type" type="hidden" id="el_type'+f+'" name="el_type[]" value="'+type+'"/>'+'\n';
+  row += '<input class="control2" type="hidden" id="_references'+f+'" name="el_ref[]" value="'+ref+'"/>'+'\n';
+  row += '<input class="control2" type="hidden"  id="codep'+f+'" name="codep[]" value="'+codep+'"/>'+'\n';
+  row += '<input class="control2 memo" type="hidden"  id="el_memo'+f+'" name="el_memo[]" value="'+memo+'"/>'+'\n';
+  row += '<input class="control2" type="hidden"  id="_trans'+f+'" name="_trans[]" value="'+typeTrans+'"/></td>'+'\n';
+  row += '<td><input readonly style="text-align:right" class="control2 disabled" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+debit1+'" /></td>'+'\n';
+  row += '<td><input readonly style="text-align:right" class="control2 disabled" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+credit1+'" /></td>'+'\n';
+  row += '<td style="display:none;"><input class="control2" type="hidden"  id="el_documento'+f+'" name="el_documento[]" value="'+documento+'" />'+'\n';
+  row += '<input class="control2" type="hidden"  id="la_liq'+f+'" name="la_liq[]" value="'+liq+'" /></td>'+'\n';
+  row += '<td align="center" style="background-color: #d9f2fa;padding-top: 3px;padding-bottom: 1px;">'+'\n';
+
+  if(permisssion == 0){
+    var viewF = 'editInputsView(\''+f+'\')';
+  }else{
+    var viewF = 'viewMessage(\'You cannot execute this action\')';
+  }
+
+  row += '<a data-toggle="tooltip" data-placement="bottom" title="View entry" onclick="'+viewF+'"><i class="fa fa-eye"></i></a></td>'+'\n';
+  row += '</tr>';
+
+  $('#journalView tr:last').after(row);
+  $('#numRow').val(f);
+}
+
+function editInputsView(f){
+
+  clearModal();
+  $('#footer').html('<button type="button" class="btn btn-danger" data-dismiss="modal" id="buttonCloseModal">Close</button>');
+  $('#code1').val($('#_accountycode'+f).val());
+  $('#name_').val($('#_accountyname'+f).val());
+  $('#type').val($('#el_type'+f).val());
+  $('#codepp').val($('#codep'+f).val());
+  $('#referencia').val($('#_references'+f).val());
+  $('#description').val($('#el_memo'+f).val());
+  $('#debit').val($('#el_debit'+f).val());
+  $('#credit').val($('#el_credit'+f).val());
+  $('#documento').val($('#el_documento'+f).val());
+  $('#liq').val($('#la_liq'+f).val());
+
+  var sel = document.getElementById('trans'), opts = sel.options;
+
+  for ( var i = 0; i < opts.length; i++ ) {
+      
+    if($('#_trans'+f).val() != ''){ 
+      var value = $('#_trans'+f).val();
+    }else{
+      var value = 0;
+    }
+
+    if ( opts[i].value === value ) {
+      sel.selectedIndex = i;
+      break;
+    }
+  }
+  
+  $('#code1').attr('disabled','true');
+  $('#name_').attr('disabled','true');
+  $('#type').attr('disabled','true');
+  $('#codepp').attr('disabled','true');
+  $('#referencia').attr('disabled','true');
+  $('#description').attr('disabled','true');
+  $('#debit').attr('disabled','true');
+  $('#credit').attr('disabled','true');
+  $('#trans').attr('disabled','true');
+  $('#docuemnto').attr('disabled','true');
+  $('#liq').attr('disabled','true');
+
+  $('#btn_search').attr('disabled','true');
+  $('#btn_search').addClass('disabled');
+
+  var sel = document.getElementById( 'trans' ),
+  opts = sel.options;
+
+  for ( var i = 0; i < opts.length; i++ ) {
+      
+    if($('#_trans'+f).val() != ''){ 
+      var value = $('#_trans'+f).val();
+    }else{
+      var value = 0;
+    }
+
+    if ( opts[i].value === value ) {
+      sel.selectedIndex = i;
+      break;
+    }
+  }
+
+  $('#myModalRow').modal('show');
 }
 
