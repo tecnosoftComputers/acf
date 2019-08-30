@@ -6,6 +6,16 @@ var data = [];
   type_f();
   searchAccountDetail();
 
+  $('#debit').on('keyup',function(){
+    $('#credit').val('0.00');
+    points('debit');
+  });
+
+  $('#credit').on('keyup',function(){
+    $('#debit').val('0.00');
+    points('credit');
+  });
+
   $('input[name="date"]').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,
@@ -36,7 +46,7 @@ var data = [];
         dataType: "json",
         type: "POST",
         data: {
-          match: request.term
+          match: request.term, item:$('#item').val()
         },
         success: function( data ) {
           response( data );
@@ -75,6 +85,8 @@ var data = [];
       "paging": false,
   });
 
+ 
+
 
 });
 
@@ -84,7 +96,7 @@ function type_f(){
   $('#_actual').val('');
   $.ajax({
     type:"POST",
-    data:{type:sel},
+    data:{type:sel, item:$('#item').val()},
     url:puerto_host+"/index.php?mostrar=accounts&opcion=searchType",
     success:function(r){
       var dato = JSON.parse(r);
@@ -98,15 +110,21 @@ function type_f(){
     clearForm();
   });
 
-$('#debit').on('keyup',function(){
-  $('#credit').val('0.00');
-});
 
-$('#credit').on('keyup',function(){
-  $('#debit').val('0.00');
-});
 
 $('#btnSearch1').on('click',function(){
+
+  var date =  new Date();
+  var day = date.getDate()+1;
+  var month = date.getMonth()+1;
+  if(month<10){
+    month = '0'+month;
+  }
+  var year = date.getFullYear();
+
+  var range = $('#datefilter').val(month+'/'+day+'/'+(year-1)+' - '+month+'/'+day+'/'+year);
+  document.getElementById('type_select').selectedIndex = 1;
+  document.getElementById("btnSearch2").click();
   $('#myModalList').modal('show');
 });
 
@@ -117,21 +135,33 @@ $('#btnSearch2').on('click',function(){
   $('#bodyContent').html('<tr><td colspan="5" align="center"><img src="'+$('#puerto_host').val()+'/imagenes/loading.gif" width="150" /></td></tr>');
   $.ajax({
     type:"POST",
-    data:{type:type, range:range},
+    data:{type:type, range:range, item:$('#item').val()},
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
     success:function(r){
       if(r.journal.length > 0){
 
+        var p = r.permission;
+
         var html = '';
         for (var i = 0; i < r.journal.length; i++) {
+
+          var ediF = viewF = 'onclick="viewMessage(\'You cannot execute this action\')"';
+          if(p.rd == 1){
+            viewF = 'onclick="viewJournal(\''+r.journal[i].IDCONT+'\')"';
+          }
+
+          if(p.edi == 1){
+            ediF = 'onclick="searchJournal(\'\',\''+r.journal[i].IDCONT+'\')"';
+          }
+
           html += '<tr>';
           html += '<td>'+r.journal[i].TIPO_ASI+'</td>';
           html += '<td>'+r.journal[i].ASIENTO+'</td>';
           html += '<td>'+r.journal[i].FECHA_ASI+'</td>';
           html += '<td>'+r.journal[i].BENEFICIAR+'</td>';
-          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal" onclick="viewJournal(\''+r.journal[i].IDCONT+'\')"><i class="fa fa-eye"></i></a></td>';
-          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal" onclick="searchJournal(\'\',\''+r.journal[i].IDCONT+'\')"><i class="fa fa-edit"></i></a></td>';
+          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal" '+viewF+'><i class="fa fa-eye"></i></a></td>';
+          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal" '+ediF+'><i class="fa fa-edit"></i></a></td>';
           html += '</tr>';
         }
         
@@ -145,10 +175,10 @@ $('#btnSearch2').on('click',function(){
 
 function function_credit(f){
   
-  var debit = parseFloat($('#el_debit'+f).val());
-  var tdebit = parseFloat($('#tdebit').html())-debit;
-  $('#tdebit').html(Math.abs(tdebit));
-  $('#tcredit').html(Math.abs(parseFloat($('#tcredit').html())+parseFloat($('#el_credit'+f).val())));
+  var debit = /*parseFloat(*/$('#el_debit'+f).val()/*)*/;
+  var tdebit = /*parseFloat(*/$('#tdebit').html()/*)*/-debit;
+  $('#tdebit').html(/*Math.abs(*/tdebit/*)*/);
+  $('#tcredit').html(/*Math.abs(parseFloat(*/$('#tcredit').html()/*)*/+/*parseFloat(*/$('#el_credit'+f).val()/*))*/);
   $('#el_debit'+f).val('0.00');
 }
 
@@ -163,30 +193,33 @@ function function_debit(f){
 
 function runTable(numInput){
 
-  var sum = 0;
+  var sum = parseFloat('0.00');
   var tableReg = document.getElementById('journal');
   var myBodyElements = tableReg.getElementsByTagName("tr");
 
   if(myBodyElements.length >= 1){
     for (i = 1; i < myBodyElements.length; i++) {
       var inputs = myBodyElements[i].getElementsByTagName("input");
-      sum = sum + parseFloat(inputs[numInput].value);
+      var val = inputs[numInput].value.replace(/\,/g, '');
+      sum = sum + parseFloat(val);
     }
   }
 
-  return sum;
+  return sum.toFixed(2);
 }
 
 function updateBalance(s1,s2,btn,btn2){
 
   if (s1 > s2) { // El debito es mayor a credito
     $('#mensaje').html("Credit ");
-    var diff = s1 - s2;
-    $('#balance').html(diff);
+    var diff = (s1 - s2).toFixed(2);
+    diff = diff.toString();
+    $('#balance').html(format(diff));
   }else{
     $('#mensaje').html("Debit ");
-    var diff = s2 - s1;
-    $('#balance').html(s2 - s1);
+    var diff = (s2 - s1).toFixed(2);
+    diff = diff.toString();
+    $('#balance').html(format(diff));
   }
 
   if(diff == 0){
@@ -196,9 +229,9 @@ function updateBalance(s1,s2,btn,btn2){
     $(btn2).removeAttr('disabled');
   }else{
     $(btn).addClass('disabled');
-    $(btn).attr('disabled');
+    $(btn).attr('disabled','true');
     $(btn2).addClass('disabled');
-    $(btn2).attr('disabled');
+    $(btn2).attr('disabled','true');
   }
   return diff;
 }
@@ -240,8 +273,13 @@ function insertRow(){
   var ref = $('#referencia').val();
   var memo = $('#description').val();
   var typeTrans = $('#trans').val();
+  var documento = $('#documento').val();
+  var liq = $('#liq').val();
   var debit1 = parseFloat($('#debit').val());
   var credit1 = parseFloat($('#credit').val());
+
+  var d = debit1.toFixed(2);
+  var c = credit1.toFixed(2);
 
   var f = numRow+1;
 
@@ -253,11 +291,13 @@ function insertRow(){
       row += '<td><input class="control2" type="text" id="_accountyname'+f+'" name="_accountyname[]" autocomplete="off" value="'+name+'"  readonly /></td>'+'\n';
       row += '<td style="display:none"><input class="control2 type" type="hidden" id="el_type'+f+'" name="el_type[]" value="'+type+'"/>'+'\n';
       row += '<input class="control2" type="hidden" id="_references'+f+'" name="el_ref[]" value="'+ref+'" />'+'\n';
-      row += '<input class="control2" type="hidden"  id="codep'+f+'" name="codep[]" value="'+codep+'" required />'+'\n';
+      row += '<input class="control2" type="hidden"  id="codep'+f+'" name="codep[]" value="'+codep+'" />'+'\n';
       row += '<input class="control2 memo" type="hidden"  id="el_memo'+f+'" name="el_memo[]" value="'+memo+'" />'+'\n';
       row += '<input class="control2" type="hidden"  id="_trans'+f+'" name="_trans[]" value="'+typeTrans+'" /></td>'+'\n';
-      row += '<td><input readonly class="control2" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+$('#debit').val()+'" /></td>'+'\n';
-      row += '<td><input readonly class="control2" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+$('#credit').val()+'" /></td>'+'\n';
+      row += '<td><input readonly style="text-align:right" class="control2" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+d+'" /></td>'+'\n';
+      row += '<td><input readonly style="text-align:right" class="control2" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+c+'" /></td>'+'\n';
+      row += '<td style="display:none;"><input class="control2" type="hidden"  id="el_documento'+f+'" name="el_documento[]" value="'+documento+'" />'+'\n';
+      row += '<input class="control2" type="hidden"  id="la_liq'+f+'" name="la_liq[]" value="'+liq+'" /></td>'+'\n';
       row += '<td colspan="2" align="center" style="background-color: #d9f2fa;padding-top: 3px;padding-bottom: 1px;">'+'\n';
       row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="edit" name="edit"  title="Update" onclick="editInputs('+f+')" class="btn btn-default btn-small-vertical"><i class="fa fa-edit"></i></button>'+'\n';
       row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="reverse" name="reverse" title="Reverse" onclick="reverseInput('+f+',\''+'#save'+'\',\''+'#memorice'+'\')" class="btn btn-default btn-small-vertical"><i class="fa fa-refresh"></i></button>'+'\n';
@@ -269,12 +309,6 @@ function insertRow(){
     }
 
     $('#journal tr:last').after(row);
-    if(debit1 > parseFloat('0.00')){
-      function_debit(f);
-    }else{
-      function_credit(f);
-    }
-
     if($('#window').val() == 'save'){
       recalculate('#save','#memorice');
     }else{
@@ -306,17 +340,22 @@ function insertRow(){
   }
 }
 
-function round(value, decimals) {
-  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
-}
-
-function insertRow2(account,name,type,codep,ref,memo,typeTrans,debit1,credit1){
+function insertRow2(account,name,type,codep,ref,memo,typeTrans,debit1,credit1,documento,liq,annul){
 
   var numRow = parseInt($('#numRow').val(),10);
   var f = numRow+1;
 
   if(numRow==0){
     $('#num0').closest('tr').remove();
+  }
+
+  var class_disabled = funct1 = funct2 = funct3 = '';
+  if(annul == '1'){
+    var class_disabled = 'disabled';
+  }else{
+    var funct1 = 'editInputs('+f+')';
+    var funct2 = 'reverseInput('+f+',\''+'#update'+'\',\''+'#memoriceUpdate'+'\')';
+    var funct3 = 'deleteRow('+f+',\''+'#update'+'\',\''+'#memoriceUpdate'+'\')';
   }
 
   var row = '<tr style="background-color: #d9f2fa" class="odd gradeX" id="num'+f+'">'+'\n';
@@ -329,22 +368,23 @@ function insertRow2(account,name,type,codep,ref,memo,typeTrans,debit1,credit1){
   row += '<input class="control2" type="hidden"  id="codep'+f+'" name="codep[]" value="'+codep+'"/>'+'\n';
   row += '<input class="control2 memo" type="hidden"  id="el_memo'+f+'" name="el_memo[]" value="'+memo+'"/>'+'\n';
   row += '<input class="control2" type="hidden"  id="_trans'+f+'" name="_trans[]" value="'+typeTrans+'"/></td>'+'\n';
-  row += '<td><input readonly class="control2 disabled" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+debit1+'" /></td>'+'\n';
-  row += '<td><input readonly class="control2 disabled" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+credit1+'" /></td>'+'\n';
+  row += '<td><input readonly style="text-align:right" class="control2 disabled" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+debit1+'" /></td>'+'\n';
+  row += '<td><input readonly style="text-align:right" class="control2 disabled" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+credit1+'" /></td>'+'\n';
+  row += '<td style="display:none;"><input class="control2" type="hidden"  id="el_documento'+f+'" name="el_documento[]" value="'+documento+'" />'+'\n';
+  row += '<input class="control2" type="hidden"  id="la_liq'+f+'" name="la_liq[]" value="'+liq+'" /></td>'+'\n';
   row += '<td colspan="2" align="center" style="background-color: #d9f2fa;padding-top: 3px;padding-bottom: 1px;">'+'\n';
-  row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="edit" name="edit" title="Update" onclick="editInputs('+f+')" class="btn btn-default btn-small-vertical"><i class="fa fa-edit"></i></button>'+'\n';
-  row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="reverse" name="reverse" title="Reverse" onclick="reverseInput('+f+',\''+'#update'+'\',\''+'#memoriceUpdate'+'\')" class="btn btn-default btn-small-vertical"><i class="fa fa-refresh"></i></button>'+'\n';
-  row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="dr" name="dr" title="Delete" onclick="deleteRow('+f+',\''+'#update'+'\',\''+'#memoriceUpdate'+'\')" class="btn btn-default btn-small-vertical"><i class="fa fa-trash"></i></button></td>'+'\n';
+  
+  row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="edit" name="edit" title="Update" onclick="'+funct1+'" class="btn btn-default btn-small-vertical '+class_disabled+'" '+class_disabled+'><i class="fa fa-edit"></i></button>'+'\n';
+  row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="reverse" name="reverse" title="Reverse" onclick="'+funct2+'" class="btn btn-default btn-small-vertical '+class_disabled+'" '+class_disabled+'><i class="fa fa-refresh"></i></button>'+'\n';
+  row += '<button data-toggle="tooltip" data-placement="bottom" type="button" id="dr" name="dr" title="Delete" onclick="'+funct3+'" class="btn btn-default btn-small-vertical '+class_disabled+'" '+class_disabled+'><i class="fa fa-trash"></i></button></td>'+'\n';
   row += '</tr>';
 
   $('#journal tr:last').after(row);
-
-  if(debit1 > parseFloat('0.00')){
-    function_debit(f);
+  if($('#window').val() == 'save'){
+    recalculate('#save','#memorice');
   }else{
-    function_credit(f);
+    recalculate('#update','#memoriceUpdate');
   }
-  recalculate('#update','#memoriceUpdate');
 
   $('#numRow').val(f);
 }
@@ -390,7 +430,7 @@ function validateRows(){
   for (i = 1; i < myBodyElements.length; i++) {
     var inputs = myBodyElements[i].getElementsByTagName("input");
     for (var f = 0; f < inputs.length; f++) {
-      if(f != 2 && f != 3 && f != 4 && f != 6){
+      if(f != 2 && f != 3 && f != 4 && f != 6 && f != 9 && f != 10){
         if(f != 1 && inputs[f].value == ''){
           empty = true;
           break;
@@ -460,6 +500,8 @@ function clearForm(){
 
   $('#window').val('save');
   $('#_memo').val('');
+  $('#_documento').val('');
+  $('#_liq').val('');
   var text = $("select[name=benef] option[value='0']").text();
   $('.bootstrap-select .filter-option').text(text);
   document.getElementById('benef').selectedIndex = -1;
@@ -486,6 +528,8 @@ function clearModal(){
   $('#code1').val('');
   $('#type').val('');
   $('#referencia').val('');
+  $('#documento').val('');
+  $('#liq').val('');
   $('#trans option:selected').removeAttr('selected');
   document.getElementById('trans').selectedIndex=0;
 }
@@ -528,20 +572,70 @@ function searchJournal(type,id){
 
   $.ajax({
     type:"POST",
-    data:{type:type, id:id},
+    data:{type:type, id:id, item:$('#item').val()},
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
     success:function(r){
       if(r.journal != ''){
+        var rule = r.rule;
+        var p = r.permission;
+
         clearForm();
-        $('#mjs').html('Transaction found do you want?');
+
         $('#myModalJournal').modal('hide');
         $('#myModalList').modal('hide');
-        $('#btn_edit').attr('onclick','editJournal("'+r.journal['IDCONT']+'")');
-        $('#btn_annul').attr('onclick','annulJournal("'+r.journal['IDCONT']+'")');
-        $('#btn_delete').attr('onclick','deleteJournal("'+r.journal['IDCONT']+'")');
         $('#idcont').val(r.journal['IDCONT']);
-        $('#myModalTrans').modal('show');
+        if(r.journal['ANULADO'] != 1){
+
+          if(p.rd == 1){
+
+            $('#mjs').html('Transaction found do you want?');
+
+            if(p.edi == 1){
+              $('#btn_edit').attr('onclick','editJournal("'+r.journal['IDCONT']+'")');
+            }else{
+              $('#btn_edit').attr('onclick','viewMessage("You cannot execute this action")');
+            }
+
+            if(p.del == 1){
+              $('#btn_annul').attr('onclick','annulJournal("'+r.journal['IDCONT']+'")');
+            }else{
+              $('#btn_annul').attr('onclick','viewMessage("You cannot execute this action")');
+            }
+            
+            if(p.pri == 1){
+              $('#pdf_notif').attr('href',rule+'/pdf/'+r.journal.IDCONT+'/');
+              $('#excel_notif').attr('href',rule+'/excel/'+r.journal.IDCONT+'/');
+              $('#pdf').attr('href',rule+'/pdf/'+r.journal.IDCONT+'/');
+              $('#excel').attr('href',rule+'/excel/'+r.journal.IDCONT+'/');
+            }else{
+              $('#pdf').removeAttr('href');
+              $('#excel').removeAttr('href');
+              $('#pdf').attr("onclick","viewMessage('You cannot execute this action')");
+              $('#excel').attr("onclick","viewMessage('You cannot execute this action')");
+
+              $('#pdf_notif').removeAttr('href');
+              $('#excel_notif').removeAttr('href');
+              $('#pdf_notif').attr("onclick","viewMessage('You cannot execute this action')");
+              $('#excel_notif').attr("onclick","viewMessage('You cannot execute this action')");
+            }
+
+            $('#myModalTrans').modal('show');
+          }else{
+            viewMessage('You cannot execute this action');
+          }
+        }else{
+
+          editJournal(r.journal['IDCONT']);
+          //anular todo
+          Swal.fire({      
+            html: 'Journal canceled',
+            imageUrl: $('#puerto_host').val()+'/imagenes/wrong-04.png',
+            imageWidth: 75,
+            confirmButtonText: 'OK',
+            animation: true
+          }); 
+        } 
       }else{
         Swal.fire({      
           html: 'Journal not found',
@@ -571,17 +665,19 @@ function editJournal(id){
   $.ajax({
     type:"POST",
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
-    data: { id: id},
+    data: { id: id, item:$('#item').val()},
     dataType : 'json',
     success:function(r){
-      
-      $('#save').hide();
-      $('#memorice').hide();
-      $('#update').show();
-      $('#memoriceUpdate').show();
-      $('#delete').show();
-      $('#reverseAll').show();
-      $('#window').val('update');
+
+      if(r.journal['ANULADO'] != 1){
+        $('#save').hide();
+        $('#memorice').hide();
+        $('#update').show();
+        $('#memoriceUpdate').show();
+        $('#delete').show();
+        $('#reverseAll').show();
+        $('#window').val('update');
+      }
       
       if(r.journal != ''){
         $('#_actual').val(r.journal['ASIENTO']);
@@ -596,7 +692,7 @@ function annulJournal(id){
 
   $('#myModalTrans').modal('hide');
   $('#myModalConf').modal('show');
-  $('#mjs2').html('Are you sure of annul');
+  $('#mjs2').html('Are you sure of canceled?');
   $('#btn_conf').attr('href',$('#puerto_host').val()+'/annulJournal/'+id+'/');
 }
 
@@ -620,6 +716,8 @@ function editInputs(f){
   $('#description').val($('#el_memo'+f).val());
   $('#debit').val($('#el_debit'+f).val());
   $('#credit').val($('#el_credit'+f).val());
+  $('#documento').val($('#el_documento'+f).val());
+  $('#liq').val($('#la_liq'+f).val());
 
   var sel = document.getElementById( 'trans' ),
   opts = sel.options;
@@ -652,6 +750,8 @@ function save_edit(f){
   $('#_trans'+f).val($('#trans').val());
   $('#el_debit'+f).val($('#debit').val());
   $('#el_credit'+f).val($('#credit').val());
+  $('#el_documento'+f).val($('#documento').val());
+  $('#la_liq'+f).val($('#liq').val());
 
   if($('#window').val() === 'save'){
     recalculate('#save','#memorice');
@@ -696,7 +796,7 @@ function copyJournal(id){
 
   $.ajax({
     type:"POST",
-    data:{id:id},
+    data:{id:id, item:$('#item').val()},
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
     success:function(r){
@@ -723,6 +823,49 @@ function copyJournal(id){
 
 function data_journal(r){
 
+  if(r.journal['ANULADO'] == 1){
+
+    $('#_memo').addClass('disabled');
+    $('#_memo').attr('disabled','true');
+
+    $('#_documento').addClass('disabled');
+    $('#_documento').attr('disabled','true');
+
+    $('#_liq').addClass('disabled');
+    $('#_liq').attr('disabled','true');
+
+    $('#open').attr('disabled','true');
+    $('#open').addClass('disabled');
+
+    $('#date').attr('disabled','true');
+    $('#date').addClass('disabled');
+
+    $("#benef").prop("disabled", true);
+    $(".selectpicker[data-id='benef']").addClass("disabled");
+
+  }else{
+
+    $('#_memo').removeClass('disabled');
+    $('#_memo').removeAttr('disabled','true');
+
+    $('#_documento').removeClass('disabled');
+    $('#_documento').removeAttr('disabled','true');
+
+    $('#_liq').removeClass('disabled');
+    $('#_liq').removeAttr('disabled','true');
+
+    $('#open').removeAttr('disabled','true');
+    $('#open').removeClass('disabled');
+
+    $('#date').removeAttr('disabled','true');
+    $('#date').removeClass('disabled');
+
+    $("#benef").prop("disabled", false);
+    $(".selectpicker[data-id='benef']").removeClass("disabled");
+  }
+
+  $('#_documento').val(r.journal['DOCUMENTO'].trim());
+  $('#_liq').val(r.journal['LIQUIDA_NO'].trim());
   $('#_memo').val(r.journal['DESC_ASI'].trim());
   var date =  new Date(r.journal['FECHA_ASI']);
 
@@ -734,10 +877,12 @@ function data_journal(r){
   var year = date.getFullYear();
   $('#date').val(month+'/'+day+'/'+year);
 
-  if(r.journal['BENEFICIAR'].trim() == ''){
+  var b = r.journal['CEDRUC'].trim();
+
+  if(b == ''){
     var text = $('select[name=benef] option[value="0"]').text();
   }else{
-    var text = $('select[name=benef] option[value=\"'+r.journal['BENEFICIAR'].trim()+'\"]').text();
+    var text = $("select[name=benef] option[value='"+b+"']").text();   
   } 
 
   $('.bootstrap-select .filter-option').text(text);
@@ -747,8 +892,8 @@ function data_journal(r){
 
   for ( var i = 0; i < opts.length; i++ ) {
       
-      if(r.journal['BENEFICIAR'].trim() != ''){ 
-        var value = r.journal['BENEFICIAR'].trim();
+      if(r.journal['CEDRUC'].trim() != ''){ 
+        var value = r.journal['CEDRUC'].trim();
       }else{
         var value = 0;
       }
@@ -760,20 +905,200 @@ function data_journal(r){
   }
 
   var movi =  r.movi;
+
   for (var i = 0; i < movi.length; i++) {
-    account = movi[i].CODIGO_AUX.trim();
-    name = movi[i].NOMBRE.trim();
-    type = movi[i].TIPO;
-    codep = movi[i].CODMOV.trim();
-    ref = movi[i].REFER;
-    memo = movi[i].CONCEPTO;
-    typeTrans = movi[i].GRUPOCON;
-    debit = movi[i].DB;
-    credit = movi[i].CR;
-    insertRow2(account,name,type,codep,ref,memo,typeTrans,debit,credit);
+    var account = movi[i].CODIGO_AUX.trim();
+    var name = movi[i].NOMBRE.trim();
+    var type = movi[i].TIPO;
+    var codep = movi[i].CODMOV.trim();
+    var ref = movi[i].REFER;
+    var memo = movi[i].CONCEPTO;
+    var typeTrans = movi[i].GRUPOCON;
+    var documento = movi[i].DOCUMENTO.trim();
+    var liq = movi[i].LIQUIDA_NO.trim();
+    if(r.movi[i].IMPORTE > 0){
+      var debit = r.movi[i].importe_format;
+      var credit = '0.00';
+    }else{
+      var debit = '0.00';
+      var credit = r.movi[i].importe_format;
+    }
+
+    insertRow2(account,name,type,codep,ref,memo,typeTrans,debit,credit,documento,liq,r.journal['ANULADO']);
   }
 }
 
 $('#cleanFecha').on('click',function(){
   $('#datefilter').val('');
 });
+
+
+function points(where)
+{
+  var character = document.getElementById(where).value.charAt(document.getElementById(where).value.length-1);
+  var decimals = true;
+  dec = 2;
+
+  pat = /[\*,.\+,.\(,.\),.\?,.\\,.\$,.\[,.\],.\^]/
+  valor = document.getElementById(where).value;
+  largo = valor.length;
+  crtr = true;
+  if(isNaN(character) || pat.test(character) == true)
+  { 
+    if (pat.test(character)==true) 
+    {
+      character = "\\" + character;
+    }
+    carcter = new RegExp(character,"g");
+    valor = valor.replace(carcter,"");
+    document.getElementById(where).value = valor;
+    crtr = false;
+  }
+  else
+  {
+    var nums = new Array()
+    cont = 0
+    for(m=0;m<largo;m++)
+    {
+      if(valor.charAt(m) == "." || valor.charAt(m) == " " || valor.charAt(m) == ",")
+      {
+        continue;  
+      }
+      else{
+        nums[cont] = valor.charAt(m)
+        cont++
+      }
+      
+    }
+  }
+
+  if(decimals == true) {
+    ctdd = eval(1 + dec);
+    nmrs = 1
+  }
+  else {
+    ctdd = 1; nmrs = 3
+  }
+
+  var cad1="",cad2="",cad3="",tres=0
+  if(largo > nmrs && crtr == true)
+  {
+    for (k=nums.length-ctdd;k>=0;k--){
+      cad1 = nums[k];
+      cad2 = cad1 + cad2;
+      tres++
+      if((tres%3) == 0){
+        if(k!=0){
+          cad2 = "," + cad2;
+          }
+        }
+      }
+      
+    for (dd = dec; dd > 0; dd--)  
+    {
+      cad3 += nums[nums.length-dd]; 
+    }
+
+    if(decimals == true)
+    {
+      if(cad2!=''){
+        cad2 += "." + cad3;
+        
+      }else{
+        cad2 += cad3;
+      }
+    }
+    document.getElementById(where).value = cad2;
+  }
+  //document.getElementById(where).focus();
+} 
+
+function format(val_data)
+{
+  var character = val_data.charAt(val_data.length-1);
+  var decimals = true;
+  dec = 2;
+
+  pat = /[\*,.\+,.\(,.\),.\?,.\\,.\$,.\[,.\],.\^]/
+  largo = val_data.length;
+  crtr = true;
+  if(isNaN(character) || pat.test(character) == true)
+  { 
+    if (pat.test(character)==true) 
+    {
+      character = "\\" + character;
+    }
+    carcter = new RegExp(character,"g");
+    val_data = val_data.replace(carcter,"");
+    //document.getElementById(where).value = val_data;
+    crtr = false;
+  }
+  else
+  {
+    var nums = new Array()
+    cont = 0
+    for(m=0;m<largo;m++)
+    {
+      if(val_data.charAt(m) == "." || val_data.charAt(m) == " " || val_data.charAt(m) == ",")
+      {
+        continue;  
+      }
+      else{
+        nums[cont] = val_data.charAt(m)
+        cont++
+      }
+      
+    }
+  }
+
+  if(decimals == true) {
+    ctdd = eval(1 + dec);
+    nmrs = 1
+  }
+  else {
+    ctdd = 1; nmrs = 3
+  }
+
+  var cad1="",cad2="",cad3="",tres=0
+  if(largo > nmrs && crtr == true)
+  {
+    for (k=nums.length-ctdd;k>=0;k--){
+      cad1 = nums[k];
+      cad2 = cad1 + cad2;
+      tres++
+      if((tres%3) == 0){
+        if(k!=0){
+          cad2 = "," + cad2;
+          }
+        }
+      }
+      
+    for (dd = dec; dd > 0; dd--)  
+    {
+      cad3 += nums[nums.length-dd]; 
+    }
+
+    if(decimals == true)
+    {
+      if(cad2!=''){
+        cad2 += "." + cad3;
+        
+      }else{
+        cad2 += cad3;
+      }
+    }
+    val_data = cad2;
+  }
+  return val_data;
+  //document.getElementById(where).focus();
+}
+
+function viewMessage(msj){
+  Swal.fire({            
+    text: msj,
+    imageUrl: $('#puerto_host').val()+'/imagenes/wrong-04.png',
+    imageWidth: 75,
+    confirmButtonText: 'OK',
+    animation: true
+  });   
+}

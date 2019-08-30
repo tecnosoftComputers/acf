@@ -110,14 +110,14 @@ RewriteRule ^productsParametersDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar
 RewriteRule ^productsParametersReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters&opcion=report&tipo=$1 [L]
 
 #journalEntries
-RewriteRule ^journalEntries/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalEntries [L]
-RewriteRule ^annulJournal/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=annulJournal&id=$1 [L]
-RewriteRule ^deleteJournal/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=deleteJournal&id=$1 [L]
-RewriteRule ^saveJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveJournal [L]
-RewriteRule ^saveMemoriceJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveMemoriceJournal [L]
-RewriteRule ^updateJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateJournal [L]
-RewriteRule ^updateMemoriceJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateMemoriceJournal [L]
-RewriteRule ^deleteMemorice/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=deleteMemorice&id=$1 [L]
+RewriteRule ^journalEntries/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalEntries&item=30 [L]
+RewriteRule ^annulJournal/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=annulJournal&item=30&id=$1 [L]
+RewriteRule ^saveJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveJournal&item=30 [L]
+RewriteRule ^saveMemoriceJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveMemoriceJournal&item=30 [L]
+RewriteRule ^updateJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateJournal&item=30 [L]
+RewriteRule ^updateMemoriceJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateMemoriceJournal&item=30 [L]
+RewriteRule ^deleteMemorice/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=deleteMemorice&item=30&id=$1 [L]
+RewriteRule ^journalReport/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalReport&item=30&tipo=$1&idcont=$2 [L]
 
 #reports
 #journal entries

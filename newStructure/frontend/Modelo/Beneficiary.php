@@ -4,7 +4,7 @@ class Modelo_Beneficiary{
 
   public static function searchBeneficiary(){
 
-    $sql = "SELECT LPAD(NO_ID,6,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC";
+    $sql = "SELECT LPAD(NO_ID,5,0) AS NO_ID, TRIM(NOMEMP) as NOMEMP FROM finacli ORDER BY NOMEMP ASC";
 	$arrdatos = $GLOBALS['db']->auto_array($sql,array(),true);
 
     $datos = array();
