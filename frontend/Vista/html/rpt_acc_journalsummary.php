@@ -48,11 +48,11 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Type:</label>
             <div class="col-md-3">
-              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="option1">
+              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="R" <?php echo (isset($typereport) && $typereport == "R") ? 'checked="checked"' : ''; ?>>
               <label class="form-check-label" for="typereport">Summarized</label>
             </div>
             <div class="col-md-3">
-              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="option1">
+              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="D" <?php echo (isset($typereport) && $typereport == "D") ? 'checked="checked"' : ''; ?>>
               <label class="form-check-label" for="typereport">Detailed</label>
             </div>
           </div>
@@ -71,9 +71,9 @@
 
   <?php 
   if (isset($results) && !empty($results)) { 
-    $url = $dbdatefrom."/".$dbdateto."/";
-    $url .= (!empty($accfrom)) ? $accfrom."/" : ""; 
-    $url .= (!empty($accto)) ? $accto."/" : "";    
+    //$url = $dbdatefrom."/".$dbdateto."/";
+    //$url .= (!empty($accfrom)) ? $accfrom."/" : ""; 
+    //$url .= (!empty($accto)) ? $accto."/" : "";    
   ?>
   <br>
   <span id="pdf" style="float: right; margin-left: 10px">
@@ -89,85 +89,36 @@
     <table width="100%" class="table table-striped table-bordered table-hover style-table" >
     <thead>
       <tr>        
-        <th class="style-th">DATE</th>
-        <th class="style-th">TYPE SEAT</th>        
-        <th class="style-th">SEAT</th>        
-        <th class="style-th">REFERENCE</th>
-        <th class="style-th">CONCEPT</th>
+        <th class="style-th">ACCOUNT</th>
+        <th class="style-th">NAME ACCOUNT</th>        
         <th class="style-th">DEBIT</th>
-        <th class="style-th">CREDIT</th>
-        <th class="style-th">BALANCE</th>
+        <th class="style-th">CREDIT</th>        
       </tr>
     </thead>
     <tbody>
     <?php 
     if (!empty($results)){ 
       $account = '';      
-      foreach($results as $key=>$value){ 
-        if ($account != $value["CODMOV"]){ 
-          if (!empty($key)){
-            $showacumdebit = abs($acumdebit);
-            $showacumcredit = abs($acumcredit);
-            $showbalance = abs($balance);
-            echo "<tr>               
-                  <td colspan='4'>&nbsp;</td>
-                  <td><strong>Current Balance:</strong></td>
-                  <td align='right'><strong>".number_format($showacumdebit,2)."</strong></td>
-                  <td align='right'><strong>".number_format($showacumcredit,2)."</strong></td>
-                  <td align='right'><strong>".number_format($showbalance,2)."</strong></td>
-                </tr>"; 
-            echo "<tr><td colspan='8'>&nbsp;</td></tr>"; 
-          }
-          
-          $infoaccount = Modelo_ChartAccount::getIndividual(trim($value["CODMOV"]));
-          Utils::log("FECHA ".$dbdatefrom);
-          $prevbalance = Modelo_Dpmovimi::reportLedger($_SESSION['acfSession']['id_empresa'],
-                                                       date("Y-m-d",$dbdatefrom),
-                                                       trim($value["CODMOV"]));
-          
-          $showprevbalance = abs($prevbalance["balance"]); 
-          echo "<tr style='background-color:#e5e6ed;''>
-                  <td colspan='3'><strong>".$value["CODMOV"]."</strong></td>
-                  <td colspan='2'><strong>".$infoaccount["NOMBRE"]."</strong></td>
-                  <td colspan='2'><strong>Previous Balance:</strong></td>
-                  <td align='right'><strong>".number_format($showprevbalance,2)."</strong></td>
-                </tr>";
-          $account = $value["CODMOV"];    
-          $acumdebit = 0;
-          $acumcredit = 0;
-          $acumbalance = 0;
-          $balance = $prevbalance["balance"];               
-        }        
-        
-        $debit = ($value["IMPORTE"] > 0) ? $value["IMPORTE"] : 0;
-        $credit = ($value["IMPORTE"] <= 0) ? $value["IMPORTE"] : 0;
-        $balance = $balance + $value["IMPORTE"];
-        $acumdebit = $acumdebit + $debit;
-        $acumcredit = $acumcredit + $credit;    
-        $idmov = Utils::encriptar($value["IDCONT"]);
-        $showdebit = abs($debit);  
-        $showcredit = abs($credit);   
-        $showbalance = abs($balance);                 
+      $acumdebit = 0;
+      $acumcredit = 0;
+      foreach($results as $key=>$value){                         
+        $acumdebit = $acumdebit + $value["debit"];
+        $acumcredit = $acumcredit + $value["credit"];            
+        $showdebit = abs($value["debit"]);  
+        $showcredit = abs($value["credit"]);           
         echo "<tr>               
-                <td>".date("m/d/Y",strtotime($value["FECHA_ASI"]))."</td>
-                <td>".$value["TIPO_ASI"]."</td>
-                <td><a onclick=\"viewJournal('".$idmov."')\" style='cursor:pointer;'>".$value["ASIENTO"]."</a></td>                  
-                <td>".$value["REFER"]."</td>
-                <td>".$value["CONCEPTO"]."</td>
+                <td>".$value["CODMOV"]."</td>
+                <td>".$value["NOMBRE"]."</td>                                                
                 <td align='right'>".number_format($showdebit,2)."</td>
-                <td align='right'>".number_format($showcredit,2)."</td>
-                <td align='right'>".number_format($showbalance,2)."</td>
+                <td align='right'>".number_format($showcredit,2)."</td>                
               </tr>";                     
        } 
        $showacumdebit = abs($acumdebit);
-       $showacumcredit = abs($acumcredit);
-       $showbalance = abs($balance);
-       echo "<tr>               
-              <td colspan='4'>&nbsp;</td>
-              <td><strong>Current Balance:</strong></td>
+       $showacumcredit = abs($acumcredit);       
+       echo "<tr>                             
+              <td colspan='2'><strong>Total:</strong></td>
               <td align='right'><strong>".number_format($showacumdebit,2)."</strong></td>
               <td align='right'><strong>".number_format($showacumcredit,2)."</strong></td>
-              <td align='right'><strong>".number_format($showbalance,2)."</strong></td>
             </tr>";       
     } 
     ?>      
