@@ -173,7 +173,7 @@
   <br>
 <?php 
 } 
-if (isset($message) && !empty($message)){
+else{
   echo '<h4 style="text-align:center;">'.$message.'</h4>';
 }
 ?>  
