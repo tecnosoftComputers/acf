@@ -610,6 +610,12 @@ function searchJournal(type,id){
         }else{
 
           editJournal(r.journal['IDCONT']);
+
+          $('#save').addClass('disabled');
+          $('#save').attr('disabled','true');
+          $('#memorice').addClass('disabled');
+          $('#memorice').attr('disabled','true');
+
           //anular todo
           Swal.fire({      
             html: 'Journal canceled',

@@ -159,6 +159,7 @@
         </div><!-- FIN DE ROW -->
             
         <input type="hidden" id="numRow" name="numRow" value="<?php echo $fila ?>">
+        <input type="hidden" id="annul" name="annul" value="">
         <div class="modal fade" id="myModalJournal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">

@@ -43,7 +43,7 @@ class Controlador_Accounts extends Controlador_Base {
         $title = 'ACCOUNTING JOURNAL';
         $num = 1;
 
-        self::modelo1($type, $num, $nombre_archivo, $company, $user, $datos, $movi, $accounts, $title, $logo);
+        self::modelo1($type, $num, $nombre_archivo, $company, $user, $datos, $movi, $accounts, $title);
       break;
       case 'annulJournal':
 
@@ -412,7 +412,7 @@ class Controlador_Accounts extends Controlador_Base {
   public static function modelo1($type, $num, $nombre_archivo, $company, $user, $datos, $movi, $accounts, $title, $logo){
 
     $name = $company['nombre_empresa'];
-    $logo = 'logoinicial.jpg';//$company['rentas:logo'];
+    $logo = $company['rentas_logo'];
     $date = date('d/m/Y',strtotime($datos['FECHA_ASI']));
     $journal = $datos['TIPO_ASI'].' '.$datos['ASIENTO'];
     $memo = $datos['DESC_ASI'];
@@ -496,7 +496,7 @@ class Controlador_Accounts extends Controlador_Base {
         $aux = trim(str_replace('.', '', $item['CODMOV']));
 
         $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':H'.$cont)->applyFromArray($CStyle);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$cont, $item['CODMOV'])->setCellValue('B'.$cont, $accounts[$aux]);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$cont, $aux)->setCellValue('B'.$cont, $accounts[$aux]);
 
         if($item['IMPORTE'] > 0){
           $debit = $item['importe_format'];
@@ -508,7 +508,7 @@ class Controlador_Accounts extends Controlador_Base {
           $s2 += str_replace(',','',$credit); 
         }
 
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$cont, '$'.number_format($debit,2))->setCellValue('H'.$cont, '$'.number_format($credit,2));
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$cont, number_format($debit,2))->setCellValue('H'.$cont, number_format($credit,2));
         $cont++;      
       }
       
@@ -517,8 +517,8 @@ class Controlador_Accounts extends Controlador_Base {
       
       $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->applyFromArray($CStyle);
       $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->getFont()->setBold(true);
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$cont, '$'.number_format($s1,2));
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$cont, '$'.number_format($s2,2));
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$cont, number_format($s1,2));
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$cont, number_format($s2,2));
 
       self::outputExcel($nombre_archivo,$objPHPExcel);
 
@@ -541,7 +541,7 @@ class Controlador_Accounts extends Controlador_Base {
         $aux = trim(str_replace('.', '', $value['CODMOV']));
 
         $table .= '<tr>';
-        $table .= '<td style="font-size:22px;padding:6px 6px 6px 6px;">'.$value['CODMOV'].'</td>';
+        $table .= '<td style="font-size:22px;padding:6px 6px 6px 6px;">'.$aux.'</td>';
         $table .= '<td style="font-size:22px;padding:6px 6px 6px 6px;">'.$accounts[$aux].'</td>';
 
         if($value['IMPORTE'] > 0){
@@ -554,12 +554,12 @@ class Controlador_Accounts extends Controlador_Base {
           $s2 += str_replace(',','',$credit); 
         }
 
-        $table .= '<td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;">$'.$debit.'</td>';
-        $table .= '<td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;">$'.$credit.'</td>';
+        $table .= '<td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;">'.$debit.'</td>';
+        $table .= '<td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;">'.$credit.'</td>';
         $table .= '<tr>';
       }
 
-      $table .= '<tr><td colspan="2" align="right" style="border:0px;font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;"><b>Totals:</b></td><td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;"><b>$'.number_format($s1,2).'</b></td><td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;"><b>$'.number_format($s2,2).'</b></td></tr>';
+      $table .= '<tr><td colspan="2" align="right" style="border:0px;font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;"><b>Totals:</b></td><td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;"><b>'.number_format($s1,2).'</b></td><td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;"><b>'.number_format($s2,2).'</b></td></tr>';
 
       $body = str_replace('_BODY_', $table, $body);
       $body = str_replace('_TITLE_', $title, $body);
