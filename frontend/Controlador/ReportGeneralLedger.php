@@ -72,7 +72,8 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
         $columns[] = array("width"=>20,"label"=>"TYPE SEAT");  
         $columns[] = array("width"=>20,"label"=>"SEAT");  
         $columns[] = array("width"=>25,"label"=>"REFERENCE");  
-        $columns[] = array("width"=>105,"label"=>"CONCEPT");  
+        $columns[] = array("width"=>25,"label"=>"SETTLEMENT");  
+        $columns[] = array("width"=>80,"label"=>"CONCEPT");  
         $columns[] = array("width"=>30,"label"=>"DEBIT");  
         $columns[] = array("width"=>30,"label"=>"CREDIT");
         $columns[] = array("width"=>30,"label"=>"BALANCE");    
@@ -143,9 +144,10 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
             $this->objPdf->Cell(18 ,5,date("m/d/Y",strtotime($value["FECHA_ASI"])),0,0);
             $this->objPdf->Cell(20 ,5,$value["TIPO_ASI"],0,0);                 
             $this->objPdf->Cell(20 ,5,$value["ASIENTO"],0,0);                 
-            $this->objPdf->Cell(25 ,5,$value["REFER"],0,0);                           
+            $this->objPdf->Cell(25 ,5,$value["REFER"],0,0);
+            $this->objPdf->Cell(25 ,5,'',0,0);
             $starty = $this->objPdf->GetY();              
-            $this->objPdf->MultiCell(105,3,trim($value["CONCEPTO"]), 0, 'L', 0);
+            $this->objPdf->MultiCell(80,3,trim($value["CONCEPTO"]), 0, 'L', 0);
             $this->objPdf->SetXY(198, $starty); 
             $this->objPdf->Cell(30 ,5,number_format($showdebit,2),0,0,'R');
             $this->objPdf->Cell(30 ,5,number_format($showcredit,2),0,0,'R');
@@ -192,22 +194,23 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
                    'B'=>array("width"=>14,"label"=>"TYPE SEAT"),
                    'C'=>array("width"=>10,"label"=>"SEAT"),
                    'D'=>array("width"=>15,"label"=>"REFERENCE"),
-                   'E'=>array("width"=>80,"label"=>"CONCEPT"),                   
-                   'F'=>array("width"=>20,"label"=>"DEBIT"),
-                   'G'=>array("width"=>20,"label"=>"CREDIT"),
-                   'H'=>array("width"=>20,"label"=>"BALANCE")
+                   'E'=>array("width"=>15,"label"=>"SETTLEMENT"),
+                   'F'=>array("width"=>65,"label"=>"CONCEPT"),                   
+                   'G'=>array("width"=>20,"label"=>"DEBIT"),
+                   'H'=>array("width"=>20,"label"=>"CREDIT"),
+                   'I'=>array("width"=>20,"label"=>"BALANCE")
                  );
 
-        $this->printHeaderExcel("GENERAL LEDGER REPORT",$columns,'G1',80,$info_company,$from,$to);
+        $this->printHeaderExcel("GENERAL LEDGER REPORT",$columns,'H1',80,$info_company,$from,$to);
         $objPHPExcel = $this->objExcel;          
 
-        $objPHPExcel->getActiveSheet()->mergeCells('A1:F1');
-        $objPHPExcel->getActiveSheet()->mergeCells('A2:F2'); 
-        $objPHPExcel->getActiveSheet()->mergeCells('A3:F3');
-        $objPHPExcel->getActiveSheet()->mergeCells('A4:F4');
-        $objPHPExcel->getActiveSheet()->mergeCells('A5:F5');
-        $objPHPExcel->getActiveSheet()->mergeCells('A6:F6');          
-        $objPHPExcel->getActiveSheet()->mergeCells('G1:H6');           
+        $objPHPExcel->getActiveSheet()->mergeCells('A1:G1');
+        $objPHPExcel->getActiveSheet()->mergeCells('A2:G2'); 
+        $objPHPExcel->getActiveSheet()->mergeCells('A3:G3');
+        $objPHPExcel->getActiveSheet()->mergeCells('A4:G4');
+        $objPHPExcel->getActiveSheet()->mergeCells('A5:G5');
+        $objPHPExcel->getActiveSheet()->mergeCells('A6:G6');          
+        $objPHPExcel->getActiveSheet()->mergeCells('H1:I6');           
                   
         $cont = 10;
 
@@ -250,15 +253,15 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
                 $showacumcredit = abs($acumcredit);
                 $showbalance = abs($balance);
                 
-                $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':H'.$cont)->applyFromArray($styleArray);
-                $objPHPExcel->getActiveSheet()->getStyle('F'.$cont.':H'.$cont)->applyFromArray($CStyle);  
-                $objPHPExcel->getActiveSheet()->getStyle('F'.$cont.':H'.$cont)->applyFromArray($AmtStyle);
-                $objPHPExcel->getActiveSheet()->getStyle('E'.$cont.':H'.$cont)->applyFromArray($BoldStyle); 
+                $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':I'.$cont)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':I'.$cont)->applyFromArray($CStyle);
+                $objPHPExcel->getActiveSheet()->getStyle('F'.$cont.':I'.$cont)->applyFromArray($AmtStyle);
+                $objPHPExcel->getActiveSheet()->getStyle('E'.$cont.':I'.$cont)->applyFromArray($BoldStyle); 
                 $objPHPExcel->setActiveSheetIndex(0)              
-                  ->setCellValue('E'.$cont, "Current Balance:")
-                  ->setCellValue('F'.$cont, " ".number_format($showacumdebit,2))
-                  ->setCellValue('G'.$cont, " ".number_format($showacumcredit,2))
-                  ->setCellValue('H'.$cont, " ".number_format($showbalance,2)); 
+                  ->setCellValue('F'.$cont, "Current Balance:")
+                  ->setCellValue('G'.$cont, " ".number_format($showacumdebit,2))
+                  ->setCellValue('H'.$cont, " ".number_format($showacumcredit,2))
+                  ->setCellValue('I'.$cont, " ".number_format($showbalance,2)); 
                 $cont++; 
 
                 //print blank line
@@ -268,7 +271,10 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
                   ->setCellValue('C'.$cont, '')
                   ->setCellValue('D'.$cont, '')
                   ->setCellValue('E'.$cont, '')
-                  ->setCellValue('F'.$cont, '');
+                  ->setCellValue('F'.$cont, '')
+                  ->setCellValue('G'.$cont, '')
+                  ->setCellValue('H'.$cont, '')
+                  ->setCellValue('I'.$cont, '');
                 $cont++;
               }              
 
@@ -277,16 +283,17 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
                                                            $datefrom,trim($value["CODMOV"]));
               $showprevbalance = abs($prevbalance["balance"]); 
 
-              $objPHPExcel->getActiveSheet()->mergeCells('A'.$cont.':D'.$cont);
-              $objPHPExcel->getActiveSheet()->mergeCells('F'.$cont.':G'.$cont);
-              $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':H'.$cont)->applyFromArray($styleArray);
-              $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':H'.$cont)->applyFromArray($BoldStyle);
-              $objPHPExcel->getActiveSheet()->getStyle('H'.$cont)->applyFromArray($AmtStyle);
+              $objPHPExcel->getActiveSheet()->mergeCells('A'.$cont.':C'.$cont);
+              $objPHPExcel->getActiveSheet()->mergeCells('D'.$cont.':F'.$cont);
+              $objPHPExcel->getActiveSheet()->mergeCells('G'.$cont.':H'.$cont);
+              $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':I'.$cont)->applyFromArray($styleArray);
+              $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':I'.$cont)->applyFromArray($BoldStyle);
+              $objPHPExcel->getActiveSheet()->getStyle('I'.$cont)->applyFromArray($AmtStyle);
               $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A'.$cont, $value["CODMOV"])
-                ->setCellValue('E'.$cont, $infoaccount["NOMBRE"])
-                ->setCellValue('F'.$cont, "Previous Balance:")
-                ->setCellValue('H'.$cont, " ".number_format($showprevbalance,2)); 
+                ->setCellValue('D'.$cont, $infoaccount["NOMBRE"])
+                ->setCellValue('G'.$cont, "Previous Balance:")
+                ->setCellValue('I'.$cont, " ".number_format($showprevbalance,2)); 
               $cont++;    
 
               $account = $value["CODMOV"];    
@@ -296,8 +303,8 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               $balance = $prevbalance["balance"];               
             }   
 
-            $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':H'.$cont)->applyFromArray($styleArray);
-            $objPHPExcel->getActiveSheet()->getStyle('F'.$cont.':H'.$cont)->applyFromArray($AmtStyle);     
+            $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':I'.$cont)->applyFromArray($styleArray);
+            $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':I'.$cont)->applyFromArray($AmtStyle);     
             $debit = ($value["IMPORTE"] > 0) ? $value["IMPORTE"] : 0;
             $credit = ($value["IMPORTE"] <= 0) ? $value["IMPORTE"] : 0;
             $balance = $balance + $value["IMPORTE"];
@@ -308,31 +315,32 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
             $showcredit = abs($credit);   
             $showbalance = abs($balance); 
 
-            $objPHPExcel->getActiveSheet()->getStyle('E'.$cont)->getAlignment()->setWrapText(true);
+            $objPHPExcel->getActiveSheet()->getStyle('F'.$cont)->getAlignment()->setWrapText(true);
             $objPHPExcel->setActiveSheetIndex(0)
               ->setCellValue('A'.$cont, date("m/d/Y",strtotime($value["FECHA_ASI"])))
               ->setCellValue('B'.$cont, $value["TIPO_ASI"])
               ->setCellValue('C'.$cont, $value["ASIENTO"])
               ->setCellValue('D'.$cont, $value["REFER"])
-              ->setCellValue('E'.$cont, trim($value["CONCEPTO"]))
-              ->setCellValue('F'.$cont, " ".number_format($showdebit,2))
-              ->setCellValue('G'.$cont, " ".number_format($showcredit,2))
-              ->setCellValue('H'.$cont, " ".number_format($showbalance,2));  
+              ->setCellValue('E'.$cont, " ")
+              ->setCellValue('F'.$cont, trim($value["CONCEPTO"]))
+              ->setCellValue('G'.$cont, " ".number_format($showdebit,2))
+              ->setCellValue('H'.$cont, " ".number_format($showcredit,2))
+              ->setCellValue('I'.$cont, " ".number_format($showbalance,2));  
             $cont++;                              
           } 
           $showacumdebit = abs($acumdebit);
           $showacumcredit = abs($acumcredit);
           $showbalance = abs($balance);                  
 
-          $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':H'.$cont)->applyFromArray($styleArray);
-          $objPHPExcel->getActiveSheet()->getStyle('F'.$cont.':H'.$cont)->applyFromArray($CStyle);  
-          $objPHPExcel->getActiveSheet()->getStyle('F'.$cont.':H'.$cont)->applyFromArray($AmtStyle);
-          $objPHPExcel->getActiveSheet()->getStyle('E'.$cont.':H'.$cont)->applyFromArray($BoldStyle); 
+          $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':I'.$cont)->applyFromArray($styleArray);
+          $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':I'.$cont)->applyFromArray($CStyle);  
+          $objPHPExcel->getActiveSheet()->getStyle('F'.$cont.':I'.$cont)->applyFromArray($AmtStyle);
+          $objPHPExcel->getActiveSheet()->getStyle('E'.$cont.':I'.$cont)->applyFromArray($BoldStyle); 
           $objPHPExcel->setActiveSheetIndex(0)              
-            ->setCellValue('E'.$cont, "Current Balance:")
-            ->setCellValue('F'.$cont, " ".number_format($showacumdebit,2))
-            ->setCellValue('G'.$cont, " ".number_format($showacumcredit,2))
-            ->setCellValue('H'.$cont, " ".number_format($showbalance,2));   
+            ->setCellValue('F'.$cont, "Current Balance:")
+            ->setCellValue('G'.$cont, " ".number_format($showacumdebit,2))
+            ->setCellValue('H'.$cont, " ".number_format($showacumcredit,2))
+            ->setCellValue('I'.$cont, " ".number_format($showbalance,2));   
         }
         $this->outputExcel("GENERAL_LEDGER_REPORT");  
       break; 

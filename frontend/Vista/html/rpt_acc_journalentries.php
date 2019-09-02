@@ -165,5 +165,10 @@
    </div>
   </div>
   <br>
-<?php } ?>  
+<?php 
+} 
+else {
+  echo "Not found records"; 
+}
+?>  
 </div> <!-- FIN DE WRAPPER  -->

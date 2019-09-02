@@ -99,5 +99,7 @@
    </div>
   </div>
   <br>
-<?php } ?>  
+<?php 
+} 
+?>  
 </div> <!-- FIN DE WRAPPER  -->

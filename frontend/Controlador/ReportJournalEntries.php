@@ -72,7 +72,7 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
           $seataux = ''; 
          
           foreach($results as $key=>$value){                                           
-            if ($this->objPdf->GetY() > 375){
+            if ($this->objPdf->GetY() > 370){
               $this->objPdf->AddPage();
               $this->printHeaderPdf("JOURNAL ENTRIES REPORT",$from,$to);   
               $this->printHeaderTablePdf($columns);              
