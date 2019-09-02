@@ -1,5 +1,4 @@
 <?php
-
 class Modelo_Access{
 
   public static function truncateTabla(){

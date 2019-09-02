@@ -110,7 +110,7 @@
 
 .daterangepicker .drp-calendar {
   display: none;
-  max-width: 270px;
+  max-width: 320px;
 }
 
 .daterangepicker .drp-calendar.left {

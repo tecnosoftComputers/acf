@@ -1,5 +1,5 @@
 <?php    
-    define('NEW_SYSTEM','http://localhost/fernanda/acf/');
+    define('NEW_SYSTEM','http://localhost/fernando/acf/');
     function head_init($role,$db, $acceso) {
     // Mostrar items del modulo
     $sql = $db->prepare("SELECT * FROM permisos p

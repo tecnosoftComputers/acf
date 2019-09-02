@@ -56,8 +56,14 @@
             </div>
           </div>
 
-          <div class="modal-footer">            
-            <button style="float: left;" type="submit" name="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
+          <div class="modal-footer">
+            <?php
+            if (isset($permission) && $permission["rd"] == 1){ 
+            ?>            
+              <button style="float: left;" type="submit" name="register" id="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
+            <?php }else{ ?>
+              <button style="float: left;" type="button" class="btn btn-primary" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-eye"></i> Search</a></button>
+            <?php } ?>
             <span style="float: left; margin-left: 15px;">
               <a href="<?php echo PUERTO."://".HOST."/report/journalentries/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
@@ -137,7 +143,7 @@
          <td><?php echo $value["NOMBRE"];?></td>   
          <td><?php echo $value["TIPO"];?></td>
          <td><?php echo $value["REFER"];?></td>
-         <td><a href="javascript:void(0);"><?php echo $value["DOCUMENTO"];?></a></td>
+         <td><a href="javascript:void(0);">&nbsp;</a></td>
          <td><?php echo $value["CONCEPTO"];?></td>                  
          
          <?php 
@@ -167,8 +173,8 @@
   <br>
 <?php 
 } 
-else {
-  echo "Not found records"; 
+if (isset($message) && !empty($message)){
+  echo '<h4 style="text-align:center;">'.$message.'</h4>';
 }
 ?>  
 </div> <!-- FIN DE WRAPPER  -->

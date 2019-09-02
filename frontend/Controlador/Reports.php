@@ -3,6 +3,42 @@ class Controlador_Reports extends Controlador_Base {
 
   public $objExcel;
   public $objPdf;
+  public $limitline = 370;
+  public $line = 10;
+
+  //style for all cells
+  public $styleArray = array(
+          'font'  => array(
+            'bold'  => false,              
+            'size'  => 10,
+            'name'  => 'Arial'
+          ),
+          'alignment' => array(
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,
+            'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+          ) 
+         );
+
+  //style for line before totals
+  public $CStyle = array(
+          'borders' => array(
+            'top' => array('style' => PHPExcel_Style_Border::BORDER_THIN)
+          )
+         );
+
+  //style for amounts
+  public $AmtStyle = array(            
+          'alignment' => array(
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_RIGHT,
+          )
+         );
+
+  //style bold
+  public $BoldStyle = array(            
+          'font'  => array(
+            'bold'  => true,                           
+          )
+        );
   
   public function construirPagina(){}
 
@@ -71,7 +107,7 @@ class Controlador_Reports extends Controlador_Base {
     
     //setOffsetX works properly 
     $objDrawing->setOffsetX($setxlogo);//360 80
-    $objDrawing->setOffsetY(5); 
+    $objDrawing->setOffsetY(5);     
     //set width, height 
     $objDrawing->setWidth(110); 
     $objDrawing->setHeight(110); 
@@ -123,7 +159,7 @@ class Controlador_Reports extends Controlador_Base {
         'name'  => 'Arial'
     ));
     $this->objExcel->setActiveSheetIndex(0)
-                   ->setCellValue('A7', 'From: '.$from. '     To: '.$to.' '.'     Date: '.date('m/d/Y')); 
+                   ->setCellValue('A7', 'From: '.$from. '     To: '.$to.' '.'     Date: '.date('m/d/Y'));     
     $this->objExcel->getActiveSheet()->getStyle('A7')->applyFromArray($styleArray);           
               
     //header
@@ -147,6 +183,8 @@ class Controlador_Reports extends Controlador_Base {
        $this->objExcel->setActiveSheetIndex(0)->setCellValue($key.'9', $value["label"]); 
        $this->objExcel->getActiveSheet()->getStyle($key.'9')->applyFromArray($styleArray);       
     }    
+    
+    $this->objExcel->getActiveSheet()->mergeCells('A7:'.$key.'7');
   }
 
   public function outputExcel($title){

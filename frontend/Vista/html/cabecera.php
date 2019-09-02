@@ -45,6 +45,12 @@
 </head>
 </script>
 <body>
-    <?php echo $menu; ?>
-<br/><br/><br/>
 
+<div class="modal fade" tabindex="-1" role="dialog" id="loading">
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document" >
+    <img src="<?php echo PUERTO."://".HOST."/imagenes/loader.gif"?>" width="30%" height="30%">    
+  </div>
+</div>
+
+<?php echo $menu; ?>
+<br/><br/><br/>

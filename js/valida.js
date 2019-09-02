@@ -1,5 +1,5 @@
 $(document).ready(function(){ 
-  $('[data-toggle="tooltip"]').tooltip(); 
+  $('[data-toggle="tooltip"]').tooltip();   
 });
 
 function enviarForm(){
@@ -621,4 +621,5 @@ function viewMessage(msj){
     confirmButtonText: 'OK',
     animation: true
   });   
-}
+} 
+

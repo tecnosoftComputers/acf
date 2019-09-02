@@ -5,7 +5,7 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
 
     $tags = array();    
     if(!Utils::estaLogueado()){
-      header("Location: ../login.php");
+      header("Location: ".PUERTO."://".HOST."/login.php");
     } 
     $action = Utils::getParam('action','',$this->data);
     switch($action){                            
