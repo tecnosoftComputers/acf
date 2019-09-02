@@ -1,14 +1,10 @@
 <?php 
-/*previous structure*/
-if ( isset($_GET['mostrar']) && !empty($_GET['mostrar']) ) {
-  /*new structure*/
-  require_once 'constantes.php';
+require_once 'constantes.php';
+//new structure
+if ( isset($_GET['mostrar']) && !empty($_GET['mostrar']) ) {  
   require_once 'init.php';
-
   dispatch();
   $GLOBALS['db']->close();
-
-   
 }
 else{
   require_once ("controlador/controller.php");

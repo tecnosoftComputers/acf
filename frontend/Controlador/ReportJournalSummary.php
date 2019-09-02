@@ -4,7 +4,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
   public function construirPagina(){   
   	$tags = array();    
     if(!Utils::estaLogueado()){
-      header("Location: ../login.php");
+      header("Location: ".PUERTO."://".HOST."/login.php");
     } 
     $action = Utils::getParam('action','',$this->data);
     switch($action){
@@ -32,7 +32,10 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
         else{
           $tags["results"] = Modelo_Dpmovimi::reportSummaryD($_SESSION['acfSession']['id_empresa'],
                                                              $datefrom,$dateto,$ccfrom,$ccto); 
-        }        
+        } 
+        if (empty($tags["results"])){
+          $tags["message"] = "Not found records";
+        }       
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_journalsummary', $tags);  
       break;
@@ -65,7 +68,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
             $acumdebit = 0;
             $acumcredit = 0;
             foreach($results as $key=>$value){ 
-              if ($this->objPdf->GetY() > 375){
+              if ($this->objPdf->GetY() > $this->limitline){
                 $this->objPdf->AddPage();
                 $this->printHeaderPdf("JOURNAL ENTRY SUMMARY REPORT",$from,$to);   
                 $this->printHeaderTablePdf($columns);              
@@ -115,7 +118,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
           $totcredit = 0;
           $totresta = 0;
           foreach($results as $key=>$value){ 
-            if ($this->objPdf->GetY() > 370){
+            if ($this->objPdf->GetY() > $this->limitline){
               $this->objPdf->AddPage();
               $this->printHeaderPdf("JOURNAL ENTRY SUMMARY REPORT",$from,$to);   
               $this->printHeaderTablePdf($columns);              
@@ -212,6 +215,218 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
         }        
         $this->objPdf->Output(); 
       break; 
+      case 'excel':
+        $accfrom = Utils::getParam('accfrom','',$this->data);
+        $accto = Utils::getParam('accto','',$this->data);
+        $aux_datefrom = Utils::getParam('datefrom','',$this->data);
+        $datefrom = (!empty($aux_datefrom)) ? date("Y-m-d", $aux_datefrom) : date('Y-m-d'); 
+        $aux_dateto = Utils::getParam('dateto','',$this->data);
+        $dateto = (!empty($aux_dateto)) ? date("Y-m-d", $aux_dateto) : date('Y-m-d');
+        $ccfrom = (!empty($accfrom)) ? Modelo_ChartAccount::getIndAux($accfrom)["CODIGO"]: '';
+        $ccto = (!empty($accto)) ? Modelo_ChartAccount::getIndAux($accto)["CODIGO"] : '';        
+        $typereport = Utils::getParam('typereport','S',$this->data);
+               
+        $from = date("m/d/Y", strtotime($datefrom));
+        $to = date("m/d/Y", strtotime($dateto));  
+        $info_company = Modelo_Companie::searchCompanies($_SESSION['acfSession']['id_empresa']); 
+
+        if ($typereport == "S"){ 
+          $results = Modelo_Dpmovimi::reportSummaryS($_SESSION['acfSession']['id_empresa'],
+                                                     $datefrom,$dateto,$ccfrom,$ccto);  
+          $columns = array(
+                     'A'=>array("width"=>18,"label"=>"ACCOUNT"),
+                     'B'=>array("width"=>80,"label"=>"NAME ACCOUNT"),
+                     'C'=>array("width"=>30,"label"=>"DEBIT"),
+                     'D'=>array("width"=>30,"label"=>"CREDIT")
+                   );          
+          $this->printHeaderExcel("JOURNAL ENTRY SUMMARY REPORT",$columns,'D1',10,$info_company,$from,$to);
+          $objPHPExcel = $this->objExcel;          
+
+          $objPHPExcel->getActiveSheet()->mergeCells('A1:C1');
+          $objPHPExcel->getActiveSheet()->mergeCells('A2:C2'); 
+          $objPHPExcel->getActiveSheet()->mergeCells('A3:C3');
+          $objPHPExcel->getActiveSheet()->mergeCells('A4:C4');
+          $objPHPExcel->getActiveSheet()->mergeCells('A5:C5');
+          $objPHPExcel->getActiveSheet()->mergeCells('A6:C6');          
+          $objPHPExcel->getActiveSheet()->mergeCells('D1:D6');           
+                    
+          if (!empty($results)){
+            $acumdebit = 0;
+            $acumcredit = 0;
+            foreach($results as $key=>$value){                         
+              $acumdebit = $acumdebit + $value["debit"];
+              $acumcredit = $acumcredit + $value["credit"];            
+              $showdebit = abs($value["debit"]);  
+              $showcredit = abs($value["credit"]);           
+
+              $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A'.$this->line, " ".$value['CODMOV'])
+                ->setCellValue('B'.$this->line, $value['NOMBRE'])
+                ->setCellValue('C'.$this->line, " ".number_format($showdebit,2))
+                ->setCellValue('D'.$this->line, " ".number_format($showcredit,2)); 
+
+              $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':D'.$this->line)->applyFromArray($this->styleArray);
+              $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':D'.$this->line)->applyFromArray($this->AmtStyle);
+            
+              $this->line++;                  
+             } 
+             $showacumdebit = abs($acumdebit);
+             $showacumcredit = abs($acumcredit);      
+
+             $objPHPExcel->setActiveSheetIndex(0)                
+                ->setCellValue('A'.$this->line,'')
+                ->setCellValue('B'.$this->line,'')                
+                ->setCellValue('C'.$this->line,'')
+                ->setCellValue('D'.$this->line,'');
+             $this->line++;
+
+             $objPHPExcel->setActiveSheetIndex(0)                
+                ->setCellValue('A'.$this->line,'')
+                ->setCellValue('B'.$this->line,'Total:')                
+                ->setCellValue('C'.$this->line, " ".number_format($showacumdebit,2))
+                ->setCellValue('D'.$this->line, " ".number_format($showacumcredit,2));
+
+             $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':D'.$this->line)->applyFromArray($this->styleArray);   
+             $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':D'.$this->line)->applyFromArray($this->AmtStyle);
+             $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':D'.$this->line)->applyFromArray($this->CStyle);
+             $objPHPExcel->getActiveSheet()->getStyle('B'.$this->line.':D'.$this->line)->applyFromArray($this->BoldStyle);                 
+          }
+        }
+        else{
+          $results = Modelo_Dpmovimi::reportSummaryD($_SESSION['acfSession']['id_empresa'],
+                                                     $datefrom,$dateto,$ccfrom,$ccto); 
+
+          $columns = array(
+                     'A'=>array("width"=>18,"label"=>"TYPE SEAT"),
+                     'B'=>array("width"=>80,"label"=>"DESCRIPTION"),
+                     'C'=>array("width"=>30,"label"=>"DEBIT"),
+                     'D'=>array("width"=>30,"label"=>"CREDIT"),
+                     'E'=>array("width"=>30,"label"=>"(DB - CR)")
+                   );          
+          $this->printHeaderExcel("JOURNAL ENTRY SUMMARY REPORT",$columns,'E1',10,$info_company,$from,$to);
+          $objPHPExcel = $this->objExcel;          
+
+          $objPHPExcel->getActiveSheet()->mergeCells('A1:D1');
+          $objPHPExcel->getActiveSheet()->mergeCells('A2:D2'); 
+          $objPHPExcel->getActiveSheet()->mergeCells('A3:D3');
+          $objPHPExcel->getActiveSheet()->mergeCells('A4:D4');
+          $objPHPExcel->getActiveSheet()->mergeCells('A5:D5');
+          $objPHPExcel->getActiveSheet()->mergeCells('A6:D6');          
+          $objPHPExcel->getActiveSheet()->mergeCells('E1:E6'); 
+
+          if (!empty($results)){
+            $account = '';      
+            $acumdebit = 0;
+            $acumcredit = 0;
+            $acumresta = 0;
+            $totdebit = 0;
+            $totcredit = 0;
+            $totresta = 0;
+            foreach($results as $key=>$value){ 
+              if ($account <> $value["CODMOV"]){
+                if (!empty($key)){
+                  $totdebit = $totdebit + $acumdebit;
+                  $totcredit = $totcredit + $acumcredit;
+                  $totresta = $totresta + $acumresta;
+                  $showacumdebit = abs($acumdebit);
+                  $showacumcredit = abs($acumcredit);
+                  $showacumresta = abs($acumresta);
+
+                  $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);  
+                  $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);
+                  $objPHPExcel->getActiveSheet()->getStyle('B'.$this->line.':E'.$this->line)->applyFromArray($this->BoldStyle); 
+                  $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->CStyle);       
+                  $objPHPExcel->setActiveSheetIndex(0)                
+                    ->setCellValue('A'.$this->line,'')
+                    ->setCellValue('B'.$this->line,'Subtotal:')                
+                    ->setCellValue('C'.$this->line, " ".number_format($showacumdebit,2))
+                    ->setCellValue('D'.$this->line, " ".number_format($showacumcredit,2))
+                    ->setCellValue('E'.$this->line, " ".number_format($showacumresta,2)); 
+                  $this->line++;                    
+
+                  $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A'.$this->line, " ")
+                    ->setCellValue('B'.$this->line, " ")
+                    ->setCellValue('C'.$this->line, " ")
+                    ->setCellValue('D'.$this->line, " ")
+                    ->setCellValue('E'.$this->line, " "); 
+                  $this->line++;  
+                }
+
+                $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray); 
+                $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':B'.$this->line)->applyFromArray($this->BoldStyle);     
+                $objPHPExcel->setActiveSheetIndex(0)
+                  ->setCellValue('A'.$this->line, " ".$value['CODMOV'])
+                  ->setCellValue('B'.$this->line, $value['NOMBRE']); 
+                $this->line++;  
+                
+                $account = $value["CODMOV"];   
+                $acumdebit = 0;
+                $acumcredit = 0;
+                $acumresta = 0;  
+              }
+              $acumdebit = $acumdebit + $value["debit"];
+              $acumcredit = $acumcredit + $value["credit"]; 
+              $acumresta = $acumresta + $value["debit"] + $value["credit"];           
+              $showdebit = abs($value["debit"]);  
+              $showcredit = abs($value["credit"]);  
+              $showresta = abs($value["debit"] + $value["credit"]); 
+
+              $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);  
+              $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);    
+              $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A'.$this->line, $value['TIPO_ASI'])
+                ->setCellValue('B'.$this->line, $value['nombre_asiento'])
+                ->setCellValue('C'.$this->line, " ".number_format($showdebit,2))
+                ->setCellValue('D'.$this->line, " ".number_format($showcredit,2))
+                ->setCellValue('E'.$this->line, " ".number_format($showresta,2)); 
+              $this->line++;                              
+             }
+             $totdebit = $totdebit + $acumdebit;
+             $totcredit = $totcredit + $acumcredit;
+             $totresta = $totresta + $acumresta; 
+             $showacumdebit = abs($acumdebit);
+             $showacumcredit = abs($acumcredit);  
+             $showacumresta = abs($acumresta);     
+             $showtotdebit = abs($totdebit);
+             $showtotcredit = abs($totcredit);
+             $showtotresta = abs($totresta);
+
+             $objPHPExcel->setActiveSheetIndex(0)                
+                ->setCellValue('A'.$this->line,'')
+                ->setCellValue('B'.$this->line,'Subtotal:')                
+                ->setCellValue('C'.$this->line, " ".number_format($showacumdebit,2))
+                ->setCellValue('D'.$this->line, " ".number_format($showacumcredit,2))
+                ->setCellValue('E'.$this->line, " ".number_format($showacumresta,2));
+             $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);   
+             $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);
+             $objPHPExcel->getActiveSheet()->getStyle('B'.$this->line.':E'.$this->line)->applyFromArray($this->BoldStyle); 
+             $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->CStyle);              
+
+             $objPHPExcel->setActiveSheetIndex(0)                
+                ->setCellValue('A'.$this->line,'')
+                ->setCellValue('B'.$this->line,'')                
+                ->setCellValue('C'.$this->line,'')
+                ->setCellValue('D'.$this->line,'')
+                ->setCellValue('E'.$this->line,'');
+
+             $this->line++;   
+
+             $objPHPExcel->setActiveSheetIndex(0)                
+                ->setCellValue('A'.$this->line,'')
+                ->setCellValue('B'.$this->line,'Total:')                
+                ->setCellValue('C'.$this->line, " ".number_format($showtotdebit,2))
+                ->setCellValue('D'.$this->line, " ".number_format($showtotcredit,2))
+                ->setCellValue('E'.$this->line, " ".number_format($showtotresta,2));
+             $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);
+             $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);       
+             $objPHPExcel->getActiveSheet()->getStyle('B'.$this->line.':E'.$this->line)->applyFromArray($this->BoldStyle);
+             $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->CStyle);           
+          }
+        }
+        
+        $this->outputExcel("JOURNAL_ENTRY_SUMMARY_REPORT");
+      break;
       default:	
         $tags["typereport"] = "S";
         $tags["template_js"][] = "reports";     

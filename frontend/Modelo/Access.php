@@ -1,5 +1,4 @@
 <?php
-
 class Modelo_Access{
 
   public static function truncateTabla(){
@@ -26,7 +25,7 @@ class Modelo_Access{
   	foreach ($datos as $key => $value) {
 		  $rs[$value['a_item']] = array("rd"=>($value['cs']=='A')?1:0,"sav"=>($value['sav']=='A')?1:0,"edi"=>($value['edi']=='A')?1:0,"del"=>($value['del']=='A')?1:0,"pri"=>($value['pri']=='A')?1:0);
 	  } 
-	return $rs;
+	  return $rs;
   }
 
 }  

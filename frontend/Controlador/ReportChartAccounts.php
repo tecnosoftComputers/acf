@@ -5,7 +5,7 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
 
     $tags = array();    
     if(!Utils::estaLogueado()){
-      header("Location: ../login.php");
+      header("Location: ".PUERTO."://".HOST."/login.php");
     } 
     $action = Utils::getParam('action','',$this->data);
     switch($action){      
@@ -15,6 +15,9 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
   	    $tags["accfrom"] = $accfrom;
   	    $tags["accto"] = $accto;
   	    $tags["results"] = Modelo_ChartAccount::report($accfrom,$accto);
+        if (empty($tags["results"])){
+          $tags["message"] = "Not found records";
+        }        
   	    $tags["template_js"][] = "reports";     
   	    Vista::render('rpt_acc_chartaccount', $tags);                       
       break;        
@@ -34,7 +37,7 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
 
   	    if (!empty($results)){                      
           foreach($results as $key=>$value){   
-            if ($this->objPdf->GetY() > 370){
+            if ($this->objPdf->GetY() > $this->limitline){
               $this->objPdf->AddPage();
               $this->printHeaderPdf("CHART ACCOUNTS REPORT",$accfrom,$accto);   
               $this->printHeaderTablePdf($columns);              
@@ -79,20 +82,11 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         $objPHPExcel = $this->objExcel;                                              
 
         $objPHPExcel->getActiveSheet()->mergeCells('B1:B6');          
-        $objPHPExcel->getActiveSheet()->mergeCells('A7:B7');          
-        $cont = 10;
-
-        $styleArray = array(
-            'font'  => array(
-              'bold'  => false,              
-              'size'  => 10,
-              'name'  => 'Arial'
-            )
-        );
+        $objPHPExcel->getActiveSheet()->mergeCells('A7:B7');                  
 
         if (!empty($results)){               
           foreach ($results as $key => $item) {              
-              $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->applyFromArray($styleArray);
+              $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':B'.$this->line)->applyFromArray($this->styleArray);
               $nro = substr_count($item["CODIGO"],".");   
               $lastc = substr($item["CODIGO"], -1);
 
@@ -103,20 +97,20 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
                 }
               }   
               if ($lastc == '.'){                
-                $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->getFont()->setBold(true);
+                $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':B'.$this->line)->getFont()->setBold(true);
                 $objPHPExcel->setActiveSheetIndex(0)
-                  ->setCellValue('A'.$cont, " ".$item['CODIGO'])
-                  ->setCellValue('B'.$cont, $blank_spaces.$item['NOMBRE']);
+                  ->setCellValue('A'.$this->line, " ".$item['CODIGO'])
+                  ->setCellValue('B'.$this->line, $blank_spaces.$item['NOMBRE']);
               }     
               else{
                 $blank_spaces .= "   ";                
-                $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->getFont()->setBold(false); 
+                $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':B'.$this->line)->getFont()->setBold(false); 
                 $objPHPExcel->setActiveSheetIndex(0)
-                  ->setCellValue('A'.$cont, " ".$item['CODIGO'])
-                  ->setCellValue('B'.$cont, $blank_spaces.$item['NOMBRE']);                
+                  ->setCellValue('A'.$this->line, " ".$item['CODIGO'])
+                  ->setCellValue('B'.$this->line, $blank_spaces.$item['NOMBRE']);                
               }                               
               
-              $cont++;      
+              $this->line++;      
           }            
         }
 

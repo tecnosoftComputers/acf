@@ -1,5 +1,11 @@
 $(document).ready(function(){ 
   
+  $('#loading').modal('hide');    
+
+  $('#register').on('click', function(){
+    $('#loading').modal('show');
+  });
+
   $('.myDatepicker').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,

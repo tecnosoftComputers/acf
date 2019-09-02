@@ -1,5 +1,5 @@
 $(document).ready(function(){ 
-  $('[data-toggle="tooltip"]').tooltip(); 
+  $('[data-toggle="tooltip"]').tooltip();   
 });
 
 function enviarForm(){
@@ -610,3 +610,12 @@ function editInputsView(f){
   $('#myModalRow').modal('show');
 }
 
+function viewMessage(msj){
+  Swal.fire({            
+    text: msj,
+    imageUrl: $('#puerto_host').val()+'/imagenes/wrong-04.png',
+    imageWidth: 75,
+    confirmButtonText: 'OK',
+    animation: true
+  });   
+} 

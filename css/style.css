@@ -96,3 +96,8 @@ ul.ui-autocomplete {
 #journal input{
     border: 0px;
 }
+
+#loading{
+  top: calc(25% - 24px);
+  left: calc(30% - 24px);
+}

@@ -46,7 +46,7 @@
           </div>
 
           <div class="modal-footer">            
-            <button style="float: left;" type="submit" name="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
+            <button style="float: left;" type="submit" name="register" id="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
             <span style="float: left; margin-left: 15px;">
               <a href="<?php echo PUERTO."://".HOST."/report/generalledger/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
@@ -164,6 +164,9 @@
   </div>
   <br>
 <?php 
+}
+if (isset($message) && !empty($message)){
+  echo '<h4 style="text-align:center;">'.$message.'</h4>';
 }
 ?>  
 </div> <!-- FIN DE WRAPPER  -->
