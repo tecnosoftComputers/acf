@@ -41,10 +41,12 @@
                $('#myModalExist').modal('show');";
 
         if($_SESSION['acfSession']['permission'][$item]['pri'] == 1){
-          echo "$('#pdf_pie').attr('href','".$_SESSION['acfSession']['rule']."/pdf/".$_SESSION['acfSession']['idCont']."/');
-               $('#excel_pie').attr('href','".$_SESSION['acfSession']['rule']."/excel/".$_SESSION['acfSession']['idCont']."/');";
+            echo "$('#pdf_pie').attr('href','".$_SESSION['acfSession']['rule']."/pdf/".$_SESSION['acfSession']['idCont']."/');";
+            echo "$('#pdf_pie').attr('target','_blank');";
+            echo "$('#excel_pie').attr('href','".$_SESSION['acfSession']['rule']."/excel/".$_SESSION['acfSession']['idCont']."/');";
         }else{
-          echo "$('#pdf_pie').removeAttr('href');
+          echo "$('#pdf_pie').removeAttr('target');
+          $('#pdf_pie').removeAttr('href');
           $('#excel_pie').removeAttr('href');
           $('#pdf_pie').attr('onclick','viewMessage(\"You cannot execute this action\")');
           $('#excel_pie').attr('onclick','viewMessage(\"You cannot execute this action\")')";
@@ -136,7 +138,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabelNotif">View Journal</h4>
             </div>
-            <div class="modal-body" style="height:70%; overflow:auto;">
+            <div class="modal-body" style="height:66%; overflow:auto;">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-body" align="center">
@@ -167,6 +169,18 @@
                                     </div>
                                 </div>                        
                             </div>
+                            <div>
+                                <div class="form-group col-md-12">
+                                    <label class="col-md-2 control-label" for="name">Document: </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-sm" disabled readonly autocomplete="off" id="_doc2" name="_doc2" maxlength="19"/>
+                                    </div>
+                                    <label class="col-md-2 control-label" for="name">Settlement: </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-sm" disabled readonly autocomplete="off" id="_settlement2" name="_settlement2" maxlength="19"/> 
+                                    </div>
+                                </div>              
+                            </div>
                             <div id="table_view">
                                 <table width="100%" class="table table-bordered table-hover" id="journalView"></table>
                             </div>
@@ -175,8 +189,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <span title="PDF" style="float: left"><a id="pdf" href="#" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
-                <span title="EXCEL" style="float: left"><a id="excel" href="#" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
+                <span title="PDF" style="float: left"><a id="pdf" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
+                <span title="EXCEL" style="float: left"><a id="excel" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -315,8 +329,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <span title="PDF" style="float: left"><a id="pdf_pie" href="#" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
-                <span title="EXCEL" style="float: left"><a id="excel_pie" href="#" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
+                <span title="PDF" style="float: left"><a id="pdf_pie" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
+                <span title="EXCEL" style="float: left"><a id="excel_pie" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
                 <a class="btn btn-primary" id="btn_cancel" data-dismiss="modal">Ok</a>
             </div>
         </div>

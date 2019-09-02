@@ -201,7 +201,7 @@
 
                                                                 if($_SESSION['acfSession']['permission'][$item]['edi'] == 1){
                                                                     $f2 = "onclick=\"searchJournal('','".Utils::encriptar($registro2['IDCONT'])."')\"";
-                                                                    $f4 = PUERTO."://".HOST."/deleteMemorice/".Utils::encriptar($registro2['IDCONT'])."/";
+                                                                    $f4 = 'href="'.PUERTO.'://'.HOST.'/deleteMemorice/'.Utils::encriptar($registro2['IDCONT']).'/"';
                                                                 }
 
                                                                 if($_SESSION['acfSession']['permission'][$item]['sav'] == 1){
@@ -212,7 +212,7 @@
                                                                <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal memorice" <?php echo $f1; ?>><i class="fa fa-eye"></i></a></td>
                                                                <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal memorice" <?php echo $f2; ?>><i class="fa fa-edit"></i></a></td>
                                                                <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Copy journal" <?php echo $f3; ?>><i class="fa fa-copy"></i></a></td>
-                                                               <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Delete journal memorice" href="<?php echo $f4; ?>"><i class="fa fa-trash"></i></a></td>              
+                                                               <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Delete journal memorice" <?php echo $f4; ?>><i class="fa fa-trash"></i></a></td>              
                                                            </tr>
                                                        <?php } ?>
                                                    </tbody>
@@ -253,8 +253,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <span title="PDF" style="float: left"><a id="pdf_notif" href="#" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
-                <span title="EXCEL" style="float: left"><a id="excel_notif" href="#" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
+                <span title="PDF" style="float: left"><a id="pdf_notif" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
+                <span title="EXCEL" style="float: left"><a id="excel_notif" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
                 <button type="button" class="btn btn-primary" id="btn_edit"><i class="glyphicon glyphicon-pencil"></i> Update</button>
                 <button type="button" class="btn btn-warning" id="btn_annul"><i class="glyphicon glyphicon-remove"></i> Void</button>
             </div>

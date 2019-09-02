@@ -441,21 +441,24 @@ function viewJournal(id){
 
         var rule = r.rule;
         var p = r.permission;
+
         var viewF = 'onclick="viewMessage(\'You cannot execute this action\')"';
         
         $('#_number').val(r.journal.TIPO_ASI+' - '+r.journal.ASIENTO);
         $('#_date').val(r.journal.FECHA_ASI);
         $('#_memo2').val(r.journal.DESC_ASI);
         $('#_benef').val(r.journal.BENEFICIAR);
+        $('#_doc2').val(r.journal.DOCUMENTO);
+        $('#_settlement2').val(r.journal.LIQUIDA_NO);
 
         if(p.pri == 1){
           $('#pdf').attr('href',rule+'/pdf/'+r.journal.IDCONT+'/');
           $('#excel').attr('href',rule+'/excel/'+r.journal.IDCONT+'/');
+          $('#pdf').attr("target","_blank");
         }else{
-          $('#pdf').removeAttr('href');
-          $('#excel').removeAttr('href');
           $('#pdf').attr("onclick","viewMessage('You cannot execute this action')");
           $('#excel').attr("onclick","viewMessage('You cannot execute this action')");
+          $('#pdf').removeAttr("target");
         }
        
         var movi =  r.movi;
@@ -531,7 +534,7 @@ function insertRow3(account,name,type,codep,ref,memo,typeTrans,debit1,credit1,do
   row += '<input class="control2" type="hidden"  id="la_liq'+f+'" name="la_liq[]" value="'+liq+'" /></td>'+'\n';
   row += '<td align="center" style="background-color: #d9f2fa;padding-top: 3px;padding-bottom: 1px;">'+'\n';
 
-  if(permisssion == 0){
+  if(permisssion == 1){
     var viewF = 'editInputsView(\''+f+'\')';
   }else{
     var viewF = 'viewMessage(\'You cannot execute this action\')';
@@ -610,3 +613,12 @@ function editInputsView(f){
   $('#myModalRow').modal('show');
 }
 
+function viewMessage(msj){
+  Swal.fire({            
+    text: msj,
+    imageUrl: $('#puerto_host').val()+'/imagenes/wrong-04.png',
+    imageWidth: 75,
+    confirmButtonText: 'OK',
+    animation: true
+  });   
+}
