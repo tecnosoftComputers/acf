@@ -17,6 +17,16 @@ class Modelo_ChartAccount{
     return $response;
   }
 
+  public static function searchChartAccountArray(){
+    $sql = "SELECT CODIGO_AUX,NOMBRE FROM dp01a110";
+    $rs = $GLOBALS['db']->auto_array($sql,array(),true);
+    $data = array();
+    foreach ($rs as $key => $value) {
+      $data[$value['CODIGO_AUX']] = $value['NOMBRE'];
+    }
+    return $data;
+  }
+
   public static function searchAccountsDetail(){
     $sql = "SELECT t1.CODIGO_AUX FROM dp01a110 t1 WHERE t1.PLANMARCA = 1";
     return $rs = $GLOBALS['db']->auto_array($sql,array(),true);

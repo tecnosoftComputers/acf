@@ -17,7 +17,7 @@ class Modelo_User{
   public static function searchUsuario($userid){
 
     $sql = "SELECT * FROM usuarios WHERE id_usuario='$userid' AND estado='A'";
-    $rs = $GLOBALS['db']->auto_array($sql,array(),false);
+    return $rs = $GLOBALS['db']->auto_array($sql,array(),false);
   }
 
 }  

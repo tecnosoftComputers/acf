@@ -1,4 +1,5 @@
 <?php
+require_once RUTA_INCLUDES.'/mpdf/mpdf.php';
 require_once RUTA_INCLUDES.'/fpdf17/fpdf.php';
 require_once RUTA_INCLUDES.'/PHPExcel/Classes/PHPExcel.php';
 

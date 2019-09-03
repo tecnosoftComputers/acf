@@ -28,132 +28,22 @@ class Controlador_Accounts extends Controlador_Base {
       break;
       case 'journalReport':
 
-        $tipo = Utils::getParam('tipo','',$this->data);
+        $type = Utils::getParam('tipo','',$this->data);
         $idcont = Utils::getParam('idcont','',$this->data);
-        $nombre_archivo = 'journal_'.$idcont.'_'.date('mdY');
+        $idcont = Utils::desencriptar($idcont); 
+        $nombre_archivo = 'journal_'.date('mdY');
 
-        if($tipo == 'excel'){
+        $company = Modelo_Companie::searchCompanies($_SESSION['acfSession']['id_empresa']);
+        $user = Modelo_User::searchUsuario($_SESSION['acfSession']['usuario'])['namesurname'];
 
-          $objPHPExcel = new PHPExcel();
-          /*$objPHPExcel->getProperties()
-            ->setCreator("Lcda. Mariana Vera")
-            ->setTitle("activities List")
-            ->setSubject("activities List")
-            ->setCategory("activities List");
+        $datos = Modelo_Seat::searchJournal(false,false,$idcont);
+        $movi = Modelo_Dpmovimi::searchMovimi(false,$idcont);
+        $accounts = Modelo_ChartAccount::searchChartAccountArray();
 
-            $BStyle = array(
-            'borders' => array(
-                'allborders' => array(
-                  'style' => PHPExcel_Style_Border::BORDER_THIN
-                )
-             ),
-          );
+        $title = 'ACCOUNTING JOURNAL';
+        $num = 1;
 
-          $objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-
-          $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
-          $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(80);
-          $objPHPExcel->getActiveSheet()->getRowDimension('1')->setRowHeight(90);
-
-          $objPHPExcel->getActiveSheet()->mergeCells('A1:B1'); 
-          $objDrawing = new PHPExcel_Worksheet_Drawing(); 
-          $objDrawing->setName('Logo'); 
-          $objDrawing->setDescription('Logo'); 
-          $objDrawing->setPath(FRONTEND_RUTA.'imagenes/logoinicial.jpg'); 
-          $objDrawing->setCoordinates('B1'); 
-
-          //setOffsetX works properly 
-          $objDrawing->setOffsetX(360); 
-          $objDrawing->setOffsetY(5); 
-          //set width, height 
-          $objDrawing->setWidth(110); 
-          $objDrawing->setHeight(110); 
-          $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
-
-          $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', 'ACTIVITIES LIST');
-
-          $objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true); 
-
-          $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A2', 'CODE')
-              ->setCellValue('B2', 'NAMES')
-              ;
-
-          $objPHPExcel->getActiveSheet()->getStyle('A2:B2')->getFont()->setBold(true);
-          $objPHPExcel->getActiveSheet()->getStyle('A2:B2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-          $objPHPExcel->getActiveSheet()->getStyle('A2:B2')->applyFromArray($BStyle);
-          $objPHPExcel->getActiveSheet()->getStyle('A2:B2')->getFill()
-            ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
-            ->getStartColor()->setRGB('808080');
-
-          $cont = 3;
-
-          $styleArray = array(
-              'font' => array(
-                  'bold' => true,
-              ),
-              'alignment' => array(
-                  'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,
-              ),
-          );
-
-          foreach ($activities as $key => $item) {
-
-            $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->applyFromArray($BStyle);
-            $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->applyFromArray($styleArray);
-            $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A'.$cont, $item['CODIGO'])
-            ->setCellValue('B'.$cont, $item['NOMBRE'])
-            ;
-
-            $cont++;      
-          }*/
-
-          // indicar que se envia un archivo de Excel.
-          header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-          header('Content-Disposition: attachment;filename="'.$nombre_archivo.'.xlsx"');
-          header('Cache-Control: max-age=0');
-          $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-          $objWriter->save('php://output');
-        
-        }else{
-
-          $pdf = new FPDF();
-       
-          /*$pdf->AddPage();
-          $y_axis_initial = 25;
-           $pdf->SetFont('Arial','B',12);
-          $pdf->Cell(189  ,10,'',0,1);//end of line
-
-          $pdf->Image(FRONTEND_RUTA.'imagenes/logoinicial.jpg', 139,10,50,26,'JPG');
-          $pdf->Cell(59,5,'ACTIVITIES LIST',0,1);//end of line
-          $pdf->Cell(189,10,'',0,1); //end of line
-          $pdf->SetFont('Arial','B',12);
-          $pdf->Ln(6);
-
-          $pdf->SetFillColor(128,128,128);
-          $pdf->Cell(50,6,'CODES',1,0,'C',1);
-          $pdf->Cell(135,6,'NAMES',1,0,'C',1);
-          $pdf->Ln(6);
-
-          $pdf->SetFillColor(255,255,255);
-          foreach ($activities as $key => $item) {
-            $pdf->SetFont('Arial','B',12);
-            $pdf->Cell(50,6,$item['CODIGO'],1,0,'L',1);
-            $pdf->Cell(135,6,$item['NOMBRE'],1,0,'L',1);    
-            $pdf->Ln(6);
-          }*/
-
-          $pdf->Output($nombre_archivo.'.pdf','D');
-        }
-
-        /*$id = Utils::getParam('id', '', $this->data); 
-        $id = Utils::desencriptar($id);
-        $journal = Modelo_Seat::deleteJournal($id);
-        $movi = Modelo_Dpmovimi::deleteMovimi($id);
-        $_SESSION['acfSession']['mostrar_exito'] = 'The journal was successfully deleted.';
-        Utils::doRedirect(PUERTO.'://'.HOST.'/journalEntries/');*/
+        self::modelo1($type, $num, $nombre_archivo, $company, $user, $datos, $movi, $accounts, $title);
       break;
       case 'annulJournal':
 
@@ -517,6 +407,190 @@ class Controlador_Accounts extends Controlador_Base {
     }
     //print_r($_SESSION); exit;
     Utils::doRedirect(PUERTO.'://'.HOST.'/journalEntries/');
+  }
+
+  public static function modelo1($type, $num, $nombre_archivo, $company, $user, $datos, $movi, $accounts, $title, $logo){
+
+    $name = $company['nombre_empresa'];
+    $logo = $company['rentas_logo'];
+    $date = date('d/m/Y',strtotime($datos['FECHA_ASI']));
+    $journal = $datos['TIPO_ASI'].' '.$datos['ASIENTO'];
+    $memo = $datos['DESC_ASI'];
+
+    if($type == 'excel'){
+
+      $objPHPExcel = new PHPExcel();
+      $objReader = PHPExcel_IOFactory::createReader('Excel2007');
+      $objPHPExcel = $objReader->load(FRONTEND_RUTA.'templates/Modelo'.$num.'.xlsx');
+      $objPHPExcel->getActiveSheet()->getPageMargins()->setTop(0.2);
+      $objPHPExcel->getActiveSheet()->getPageMargins()->setRight(0.2);
+      $objPHPExcel->getActiveSheet()->getPageMargins()->setLeft(0.3);
+      $objPHPExcel->getActiveSheet()->getPageMargins()->setBottom(0.2);
+ 
+      $styleArray = array(
+        'font'  => array(
+          'bold'  => true,              
+          'size'  => 14,
+          'name'  => 'Arial'
+      ));
+
+      // Indicamos que se pare en la hoja uno del libro
+      $objPHPExcel->setActiveSheetIndex(0)->getStyle()->applyFromArray($styleArray);
+      
+      //A1-COMPANY
+      $objPHPExcel->getActiveSheet()->SetCellValue('A1', strtoupper($name));
+
+      //B3-USER
+      $objPHPExcel->getActiveSheet()->SetCellValue('B3', ucwords($user));
+      
+      //B4-PRINT DATE
+      $objPHPExcel->getActiveSheet()->SetCellValue('B5', date('d/m/Y'));
+
+      //G1-LOGO
+      $objDrawing = new PHPExcel_Worksheet_Drawing(); 
+      $objDrawing->setName('Logo'); 
+      $objDrawing->setDescription('Logo'); 
+      $objDrawing->setPath(FRONTEND_RUTA.'imagenes/'.$logo); 
+      $objDrawing->setCoordinates('G1'); 
+
+      $objDrawing->setOffsetX(75); 
+      $objDrawing->setOffsetY(5); 
+      $objDrawing->setWidth(90); 
+      $objDrawing->setHeight(90); 
+      $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
+
+      $CStyle = array(
+        'borders' => array(
+          'allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)
+        )
+      );  
+
+      $AmtStyle = array(            
+        'alignment' => array(
+          'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_RIGHT,
+        ),
+        'font' => array(
+          'bold'  => true,              
+          'size'  => 12,
+          'name'  => 'Arial'
+        )
+      );
+
+      //A8-TITLE
+      $objPHPExcel->setActiveSheetIndex()->getStyle('A9')->applyFromArray($styleArray);
+      $objPHPExcel->getActiveSheet()->SetCellValue('A9', strtoupper($title));
+
+      //B10-DATE
+      $objPHPExcel->getActiveSheet()->SetCellValue('B11', $date);
+
+      //B11-JOURNAL
+      $objPHPExcel->getActiveSheet()->SetCellValue('B13', $journal);
+
+      //B12-MEMO
+      $objPHPExcel->getActiveSheet()->SetCellValue('B15', strtoupper($memo));
+
+      $cont = 18;
+      $s1 = $s2 = 0;
+      foreach ($movi as $key => $item) {
+
+        $aux = trim(str_replace('.', '', $item['CODMOV']));
+
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':H'.$cont)->applyFromArray($CStyle);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$cont, $aux)->setCellValue('B'.$cont, $accounts[$aux]);
+
+        if($item['IMPORTE'] > 0){
+          $debit = $item['importe_format'];
+          $credit = '0.00';
+          $s1 += str_replace(',','',$debit); 
+        }else{
+          $debit = '0.00';
+          $credit = $item['importe_format'];
+          $s2 += str_replace(',','',$credit); 
+        }
+
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$cont, number_format($debit,2))->setCellValue('H'.$cont, number_format($credit,2));
+        $cont++;      
+      }
+      
+      $objPHPExcel->getActiveSheet()->getStyle('B'.$cont)->applyFromArray($AmtStyle);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$cont, 'Totals:');
+      
+      $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->applyFromArray($CStyle);
+      $objPHPExcel->getActiveSheet()->getStyle('G'.$cont.':H'.$cont)->getFont()->setBold(true);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$cont, number_format($s1,2));
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$cont, number_format($s2,2));
+
+      self::outputExcel($nombre_archivo,$objPHPExcel);
+
+    }else{
+
+      $template = Modelo_Template::searchTemplate($num);
+      $header = $template['header'];
+      $body = $template['body'];
+      $footer = $template['footer'];
+
+      $header = str_replace('_PRINT_DATE_', date('d/m/Y'), $header);
+      $header = str_replace('_LOGO_', $logo, $header);
+      $header = str_replace('_COMPANY_', strtoupper($name), $header);
+      $header = str_replace('_USER_', ucwords($user), $header);
+
+      $table = '';
+      $s1 = $s2 = 0;
+      foreach ($movi as $key => $value) {
+
+        $aux = trim(str_replace('.', '', $value['CODMOV']));
+
+        $table .= '<tr>';
+        $table .= '<td style="font-size:22px;padding:6px 6px 6px 6px;">'.$aux.'</td>';
+        $table .= '<td style="font-size:22px;padding:6px 6px 6px 6px;">'.$accounts[$aux].'</td>';
+
+        if($value['IMPORTE'] > 0){
+          $debit = $value['importe_format'];
+          $credit = '0.00';
+          $s1 += str_replace(',','',$debit); 
+        }else{
+          $debit = '0.00';
+          $credit = $value['importe_format'];
+          $s2 += str_replace(',','',$credit); 
+        }
+
+        $table .= '<td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;">'.$debit.'</td>';
+        $table .= '<td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;">'.$credit.'</td>';
+        $table .= '<tr>';
+      }
+
+      $table .= '<tr><td colspan="2" align="right" style="border:0px;font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;"><b>Totals:</b></td><td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;"><b>'.number_format($s1,2).'</b></td><td align="right" style="font-size:22px;font-family:Arial;padding:6px 6px 6px 6px;"><b>'.number_format($s2,2).'</b></td></tr>';
+
+      $body = str_replace('_BODY_', $table, $body);
+      $body = str_replace('_TITLE_', $title, $body);
+      $body = str_replace('_DATE_', $date, $body);
+      $body = str_replace('_JOURNAL_', $journal, $body);
+      $body = str_replace('_MEMO_', strtoupper($memo), $body);
+
+      $mpdf = new mPDF('','A4');
+      $mpdf->SetFont('Arial','B',30);
+      $mpdf->setHTMLHeader($header); 
+      $mpdf->setHTMLFooter($footer);
+
+      $mpdf->AddPage('', '', '', '', '',
+          6, // margin_left
+          6, // margin right
+          15, // margin top
+          30, // margin bottom
+          5, // margin header
+          8); 
+
+      $mpdf->WriteHTML($body);      
+      $mpdf->Output($nombre_archivo.'.pdf', 'I');
+    }
+  }
+
+  public function outputExcel($title,$objExcel){
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');
+    header('Cache-Control: max-age=0');
+    $objWriter = PHPExcel_IOFactory::createWriter($objExcel, 'Excel2007');
+    $objWriter->save('php://output');    
   }
 }  
 ?>

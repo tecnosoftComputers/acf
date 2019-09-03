@@ -154,7 +154,6 @@ $('#btnSearch2').on('click',function(){
           if(p.edi == 1){
             ediF = 'onclick="searchJournal(\'\',\''+r.journal[i].IDCONT+'\')"';
           }
-
           html += '<tr>';
           html += '<td>'+r.journal[i].TIPO_ASI+'</td>';
           html += '<td>'+r.journal[i].ASIENTO+'</td>';
@@ -172,23 +171,6 @@ $('#btnSearch2').on('click',function(){
     }
   });
 });
-
-function function_credit(f){
-  
-  var debit = /*parseFloat(*/$('#el_debit'+f).val()/*)*/;
-  var tdebit = /*parseFloat(*/$('#tdebit').html()/*)*/-debit;
-  $('#tdebit').html(/*Math.abs(*/tdebit/*)*/);
-  $('#tcredit').html(/*Math.abs(parseFloat(*/$('#tcredit').html()/*)*/+/*parseFloat(*/$('#el_credit'+f).val()/*))*/);
-  $('#el_debit'+f).val('0.00');
-}
-
-function function_debit(f){
-  var credit = parseFloat($('#el_credit'+f).val());
-  var tcredit = parseFloat($('#tcredit').html())-credit;
-  $('#tcredit').html(Math.abs(tcredit));
-  $('#tdebit').html(Math.abs(parseFloat($('#tdebit').html())+parseFloat($('#el_debit'+f).val())));
-  $('#el_credit'+f).val('0.00');
-}
 
 
 function runTable(numInput){
@@ -211,13 +193,13 @@ function runTable(numInput){
 function updateBalance(s1,s2,btn,btn2){
 
   if (s1 > s2) { // El debito es mayor a credito
-    $('#mensaje').html("Credit ");
-    var diff = (s1 - s2).toFixed(2);
+    $('#_mensaje').html("Credit ");
+    var diff = (Math.abs(s1 - s2)).toFixed(2);
     diff = diff.toString();
     $('#balance').html(format(diff));
   }else{
-    $('#mensaje').html("Debit ");
-    var diff = (s2 - s1).toFixed(2);
+    $('#_mensaje').html("Debit ");
+    var diff = (Math.abs(s2 - s1)).toFixed(2);
     diff = diff.toString();
     $('#balance').html(format(diff));
   }
@@ -474,8 +456,8 @@ function redirect(r,e,btn,btn2){
 
   var s1 = runTable(7);
   var s2 = runTable(8);
- console.log(validateHead());
- console.log(validateRows());
+ /*console.log(validateHead());
+ console.log(validateRows());*/
   if((!validateHead() && validateRows()) || (validateHead() && !validateRows()) || (updateBalance(s1,s2,btn,btn2) != 0)){
 
     Swal.fire({      
@@ -608,16 +590,17 @@ function searchJournal(type,id){
               $('#excel_notif').attr('href',rule+'/excel/'+r.journal.IDCONT+'/');
               $('#pdf').attr('href',rule+'/pdf/'+r.journal.IDCONT+'/');
               $('#excel').attr('href',rule+'/excel/'+r.journal.IDCONT+'/');
+              
+              $('#pdf_notif').attr("target","_blank");
+              $('#pdf').attr("target","_blank");
             }else{
-              $('#pdf').removeAttr('href');
-              $('#excel').removeAttr('href');
               $('#pdf').attr("onclick","viewMessage('You cannot execute this action')");
               $('#excel').attr("onclick","viewMessage('You cannot execute this action')");
-
-              $('#pdf_notif').removeAttr('href');
-              $('#excel_notif').removeAttr('href');
               $('#pdf_notif').attr("onclick","viewMessage('You cannot execute this action')");
               $('#excel_notif').attr("onclick","viewMessage('You cannot execute this action')");
+
+              $('#pdf_notif').removeAttr("target");
+              $('#pdf').removeAttr("target");
             }
 
             $('#myModalTrans').modal('show');
@@ -627,6 +610,12 @@ function searchJournal(type,id){
         }else{
 
           editJournal(r.journal['IDCONT']);
+
+          $('#save').addClass('disabled');
+          $('#save').attr('disabled','true');
+          $('#memorice').addClass('disabled');
+          $('#memorice').attr('disabled','true');
+
           //anular todo
           Swal.fire({      
             html: 'Journal canceled',
@@ -1091,14 +1080,4 @@ function format(val_data)
   }
   return val_data;
   //document.getElementById(where).focus();
-}
-
-function viewMessage(msj){
-  Swal.fire({            
-    text: msj,
-    imageUrl: $('#puerto_host').val()+'/imagenes/wrong-04.png',
-    imageWidth: 75,
-    confirmButtonText: 'OK',
-    animation: true
-  });   
 }

@@ -1,5 +1,5 @@
 <?php    
-    define('NEW_SYSTEM','http://localhost/fernanda/acf/');
+    define('NEW_SYSTEM','http://localhost/fernando/acf/');
     function head_init($role,$db, $acceso) {
     // Mostrar items del modulo
     $sql = $db->prepare("SELECT * FROM permisos p
@@ -179,7 +179,13 @@ function head_inits($role,$db, $acceso) {
         <ul class="dropdown-menu dropdown-messages">
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
-                    <a href="<?php echo $data_sql['src_head_u'] ?>"><i class="fa fa-caret-right"></i> <?php echo $data_sql['nombre_item'] ?></a>
+                    <?php if($acceso = 1){
+                        $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                      } else{
+                        $enlace = $data_sql['src_head'];
+                      }
+                    ?>
+                    <a href="<?php echo $enlace; ?>"><i class="fa fa-caret-right"></i> <?php echo $data_sql['nombre_item'] ?></a>
                 </li>
             <?php } ?>
         </ul>
@@ -208,7 +214,13 @@ function head_inits($role,$db, $acceso) {
     <ul class="dropdown-menu dropdown-messages">
         <?php foreach ((array) $all_sql as $data_sql) { ?>
             <li>
-                <a href="<?php echo $data_sql['src_head_u'] ?>"><i class="fa fa-caret-right"></i> <?php echo $data_sql['nombre_item'] ?></a>
+                <?php if($acceso = 1){
+                    $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                  } else{
+                    $enlace = $data_sql['src_head'];
+                  }
+                ?>
+                <a href="<?php echo $enlace; ?>"><i class="fa fa-caret-right"></i> <?php echo $data_sql['nombre_item'] ?></a>
             </li>
         <?php } ?>
     </ul>
