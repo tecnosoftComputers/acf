@@ -128,7 +128,7 @@ class Modelo_Dpmovimi{
 				WHERE m.ID_EMPRESA = '".$empresa."' AND 
 				      m.FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."') AS temp
 			  ON c.CODIGO = temp.CODMOV
-			  INNER JOIN activities_tipos_asientos t ON t.tp = temp.TIPO_ASI      
+			  INNER JOIN dpnumero t ON t.TIPO_ASI = temp.TIPO_ASI      
 			  WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0) 	      ";
       if (!empty($accfrom)){
       	$sql .= " AND temp.CODMOV >= '".$accfrom."'";

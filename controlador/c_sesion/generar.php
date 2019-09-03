@@ -20,9 +20,9 @@ $usuario = $_SESSION['usuario'];
 $sql = $cc->prepare("UPDATE sesion_init SET modulo='$num', id_empresa='$num2'  WHERE num_sesion='$lasesion'");
 
 if ($sql -> execute() ) {
-  header("Location: ".PUERTO."://".HOST."/inicializador/vistas/app/in.php");
-
+  header("Location: ".PUERTO."://".HOST."/inicializador/vistas/app/in.php?cid=dashboard/init");
 }else{
+	
     echo '<div class="alert alert-danger">
             <b>Error al generar!</b>
           </div>';

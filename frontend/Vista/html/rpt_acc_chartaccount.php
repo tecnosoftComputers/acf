@@ -101,7 +101,7 @@
   <br>
 <?php 
 } 
-else{
+elseif(isset($message)){
   echo '<h4 style="text-align:center;">'.$message.'</h4>';
 }
 ?>  
