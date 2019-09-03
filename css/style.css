@@ -64,7 +64,26 @@ ul.ui-autocomplete {
 }
 
 .style-th{
-  text-align: center;    
+  text-align: center;   
+  border-top: 1px solid #000 !important;
+  border-left: 1px solid #000 !important;
+  border-bottom: 5px solid #000 !important;
+  border-right: 1px solid #000 !important; 
+}
+
+.style-td-special{
+  padding: 2px;
+}
+
+.style-td-totals{
+  border-top: 1px solid #000 !important;
+  text-align: right;
+  font-weight: 700; 
+}
+
+.style-tr-cab{
+  background-color:#e5e6ed !important;
+  font-weight: 700;
 }
 
 #journalList a{

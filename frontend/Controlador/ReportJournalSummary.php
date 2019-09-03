@@ -34,7 +34,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                                                              $datefrom,$dateto,$ccfrom,$ccto); 
         } 
         if (empty($tags["results"])){
-          $tags["message"] = "Not found records";
+          $_SESSION['acfSession']['mostrar_error'] = "Not found records";
         }       
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_journalsummary', $tags);  

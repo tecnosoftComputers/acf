@@ -16,7 +16,7 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
   	    $tags["accto"] = $accto;
   	    $tags["results"] = Modelo_ChartAccount::report($accfrom,$accto);
         if (empty($tags["results"])){
-          $tags["message"] = "Not found records";
+          $_SESSION['acfSession']['mostrar_error'] = "Not found records";
         }        
   	    $tags["template_js"][] = "reports";     
   	    Vista::render('rpt_acc_chartaccount', $tags);                       

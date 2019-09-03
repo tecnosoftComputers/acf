@@ -28,7 +28,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
         $tags["results"] = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],$datefrom,
                                                    $dateto,'','','',$ccfrom,$ccto,$orderby);   
         if (empty($tags["results"])){
-          $tags["message"] = "Not found records";
+          $_SESSION['acfSession']['mostrar_error'] = "Not found records";
         }                                                
   	    $tags["template_js"][] = "reports";     
   	    Vista::render('rpt_acc_generalledger', $tags);                             
@@ -72,7 +72,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
 
         $columns = array();
         $columns[] = array("width"=>18,"label"=>"DATE");  
-        $columns[] = array("width"=>20,"label"=>"TYPE SEAT");  
+        $columns[] = array("width"=>20,"label"=>"TYPE");  
         $columns[] = array("width"=>20,"label"=>"SEAT");  
         $columns[] = array("width"=>25,"label"=>"REFERENCE");  
         $columns[] = array("width"=>25,"label"=>"SETTLEMENT");  
@@ -148,7 +148,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
             $this->objPdf->Cell(20 ,5,$value["TIPO_ASI"],0,0);                 
             $this->objPdf->Cell(20 ,5,$value["ASIENTO"],0,0);                 
             $this->objPdf->Cell(25 ,5,$value["REFER"],0,0);
-            $this->objPdf->Cell(25 ,5,'',0,0);
+            $this->objPdf->Cell(25 ,5,$value["LIQUIDA_NO"],0,0);
             $starty = $this->objPdf->GetY();              
             $this->objPdf->MultiCell(80,3,trim($value["CONCEPTO"]), 0, 'L', 0);
             $this->objPdf->SetXY(198, $starty); 

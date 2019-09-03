@@ -95,37 +95,38 @@
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
     <br>                     
-    <table width="100%" class="table table-striped table-bordered table-hover style-table" >
+    <table width="100%" class="table table-responsive table-striped style-table" >
     <thead>
       <tr>        
-        <th class="style-th">ACCOUNT</th>
-        <th class="style-th">NAME ACCOUNT</th>
-        <th class="style-th">TYPE</th>
-        <th class="style-th">REFERENCE</th>
-        <th class="style-th">SETTLEMENT</th>
-        <th class="style-th">CONCEPT</th>
-        <th class="style-th">DEBIT</th>
-        <th class="style-th">CREDIT</th>          
+        <th class="style-th" width="10%">ACCOUNT</th>
+        <th class="style-th" width="15%">NAME ACCOUNT</th>
+        <th class="style-th" width="5%">TYPE</th>
+        <th class="style-th" width="10%">REFERENCE</th>
+        <th class="style-th" width="11%">SETTLEMENT</th>
+        <th class="style-th" width="25%">CONCEPT</th>
+        <th class="style-th" width="12%">DEBIT</th>
+        <th class="style-th" width="12%">CREDIT</th>          
       </tr>
     </thead>
     <tbody>
+      <tr><td colspan="8" class="style-td-special"></td></tr> 
       <?php foreach( $result as $key=>$value ){ ?>
       <?php if ($value["ASIENTO"] != $seataux){ ?>
           <?php if (!empty($key)){ ?>
             <tr>
               <td colspan="6">&nbsp;</td>
-              <td align="right"><strong><?php echo number_format($acum_debit,2);?></strong></td>
-              <td align="right"><strong><?php echo number_format(abs($acum_credit),2);?></strong></td>
+              <td class="style-td-totals"><?php echo number_format($acum_debit,2);?></td>
+              <td class="style-td-totals"><?php echo number_format(abs($acum_credit),2);?></td>
             </tr> 
             <tr><td colspan="8">&nbsp;</td></tr>
           <?php } ?>          
-          <tr style="background-color:#e5e6ed;">
+          <tr class="style-tr-cab">
            <td colspan="8">
-             <strong>Date: <?php echo date("m/d/Y",strtotime($value["FECHA_ASI"])); ?>
+             Date: <?php echo date("m/d/Y",strtotime($value["FECHA_ASI"])); ?>
              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             No. <?php echo $typeseat." ".$value["ASIENTO"]; ?>
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <?php echo $value["DESC_ASI"]; ?></strong>
+             No. <?php echo $typeseat." ".$value["ASIENTO"];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <?php echo $value["DESC_ASI"];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <?php echo $value["cabliquida"];?>
            </td>           
          </tr>
         <?php 
@@ -143,7 +144,7 @@
          <td><?php echo $value["NOMBRE"];?></td>   
          <td><?php echo $value["TIPO"];?></td>
          <td><?php echo $value["REFER"];?></td>
-         <td><a href="javascript:void(0);">&nbsp;</a></td>
+         <td><a href="javascript:void(0);"><?php echo $value["LIQUIDA_NO"];?></a></td>
          <td><?php echo $value["CONCEPTO"];?></td>                  
          
          <?php 
@@ -163,8 +164,8 @@
       <?php } ?>
       <tr>
         <td colspan="6">&nbsp;</td>
-        <td align="right"><strong><?php echo number_format($acum_debit,2);?></strong></td>
-        <td align="right"><strong><?php echo number_format(abs($acum_credit),2);?></strong></td>
+        <td class="style-td-totals"><?php echo number_format($acum_debit,2);?></td>
+        <td class="style-td-totals"><?php echo number_format(abs($acum_credit),2);?></td>
       </tr> 
     </tbody>    
     </table>  
@@ -173,8 +174,5 @@
   <br>
 <?php 
 } 
-elseif(isset($message)){
-  echo '<h4 style="text-align:center;">'.$message.'</h4>';
-}
 ?>  
 </div> <!-- FIN DE WRAPPER  -->

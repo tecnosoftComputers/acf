@@ -74,21 +74,22 @@
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
     <br>                     
-    <table width="100%" class="table table-striped table-bordered table-hover style-table" >
+    <table width="100%" class="table table-responsive table-striped style-table">
     <thead>
       <tr>        
-        <th class="style-th">DATE</th>
-        <th class="style-th">TYPE SEAT</th>        
-        <th class="style-th">SEAT</th>        
-        <th class="style-th">REFERENCE</th>
-        <th class="style-th">SETTLEMENT</th>
-        <th class="style-th">CONCEPT</th>
-        <th class="style-th">DEBIT</th>
-        <th class="style-th">CREDIT</th>
-        <th class="style-th">BALANCE</th>
+        <th class="style-th" width="7%">DATE</th>
+        <th class="style-th" width="5%">TYPE</th>        
+        <th class="style-th" width="7%">SEAT</th>        
+        <th class="style-th" width="8%">REFERENCE</th>
+        <th class="style-th" width="8%">SETTLEMENT</th>
+        <th class="style-th" width="29%">CONCEPT</th>
+        <th class="style-th" width="12%">DEBIT</th>
+        <th class="style-th" width="12%">CREDIT</th>
+        <th class="style-th" width="12%">BALANCE</th>
       </tr>
     </thead>
     <tbody>
+    <tr><td colspan="9" class="style-td-special"></td></tr>
     <?php     
     $account = '';      
     foreach($results as $key=>$value){ 
@@ -100,9 +101,9 @@
           echo "<tr>               
                 <td colspan='5'>&nbsp;</td>
                 <td><strong>Current Balance:</strong></td>
-                <td align='right'><strong>".number_format($showacumdebit,2)."</strong></td>
-                <td align='right'><strong>".number_format($showacumcredit,2)."</strong></td>
-                <td align='right'><strong>".number_format($showbalance,2)."</strong></td>
+                <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
+                <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>
+                <td class='style-td-totals'>".number_format($showbalance,2)."</td>
               </tr>"; 
           echo "<tr><td colspan='9'>&nbsp;</td></tr>"; 
         }
@@ -113,11 +114,11 @@
                                                      trim($value["CODMOV"]));
         
         $showprevbalance = abs($prevbalance["balance"]); 
-        echo "<tr style='background-color:#e5e6ed;''>
-                <td colspan='3'><strong>".$value["CODMOV"]."</strong></td>
-                <td colspan='3'><strong>".$infoaccount["NOMBRE"]."</strong></td>
-                <td colspan='2'><strong>Previous Balance:</strong></td>
-                <td align='right'><strong>".number_format($showprevbalance,2)."</strong></td>
+        echo "<tr class='style-tr-cab'>
+                <td colspan='3'>".$value["CODMOV"]."</td>
+                <td colspan='3'>".$infoaccount["NOMBRE"]."</td>
+                <td colspan='2'>Previous Balance:</td>
+                <td align='right'>".number_format($showprevbalance,2)."</td>
               </tr>";
         $account = $value["CODMOV"];    
         $acumdebit = 0;
@@ -140,7 +141,7 @@
               <td>".$value["TIPO_ASI"]."</td>
               <td><a onclick=\"viewJournal('".$idmov."')\" style='cursor:pointer;'>".$value["ASIENTO"]."</a></td>                  
               <td>".$value["REFER"]."</td>
-              <td>&nbsp;</td>
+              <td>".$value["LIQUIDA_NO"]."</td>
               <td>".$value["CONCEPTO"]."</td>
               <td align='right'>".number_format($showdebit,2)."</td>
               <td align='right'>".number_format($showcredit,2)."</td>
@@ -153,9 +154,9 @@
     echo "<tr>               
             <td colspan='5'>&nbsp;</td>
             <td><strong>Current Balance:</strong></td>
-            <td align='right'><strong>".number_format($showacumdebit,2)."</strong></td>
-            <td align='right'><strong>".number_format($showacumcredit,2)."</strong></td>
-            <td align='right'><strong>".number_format($showbalance,2)."</strong></td>
+            <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
+            <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>
+            <td class='style-td-totals'>".number_format($showbalance,2)."</td>
           </tr>";       
     ?>      
     </tbody>    
@@ -164,9 +165,6 @@
   </div>
   <br>
 <?php 
-}
-elseif(isset($message)){
-  echo '<h4 style="text-align:center;">'.$message.'</h4>';
 }
 ?>  
 </div> <!-- FIN DE WRAPPER  -->

@@ -49,7 +49,8 @@ class Modelo_Dpmovimi{
 		                          $accfrom='',$accto='',$orderby=array()){
       if (empty($empresa) || empty($datefrom) || empty($dateto)){ return false; }       
 	  $sql = "SELECT c.FECHA_ASI, c.DESC_ASI, c.ASIENTO, m.CODMOV, a.NOMBRE, m.IDCONT,
-	                 m.CONCEPTO, m.IMPORTE, m.TIPO, m.REFER, m.DOCUMENTO, m.TIPO_ASI	    
+	                 m.CONCEPTO, m.IMPORTE, m.TIPO, m.REFER, m.LIQUIDA_NO, m.TIPO_ASI,
+	                 c.LIQUIDA_NO AS cabliquida	    
 			  FROM dpmovimi m 
 			  INNER JOIN dpcabtra c ON m.TIPO_ASI = c.TIPO_ASI AND m.ASIENTO = c.ASIENTO  
 			  INNER JOIN dp01a110 a ON a.CODIGO = m.CODMOV 
@@ -117,7 +118,7 @@ class Modelo_Dpmovimi{
 
 	public static function reportSummaryD($empresa,$datefrom,$dateto,$accfrom='',$accto=''){
 	  if (empty($empresa) || empty($datefrom) || empty($dateto)){ return false; }	
-	  $sql = "SELECT temp.CODMOV, c.NOMBRE, temp.TIPO_ASI, t.nombre_asiento, 
+	  $sql = "SELECT temp.CODMOV, c.NOMBRE, temp.TIPO_ASI, t.NOMBRE AS nameseat, 
 	                 SUM(temp.debit) AS debit, SUM(temp.credit) AS credit
 			  FROM dp01a110 c
 			  INNER JOIN 

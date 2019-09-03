@@ -49,16 +49,17 @@ class Controlador_Reports extends Controlador_Base {
       //$this->objPdf->SetMargins(7,7);     
       $this->objPdf->AddPage();
     }
-    //$this->objPdf->actualPage = $this->objPdf->PageNo();
-    $this->objPdf->SetFont('Arial','B',12);
-    $this->objPdf->Cell(189  ,5,'',0,1);//end of line
     $this->objPdf->Image(FRONTEND_RUTA.'imagenes/logoinicial.jpg', 239,10,50,26,'JPG');
+
+    $this->objPdf->SetFont('Arial','B',14);
+    $this->objPdf->Cell(189  ,5,'',0,1);//end of line
+    
     $this->objPdf->Cell(80 ,5,$info_company["nombre_empresa"],0,1);//end of line       
     $this->objPdf->SetFont('Arial','',10);   
     $this->objPdf->Cell(59 ,5,$info_company["direccion_empresa"],0,1);//end of line
     $this->objPdf->Cell(59 ,5,$info_company["telefono_empresa"],0,1);//end of line
     $this->objPdf->Cell(189  ,5,'',0,1); //end of line
-    $this->objPdf->SetFont('Arial','B',10);   
+    $this->objPdf->SetFont('Arial','B',12);   
     $this->objPdf->Cell(246 ,5,$title,0,0);//end of line 
     $this->objPdf->Cell(250 ,5,'Page: '.$this->objPdf->PageNo(),0,1);              
     $this->objPdf->SetFont('Arial','',11);
@@ -75,9 +76,13 @@ class Controlador_Reports extends Controlador_Base {
   public function printHeaderTablePdf($columns){
     $this->objPdf->SetFont('Arial','B',10);
     foreach($columns as $key=>$value){
-      $this->objPdf->Cell($value["width"],5,$value["label"],1,0,'C');
-    }
-    $this->objPdf->Cell(189  ,10,'',0,1); //end of line           
+      $this->objPdf->Cell($value["width"],8,$value["label"],1,0,'C');      
+    }    
+    $this->objPdf->Cell(189,10,'',0,1); //end of line                       
+    $this->objPdf->SetLineWidth(1.2);
+    $this->objPdf->Line(11, 58, 287, 58);
+    $this->objPdf->Cell(189,1,'',0,1); //end of line                       
+    $this->objPdf->SetLineWidth(0.2);
   }
 
   public function printHeaderExcel($title,$columns,$columlogo,$setxlogo,$info_company,$from,$to){
@@ -164,10 +169,24 @@ class Controlador_Reports extends Controlador_Base {
               
     //header
     $styleArray = array(
-      'borders' => array(
+      /*'borders' => array(
         'allborders' => array(
            'style' => PHPExcel_Style_Border::BORDER_THIN
          )
+      ),*/
+      'borders' => array(
+        'top' => array(
+          'style' => PHPExcel_Style_Border::BORDER_THIN,
+        ),
+        'left' => array(
+          'style' => PHPExcel_Style_Border::BORDER_THIN,
+        ),
+        'right' => array(
+          'style' => PHPExcel_Style_Border::BORDER_THIN,
+        ),
+        'bottom' => array(
+          'style' => PHPExcel_Style_Border::BORDER_THICK,
+        ),
       ),
       'font'  => array(
         'bold'  => true,              
@@ -182,8 +201,7 @@ class Controlador_Reports extends Controlador_Base {
     foreach($columns as $key=>$value){              
        $this->objExcel->setActiveSheetIndex(0)->setCellValue($key.'9', $value["label"]); 
        $this->objExcel->getActiveSheet()->getStyle($key.'9')->applyFromArray($styleArray);       
-    }    
-    
+    }        
     $this->objExcel->getActiveSheet()->mergeCells('A7:'.$key.'7');
   }
 

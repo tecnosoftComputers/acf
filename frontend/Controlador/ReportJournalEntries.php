@@ -33,13 +33,13 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
         $tags["seatto"] = $seatto;  
         $tags["result"] = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],$datefrom,
                                                   $dateto,$typeseat,$seatfrom,$seatto,'','',$orderby);
-        if (empty($tags["results"])){
-          $tags["message"] = "Not found records";
+        if (empty($tags["result"])){          
+          $_SESSION['acfSession']['mostrar_error'] = "Not found records";
         }
         $tags["type_seats"] = Modelo_TypeSeat::searchSeat();
         $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
         $tags["template_js"][] = "reports";        
-        Vista::render('rpt_acc_journalentries', $tags);                                      
+        Vista::render('rpt_acc_journalentries', $tags);        
       break;
       case 'pdf':
         $aux_datefrom = Utils::getParam('datefrom','',$this->data);                              
@@ -101,8 +101,8 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
               }                     
               $this->objPdf->SetFont('Arial','B',9);                           
               $this->objPdf->Cell(30 ,5,"Date: ".date("m/d/Y",strtotime($value["FECHA_ASI"])),0,0);
-              $this->objPdf->Cell(50 ,5,"No. ".$typeseat." ".$value["ASIENTO"],0,0);
-              $this->objPdf->Cell(200 ,5,$value["DESC_ASI"],0,0);
+              $this->objPdf->Cell(45 ,5,"No. ".$typeseat." ".$value["ASIENTO"],0,0);
+              $this->objPdf->Cell(200 ,5,$value["DESC_ASI"]."  ".$value["cabliquida"],0,0);
               $seataux = $value["ASIENTO"]; 
               $acum_debits = 0;
               $acum_credit = 0;
@@ -113,7 +113,7 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
             $this->objPdf->Cell(45 ,5,$value['NOMBRE'],0,0);                 
             $this->objPdf->Cell(15 ,5,$value['TIPO'],0,0);                 
             $this->objPdf->Cell(25 ,5,$value['REFER'],0,0);                 
-            $this->objPdf->Cell(30 ,5,'',0,0);                 
+            $this->objPdf->Cell(30 ,5,$value['LIQUIDA_NO'],0,0);                 
             $starty = $this->objPdf->GetY();              
             $this->objPdf->MultiCell(73,3,trim($value['CONCEPTO']), 0, 'L', 0);
             $this->objPdf->SetXY(224, $starty);              
@@ -216,7 +216,7 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
               $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A'.$this->line, "Date: ".date("m/d/Y",strtotime($item["FECHA_ASI"])))
                 ->setCellValue('B'.$this->line, "No. ".$typeseat." ".$item["ASIENTO"])
-                ->setCellValue('C'.$this->line, $item["DESC_ASI"]);
+                ->setCellValue('C'.$this->line, $item["DESC_ASI"]."   ".$item['cabliquida']);
                     
               $seataux = $item["ASIENTO"]; 
               $acum_debits = 0;
@@ -242,7 +242,7 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
               ->setCellValue('B'.$this->line, $item['NOMBRE'])
               ->setCellValue('C'.$this->line, $item['TIPO'])
               ->setCellValue('D'.$this->line, $item['REFER'])
-              ->setCellValue('E'.$this->line, " ")
+              ->setCellValue('E'.$this->line, $item['LIQUIDA_NO'])
               ->setCellValue('F'.$this->line, $item['CONCEPTO'])
               ->setCellValue('G'.$this->line, $debit)
               ->setCellValue('H'.$this->line, $credit)

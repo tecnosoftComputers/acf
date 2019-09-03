@@ -1,5 +1,8 @@
-<?php    
-    define('NEW_SYSTEM','http://localhost/fernando/acf/');
+<?php 
+if (!defined('PUERTO')) {
+  define('HOST', 'localhost/fernanda/acf');
+  define('PUERTO', 'http');  
+} 
     function head_init($role,$db, $acceso) {
     // Mostrar items del modulo
     $sql = $db->prepare("SELECT * FROM permisos p
@@ -51,7 +54,7 @@
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
                     <?php if($acceso = 1){
-                        $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                        $enlace = PUERTO."://".HOST."/".$data_sql['src_head'];
                       } else{
                         $enlace = $data_sql['src_head'];
                       }
@@ -86,7 +89,7 @@
         <?php foreach ((array) $all_sql as $data_sql) { ?>
             <li>
                 <?php if($acceso = 1){
-                    $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                    $enlace = PUERTO."://".HOST."/".$data_sql['src_head'];
                   } else{
                     $enlace = $data_sql['src_head'];
                   }
@@ -180,7 +183,7 @@ function head_inits($role,$db, $acceso) {
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
                     <?php if($acceso = 1){
-                        $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                        $enlace = PUERTO."://".HOST."/".$data_sql['src_head'];
                       } else{
                         $enlace = $data_sql['src_head'];
                       }
@@ -215,7 +218,7 @@ function head_inits($role,$db, $acceso) {
         <?php foreach ((array) $all_sql as $data_sql) { ?>
             <li>
                 <?php if($acceso = 1){
-                    $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                    $enlace = PUERTO."://".HOST."/".$data_sql['src_head'];
                   } else{
                     $enlace = $data_sql['src_head'];
                   }

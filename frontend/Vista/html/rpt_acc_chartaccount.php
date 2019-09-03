@@ -61,7 +61,7 @@
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
     <br>                     
-    <table width="100%" class="table table-striped table-bordered table-hover style-table" >
+    <table width="100%" class="table table-responsive table-striped style-table">
     <thead>
       <tr>        
         <th class="style-th">ACCOUNT</th>
@@ -69,6 +69,7 @@
       </tr>
     </thead>
     <tbody>
+    <tr><td colspan="2" class="style-td-special"></td></tr>
     <?php foreach( $results as $key=>$value ){ ?>
       <?php 
       $nro = substr_count($value["CODIGO"],".");   
@@ -101,8 +102,5 @@
   <br>
 <?php 
 } 
-elseif(isset($message)){
-  echo '<h4 style="text-align:center;">'.$message.'</h4>';
-}
 ?>  
 </div> <!-- FIN DE WRAPPER  -->

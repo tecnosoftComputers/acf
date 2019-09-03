@@ -6,8 +6,7 @@ class Vista {
     if (!empty($template_vars))
       extract($template_vars);
 
-
-    $sess_err_msg = self::obtieneMsgError();
+    $sess_err_msg = self::obtieneMsgError();    
     $sess_suc_msg = self::obtieneMsgExito();
     $sess_not_msg = self::obtieneMsgNotif();
     $menu = self::obtieneMenu($deshabilitarmenu);
@@ -53,13 +52,13 @@ class Vista {
   }
   
   private static function obtieneMsgError(){
-    $msg = "";
-    if( isset($_SESSION['acfSession']['mostrar_error']) && !empty($_SESSION['acfSession']['mostrar_error']) ){
+    $msg = "";    
+    if( isset($_SESSION['acfSession']['mostrar_error']) && !empty($_SESSION['acfSession']['mostrar_error']) ){      
       $msg = $_SESSION['acfSession']['mostrar_error'];
       $msg = str_replace (array("\r\n", "\n", "\r"), '', $msg);
-      $msg = htmlentities($msg, ENT_QUOTES, 'UTF-8');
+      $msg = htmlentities($msg, ENT_QUOTES, 'UTF-8');      
       unset($_SESSION['acfSession']['mostrar_error']);
-    }
+    }    
     return $msg;
   }
   
