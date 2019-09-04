@@ -1,6 +1,8 @@
 <?php
 class Controlador_ReportJournalSummary extends Controlador_Reports {
 
+  public $module = 32;
+
   public function construirPagina(){   
   	$tags = array();    
     if(!Utils::estaLogueado()){
@@ -35,7 +37,8 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
         } 
         if (empty($tags["results"])){
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";
-        }       
+        }      
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module]; 
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_journalsummary', $tags);  
       break;
@@ -428,6 +431,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
         $this->outputExcel("JOURNAL_ENTRY_SUMMARY_REPORT");
       break;
       default:	
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
         $tags["typereport"] = "S";
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_journalsummary', $tags);  	

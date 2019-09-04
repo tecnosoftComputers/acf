@@ -33,8 +33,14 @@
             </div>
           </div>                                            
 
-          <div class="modal-footer">            
+          <div class="modal-footer">
+            <?php
+            if (isset($permission) && $permission["rd"] == 1){ 
+            ?>             
             <button style="float: left;" type="submit" name="register" id="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
+            <?php }else{ ?>
+              <button style="float: left;" type="button" class="btn btn-primary" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-eye"></i> Search</a></button> 
+            <?php } ?>  
             <span style="float: left; margin-left: 15px;">
               <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
@@ -51,12 +57,21 @@
     $url .= (!empty($accto)) ? $accto."/" : "";    
   ?>
   <br>
-  <span id="pdf" style="float: right; margin-left: 10px">
-    <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
-  </span>
-  <span id="excel" style="float: right">
-    <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
-  </span> 
+  <?php if (isset($permission) && $permission["pri"] == 1){  ?>
+    <span id="pdf" style="float: right; margin-left: 10px;">
+      <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+    </span>
+    <span id="excel" style="float: right">
+      <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+    </span> 
+  <?php } else{ ?>
+    <span style="float: right; margin-left: 10px;">
+      <a href="javascript:void(0);" class="btn btn-success" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-excel-o"></i></a>
+    </span>
+    <span style="float: right;">
+      <a href="javascript:void(0);" class="btn btn-danger" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-pdf-o"></i></a>
+    </span> 
+  <?php } ?>
   <br>                   
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">

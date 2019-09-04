@@ -8,8 +8,7 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
     if(!Utils::estaLogueado()){
       header("Location: ".PUERTO."://".HOST."/login.php");
     } 
-
-    //Utils::log(print_r($_SESSION['acfSession']['permission'],true));
+    
     $action = Utils::getParam('action','',$this->data);
     $orderby = array("c.FECHA_ASI", "c.ASIENTO");         
     switch($action){
@@ -38,10 +37,16 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
         }
         $tags["type_seats"] = Modelo_TypeSeat::searchSeat();
         $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
-        $tags["template_js"][] = "reports";        
+        $tags["template_js"][] = "reports";  
+
         Vista::render('rpt_acc_journalentries', $tags);        
       break;
       case 'pdf':
+        if (!isset($_SESSION['acfSession']['permission'][$this->module]) || 
+            empty($_SESSION['acfSession']['permission'][$this->module]["pri"])){
+          $this->redirectToController('journalentries');
+        }
+
         $aux_datefrom = Utils::getParam('datefrom','',$this->data);                              
         $datefrom = (!empty($aux_datefrom)) ? date("Y-m-d", $aux_datefrom) : date('Y-m-d');                   
         $aux_dateto = Utils::getParam('dateto','',$this->data);
@@ -144,6 +149,10 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
         $this->objPdf->Output();  
       break;    
       case 'excel':
+        if (!isset($_SESSION['acfSession']['permission'][$this->module]) || 
+            empty($_SESSION['acfSession']['permission'][$this->module]["pri"])){
+          $this->redirectToController('journalentries');
+        }
         $aux_datefrom = Utils::getParam('datefrom','',$this->data);
         $datefrom = (!empty($aux_datefrom)) ? date("Y-m-d", $aux_datefrom) : date('Y-m-d');          
         $aux_dateto = Utils::getParam('dateto','',$this->data);

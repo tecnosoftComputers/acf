@@ -85,13 +85,22 @@
     $url .= (!empty($seatto)) ? $seatto."/" : "";    
   ?>
   <br>
-  <span id="pdf" style="float: right; margin-left: 10px">
-    <a href="<?php echo PUERTO."://".HOST."/report/journalentries/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
-  </span>
-  <span id="excel" style="float: right">
-    <a href="<?php echo PUERTO."://".HOST."/report/journalentries/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
-  </span> 
-  <br>                   
+  <?php if (isset($permission) && $permission["pri"] == 1){  ?>
+    <span id="pdf" style="float: right; margin-left: 10px">
+      <a href="<?php echo PUERTO."://".HOST."/report/journalentries/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+    </span>
+    <span id="excel" style="float: right">
+      <a href="<?php echo PUERTO."://".HOST."/report/journalentries/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+    </span>     
+  <?php } else{ ?>
+    <span style="float: right; margin-left: 10px;">
+      <a href="javascript:void(0);" class="btn btn-success" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-excel-o"></i></a>
+    </span>
+    <span style="float: right;">
+      <a href="javascript:void(0);" onclick="viewMessage('You cannot execute this action');" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+    </span> 
+  <?php } ?>  
+  <br>                 
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
     <br>                     

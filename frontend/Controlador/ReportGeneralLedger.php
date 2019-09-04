@@ -1,6 +1,8 @@
 <?php
 class Controlador_ReportGeneralLedger extends Controlador_Reports {
 
+  public $module = 33;
+
   public function construirPagina(){   
     
     if(!Utils::estaLogueado()){
@@ -29,7 +31,8 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
                                                    $dateto,'','','',$ccfrom,$ccto,$orderby);   
         if (empty($tags["results"])){
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";
-        }                                                
+        }     
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
   	    $tags["template_js"][] = "reports";     
   	    Vista::render('rpt_acc_generalledger', $tags);                             
       break;      
@@ -194,7 +197,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
 
         $columns = array(
                    'A'=>array("width"=>11,"label"=>"DATE"),
-                   'B'=>array("width"=>14,"label"=>"TYPE SEAT"),
+                   'B'=>array("width"=>14,"label"=>"TYPE"),
                    'C'=>array("width"=>10,"label"=>"SEAT"),
                    'D'=>array("width"=>15,"label"=>"REFERENCE"),
                    'E'=>array("width"=>15,"label"=>"SETTLEMENT"),
@@ -316,6 +319,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
         $this->outputExcel("GENERAL_LEDGER_REPORT");  
       break; 
       default:
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_generalledger', $tags);         
       break;
