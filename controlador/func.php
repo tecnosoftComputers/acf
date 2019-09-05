@@ -1,5 +1,10 @@
-<?php    
-    define('NEW_SYSTEM','http://localhost/fernando/acf/');
+<?php   
+ 
+    if (!defined('PUERTO')) {
+        define('PUERTO', 'http');
+        define('HOST', 'localhost/fernando/acf'); 
+    } 
+
     function head_init($role,$db, $acceso) {
     // Mostrar items del modulo
     $sql = $db->prepare("SELECT * FROM permisos p
@@ -51,7 +56,7 @@
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
                     <?php if($acceso = 1){
-                        $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                        $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
                       } else{
                         $enlace = $data_sql['src_head'];
                       }
@@ -85,12 +90,12 @@
     <ul class="dropdown-menu dropdown-messages">
         <?php foreach ((array) $all_sql as $data_sql) { ?>
             <li>
-                <?php if($acceso = 1){
-                    $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                 <?php if($acceso = 1){
+                    $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
                   } else{
                     $enlace = $data_sql['src_head'];
                   }
-                ?>
+                 ?>
                 <a href="<?php echo $enlace; ?>"><i class="fa fa-caret-right"></i> <?php echo $data_sql['nombre_item'] ?></a>
             </li>
         <?php } ?>
@@ -180,7 +185,7 @@ function head_inits($role,$db, $acceso) {
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
                     <?php if($acceso = 1){
-                        $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                        $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
                       } else{
                         $enlace = $data_sql['src_head'];
                       }
@@ -215,7 +220,7 @@ function head_inits($role,$db, $acceso) {
         <?php foreach ((array) $all_sql as $data_sql) { ?>
             <li>
                 <?php if($acceso = 1){
-                    $enlace = NEW_SYSTEM.$data_sql['src_head'];
+                    $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
                   } else{
                     $enlace = $data_sql['src_head'];
                   }
@@ -277,36 +282,36 @@ function la_sesion($access, $user, $std, $db) {
             $sql->execute();
         }
         
-		function contador($cc, $tabla,$empresa) {
-			$sql = $cc->prepare("SELECT * FROM $tabla WHERE id_empresa = '$empresa' AND estado = 'A'");
-			$sql->execute();
-			$all = $sql->rowCount();
-			
+        function contador($cc, $tabla,$empresa) {
+            $sql = $cc->prepare("SELECT * FROM $tabla WHERE id_empresa = '$empresa' AND estado = 'A'");
+            $sql->execute();
+            $all = $sql->rowCount();
+            
             echo $all;
-		}
+        }
         
         function contadorI($cc, $tabla,$empresa) {
-			$sql = $cc->prepare("SELECT * FROM $tabla WHERE id_empresa = '$empresa' AND estado = 'I'");
-			$sql->execute();
-			$all = $sql->rowCount();
+            $sql = $cc->prepare("SELECT * FROM $tabla WHERE id_empresa = '$empresa' AND estado = 'I'");
+            $sql->execute();
+            $all = $sql->rowCount();
             echo $all;
-		}
+        }
 
         function contadorA($cc, $tabla,$empresa) {
-			$sql = $cc->prepare("SELECT * FROM $tabla WHERE id_empresa = '$empresa' AND estado = 'A'");
-			$sql->execute();
-			$all = $sql->rowCount();
-			
+            $sql = $cc->prepare("SELECT * FROM $tabla WHERE id_empresa = '$empresa' AND estado = 'A'");
+            $sql->execute();
+            $all = $sql->rowCount();
+            
             echo $all;
-		}
+        }
         
-		function contadorMasUno($cc, $tabla, $empresa) {
-			$sql = $cc->prepare("SELECT * FROM $tabla WHERE id_empresa = '$empresa' AND estado = 'A'");
-			$sql->execute();
-			$all = $sql->rowCount();
-			
+        function contadorMasUno($cc, $tabla, $empresa) {
+            $sql = $cc->prepare("SELECT * FROM $tabla WHERE id_empresa = '$empresa' AND estado = 'A'");
+            $sql->execute();
+            $all = $sql->rowCount();
+            
             echo $all += 1;
-		}
+        }
         
         // Verificar si la empresa existe y esta activa
         function estadoEmpresa($cc, $param) {
@@ -317,12 +322,12 @@ function la_sesion($access, $user, $std, $db) {
             echo $count;
         }
 
-		function selectDato($cc, $tabla) {
-			$sql = $cc->prepare("SELECT * FROM $tabla");
-			$sql->execute();
-			$all = $sql->fetchAll(PDO::FETCH_ASSOC);
-			foreach ($all as $key => $value) { ?>
-			 <option value="<?php echo $value['idclientes'] ?>"><?php echo $value['nombres']. " ". $value['apellidos'] ?></option>
+        function selectDato($cc, $tabla) {
+            $sql = $cc->prepare("SELECT * FROM $tabla");
+            $sql->execute();
+            $all = $sql->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($all as $key => $value) { ?>
+             <option value="<?php echo $value['idclientes'] ?>"><?php echo $value['nombres']. " ". $value['apellidos'] ?></option>
     <?php } }
    
     function nameModule($db, $module_id ){

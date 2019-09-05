@@ -37,6 +37,9 @@ class Utils{
     $_SESSION['acfSession']['persona'] = $_SESSION['persona'];
     $_SESSION['acfSession']['id_empresa'] = $_SESSION['id_empresa'];    
     $_SESSION['acfSession']['id_modulo'] = (isset($_SESSION['id_modulo'])) ? $_SESSION['id_modulo'] : 1;
+    $_SESSION['acfSession']['code_iso'] = 'USD';
+    $_SESSION['acfSession']['locale'] = 'en_US';
+    $_SESSION['acfSession']['simbolo'] = '$';
 
     $_SESSION['acfSession']['permission'] = Modelo_Access::searchPermission($_SESSION['acfSession']['usuario']);        
   } 

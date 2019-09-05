@@ -1,30 +1,40 @@
 <?php
-@session_start();
+    
+    include "../../constantes.php";
+    @session_start();
 
-$num = $_REQUEST['y'];
-$num2 = $_REQUEST['x'];
-require_once ("../../datos/db/connect.php");
-require_once ("../../controlador/conf.php");
-$env = new DBSTART;
-$cc = $env->abrirDB();
+    $num = $_REQUEST['y'];
+    $num2 = $_REQUEST['x'];
+    require_once ("../../datos/db/connect.php");
+	require_once ("../../controlador/conf.php");
+	
+	$env = new DBSTART;
+	$cc = $env->abrirDB();
 
-if (!empty($num2)){
-  $_SESSION["id_empresa"] = $num2;  
-}
-if (!empty($num)){
-  $_SESSION["id_modulo"] = $num;     
-}
-$lasesion  = $_SESSION['lasesion'];
-$usuario = $_SESSION['usuario'];    
+    if (!empty($num2)){
+      $_SESSION["id_empresa"] = $num2;  
+    }
+    if (!empty($num)){
+      $_SESSION["id_modulo"] = $num;     
+    }
+    $lasesion  = $_SESSION['lasesion'];
+    $usuario = $_SESSION['usuario'];
 
-$sql = $cc->prepare("UPDATE sesion_init SET modulo='$num', id_empresa='$num2'  WHERE num_sesion='$lasesion'");
+    $sql = $cc->prepare("UPDATE sesion_init SET modulo='$num', id_empresa='$num2'  WHERE num_sesion='$lasesion'");
 
-if ($sql -> execute() ) {
-  header("Location: ".PUERTO."://".HOST."/inicializador/vistas/app/in.php");
+    if ($sql -> execute() ) {
 
-}else{
-    echo '<div class="alert alert-danger">
-            <b>Error al generar!</b>
-          </div>';
-}
-?>
+        if($num==3){
+            header('Location: '.PUERTO.'://'.HOST.'/'.'dashboard/'); 
+            exit;
+        }else{
+            echo '<script type="text/javascript">
+                window.location.href = "../../inicializador/vistas/app/in.php";
+              </script>';
+        }
+
+    }else{
+        echo '<div class="alert alert-danger">
+                <b>Error al generar!</b>
+              </div>';
+    }

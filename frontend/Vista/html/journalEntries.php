@@ -10,39 +10,38 @@
                         <?php if($_SESSION['acfSession']['permission'][$item]['rd'] == 1){ ?>
                             <span id="btnSearch1" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Search Journal"><i class="fa fa-search"></i></span> 
                         <?php }else{ ?>
-                            <a onclick="viewMessage('You cannot execute this action')"><span class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Search Journal"><i class="fa fa-search"></i></span></a>
+                            <span class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Search Journal" onclick="viewMessage('You cannot execute this action')"><i class="fa fa-search"></i></span>
                         <?php } ?>
 
                         <?php if($_SESSION['acfSession']['permission'][$item]['sav'] == 1){ ?>
-                            <a id="save" class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Save Journal"><span><i class="glyphicon glyphicon-floppy-disk"></i></span></a>
+                            <span id="save" class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Save Journal"><i class="glyphicon glyphicon-floppy-disk"></i></span>
 
-                            <a id="memorice" class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Save and Memorice Journal"><span><i class="glyphicon glyphicon-folder-open"></i></span></a>
+                            <span id="memorice" class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Save and Memorice Journal"><i class="glyphicon glyphicon-folder-open"></i></span>
                         <?php }else{ ?>
-                            <a onclick="viewMessage('You cannot execute this action')"><span class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Save Journal"><i class="glyphicon glyphicon-floppy-disk"></i></span></a>
+                            <span class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Save Journal" onclick="viewMessage('You cannot execute this action')"><i class="glyphicon glyphicon-floppy-disk"></i></span>
 
-                            <a onclick="viewMessage('You cannot execute this action')"><span class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Save and Memorice Journal"><i class="glyphicon glyphicon-folder-open"></i></span></a>
+                            <span class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Save and Memorice Journal" onclick="viewMessage('You cannot execute this action')"><i class="glyphicon glyphicon-folder-open"></i></span>
                         <?php } ?>
 
                         <?php if($_SESSION['acfSession']['permission'][$item]['edi'] == 1){ ?>
-                            <a id="update" class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Update Journal" style="display:none"><span><i class="glyphicon glyphicon-floppy-disk"></i></span></a>
+                            <span id="update" class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Update Journal" style="display:none"><i class="glyphicon glyphicon-floppy-disk"></i></span>
 
-                            <a id="memoriceUpdate" class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Update and Memorice Journal" style="display:none"><span><i class="glyphicon glyphicon-folder-open"></i></span></a>
+                            <span id="memoriceUpdate" class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Update and Memorice Journal" style="display:none"><i class="glyphicon glyphicon-folder-open"></i></span>
                         <?php }else{ ?>
-                            <a onclick="viewMessage('You cannot execute this action')"><span class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Update Journal" style="display:none"><i class="glyphicon glyphicon-floppy-disk"></i></span></a>
+                            <span class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Update Journal" style="display:none" onclick="viewMessage('You cannot execute this action')"><i class="glyphicon glyphicon-floppy-disk"></i></span>
 
-                            <a onclick="viewMessage('You cannot execute this action')"><span class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Update and Memorice Journal" style="display:none"><i class="glyphicon glyphicon-folder-open"></i></span></a>
+                            <span class="btn btn-primary disabled" data-toggle="tooltip" data-placement="bottom" title="Update and Memorice Journal" style="display:none" onclick="viewMessage('You cannot execute this action')"><i class="glyphicon glyphicon-folder-open"></i></span>
                         <?php } ?>
 
-                        <button type="button" id="reverseAll" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Reverse all Journal" style="display:none">
-                            <span><i class="glyphicon glyphicon-refresh"></i></span>
-                        </button>
+                        <span id="reverseAll" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Reverse all Journal" style="display:none"><i class="glyphicon glyphicon-refresh"></i></span>
 
-                        <button type="button" id="clear" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Clear Journal">
-                            <span><i class="glyphicon glyphicon-repeat"></i></span>
-                        </button>
+                        <span id="clear" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Clear Journal"><i class="glyphicon glyphicon-repeat"></i></span>
 
                         <span id="btnSearch" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Search Journal Memorice">
                         <i class="fa fa-cloud"></i></span> 
+
+                        <span id="btn_annul" class="btn btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="Journal Void" style="display:none">
+                        <i class="fa fa-ban"></i></span> 
                     </div>
                     <div class="form-group col-md-2">
                       <label class="col-md-4 control-label" for="name">Type: </label>
@@ -125,10 +124,10 @@
                         <table width="100%" class="table table-striped table-bordered table-hover" id="journal">
                             <tr style="background: #ddd;">
                                 <td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Account</b></td>
-                                <td align="center" width="500" style="padding: 3px 0px 3px 0px"><b>Name</b></td>
+                                <td align="center" width="400" style="padding: 3px 0px 3px 0px"><b>Name</b></td>
                                 <td align="center" style="display:none"></td>
-                                <td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Debit</b></td>
-                                <td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Credit</b></td>
+                                <td colspan="2" align="center" width="320" style="padding: 3px 0px 3px 0px"><b>Debit</b></td>
+                                <td colspan="2" align="center" width="320" style="padding: 3px 0px 3px 0px"><b>Credit</b></td>
                                 <td align="center" style="display:none"></td>
                                 <td align="center" width="140" style="padding: 3px 0px 3px 0px"><b>Action</b></td>
                                 <?php 
@@ -142,13 +141,18 @@
                             <tr id="num<?php echo $fila; ?>"><td align="center" colspan="9" style="padding-top: 8px; padding-bottom: 8px;background-color: #d9f2fa;">Empty Journal</td></tr>
                         </table>
                     
-                        <table width="100%" style="padding: 3px 0px 3px 0px: font-size:12px;" class="table table-striped">
+                        <table width="100%" style="padding: 3px 0px 3px 0px; font-size:14px;" class="table table-striped">
                             <tr>
-                                <td align="center" width="210"></td>
-                                <td align="center" width="460" style="text-align: left;"><strong><span id="_mensaje"></span>Balance:&nbsp;&nbsp; $<span id="balance" name="balance">0</span></td>
+                                <td align="center" width="220"></td>
+                                <td align="center" style="text-align: left;" width="120">
+                                    <span id="_mensaje"></span>Balance:</td>
+                                <td width="280">$<span id="balance" name="balance">0.00</span>
+                                </td>
                                 <td align="center" style="display:none"></td>
-                                <td align="center" width="205" style="text-align: right;"><b>Total Debit:</b>&nbsp;&nbsp; $<span id="tdebit" name="tdebit">0</span></td>
-                                <td align="center" width="205" style="text-align: right;"><b>Total Credit:</b>&nbsp;&nbsp; $<span id="tcredit" name="tcredit">0</span></td>
+                                <td align="center" width="100"><b>Total Debit:</b></td>
+                                <td align="right" width="145">$<span id="tdebit" name="tdebit">0.00</span></td>
+                                <td align="center" width="100"><b>Total Credit:</b></td>
+                                <td align="right" width="145">$<span id="tcredit" name="tcredit">0.00</span></td>
                                 <td align="center" style="display:none"></td>
                                 <td colspan="2" align="center" width="140"></td>
                             </tr>
@@ -174,7 +178,7 @@
                                    <div class="tab-content">
                                         <div class="tab-pane fade in active">
                                             <div class="table table-responsive">
-                                                <table width="100%" class="table table-striped table-bordered table-hover" id="journalList">
+                                                <table width="100%" class="table table-striped table-bordered table-hover" id="journalList" style="text-align:center">
                                                     <thead>
                                                         <tr>
                                                             <td align="center"><b>Type</b></td>
@@ -335,7 +339,7 @@
                                     </div>
                                     <br>
                                     <div class="table table-responsive">
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="journalListAll">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="journalListAll" style="text-align:center">
                                         <thead>
                                             <tr>
                                                 <td align="center"><b>Type</b></td>

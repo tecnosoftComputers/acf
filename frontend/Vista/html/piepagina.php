@@ -101,33 +101,6 @@
 
     </script>
 
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 750px; margin-left:-100px">
-        
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Chart of Accounts</h4>
-            </div>
-            
-            <div class="modal-body"  style="height:460px; overflow:auto;">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                           <div class="tab-content">
-                                <div class="tab-pane fade in active" id="contentBody">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" id="buttonClose">Close</button>
-            </div>
-        </div>
-    </div>
-</div> <!--  FIN MODAL 1 -->
 <input type="hidden" name="field_name" id="field_name" value="" >
 <input type="text" hidden id="puerto_host" value="<?php echo PUERTO."://".HOST ;?>">
 
@@ -205,7 +178,7 @@
                 <h4 class="modal-title" id="myModalLabel">New entry</h4>
             </div>
             <div class="modal-body" style="height:63%; overflow: auto">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="entry">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row">
@@ -216,7 +189,7 @@
                                         <div class="input-group"> 
                                             <input class="form-control input-sm" autocomplete="off" style="font-size: 12px" type="text" id="code1"/>
                                             <span class="input-group-btn"> 
-                                                <button id="btn_search" class="btn btn-default"  type="button" data-toggle="modal" data-target="#myModal" onclick="loadModal('code1','name_',false,true,true)"><span style="padding-top: 1px; padding-bottom: 1px" class="glyphicon glyphicon-search"></span></button> 
+                                                <button id="btn_search" class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal" onclick="loadModal('code1','name_',false,true,true)"><span style="padding-top: 1px; padding-bottom: 1px" class="glyphicon glyphicon-search"></span></button> 
                                             </span>
                                         </div>
                                     </div>
@@ -300,10 +273,11 @@
                                         <textarea class="form-control input-sm memo" autocomplete="off" id="description" name="description" placeholder="Description" rows="2" cols="20" style="resize: none;" maxlength="200"></textarea>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+                </div>
+                <div align="center" id="entry1">
                 </div>
             </div>
             <div class="modal-footer" id="footer">
@@ -336,6 +310,34 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 750px; margin-left:-100px">
+        
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Chart of Accounts</h4>
+            </div>
+            
+            <div class="modal-body"  style="height:460px; overflow:auto;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                           <div class="tab-content">
+                                <div class="tab-pane fade in active" id="contentBody">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="buttonClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div> 
 
 </body>
 </html>

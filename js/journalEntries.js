@@ -2,6 +2,9 @@ var data = [];
 
  $(document).ready(function(){ 
 
+  var annul = false;
+  $('#annul').val(annul);
+
   var puerto_host = $('#puerto_host').val();
   type_f();
   searchAccountDetail();
@@ -40,6 +43,7 @@ var data = [];
   });
 
   $( "#code1" ).autocomplete({
+
     source: function( request, response ) {
        $.ajax({
         url: $('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=search",
@@ -47,6 +51,13 @@ var data = [];
         type: "POST",
         data: {
           match: request.term, item:$('#item').val()
+        },
+        beforeSend: function(){
+         $('#btn_search').html('<i style="padding-top: 1px; padding-bottom: 1px; color:#1e6cb6" class="fa fa-spinner fa-spin fa-1x"></i>'/*'<span style="padding-top: 1px; padding-bottom: 1px" class="glyphicon glyphicon-repeat"></span>'*/);
+        },
+        complete:function(){
+          $('#btn_search').html('<span style="padding-top: 1px; padding-bottom: 1px" class="glyphicon glyphicon-search"></span>');
+          $('#code1').focus();
         },
         success: function( data ) {
           response( data );
@@ -98,6 +109,12 @@ function type_f(){
     type:"POST",
     data:{type:sel, item:$('#item').val()},
     url:puerto_host+"/index.php?mostrar=accounts&opcion=searchType",
+    beforeSend: function(){
+     $('#loading').modal('show');
+    },
+    complete:function(){
+      $('#loading').modal('hide');
+    },
     success:function(r){
       var dato = JSON.parse(r);
       $('#number').val(dato.name+' Nº '+dato.number);   
@@ -117,9 +134,14 @@ $('#btnSearch1').on('click',function(){
   var date =  new Date();
   var day = date.getDate()+1;
   var month = date.getMonth()+1;
-  if(month<10){
+  if(month < 10){
     month = '0'+month;
   }
+
+  if(day < 10){
+    day = '0'+day;
+  }
+
   var year = date.getFullYear();
 
   var range = $('#datefilter').val(month+'/'+day+'/'+(year-1)+' - '+month+'/'+day+'/'+year);
@@ -132,12 +154,18 @@ $('#btnSearch2').on('click',function(){
 
   var type = $('#type_select').val();
   var range = $('#datefilter').val().split(' - ');
-  $('#bodyContent').html('<tr><td colspan="5" align="center"><img src="'+$('#puerto_host').val()+'/imagenes/loading.gif" width="150" /></td></tr>');
+  $('#bodyContent').html('<tr><td colspan="5" align="center"><img src="'+$('#puerto_host').val()+'/imagenes/loader.gif" width="150" /></td></tr>');
   $.ajax({
     type:"POST",
     data:{type:type, range:range, item:$('#item').val()},
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
+    beforeSend: function(){
+     $('#loading').modal('show');
+    },
+    complete:function(){
+      $('#loading').modal('hide');
+    },
     success:function(r){
       if(r.journal.length > 0){
 
@@ -157,7 +185,21 @@ $('#btnSearch2').on('click',function(){
           html += '<tr>';
           html += '<td>'+r.journal[i].TIPO_ASI+'</td>';
           html += '<td>'+r.journal[i].ASIENTO+'</td>';
-          html += '<td>'+r.journal[i].FECHA_ASI+'</td>';
+
+          var date =  new Date(r.journal[i].FECHA_ASI);
+          var day = date.getDate()+1;
+          var month = date.getMonth()+1;
+          if(month < 10){
+            month = '0'+month;
+          }
+
+          if(day < 10){
+            day = '0'+day;
+          }
+
+          var year = date.getFullYear();
+
+          html += '<td>'+month+'/'+day+'/'+(year-1)+'</td>';
           html += '<td>'+r.journal[i].BENEFICIAR+'</td>';
           html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal" '+viewF+'><i class="fa fa-eye"></i></a></td>';
           html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal" '+ediF+'><i class="fa fa-edit"></i></a></td>';
@@ -192,6 +234,7 @@ function runTable(numInput){
 
 function updateBalance(s1,s2,btn,btn2){
 
+  var annul = $('#annul').val();
   if (s1 > s2) { // El debito es mayor a credito
     $('#_mensaje').html("Credit ");
     var diff = (Math.abs(s1 - s2)).toFixed(2);
@@ -204,7 +247,7 @@ function updateBalance(s1,s2,btn,btn2){
     $('#balance').html(format(diff));
   }
 
-  if(diff == 0){
+  if(diff == '0.00' && annul == 'false'){
     $(btn).removeClass('disabled');
     $(btn).removeAttr('disabled');
     $(btn2).removeClass('disabled');
@@ -260,8 +303,8 @@ function insertRow(){
   var debit1 = parseFloat($('#debit').val());
   var credit1 = parseFloat($('#credit').val());
 
-  var d = debit1.toFixed(2);
-  var c = credit1.toFixed(2);
+  var d = format($('#debit').val());
+  var c = format($('#credit').val());
 
   var f = numRow+1;
 
@@ -276,8 +319,8 @@ function insertRow(){
       row += '<input class="control2" type="hidden"  id="codep'+f+'" name="codep[]" value="'+codep+'" />'+'\n';
       row += '<input class="control2 memo" type="hidden"  id="el_memo'+f+'" name="el_memo[]" value="'+memo+'" />'+'\n';
       row += '<input class="control2" type="hidden"  id="_trans'+f+'" name="_trans[]" value="'+typeTrans+'" /></td>'+'\n';
-      row += '<td><input readonly style="text-align:right" class="control2" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+d+'" /></td>'+'\n';
-      row += '<td><input readonly style="text-align:right" class="control2" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+c+'" /></td>'+'\n';
+      row += '<td colspan="2" width="320"><input readonly style="text-align:right" class="control2" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+d+'" /></td>'+'\n';
+      row += '<td colspan="2" width="320"><input readonly style="text-align:right" class="control2" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+c+'" /></td>'+'\n';
       row += '<td style="display:none;"><input class="control2" type="hidden"  id="el_documento'+f+'" name="el_documento[]" value="'+documento+'" />'+'\n';
       row += '<input class="control2" type="hidden"  id="la_liq'+f+'" name="la_liq[]" value="'+liq+'" /></td>'+'\n';
       row += '<td colspan="2" align="center" style="background-color: #d9f2fa;padding-top: 3px;padding-bottom: 1px;">'+'\n';
@@ -350,8 +393,8 @@ function insertRow2(account,name,type,codep,ref,memo,typeTrans,debit1,credit1,do
   row += '<input class="control2" type="hidden"  id="codep'+f+'" name="codep[]" value="'+codep+'"/>'+'\n';
   row += '<input class="control2 memo" type="hidden"  id="el_memo'+f+'" name="el_memo[]" value="'+memo+'"/>'+'\n';
   row += '<input class="control2" type="hidden"  id="_trans'+f+'" name="_trans[]" value="'+typeTrans+'"/></td>'+'\n';
-  row += '<td><input readonly style="text-align:right" class="control2 disabled" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+debit1+'" /></td>'+'\n';
-  row += '<td><input readonly style="text-align:right" class="control2 disabled" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+credit1+'" /></td>'+'\n';
+  row += '<td colspan="2" width="305"><input readonly style="text-align:right" class="control2 disabled" type="text" id="el_debit'+f+'" name="el_debit[]" value="'+debit1+'" /></td>'+'\n';
+  row += '<td colspan="2" width="305"><input readonly style="text-align:right" class="control2 disabled" type="text" id="el_credit'+f+'" name="el_credit[]" value="'+credit1+'" /></td>'+'\n';
   row += '<td style="display:none;"><input class="control2" type="hidden"  id="el_documento'+f+'" name="el_documento[]" value="'+documento+'" />'+'\n';
   row += '<input class="control2" type="hidden"  id="la_liq'+f+'" name="la_liq[]" value="'+liq+'" /></td>'+'\n';
   row += '<td colspan="2" align="center" style="background-color: #d9f2fa;padding-top: 3px;padding-bottom: 1px;">'+'\n';
@@ -487,7 +530,18 @@ function clearForm(){
   var text = $("select[name=benef] option[value='0']").text();
   $('.bootstrap-select .filter-option').text(text);
   document.getElementById('benef').selectedIndex = -1;
+  $('#btn_annul').hide();
+
+  $('#save').show();
+  $('#memorice').show();
+
+  $('#update').hide();
+  $('#memoriceUpdate').hide();
+  $('#reverseAll').hide();
   
+  $('#tdebit').html('0.00');
+  $('#tcredit').html('0.00');
+  $('#balance').html('0.00');
   var tableReg = document.getElementById('journal');
   var myBodyElements = tableReg.getElementsByTagName("tr");
   for (i = myBodyElements.length-1; i >= 1; i--) {
@@ -508,11 +562,25 @@ function clearModal(){
   $('#description').val($('#_memo').val());
   $('#name_').val('');
   $('#code1').val('');
+  $('#codepp').val('');
   $('#type').val('');
   $('#referencia').val('');
   $('#documento').val('');
   $('#liq').val('');
   $('#trans option:selected').removeAttr('selected');
+
+  $('#code1').removeAttr('disabled');
+  $('#name_').removeAttr('disabled');
+  $('#type').removeAttr('disabled');
+  $('#codepp').removeAttr('disabled');
+  $('#referencia').removeAttr('disabled');
+  $('#description').removeAttr('disabled');
+  $('#debit').removeAttr('disabled');
+  $('#credit').removeAttr('disabled');
+  $('#trans').removeAttr('disabled');
+  $('#documento').removeAttr('disabled');
+  $('#liq').removeAttr('disabled');
+
   document.getElementById('trans').selectedIndex=0;
 }
 
@@ -552,11 +620,18 @@ $('#btn_cancel').on('click',function(e){
 
 function searchJournal(type,id){
 
+  $('#btn_annul').hide();
   $.ajax({
     type:"POST",
     data:{type:type, id:id, item:$('#item').val()},
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
+    beforeSend: function(){
+     $('#loading').modal('show');
+    },
+    complete:function(){
+      $('#loading').modal('hide');
+    },
     success:function(r){
       if(r.journal != ''){
         var rule = r.rule;
@@ -602,13 +677,14 @@ function searchJournal(type,id){
               $('#pdf_notif').removeAttr("target");
               $('#pdf').removeAttr("target");
             }
-
             $('#myModalTrans').modal('show');
           }else{
             viewMessage('You cannot execute this action');
           }
+          var annul = false;
         }else{
 
+          var annul = true;
           editJournal(r.journal['IDCONT']);
 
           $('#save').addClass('disabled');
@@ -618,13 +694,15 @@ function searchJournal(type,id){
 
           //anular todo
           Swal.fire({      
-            html: 'Journal canceled',
+            html: 'Journal void',
             imageUrl: $('#puerto_host').val()+'/imagenes/wrong-04.png',
             imageWidth: 75,
             confirmButtonText: 'OK',
             animation: true
-          }); 
+          });
+          $('#btn_annul').show();
         } 
+        $('#annul').val(annul);
       }else{
         Swal.fire({      
           html: 'Journal not found',
@@ -656,6 +734,12 @@ function editJournal(id){
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
     data: { id: id, item:$('#item').val()},
     dataType : 'json',
+    beforeSend: function(){
+     $('#loading').modal('show');
+    },
+    complete:function(){
+      $('#loading').modal('hide');
+    },
     success:function(r){
 
       if(r.journal['ANULADO'] != 1){
@@ -667,8 +751,26 @@ function editJournal(id){
         $('#reverseAll').show();
         $('#window').val('update');
       }
-      
+
       if(r.journal != ''){
+
+         var sel = document.getElementById( '_seleccion' ),
+          opts = sel.options;
+
+          for ( var i = 0; i < opts.length; i++ ) {
+              
+            if(r.journal['TIPO_ASI'] != ''){ 
+              var value = r.journal['TIPO_ASI'].trim();
+            }else{
+              var value = 0;
+            }
+
+            if ( opts[i].value == value ) {
+              sel.selectedIndex = i;
+              break;
+            }
+          }
+
         $('#_actual').val(r.journal['ASIENTO']);
         data_journal(r);
         $('#myModalTrans').modal('hide');
@@ -756,8 +858,8 @@ function recalculate(btn,btn2){
   var s1 = runTable(7);
   var s2 = runTable(8);
 
-  $('#tdebit').html(s1);
-  $('#tcredit').html(s2);
+  $('#tdebit').html(format(s1));
+  $('#tcredit').html(format(s2));
 
   updateBalance(s1,s2,btn,btn2);
 }
@@ -788,6 +890,12 @@ function copyJournal(id){
     data:{id:id, item:$('#item').val()},
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
+    beforeSend: function(){
+     $('#loading').modal('show');
+    },
+    complete:function(){
+      $('#loading').modal('hide');
+    },
     success:function(r){
      
       if(r.journal != ''){
@@ -813,6 +921,8 @@ function copyJournal(id){
 function data_journal(r){
 
   if(r.journal['ANULADO'] == 1){
+    
+    var annul = true;
 
     $('#_memo').addClass('disabled');
     $('#_memo').attr('disabled','true');
@@ -834,6 +944,8 @@ function data_journal(r){
 
   }else{
 
+    var annul = false;
+
     $('#_memo').removeClass('disabled');
     $('#_memo').removeAttr('disabled','true');
 
@@ -853,6 +965,7 @@ function data_journal(r){
     $(".selectpicker[data-id='benef']").removeClass("disabled");
   }
 
+  $('#annul').val(annul);
   $('#_documento').val(r.journal['DOCUMENTO'].trim());
   $('#_liq').val(r.journal['LIQUIDA_NO'].trim());
   $('#_memo').val(r.journal['DESC_ASI'].trim());
@@ -860,9 +973,14 @@ function data_journal(r){
 
   var day = date.getDate()+1;
   var month = date.getMonth()+1;
-  if(month<10){
+  if(month < 10){
     month = '0'+month;
   }
+
+  if(day < 10){
+    day = '0'+day;
+  }
+
   var year = date.getFullYear();
   $('#date').val(month+'/'+day+'/'+year);
 
@@ -999,7 +1117,6 @@ function points(where)
     }
     document.getElementById(where).value = cad2;
   }
-  //document.getElementById(where).focus();
 } 
 
 function format(val_data)

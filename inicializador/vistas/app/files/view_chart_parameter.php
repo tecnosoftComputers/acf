@@ -119,7 +119,7 @@
                                             <div class="input-group"> 
                                                 <input readonly="" autocomplete="off" value="<?php echo $p_activo ?>" id="_activo" name="activo" type="text" class="form-control"> 
                                                 <span class="input-group-btn"> 
-                                                    <button class="btn btn-default"  type="button" data-toggle="modal" data-target="#myModal" onclick="loadModal('_activo',true,true)" ><span style="padding-top: 3px; padding-bottom: 3px" class="glyphicon glyphicon-search"></span></button> 
+                                                    <button class="btn btn-default"  type="button" data-toggle="modal" data-target="#myModal" onclick="loadModal('_activo',false,false)" ><span style="padding-top: 3px; padding-bottom: 3px" class="glyphicon glyphicon-search"></span></button> 
                                                 </span> 
                                             </div>
                                         </div>

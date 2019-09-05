@@ -13,3 +13,16 @@
     te = String.fromCharCode(tecla);
     return patron.test(te);
 }
+
+$('#template').on('click',function(){
+  console.log('entro');
+  $.ajax({
+    type:"POST",
+    url:'',
+    dataType: 'json',
+    data: {}
+    success:function(r){
+      
+    }
+  });
+});

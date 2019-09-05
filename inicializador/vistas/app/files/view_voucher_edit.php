@@ -25,6 +25,10 @@
             $form       = $value['FORMATOCOM'];
             $ns         = $value['ns'];
         }
+
+        $sql = DBSTART::abrirDB()->prepare("SELECT * FROM templates");
+        $sql->execute();
+        $formats = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 ?>
 <div id="page-wrapper"><br />
@@ -61,10 +65,31 @@
         </div>
         
         <div class="form-group">
-              <label class="col-md-4 control-label" for="name">Print: </label>
-              <div class="col-md-8">
-                <input name="print" type="text" class="form-control input-sm" value="<?php // echo $idasi ?>" />
-              </div>
+            <label class="col-md-4 control-label" for="name">Print: </label>
+            <div class="col-md-8">
+                <div class="input-group">
+                    <select id="print" name="print" class="form-control input-sm">
+                        <?php 
+                            foreach ($formats as $key => $f) {
+                                echo '<option value="'.$f['description'].'"';
+                                if($f['description'] == $form){
+                                    echo ' selected';
+                                }
+
+                                if($f['type_seat'] == ''){
+                                    $type = 'Generic';
+                                }else{
+                                    $type = $f['type_seat'];
+                                }
+                                echo '>Type: '.$type.' - '.$f['description'].'</option>';
+                            }
+                        ?>
+                    </select>
+                    <div class="input-group-btn">
+                        <buttom type="button" id="template" data-toggle="modal" data-target="#modalViewTemplate" class="btn btn-default input-sm" title="View Template"><i class="fa fa-eye"></i></buttom>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="form-group">

@@ -110,13 +110,13 @@ RewriteRule ^productsParametersDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar
 RewriteRule ^productsParametersReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters&opcion=report&tipo=$1 [L]
 
 #journalEntries
-RewriteRule ^journalEntries/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalEntries&item=30 [L]
-RewriteRule ^annulJournal/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=annulJournal&item=30&id=$1 [L]
-RewriteRule ^saveJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveJournal&item=30 [L]
-RewriteRule ^saveMemoriceJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveMemoriceJournal&item=30 [L]
-RewriteRule ^updateJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateJournal&item=30 [L]
-RewriteRule ^updateMemoriceJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateMemoriceJournal&item=30 [L]
-RewriteRule ^deleteMemorice/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=deleteMemorice&item=30&id=$1 [L]
+RewriteRule ^journalEntries/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalEntries&item=30 [L]
+RewriteRule ^annulJournal/(.*)/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=annulJournal&item=30&id=$1 [L]
+RewriteRule ^saveJournal/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveJournal&item=30 [L]
+RewriteRule ^saveMemoriceJournal/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveMemoriceJournal&item=30 [L]
+RewriteRule ^updateJournal/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateJournal&item=30 [L]
+RewriteRule ^updateMemoriceJournal/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateMemoriceJournal&item=30 [L]
+RewriteRule ^deleteMemorice/(.*)/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=deleteMemorice&item=30&id=$1 [L]
 RewriteRule ^journalReport/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalReport&item=30&tipo=$1&idcont=$2 [L]
 
 #reports

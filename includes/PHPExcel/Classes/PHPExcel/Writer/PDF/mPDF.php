@@ -91,11 +91,21 @@ class PHPExcel_Writer_PDF_mPDF extends PHPExcel_Writer_PDF_Core implements PHPEx
 
 
         //  Create PDF
-        $pdf = new mpdf();
+        //$pdf = new mpdf();
+        $pdf = new mpdf('','A4');
         $ortmp = $orientation;
         $pdf->_setPageSize(strtoupper($paperSize), $ortmp);
         $pdf->DefOrientation = $orientation;
-        $pdf->AddPage($orientation);
+        //$pdf->AddPage($orientation);
+$pdf->SetFont('Arial','B',9);
+
+      $pdf->AddPage('P', 'mm', 'A4', '', '',
+          6, // margin_left
+          0, // margin right
+          6, // margin top
+          6, // margin bottom
+          5, // margin header
+          8); 
 
         //  Document info
         $pdf->SetTitle($this->phpExcel->getProperties()->getTitle());
@@ -111,8 +121,8 @@ class PHPExcel_Writer_PDF_mPDF extends PHPExcel_Writer_PDF_Core implements PHPEx
         );
 
         //  Write to file
-        fwrite($fileHandle, $pdf->Output('', 'S'));
-
-        parent::restoreStateAfterSave($fileHandle);
+        //fwrite($fileHandle, $pdf->Output('', 'I'));
+$pdf->Output('', 'I');
+       // parent::restoreStateAfterSave($fileHandle);
     }
 }

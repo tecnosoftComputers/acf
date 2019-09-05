@@ -257,21 +257,20 @@ function loadModal(name_field,name_field2,permission1,permission2,search){
     url:url,
     data:{ match : match },
     beforeSend: function(){
-     $('#accounts').html('<img src="'+puerto_host+'/imagenes/loading.gif" style="margin-left: 20%;" width="400" />');
+     $('#table_autoload').html('<img src="'+puerto_host+'/imagenes/loader.gif" width="150" />');
     },
     success: function(valores){
 
       var datos = JSON.parse(valores);
-
       var html = '';
 
       if(search==true){
         html += '<div class="form-group">';
         html += '<div class="col-lg-12"><input type="text" name="field_s" id="field_s" class="form-control" onkeyup="loadModal(\''+name_field+'\',\''+name_field2+'\','+permission1+','+permission2+',false)" placeholder="Search.."></div>';
-        html += '<br><br><br>';
+        html += '<br><br><br><div align="center" id="table_autoload">';
       }
 
-      html += '<div id="table_autoload"><table id="accounts" class="display table table-striped table-bordered">';
+      html += '<table id="accounts" class="display table table-striped table-bordered">';
       html += '<thead>';
       html += '<tr>';
       html += '<td align="center"><b>Code</b></td>';
@@ -322,6 +321,7 @@ function loadModal(name_field,name_field2,permission1,permission2,search){
       html += '</tbody></table></div>';
 
       if(search==true){
+        html += '</div>';
         $('#contentBody').html(html);
       }else{
         $('#table_autoload').html(html);
@@ -335,69 +335,67 @@ function searchAccount(name_field,name_field2,permission1,permission2){
   var puerto_host = $('#puerto_host').val();
   var match = $('#field_s').val();
 
-  //if(match != ''){
-    var url = puerto_host+"/index.php?mostrar=accounts&opcion=search";
-    $.ajax({
-        type:'POST',
-        url:url,
-        beforeSend: function(){
-         $('#accounts').html('<img src="'+puerto_host+'/imagenes/loading.gif" style="margin-left: 20%;" width="400" />');
-        },
-        data:{ coincidence : match },
-        success: function(valores){
+  var url = puerto_host+"/index.php?mostrar=accounts&opcion=search";
+  $.ajax({
+      type:'POST',
+      url:url,
+      beforeSend: function(){
+       $('#table_autoload').html('<img src="'+puerto_host+'/imagenes/loader.gif" width="150" />');
+      },
+      data:{ coincidence : match },
+      success: function(valores){
 
-          var datos = JSON.parse(valores); 
-          
-          var html = '<table id="accounts" class="display table table-striped table-bordered">';
-              html += '<thead>';
-              html += '<tr>';
-              html += '<td align="center"><b>Code</b></td>';
-              html += '<td align="center"><b>Name</b></td>';
-              html += '<td align="center"><b>Action</b></td>';
+        var datos = JSON.parse(valores); 
+        
+        var html = '<table id="accounts" class="display table table-striped table-bordered">';
+            html += '<thead>';
+            html += '<tr>';
+            html += '<td align="center"><b>Code</b></td>';
+            html += '<td align="center"><b>Name</b></td>';
+            html += '<td align="center"><b>Action</b></td>';
+            html += '</tr>';
+            html += '</thead>';
+            html += '<tbody>';
+
+        if(datos.length != 0){
+          for (var clave in datos){
+
+            if (datos.hasOwnProperty(clave)) {
+
+              var cod = datos[clave].value;
+              var name = datos[clave].label;
+              var cod_aux = cod.replace(/\./g, '');
+
+              newvar = cod.substring(cod.length - 1, cod.length);
+
+              html += '<tr class="odd gradeX" data-toggle="collapse" data-target="#demo'+cod_aux+'" class="accordion-toggle">';
+
+              if(newvar == '.'){
+                html += '<td><strong>'+cod+'</strong></td>';
+                    html += '<td><strong>'+name+'</strong></td>';
+                  }else{
+                    html += '<td style="padding-left:30px;">'+cod+'</td>';
+                    html += '<td>'+name+'</td>';
+                  }
+
+                  if((newvar == '.' && permission1 && !permission2) || (newvar != '.' && !permission1 && permission2) || (permission1 && permission2)){
+                    html += '<td width=40 data-toggle="modal" data-target="#myModal"> <a href="javascript:select(\''+name_field+'\',\''+name_field2+'\',\''+cod+'\',\''+name+'\');"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></a></td>';
+                  }else{
+              html += '<td width=40><a title="Error, no puede seleccionar una cuenta mayor" class="unselectable" href="#"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></td>';
+                  }
+                  
               html += '</tr>';
-              html += '</thead>';
-              html += '<tbody>';
-
-          if(datos.length != 0){
-            for (var clave in datos){
-
-              if (datos.hasOwnProperty(clave)) {
-
-                var cod = datos[clave].value;
-                var name = datos[clave].label;
-                var cod_aux = cod.replace(/\./g, '');
-
-                newvar = cod.substring(cod.length - 1, cod.length);
-
-                html += '<tr class="odd gradeX" data-toggle="collapse" data-target="#demo'+cod_aux+'" class="accordion-toggle">';
-
-                if(newvar == '.'){
-                  html += '<td><strong>'+cod+'</strong></td>';
-                      html += '<td><strong>'+name+'</strong></td>';
-                    }else{
-                      html += '<td style="padding-left:30px;">'+cod+'</td>';
-                      html += '<td>'+name+'</td>';
-                    }
-
-                    if((newvar == '.' && permission1 && !permission2) || (newvar != '.' && !permission1 && permission2) || (permission1 && permission2)){
-                      html += '<td width=40 data-toggle="modal" data-target="#myModal"> <a href="javascript:select(\''+name_field+'\',\''+name_field2+'\',\''+cod+'\',\''+name+'\');"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></a></td>';
-                    }else{
-                html += '<td width=40><a title="Error, no puede seleccionar una cuenta mayor" class="unselectable" href="#"><span class="badge" style="background-color:#1e6cb6; width:120px"><i class="fa fa-check"> Select</i></span></td>';
-                    }
-                    
-                html += '</tr>';
-              }
             }
-            html += '</tbody></table>';
-            $('#table_autoload').html(html);
-          }else{
-            html += '<tr align="center"><td colspan="3">No matches found</td></tr>';
-            html += '</tbody></table>';
-            $('#table_autoload').html(html);
           }
+          html += '</tbody></table>';
+          $('#table_autoload').html(html);
+        }else{
+          html += '<tr align="center"><td colspan="3">No matches found</td></tr>';
+          html += '</tbody></table>';
+          $('#table_autoload').html(html);
         }
-    });
-  //}
+      }
+  });
 }
 
 function select(field_name,field_name2,code,name){
@@ -587,7 +585,7 @@ function editInputsView(f){
   $('#debit').attr('disabled','true');
   $('#credit').attr('disabled','true');
   $('#trans').attr('disabled','true');
-  $('#docuemnto').attr('disabled','true');
+  $('#documento').attr('disabled','true');
   $('#liq').attr('disabled','true');
 
   $('#btn_search').attr('disabled','true');

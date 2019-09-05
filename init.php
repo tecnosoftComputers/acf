@@ -2,6 +2,7 @@
 require_once RUTA_INCLUDES.'/mpdf/mpdf.php';
 require_once RUTA_INCLUDES.'/fpdf17/fpdf.php';
 require_once RUTA_INCLUDES.'/PHPExcel/Classes/PHPExcel.php';
+require_once RUTA_INCLUDES.'/PHPExcel/Classes/PHPExcel/IOFactory.php';
 
 function cargarClases($nombreClase) {
   $nombre_archivo = RUTA_FRONTEND . str_replace('_', '/', $nombreClase) . '.php';
