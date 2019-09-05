@@ -207,6 +207,7 @@ class Database{
       return null;
     }
     $this->res_set = $this->fetch_row($this->result, $dorowset, $result_type);
+    mysqli_free_result($this->result);
     return $this->res_set;
   }
   
@@ -236,6 +237,19 @@ class Database{
   function insert_id(){
     return mysqli_insert_id($this->connection);
   }
-  
+
+  function procedure($sql){
+    $result = array();
+    if ($stmt = mysqli_prepare($this->connection, $sql)) {
+      mysqli_stmt_execute($stmt);
+      $rs = mysqli_stmt_get_result($stmt);
+      while ($row = mysqli_fetch_array($rs,self::ASSOC)) {
+        $result[] = $row;
+      }      
+      mysqli_stmt_close($stmt);
+    }
+    return $result;
+  }
+
 }
 ?>

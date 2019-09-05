@@ -192,7 +192,7 @@
               $totresta = $totresta + $acumresta;
               $showacumdebit = abs($acumdebit);
               $showacumcredit = abs($acumcredit);     
-              $showacumresta = abs($acumresta);
+              $showacumresta = $acumresta;
               echo "<tr>                                  
                      <td colspan='2' align='right'><strong>Subtotal:</strong></td>       
                      <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
@@ -216,7 +216,7 @@
           $acumresta = $acumresta + $value["debit"] + $value["credit"];           
           $showdebit = abs($value["debit"]);  
           $showcredit = abs($value["credit"]);  
-          $showresta = abs($value["debit"] + $value["credit"]);  
+          $showresta = $value["debit"] + $value["credit"];           
           echo "<tr>               
                   <td>".$value["TIPO_ASI"]."</td>
                   <td>".$value["nameseat"]."</td>                                                
@@ -230,7 +230,7 @@
          $totresta = $totresta + $acumresta; 
          $showacumdebit = abs($acumdebit);
          $showacumcredit = abs($acumcredit);  
-         $showacumresta = abs($acumresta);     
+         $showacumresta = $acumresta;     
          $showtotdebit = abs($totdebit);
          $showtotcredit = abs($totcredit);
          $showtotresta = abs($totresta);

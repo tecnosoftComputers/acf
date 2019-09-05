@@ -17,6 +17,7 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
   	    $tags["accfrom"] = $accfrom;
   	    $tags["accto"] = $accto;
   	    $tags["results"] = Modelo_ChartAccount::report($accfrom,$accto);
+        Utils::log("RESULTADOS ".print_r($tags["results"],true));
         if (empty($tags["results"])){
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";
         }        

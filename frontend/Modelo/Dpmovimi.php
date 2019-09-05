@@ -98,13 +98,13 @@ class Modelo_Dpmovimi{
 	  $sql = "SELECT temp.CODMOV, c.NOMBRE, SUM(temp.debit) AS debit, SUM(temp.credit) AS credit
 			  FROM dp01a110 c
 			  INNER JOIN 
-				(SELECT m.CODMOV, m.TIPO_ASI, 
-				        IF(m.IMPORTE>0,m.IMPORTE,0) AS debit, 
-				        IF(m.IMPORTE<0,m.IMPORTE,0) AS credit
-				FROM dpmovimi m 
-				WHERE m.ID_EMPRESA = '".$empresa."' AND 
-				      m.FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."') AS temp
-				      ON c.CODIGO = temp.CODMOV 
+				(SELECT CODMOV, TIPO_ASI, 
+				        IF(IMPORTE>0,IMPORTE,0) AS debit, 
+				        IF(IMPORTE<0,IMPORTE,0) AS credit
+				FROM dpmovimi  
+				WHERE ID_EMPRESA = '".$empresa."' AND 
+				      FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."') AS temp
+			  ON c.CODIGO = temp.CODMOV 
 			  WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0)";
       if (!empty($accfrom)){
       	$sql .= " AND temp.CODMOV >= '".$accfrom."'";
@@ -122,12 +122,12 @@ class Modelo_Dpmovimi{
 	                 SUM(temp.debit) AS debit, SUM(temp.credit) AS credit
 			  FROM dp01a110 c
 			  INNER JOIN 
-			   (SELECT m.CODMOV, m.TIPO_ASI, 
-			           IF(m.IMPORTE>0,m.IMPORTE,0) AS debit, 
-			           IF(m.IMPORTE<0,m.IMPORTE,0) AS credit
+			   (SELECT CODMOV, TIPO_ASI, 
+			           IF(IMPORTE>0,IMPORTE,0) AS debit, 
+			           IF(IMPORTE<0,IMPORTE,0) AS credit
 				FROM dpmovimi m 
-				WHERE m.ID_EMPRESA = '".$empresa."' AND 
-				      m.FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."') AS temp
+				WHERE ID_EMPRESA = '".$empresa."' AND 
+				      FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."') AS temp
 			  ON c.CODIGO = temp.CODMOV
 			  INNER JOIN dpnumero t ON t.TIPO_ASI = temp.TIPO_ASI      
 			  WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0) 	      ";
@@ -139,6 +139,61 @@ class Modelo_Dpmovimi{
       }
 	  $sql .= " GROUP BY temp.CODMOV, temp.TIPO_ASI ORDER BY temp.CODMOV, temp.TIPO_ASI";
 	  return $GLOBALS['db']->auto_array($sql,array(),true);
-    }	
+    }
+
+  public static function reportTrialBalance($empresa,$datefrom,$dateto,$accfrom='',$accto=''){
+  	if (empty($empresa) || empty($datefrom) || empty($dateto)){ return false; }
+  	$sql = "SELECT c.CODIGO, c.NOMBRE, balance.balance, debits.debit, credits.credit
+			FROM dp01a110 c
+			LEFT JOIN (
+			  SELECT CODMOV, SUM(IMPORTE) AS balance
+		      FROM dpmovimi 
+			  WHERE ID_EMPRESA = '".$empresa."' AND FECHA_ASI < '".$datefrom."'
+			  GROUP BY CODMOV) AS balance ON balance.CODMOV = c.CODIGO
+			LEFT JOIN (
+			  SELECT CODMOV, SUM(IMPORTE) AS debit
+			  FROM dpmovimi 
+			  WHERE ID_EMPRESA = '".$empresa."' AND IMPORTE > 0 AND 
+			        FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."'
+			  GROUP BY CODMOV) AS debits ON debits.CODMOV = c.CODIGO
+			LEFT JOIN (
+			  SELECT CODMOV, SUM(IMPORTE) AS credit
+			  FROM dpmovimi 
+			  WHERE ID_EMPRESA = '".$empresa."' AND IMPORTE < 0 AND 
+			        FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."'
+			  GROUP BY CODMOV) AS credits ON credits.CODMOV = c.CODIGO
+			WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0)";
+	if (!empty($accfrom)){
+      $sql .= " AND c.CODIGO >= '".$accfrom."'";
+    }
+    if (!empty($accto)){
+      $sql .= " AND (c.CODIGO <= '".$accto."' OR c.CODIGO LIKE '".$accto."%')";
+    }
+    $results = $GLOBALS['db']->auto_array($sql,array(),true);     
+    if (!empty($results)){
+      foreach($results as $key=>$value){
+      	if (empty($value["balance"]) && empty($value["debit"]) && empty($value["credit"])){
+      	  continue;	
+      	}
+      	else{
+      	  $codigoaux = $value["CODIGO"];      	        	  
+  	  	  $cod = substr($codigoaux,0,strrpos($codigoaux,"."));   	  	  
+  	  	  while (!empty($cod)){   	  	   	  	    	  	  
+            $keyparent = array_search($cod.".", array_column($results, 'CODIGO'));          
+            $results[$keyparent]["balance"] = $results[$keyparent]["balance"] + $value["balance"];
+            $results[$keyparent]["debit"] = $results[$keyparent]["debit"] + $value["debit"]; 
+            $results[$keyparent]["credit"] = $results[$keyparent]["credit"] + $value["credit"];
+            $cod = substr($cod,0,strrpos($cod,"."));
+          }           
+      	}
+      }      
+      foreach($results as $key=>$value){
+      	if (empty($value["balance"]) && empty($value["debit"]) && empty($value["credit"])){
+      	  unset($results[$key]);
+      	}
+      }
+    }
+    return $results;
+  } 	
 }  
 ?>

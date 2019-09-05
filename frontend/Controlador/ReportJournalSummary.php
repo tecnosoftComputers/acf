@@ -133,7 +133,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 $totresta = $totresta + $acumresta;
                 $showacumdebit = abs($acumdebit);
                 $showacumcredit = abs($acumcredit);     
-                $showacumresta = abs($acumresta);
+                $showacumresta = $acumresta;
 
                 $this->objPdf->SetFont('Arial','B',9);          
                 $this->objPdf->SetXY(140, $this->objPdf->GetY());                          
@@ -166,12 +166,12 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
             $acumresta = $acumresta + $value["debit"] + $value["credit"];           
             $showdebit = abs($value["debit"]);  
             $showcredit = abs($value["credit"]);  
-            $showresta = abs($value["debit"] + $value["credit"]);  
+            $showresta = $value["debit"] + $value["credit"];  
 
             $this->objPdf->SetFont('Arial','',9);                                       
             //$this->objPdf->Cell(189,5,'',0,1);                              
             $this->objPdf->Cell(30 ,5,$value["TIPO_ASI"],0,0);
-            $this->objPdf->Cell(98 ,5,$value["nombre_asiento"],0,0);                             
+            $this->objPdf->Cell(98 ,5,$value["nameseat"],0,0);                             
             $this->objPdf->Cell(50 ,5,number_format($showdebit,2),0,0,'R');
             $this->objPdf->Cell(50 ,5,number_format($showcredit,2),0,0,'R');
             $this->objPdf->Cell(50 ,5,number_format($showresta,2),0,0,'R');            
@@ -182,7 +182,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
            $totresta = $totresta + $acumresta; 
            $showacumdebit = abs($acumdebit);
            $showacumcredit = abs($acumcredit);  
-           $showacumresta = abs($acumresta);     
+           $showacumresta = $acumresta;     
            $showtotdebit = abs($totdebit);
            $showtotcredit = abs($totcredit);
            $showtotresta = abs($totresta);
@@ -333,7 +333,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                   $totresta = $totresta + $acumresta;
                   $showacumdebit = abs($acumdebit);
                   $showacumcredit = abs($acumcredit);
-                  $showacumresta = abs($acumresta);
+                  $showacumresta = $acumresta;
 
                   $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);  
                   $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);
@@ -373,13 +373,13 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
               $acumresta = $acumresta + $value["debit"] + $value["credit"];           
               $showdebit = abs($value["debit"]);  
               $showcredit = abs($value["credit"]);  
-              $showresta = abs($value["debit"] + $value["credit"]); 
+              $showresta = $value["debit"] + $value["credit"]; 
 
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);  
               $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);    
               $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A'.$this->line, $value['TIPO_ASI'])
-                ->setCellValue('B'.$this->line, $value['nombre_asiento'])
+                ->setCellValue('B'.$this->line, $value['nameseat'])
                 ->setCellValue('C'.$this->line, " ".number_format($showdebit,2))
                 ->setCellValue('D'.$this->line, " ".number_format($showcredit,2))
                 ->setCellValue('E'.$this->line, " ".number_format($showresta,2)); 
@@ -390,7 +390,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
              $totresta = $totresta + $acumresta; 
              $showacumdebit = abs($acumdebit);
              $showacumcredit = abs($acumcredit);  
-             $showacumresta = abs($acumresta);     
+             $showacumresta = $acumresta;     
              $showtotdebit = abs($totdebit);
              $showtotcredit = abs($totcredit);
              $showtotresta = abs($totresta);

@@ -98,7 +98,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               if (!empty($key)){
                 $showacumdebit = abs($acumdebit);
                 $showacumcredit = abs($acumcredit);
-                $showbalance = abs($balance);
+                $showbalance = $balance;
 
                 $this->objPdf->SetFont('Arial','B',9);          
                 $this->objPdf->SetXY(199, $this->objPdf->GetY());                          
@@ -119,7 +119,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               $infoaccount = Modelo_ChartAccount::getIndividual($value["CODMOV"]);
               $prevbalance = Modelo_Dpmovimi::reportLedger($_SESSION['acfSession']['id_empresa'],
                                                            $datefrom,trim($value["CODMOV"]));
-              $showprevbalance = abs($prevbalance["balance"]); 
+              $showprevbalance = $prevbalance["balance"]; 
 
               $this->objPdf->SetFont('Arial','B',9);                           
               $this->objPdf->Cell(50 ,5,$value["CODMOV"],0,0);
@@ -143,7 +143,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
             $idmov = Utils::encriptar($value["IDCONT"]);
             $showdebit = abs($debit);  
             $showcredit = abs($credit);   
-            $showbalance = abs($balance); 
+            $showbalance = $balance; 
 
             $this->objPdf->SetFont('Arial','',9);                                       
             $this->objPdf->Cell(189,5,'',0,1);                              
@@ -162,7 +162,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
           } 
           $showacumdebit = abs($acumdebit);
           $showacumcredit = abs($acumcredit);
-          $showbalance = abs($balance);                  
+          $showbalance = $balance;
 
           $this->objPdf->SetFont('Arial','B',9);          
           $this->objPdf->SetXY(199, $this->objPdf->GetY());                          
@@ -225,7 +225,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               if (!empty($key)){
                 $showacumdebit = abs($acumdebit);
                 $showacumcredit = abs($acumcredit);
-                $showbalance = abs($balance);
+                $showbalance = $balance;
                 
                 $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':I'.$this->line)->applyFromArray($this->styleArray);
                 $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':I'.$this->line)->applyFromArray($this->CStyle);
@@ -255,7 +255,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               $infoaccount = Modelo_ChartAccount::getIndividual($value["CODMOV"]);
               $prevbalance = Modelo_Dpmovimi::reportLedger($_SESSION['acfSession']['id_empresa'],
                                                            $datefrom,trim($value["CODMOV"]));
-              $showprevbalance = abs($prevbalance["balance"]); 
+              $showprevbalance = $prevbalance["balance"]; 
 
               $objPHPExcel->getActiveSheet()->mergeCells('A'.$this->line.':C'.$this->line);
               $objPHPExcel->getActiveSheet()->mergeCells('D'.$this->line.':F'.$this->line);
@@ -287,7 +287,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
             $idmov = Utils::encriptar($value["IDCONT"]);
             $showdebit = abs($debit);  
             $showcredit = abs($credit);   
-            $showbalance = abs($balance); 
+            $showbalance = $balance; 
 
             $objPHPExcel->getActiveSheet()->getStyle('F'.$this->line)->getAlignment()->setWrapText(true);
             $objPHPExcel->setActiveSheetIndex(0)
@@ -304,7 +304,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
           } 
           $showacumdebit = abs($acumdebit);
           $showacumcredit = abs($acumcredit);
-          $showbalance = abs($balance);                  
+          $showbalance = $balance;                  
 
           $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':I'.$this->line)->applyFromArray($this->styleArray);
           $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':I'.$this->line)->applyFromArray($this->CStyle);  

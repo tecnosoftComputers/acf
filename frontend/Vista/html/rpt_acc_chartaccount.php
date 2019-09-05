@@ -57,6 +57,17 @@
     $url .= (!empty($accto)) ? $accto."/" : "";    
   ?>
   <br>
+  <!--<div class="form-group col-md-6">
+    <label for="records" class="col-md-4 control-label">Number of records:</label>
+    <div class="col-md-2">
+      <select class="form-control" id="nrorecords" name="nrorecords">
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select> 
+    </div>    
+  </div>-->
+        
   <?php if (isset($permission) && $permission["pri"] == 1){  ?>
     <span id="pdf" style="float: right; margin-left: 10px;">
       <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
@@ -72,6 +83,7 @@
       <a href="javascript:void(0);" class="btn btn-danger" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-pdf-o"></i></a>
     </span> 
   <?php } ?>
+    
   <br>                   
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
