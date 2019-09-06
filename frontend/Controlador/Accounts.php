@@ -25,7 +25,7 @@ class Controlador_Accounts extends Controlador_Base {
       break;
       case 'deleteMemorice':
         $id = Utils::getParam('id', '', $this->data); 
-        $id = Utils::desencriptar($id);
+        $id = Utils::desencriptar($id); 
         $datos = array('MEMORICE'=>0);
         $journal = Modelo_Seat::updateJournal($id,$datos);
         $_SESSION['acfSession']['mostrar_exito'] = 'The journal was removed from the memorized.';
@@ -88,7 +88,7 @@ class Controlador_Accounts extends Controlador_Base {
 
         $journal = Modelo_Seat::searchJournal($type,$range,$id);
         $movi = Modelo_Dpmovimi::searchMovimi($type,$id);
-        Vista::renderJSON(array('journal' => $journal, 'movi'=>$movi, 'rule'=>$_SESSION['acfSession']['rule'], 'permission'=>$_SESSION['acfSession']['permission'][$item]));
+        Vista::renderJSON(array('journal' => $journal, 'movi'=>$movi, 'rule'=>$_SESSION['acfSession']['rule'], 'permission'=>$_SESSION['acfSession']['permission'][$item], 'simbolo'=>$_SESSION['acfSession']['simbolo']));
       break;
       case 'journalEntries': 
 
@@ -354,7 +354,9 @@ class Controlador_Accounts extends Controlador_Base {
 
       $bene = Modelo_Beneficiary::searchBeneficiary();
       $cont =  Utils::desencriptar($_POST['idcont']);
-      $seat = $_POST['_actual'];
+      $seat_data = Modelo_Seat::searchJournal(false,false,$cont);
+      $seat = $seat_data['ASIENTO'];
+      $type_seat = $seat_data['TIPO_ASI'];
       
       if(!Modelo_Dpmovimi::deleteMovimi($cont)){
         throw new Exception('Error could not erase data.');
@@ -379,7 +381,7 @@ class Controlador_Accounts extends Controlador_Base {
         $concept = str_replace('"', '', $_POST['el_memo'][$key]);
         $concept = str_replace("'", '', $concept);
 
-        $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$seat,'CONCEPTO'=>$concept,'CODID'=>$_POST['benef'],'DB'=>str_replace(',', '', $db),'CR'=>str_replace(',', '', $cr), 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'CODIGO'=>$_POST['_accountycode'][$key],'CODMOV'=>$_POST['codep'][$key],'CERRADO'=>(int)1,'TIPO'=>$_POST['el_type'][$key],'REFER'=>$_POST['el_ref'][$key],'GRUPOCON'=>$_POST['_trans'][$key],'IMPORTE'=>str_replace(',', '', $importe), 'DOCUMENTO'=>$_POST['el_documento'][$key], 'LIQUIDA_NO'=>$_POST['la_liq'][$key]); 
+        $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$type_seat,'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$seat,'CONCEPTO'=>$concept,'CODID'=>$_POST['benef'],'DB'=>str_replace(',', '', $db),'CR'=>str_replace(',', '', $cr), 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'CODIGO'=>$_POST['_accountycode'][$key],'CODMOV'=>$_POST['codep'][$key],'CERRADO'=>(int)1,'TIPO'=>$_POST['el_type'][$key],'REFER'=>$_POST['el_ref'][$key],'GRUPOCON'=>$_POST['_trans'][$key],'IMPORTE'=>str_replace(',', '', $importe), 'DOCUMENTO'=>$_POST['el_documento'][$key], 'LIQUIDA_NO'=>$_POST['la_liq'][$key]); 
 
         if(!Modelo_Dpmovimi::insert($datos)){
           throw new Exception('Error creating the detail, try again.');
@@ -389,7 +391,7 @@ class Controlador_Accounts extends Controlador_Base {
       $memo = str_replace('"', '', $_POST['_memo']);
       $memo = str_replace("'", '', $memo);
 
-      $datos = array('TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'DESC_ASI'=>$memo,'BENEFICIAR'=>$bene[$_POST['benef']],'DEBITOS'=>$sum_db,'CREDITOS'=>$sum_cr,'USER_ID'=>$_SESSION['acfSession']['usuario'], 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'], 'CEDRUC'=>$_POST['benef'], 'DOCUMENTO'=>$_POST['_documento'], 'LIQUIDA_NO'=>$_POST['_liq']);
+      $datos = array('TIPO_ASI'=>$type_seat,'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'DESC_ASI'=>$memo,'BENEFICIAR'=>$bene[$_POST['benef']],'DEBITOS'=>$sum_db,'CREDITOS'=>$sum_cr,'USER_ID'=>$_SESSION['acfSession']['usuario'], 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'], 'CEDRUC'=>$_POST['benef'], 'DOCUMENTO'=>$_POST['_documento'], 'LIQUIDA_NO'=>$_POST['_liq']);
 
       if($memorice == 1){
         $datos['MEMORICE'] = $memorice;
@@ -574,7 +576,7 @@ class Controlador_Accounts extends Controlador_Base {
     }
   }
 
-  public function outputExcel($title,$objExcel){
+  public static function outputExcel($title,$objExcel){
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');
     header('Cache-Control: max-age=0');
@@ -582,7 +584,7 @@ class Controlador_Accounts extends Controlador_Base {
     $objWriter->save('php://output');  
   }
 
-  public function excels($objPHPExcel, $mod, $nombre_archivo, $user, $datos, $movi, $accounts, $title, $name, $logo, $date, $memo, $beneficiary, $formatter, $trans, $bco, $cta, $ch){
+  public static function excels($objPHPExcel, $mod, $nombre_archivo, $user, $datos, $movi, $accounts, $title, $name, $logo, $date, $memo, $beneficiary, $formatter, $trans, $bco, $cta, $ch){
     
     $objPHPExcel->getActiveSheet()->getPageMargins()->setTop(0.2);
     $objPHPExcel->getActiveSheet()->getPageMargins()->setRight(0.2);
@@ -751,7 +753,7 @@ class Controlador_Accounts extends Controlador_Base {
     return array('cont'=>$cont,'objPHPExcel'=>$objPHPExcel);
   }*/
 
-  function excel($objPHPExcel, $cont, $CStyle, $styleArray2, $trans){
+  public static function excel($objPHPExcel, $cont, $CStyle, $styleArray2, $trans){
 
     if(count($trans) > 0){
 

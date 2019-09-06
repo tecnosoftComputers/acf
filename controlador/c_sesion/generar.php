@@ -1,5 +1,5 @@
 <?php
-    
+
     include "../../constantes.php";
     @session_start();
 
@@ -38,3 +38,4 @@
                 <b>Error al generar!</b>
               </div>';
     }
+?>

@@ -1,6 +1,6 @@
 <form role="form" name="formulario" id="formulario" action="#"  method="post" >
-    <div id="page-wrapper"><br />
-        <div class="alert alert-info"><p>Accounting / Activities / Journal Entries / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Volver</a></p></div>
+    <div id="page-wrapper2" style="    padding: 0 30px;"><br />
+        <div class="alert alert-info"><p>Accounting / Activities / Journal Entries / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Back</a></p></div>
 
         <div class="row">
             <div class="col-lg-12">
@@ -40,7 +40,7 @@
                         <span id="btnSearch" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Search Journal Memorice">
                         <i class="fa fa-cloud"></i></span> 
 
-                        <span id="btn_annul" class="btn btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="Journal Void" style="display:none">
+                        <span id="btn_annul1" class="btn btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="Journal Void" style="display:none">
                         <i class="fa fa-ban"></i></span> 
                     </div>
                     <div class="form-group col-md-2">
@@ -55,8 +55,12 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label class="col-md-4 control-label" for="_actual">Search: </label>
-                        <div class="col-md-8">
-                            <input autocomplete="off" id="_actual" name="_actual" type="text" class="form-control input-sm" value=""/>
+                        <div class="col-md-7">
+                            <input autocomplete="off" id="_actual" name="_actual" type="text" class="form-control input-sm" value="" maxlength="8" style=" padding-right: 5px; padding-left: 5px;"/>
+
+                        </div>
+                        <div class="col-md-1" style="float:right;padding-left: 0px;padding-right: 0px;padding-top: 8px; cursor:pointer">
+                            <i id="cleanSeat" class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="bottom" title="Clear seat"></i>
                         </div>
                     </div>
                     <div class="form-group col-md-3">
@@ -120,7 +124,7 @@
         <div class="row">
             <div class="col-lg-12">    
                 <div class="panel panel-default">
-                    <div class="panel-body" id="tableJournal" style="height:35%; overflow: auto">
+                    <div class="panel-body" id="tableJournal" style="height:35%; overflow-y: scroll">
                         <table width="100%" class="table table-striped table-bordered table-hover" id="journal">
                             <tr style="background: #ddd;">
                                 <td align="center" width="220" style="padding: 3px 0px 3px 0px"><b>Account</b></td>
@@ -141,228 +145,32 @@
                             <tr id="num<?php echo $fila; ?>"><td align="center" colspan="9" style="padding-top: 8px; padding-bottom: 8px;background-color: #d9f2fa;">Empty Journal</td></tr>
                         </table>
                     
-                        <table width="100%" style="padding: 3px 0px 3px 0px; font-size:14px;" class="table table-striped">
-                            <tr>
-                                <td align="center" width="220"></td>
-                                <td align="center" style="text-align: left;" width="120">
-                                    <span id="_mensaje"></span>Balance:</td>
-                                <td width="280">$<span id="balance" name="balance">0.00</span>
-                                </td>
-                                <td align="center" style="display:none"></td>
-                                <td align="center" width="100"><b>Total Debit:</b></td>
-                                <td align="right" width="145">$<span id="tdebit" name="tdebit">0.00</span></td>
-                                <td align="center" width="100"><b>Total Credit:</b></td>
-                                <td align="right" width="145">$<span id="tcredit" name="tcredit">0.00</span></td>
-                                <td align="center" style="display:none"></td>
-                                <td colspan="2" align="center" width="140"></td>
-                            </tr>
-                        </table>
                     </div> <!-- FIN DE COL-LG-12  -->
+                    <table width="100%" style="padding: 3px 0px 3px 0px; font-size:14px;" class="table table-striped">
+                        <tr>
+                            <td align="center" width="232"></td>
+                            <td align="center" style="text-align: left;" width="120">
+                                <span id="_mensaje"></span>Balance:</td>
+                            <td width="282"><?php echo $_SESSION['acfSession']['simbolo']; ?><span id="balance" name="balance">0.00</span>
+                            </td>
+                            <td align="center" style="display:none"></td>
+                            <td align="center" width="100"><b>Total Debit:</b></td>
+                            <td align="right" style="padding-right: 0px;" width="130"><?php echo $_SESSION['acfSession']['simbolo']; ?><span id="tdebit" name="tdebit">0.00</span></td>
+                            <td align="center" width="100"><b>Total Credit:</b></td>
+                            <td align="right" style="padding-right: 0px;" width="142"><?php echo $_SESSION['acfSession']['simbolo']; ?><span id="tcredit" name="tcredit">0.00</span></td>
+                            <td align="center" style="display:none"></td>
+                            <td colspan="2" align="center" width="140"></td>
+                        </tr>
+                    </table>
                 </div> 
             </div>
         </div><!-- FIN DE ROW -->
             
         <input type="hidden" id="numRow" name="numRow" value="<?php echo $fila ?>">
         <input type="hidden" id="annul" name="annul" value="">
-        <div class="modal fade" id="myModalJournal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabelList">Memorice Journal List</h4>
-                    </div>
-                    <div class="modal-body"  style="height:60%; overflow:auto;">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                   <div class="tab-content">
-                                        <div class="tab-pane fade in active">
-                                            <div class="table table-responsive">
-                                                <table width="100%" class="table table-striped table-bordered table-hover" id="journalList" style="text-align:center">
-                                                    <thead>
-                                                        <tr>
-                                                            <td align="center"><b>Type</b></td>
-                                                            <td align="center"><b>Journal</b></td>
-                                                            <td align="center" width="95"><b>Date</b></td>
-                                                            <td align="center" width="400"><b>Beneficiary</b></td>
-                                                            <td colspan="4" align="center"><b>Action</b></td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php foreach( $all_send as $registro2 ){ ?>
-                                                           <tr class='odd gradeX'>
-                                                               <td><?php echo $registro2['TIPO_ASI'] ?></td>
-                                                               <td><?php echo $registro2['ASIENTO'] ?></td>
-                                                               <td><?php echo date('m/d/Y', strtotime($registro2['FECHA_ASI'])); ?></td>
-                                                               <td><?php echo $registro2['BENEFICIAR']; ?></td>
-
-                                                               <?php
-
-                                                                $f1 = $f2 = $f3 = $f4 = "onclick=\"viewMessage('You cannot execute this action')\"";
-
-                                                                if($_SESSION['acfSession']['permission'][$item]['rd'] == 1){
-                                                                    $f1 = "onclick=\"viewJournal('".Utils::encriptar($registro2['IDCONT'])."')\"";
-                                                                }
-
-                                                                if($_SESSION['acfSession']['permission'][$item]['edi'] == 1){
-                                                                    $f2 = "onclick=\"searchJournal('','".Utils::encriptar($registro2['IDCONT'])."')\"";
-                                                                    $f4 = 'href="'.PUERTO.'://'.HOST.'/deleteMemorice/'.Utils::encriptar($registro2['IDCONT']).'/"';
-                                                                }
-
-                                                                if($_SESSION['acfSession']['permission'][$item]['sav'] == 1){
-                                                                    $f3 = "onclick=\"copyJournal('".Utils::encriptar($registro2['IDCONT'])."')\"";
-                                                                }
-
-                                                               ?>
-                                                               <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal memorice" <?php echo $f1; ?>><i class="fa fa-eye"></i></a></td>
-                                                               <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal memorice" <?php echo $f2; ?>><i class="fa fa-edit"></i></a></td>
-                                                               <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Copy journal" <?php echo $f3; ?>><i class="fa fa-copy"></i></a></td>
-                                                               <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Delete journal memorice" <?php echo $f4; ?>><i class="fa fa-trash"></i></a></td>              
-                                                           </tr>
-                                                       <?php } ?>
-                                                   </tbody>
-                                               </table>
-                                           </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="buttonClose">Close</button>
-                    </div>
-               </div>
-           </div>
-       </div>
     </div> <!-- FIN DE WRAPPER  -->
     <input type="hidden" name="idcont" id="idcont" value="">
 </form>
 <input type="hidden" name="window" id="window" value="save">
 <input type="hidden" name="item" id="item" value="<?php echo $item; ?>">
-<div class="modal fade" id="myModalTrans" tabindex="-1" role="dialog" aria-labelledby="myModalTrans" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabelNotif">Notification</h4>
-            </div>
-            <div class="modal-body" style="height:20%; overflow:auto;">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body" align="center">
-                            <div id="mjs"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <span title="PDF" style="float: left"><a id="pdf_notif" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
-                <span title="EXCEL" style="float: left"><a id="excel_notif" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
-                <button type="button" class="btn btn-primary" id="btn_edit"><i class="glyphicon glyphicon-pencil"></i> Update</button>
-                <button type="button" class="btn btn-warning" id="btn_annul"><i class="glyphicon glyphicon-remove"></i> Void</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="modal fade" id="myModalConf" tabindex="-1" role="dialog" aria-labelledby="myModalConf" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabelConf">Confirmation</h4>
-            </div>
-            <div class="modal-body" style="height:20%; overflow:auto;">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body" align="center">
-                            <div id="mjs2"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-primary" id="btn_conf"><i class="fa fa-check"></i> Ok</a>
-                <a class="btn btn-danger" id="btn_cancel" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="myModalList" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content" style="">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalListLabel">Journal List</h4>
-            </div>
-            <div class="modal-body"  style="height:70%; overflow:auto;">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                           <div class="tab-content">
-                                <div class="tab-pane fade in active">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label style="float:left" class="col-md-4 control-label" for="datefilter1">Range(date): </label>
-                                            <div class="col-md-7" style="float:left">
-                                                <input type="text" class="form-control" id="datefilter" name="datefilter" value="<?php echo date("m/d/Y",strtotime(date('m/d/Y')."- 1 year")).' - '.date('m/d/Y'); ?>" style="font-size: 11px" />
-                                            </div>
-                                            <div class="col-md-1" style="float:right;padding-left: 0px;padding-right: 0px;padding-top: 8px; cursor:pointer">
-                                                <i id="cleanFecha" class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="bottom" title="Clear date"></i>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-5">
-                                            <label class="col-md-2 control-label" for="datefilter1">Type: </label>
-                                            <div class="col-md-10">
-                                                <select id="type_select" name="type_select" class="form-control" style="font-size: 11px">
-                                                    <option value="" selected>Select an option</option>
-                                                <?php foreach((array) $fetch_dp as $rest) {
-                                                    echo '<option value="'.$rest['TIPO_ASI'].'"';
-                                                    if($type_default == $rest['TIPO_ASI']){
-                                                        echo ' selected';
-                                                    } 
-                                                    echo '>'.$rest['TIPO_ASI'].' - '.$rest['NOMBRE'].'</option>';
-                                                } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1" align="center">
-                                            <?php 
-                                                if($_SESSION['acfSession']['permission'][$item]['rd'] == 1){ ?>
-                                                    <button type="button" class="btn btn-primary" id="btnSearch2"><i class="glyphicon glyphicon-search" data-toggle="tooltip" data-placement="bottom" title="Search"></i></button>
-                                            <?php } ?>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="table table-responsive">
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="journalListAll" style="text-align:center">
-                                        <thead>
-                                            <tr>
-                                                <td align="center"><b>Type</b></td>
-                                                <td align="center"><b>Journal</b></td>
-                                                <td align="center" width="95"><b>Date</b></td>
-                                                <td align="center" width="400"><b>Beneficiary</b></td>
-                                                <td colspan="2" align="center"><b>Action</b></td>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="bodyContent">
-                                            
-                                       </tbody>
-                                   </table>
-                               </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" id="buttonClose">Close</button>
-            </div>
-       </div>
-   </div>
-</div>

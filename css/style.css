@@ -9,8 +9,8 @@ p,form{
 }
 
 .modal-header{
-	background: #1e6cb6;
-	color:white;
+  background: #1e6cb6;
+  color:white;
 }
 
 .modal-header .close {
@@ -19,31 +19,31 @@ p,form{
 }
 
 .control2{
-	font-size: 14px;
-	padding-top: 5px;
-	padding-bottom: 5px;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 5px;
     padding-left: 2px;
     padding-right: 2px;
-	height: 27px;
-	width:100%;
-	background-color: #d9f2fa;
-	text-align: left
+  height: 27px;
+  width:100%;
+  background-color: #d9f2fa;
+  text-align: left
 }
 
 .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover{
-	color: #fff5f5;
-	background: #bfb9b9;
+  color: #fff5f5;
+  background: #bfb9b9;
 }
 
 .dataTables_empty{
-	text-align: center;
+  text-align: center;
 }
 
 .btn-small{
 
     padding-left: 4px;
     padding-right: 4px;
-	float:left;
+  float:left;
 }
 
 .btn-small-vertical{
@@ -64,7 +64,26 @@ ul.ui-autocomplete {
 }
 
 .style-th{
-  text-align: center;    
+  text-align: center;   
+  border-top: 1px solid #000 !important;
+  border-left: 1px solid #000 !important;
+  border-bottom: 5px solid #000 !important;
+  border-right: 1px solid #000 !important; 
+}
+
+.style-td-special{
+  padding: 2px;
+}
+
+.style-td-totals{
+  border-top: 1px solid #000 !important;
+  text-align: right;
+  font-weight: 700; 
+}
+
+.style-tr-cab{
+  background-color:#e5e6ed !important;
+  font-weight: 700;
 }
 
 #journalList a{
@@ -102,3 +121,8 @@ ul.ui-autocomplete {
   left: calc(30% - 24px);
 }
 
+.loader{
+  background-image: url("loader.gif"); /* The image used */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat;
+}

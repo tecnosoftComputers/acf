@@ -1,5 +1,5 @@
 <div id="page-wrapper"><br />
-  <div class="alert alert-info"><p>Accounting / Report / Balance Sheet</p></div>
+  <div class="alert alert-info"><p>Accounting / Report / Balance Sheet / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Back</a></p></div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">

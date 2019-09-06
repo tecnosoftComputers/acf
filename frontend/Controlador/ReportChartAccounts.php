@@ -1,6 +1,8 @@
 <?php
 class Controlador_ReportChartAccounts extends Controlador_Reports {
 
+  public $module = 43;
+
   public function construirPagina(){   
 
     $tags = array();    
@@ -15,9 +17,11 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
   	    $tags["accfrom"] = $accfrom;
   	    $tags["accto"] = $accto;
   	    $tags["results"] = Modelo_ChartAccount::report($accfrom,$accto);
+        Utils::log("RESULTADOS ".print_r($tags["results"],true));
         if (empty($tags["results"])){
-          $tags["message"] = "Not found records";
+          $_SESSION['acfSession']['mostrar_error'] = "Not found records";
         }        
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
   	    $tags["template_js"][] = "reports";     
   	    Vista::render('rpt_acc_chartaccount', $tags);                       
       break;        
@@ -117,6 +121,7 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         $this->outputExcel("CHART_ACCOUNTS_REPORT");   
       break;
       default:  
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_chartaccount', $tags);       
       break;

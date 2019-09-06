@@ -104,7 +104,7 @@ var data = [];
 function type_f(){
   var puerto_host = $('#puerto_host').val();
   var sel = $('#_seleccion').val();
-  $('#_actual').val('');
+  //$('#_actual').val('');
   $.ajax({
     type:"POST",
     data:{type:sel, item:$('#item').val()},
@@ -124,7 +124,7 @@ function type_f(){
 
  $('#_seleccion').on('change',function(){
     type_f();
-    clearForm();
+    //clearForm();
   });
 
 
@@ -146,11 +146,15 @@ $('#btnSearch1').on('click',function(){
 
   var range = $('#datefilter').val(month+'/'+day+'/'+(year-1)+' - '+month+'/'+day+'/'+year);
   document.getElementById('type_select').selectedIndex = 1;
-  document.getElementById("btnSearch2").click();
+  general();
   $('#myModalList').modal('show');
 });
 
 $('#btnSearch2').on('click',function(){
+  general();
+});
+
+function general(){
 
   var type = $('#type_select').val();
   var range = $('#datefilter').val().split(' - ');
@@ -212,8 +216,7 @@ $('#btnSearch2').on('click',function(){
       $('#bodyContent').html(html);
     }
   });
-});
-
+}
 
 function runTable(numInput){
 
@@ -499,8 +502,7 @@ function redirect(r,e,btn,btn2){
 
   var s1 = runTable(7);
   var s2 = runTable(8);
- /*console.log(validateHead());
- console.log(validateRows());*/
+ 
   if((!validateHead() && validateRows()) || (validateHead() && !validateRows()) || (updateBalance(s1,s2,btn,btn2) != 0)){
 
     Swal.fire({      
@@ -512,8 +514,20 @@ function redirect(r,e,btn,btn2){
     }); 
     e.preventDefault();
   }else{
-    document.getElementById('formulario').action = r; 
-    document.formulario.submit();
+
+    if($('#annul').val() == 'true'){
+      Swal.fire({      
+        html: 'Journal void',
+        imageUrl: $('#puerto_host').val()+'/imagenes/wrong-04.png',
+        imageWidth: 75,
+        confirmButtonText: 'OK',
+        animation: true
+      }); 
+      e.preventDefault();
+    }else{
+      document.getElementById('formulario').action = r; 
+      document.formulario.submit();
+    }
   }
 }
 
@@ -530,7 +544,7 @@ function clearForm(){
   var text = $("select[name=benef] option[value='0']").text();
   $('.bootstrap-select .filter-option').text(text);
   document.getElementById('benef').selectedIndex = -1;
-  $('#btn_annul').hide();
+  $('#btn_annul1').hide();
 
   $('#save').show();
   $('#memorice').show();
@@ -553,35 +567,6 @@ function clearForm(){
     $('#journal tr:last').after(row);
     $('#numRow').val(0);
   }
-}
-
-function clearModal(){
-
-  $('#debit').val('0.00');
-  $('#credit').val('0.00');
-  $('#description').val($('#_memo').val());
-  $('#name_').val('');
-  $('#code1').val('');
-  $('#codepp').val('');
-  $('#type').val('');
-  $('#referencia').val('');
-  $('#documento').val('');
-  $('#liq').val('');
-  $('#trans option:selected').removeAttr('selected');
-
-  $('#code1').removeAttr('disabled');
-  $('#name_').removeAttr('disabled');
-  $('#type').removeAttr('disabled');
-  $('#codepp').removeAttr('disabled');
-  $('#referencia').removeAttr('disabled');
-  $('#description').removeAttr('disabled');
-  $('#debit').removeAttr('disabled');
-  $('#credit').removeAttr('disabled');
-  $('#trans').removeAttr('disabled');
-  $('#documento').removeAttr('disabled');
-  $('#liq').removeAttr('disabled');
-
-  document.getElementById('trans').selectedIndex=0;
 }
 
 $('#buttonCloseModal').on('click',function(e){
@@ -620,7 +605,7 @@ $('#btn_cancel').on('click',function(e){
 
 function searchJournal(type,id){
 
-  $('#btn_annul').hide();
+  $('#btn_annul1').hide();
   $.ajax({
     type:"POST",
     data:{type:type, id:id, item:$('#item').val()},
@@ -654,7 +639,7 @@ function searchJournal(type,id){
               $('#btn_edit').attr('onclick','viewMessage("You cannot execute this action")');
             }
 
-            if(p.del == 1){
+            if(p.del == 1){console.log(p.del);
               $('#btn_annul').attr('onclick','annulJournal("'+r.journal['IDCONT']+'")');
             }else{
               $('#btn_annul').attr('onclick','viewMessage("You cannot execute this action")');
@@ -700,7 +685,7 @@ function searchJournal(type,id){
             confirmButtonText: 'OK',
             animation: true
           });
-          $('#btn_annul').show();
+          $('#btn_annul1').show();
         } 
         $('#annul').val(annul);
       }else{
@@ -735,7 +720,8 @@ function editJournal(id){
     data: { id: id, item:$('#item').val()},
     dataType : 'json',
     beforeSend: function(){
-     $('#loading').modal('show');
+      $('#myModalTrans').modal('hide');
+      $('#loading').modal('show');
     },
     complete:function(){
       $('#loading').modal('hide');
@@ -770,10 +756,8 @@ function editJournal(id){
               break;
             }
           }
-
         $('#_actual').val(r.journal['ASIENTO']);
-        data_journal(r);
-        $('#myModalTrans').modal('hide');
+        data_journal(r, false);
       }
     }
   });
@@ -891,7 +875,8 @@ function copyJournal(id){
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
     beforeSend: function(){
-     $('#loading').modal('show');
+      $('#myModalJournal').modal('hide');
+      $('#loading').modal('show');
     },
     complete:function(){
       $('#loading').modal('hide');
@@ -901,9 +886,8 @@ function copyJournal(id){
       if(r.journal != ''){
         clearForm();
         $('#_actual').val('');
-        data_journal(r);
+        data_journal(r, true);
         recalculate('#save','#memorice');
-        $('#myModalJournal').modal('hide');
       }else{
         Swal.fire({      
           html: 'Journal not found',
@@ -918,9 +902,9 @@ function copyJournal(id){
   });
 }
 
-function data_journal(r){
+function data_journal(r,copy){
 
-  if(r.journal['ANULADO'] == 1){
+  if(r.journal['ANULADO'] == 1 && copy == false){
     
     var annul = true;
 
@@ -1039,6 +1023,9 @@ $('#cleanFecha').on('click',function(){
   $('#datefilter').val('');
 });
 
+$('#cleanSeat').on('click',function(){
+  $('#_actual').val('');
+});
 
 function points(where)
 {
@@ -1119,82 +1106,3 @@ function points(where)
   }
 } 
 
-function format(val_data)
-{
-  var character = val_data.charAt(val_data.length-1);
-  var decimals = true;
-  dec = 2;
-
-  pat = /[\*,.\+,.\(,.\),.\?,.\\,.\$,.\[,.\],.\^]/
-  largo = val_data.length;
-  crtr = true;
-  if(isNaN(character) || pat.test(character) == true)
-  { 
-    if (pat.test(character)==true) 
-    {
-      character = "\\" + character;
-    }
-    carcter = new RegExp(character,"g");
-    val_data = val_data.replace(carcter,"");
-    //document.getElementById(where).value = val_data;
-    crtr = false;
-  }
-  else
-  {
-    var nums = new Array()
-    cont = 0
-    for(m=0;m<largo;m++)
-    {
-      if(val_data.charAt(m) == "." || val_data.charAt(m) == " " || val_data.charAt(m) == ",")
-      {
-        continue;  
-      }
-      else{
-        nums[cont] = val_data.charAt(m)
-        cont++
-      }
-      
-    }
-  }
-
-  if(decimals == true) {
-    ctdd = eval(1 + dec);
-    nmrs = 1
-  }
-  else {
-    ctdd = 1; nmrs = 3
-  }
-
-  var cad1="",cad2="",cad3="",tres=0
-  if(largo > nmrs && crtr == true)
-  {
-    for (k=nums.length-ctdd;k>=0;k--){
-      cad1 = nums[k];
-      cad2 = cad1 + cad2;
-      tres++
-      if((tres%3) == 0){
-        if(k!=0){
-          cad2 = "," + cad2;
-          }
-        }
-      }
-      
-    for (dd = dec; dd > 0; dd--)  
-    {
-      cad3 += nums[nums.length-dd]; 
-    }
-
-    if(decimals == true)
-    {
-      if(cad2!=''){
-        cad2 += "." + cad3;
-        
-      }else{
-        cad2 += cad3;
-      }
-    }
-    val_data = cad2;
-  }
-  return val_data;
-  //document.getElementById(where).focus();
-}

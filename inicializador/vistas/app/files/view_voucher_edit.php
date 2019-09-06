@@ -86,7 +86,7 @@
                         ?>
                     </select>
                     <div class="input-group-btn">
-                        <buttom type="button" id="template" data-toggle="modal" data-target="#modalViewTemplate" class="btn btn-default input-sm" title="View Template"><i class="fa fa-eye"></i></buttom>
+                        <buttom type="button" id="viewTemplate" class="btn btn-default input-sm" title="View Template"><i class="fa fa-eye"></i></buttom>
                     </div>
                 </div>
             </div>

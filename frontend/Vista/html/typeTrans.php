@@ -1,5 +1,5 @@
 <div id="page-wrapper"><br />
-    <div class="alert alert-info"><p>Operations / Files / Type Transaction / <?php echo $type; ?> <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/typeTransList/'; ?>">Volver</a></p></div>
+    <div class="alert alert-info"><p>Operations / Files / Type Transaction / <?php echo $type; ?> <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/typeTransList/'; ?>">Back</a></p></div>
     <div class="row">
         <div class="col-lg-12">
             <div class="col-lg-5">

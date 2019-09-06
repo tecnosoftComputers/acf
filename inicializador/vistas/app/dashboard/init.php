@@ -111,7 +111,7 @@ input:checked + .slider {
         <div class="col-lg-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Moving Line Chart
+                    Leanding Portfolio
                 </div>
                 <div class="panel-body">
                     <div class="flot-chart">

@@ -330,6 +330,35 @@ function loadModal(name_field,name_field2,permission1,permission2,search){
   });
 }
 
+function clearModal(){
+
+  $('#debit').val('0.00');
+  $('#credit').val('0.00');
+  $('#description').val($('#_memo').val());
+  $('#name_').val('');
+  $('#code1').val('');
+  $('#codepp').val('');
+  $('#type').val('');
+  $('#referencia').val('');
+  $('#documento').val('');
+  $('#liq').val('');
+  $('#trans option:selected').removeAttr('selected');
+
+  $('#code1').removeAttr('disabled');
+  $('#name_').removeAttr('disabled');
+  $('#type').removeAttr('disabled');
+  $('#codepp').removeAttr('disabled');
+  $('#referencia').removeAttr('disabled');
+  $('#description').removeAttr('disabled');
+  $('#debit').removeAttr('disabled');
+  $('#credit').removeAttr('disabled');
+  $('#trans').removeAttr('disabled');
+  $('#documento').removeAttr('disabled');
+  $('#liq').removeAttr('disabled');
+
+  document.getElementById('trans').selectedIndex=0;
+}
+
 function searchAccount(name_field,name_field2,permission1,permission2){
 
   var puerto_host = $('#puerto_host').val();
@@ -429,11 +458,27 @@ function viewJournal(id){
 
   $('#table_view').append(row);
 
+  if(!document.getElementById('item')){
+    var item = 30;
+  }else{
+    var item = $('#item').val();
+  }
+
   $.ajax({
     type:"POST",
-    data:{id:id, item:$('#item').val()},
+    data:{id:id, item:item},
     dataType : 'json',
     url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
+    beforeSend: function(){
+     $('#body_view').hide();
+     $('#body_view_loader').show();
+     $('#body_view_loader').addClass('loader');
+    },
+    complete:function(){
+      $('#body_view_loader').removeClass('loader');
+      $('#body_view_loader').hide();
+      $('#body_view').show();
+    },
     success:function(r){
       if(r.journal != ''){
 
@@ -487,7 +532,7 @@ function viewJournal(id){
         var s2 = runTableView(8);
         s1 = s1.toString();
         s2 = s2.toString();
-        var row1 = '<tr><td colspan="2"></td><td align="right" style="border-top:1px solid #7a7777; font-size:14px;">'+format(s1)+'</td><td align="right" style="border-top:1px solid #7a7777; font-size:14px;">'+format(s2)+'</td><td></td></tr>';
+        var row1 = '<tr><td colspan="2"></td><td align="right" style="border-top:1px solid #7a7777; font-size:14px;">'+r.simbolo+format(s1)+'</td><td align="right" style="border-top:1px solid #7a7777; font-size:14px;">'+r.simbolo+format(s2)+'</td><td></td></tr>';
         $('#journalView tr:last').after(row1);
       }
       $('#numRow').val(0);
@@ -512,7 +557,90 @@ function runTableView(numInput){
   return sum.toFixed(2);
 }
 
+function format(val_data)
+{
+  var character = val_data.charAt(val_data.length-1);
+  var decimals = true;
+  dec = 2;
+
+  pat = /[\*,.\+,.\(,.\),.\?,.\\,.\$,.\[,.\],.\^]/
+  largo = val_data.length;
+  crtr = true;
+  if(isNaN(character) || pat.test(character) == true)
+  { 
+    if (pat.test(character)==true) 
+    {
+      character = "\\" + character;
+    }
+    carcter = new RegExp(character,"g");
+    val_data = val_data.replace(carcter,"");
+    //document.getElementById(where).value = val_data;
+    crtr = false;
+  }
+  else
+  {
+    var nums = new Array()
+    cont = 0
+    for(m=0;m<largo;m++)
+    {
+      if(val_data.charAt(m) == "." || val_data.charAt(m) == " " || val_data.charAt(m) == ",")
+      {
+        continue;  
+      }
+      else{
+        nums[cont] = val_data.charAt(m)
+        cont++
+      }
+      
+    }
+  }
+
+  if(decimals == true) {
+    ctdd = eval(1 + dec);
+    nmrs = 1
+  }
+  else {
+    ctdd = 1; nmrs = 3
+  }
+
+  var cad1="",cad2="",cad3="",tres=0
+  if(largo > nmrs && crtr == true)
+  {
+    for (k=nums.length-ctdd;k>=0;k--){
+      cad1 = nums[k];
+      cad2 = cad1 + cad2;
+      tres++
+      if((tres%3) == 0){
+        if(k!=0){
+          cad2 = "," + cad2;
+          }
+        }
+      }
+      
+    for (dd = dec; dd > 0; dd--)  
+    {
+      cad3 += nums[nums.length-dd]; 
+    }
+
+    if(decimals == true)
+    {
+      if(cad2!=''){
+        cad2 += "." + cad3;
+        
+      }else{
+        cad2 += cad3;
+      }
+    }
+    val_data = cad2;
+  }
+  return val_data;
+  //document.getElementById(where).focus();
+}
+
 function insertRow3(account,name,type,codep,ref,memo,typeTrans,debit1,credit1,documento,liq,permisssion){
+
+  var debit1 = format(debit1);
+  var credit1 = format(credit1);
 
   var numRow = parseInt($('#numRow').val(),10);
   var f = numRow+1;
@@ -620,4 +748,3 @@ function viewMessage(msj){
     animation: true
   });   
 } 
-

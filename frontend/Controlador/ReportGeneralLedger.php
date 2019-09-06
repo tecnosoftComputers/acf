@@ -1,6 +1,8 @@
 <?php
 class Controlador_ReportGeneralLedger extends Controlador_Reports {
 
+  public $module = 33;
+
   public function construirPagina(){   
     
     if(!Utils::estaLogueado()){
@@ -28,8 +30,9 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
         $tags["results"] = Modelo_Dpmovimi::report($_SESSION['acfSession']['id_empresa'],$datefrom,
                                                    $dateto,'','','',$ccfrom,$ccto,$orderby);   
         if (empty($tags["results"])){
-          $tags["message"] = "Not found records";
-        }                                                
+          $_SESSION['acfSession']['mostrar_error'] = "Not found records";
+        }     
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
   	    $tags["template_js"][] = "reports";     
   	    Vista::render('rpt_acc_generalledger', $tags);                             
       break;      
@@ -72,7 +75,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
 
         $columns = array();
         $columns[] = array("width"=>18,"label"=>"DATE");  
-        $columns[] = array("width"=>20,"label"=>"TYPE SEAT");  
+        $columns[] = array("width"=>20,"label"=>"TYPE");  
         $columns[] = array("width"=>20,"label"=>"SEAT");  
         $columns[] = array("width"=>25,"label"=>"REFERENCE");  
         $columns[] = array("width"=>25,"label"=>"SETTLEMENT");  
@@ -95,7 +98,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               if (!empty($key)){
                 $showacumdebit = abs($acumdebit);
                 $showacumcredit = abs($acumcredit);
-                $showbalance = abs($balance);
+                $showbalance = $balance;
 
                 $this->objPdf->SetFont('Arial','B',9);          
                 $this->objPdf->SetXY(199, $this->objPdf->GetY());                          
@@ -116,7 +119,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               $infoaccount = Modelo_ChartAccount::getIndividual($value["CODMOV"]);
               $prevbalance = Modelo_Dpmovimi::reportLedger($_SESSION['acfSession']['id_empresa'],
                                                            $datefrom,trim($value["CODMOV"]));
-              $showprevbalance = abs($prevbalance["balance"]); 
+              $showprevbalance = $prevbalance["balance"]; 
 
               $this->objPdf->SetFont('Arial','B',9);                           
               $this->objPdf->Cell(50 ,5,$value["CODMOV"],0,0);
@@ -140,7 +143,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
             $idmov = Utils::encriptar($value["IDCONT"]);
             $showdebit = abs($debit);  
             $showcredit = abs($credit);   
-            $showbalance = abs($balance); 
+            $showbalance = $balance; 
 
             $this->objPdf->SetFont('Arial','',9);                                       
             $this->objPdf->Cell(189,5,'',0,1);                              
@@ -148,7 +151,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
             $this->objPdf->Cell(20 ,5,$value["TIPO_ASI"],0,0);                 
             $this->objPdf->Cell(20 ,5,$value["ASIENTO"],0,0);                 
             $this->objPdf->Cell(25 ,5,$value["REFER"],0,0);
-            $this->objPdf->Cell(25 ,5,'',0,0);
+            $this->objPdf->Cell(25 ,5,$value["LIQUIDA_NO"],0,0);
             $starty = $this->objPdf->GetY();              
             $this->objPdf->MultiCell(80,3,trim($value["CONCEPTO"]), 0, 'L', 0);
             $this->objPdf->SetXY(198, $starty); 
@@ -159,7 +162,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
           } 
           $showacumdebit = abs($acumdebit);
           $showacumcredit = abs($acumcredit);
-          $showbalance = abs($balance);                  
+          $showbalance = $balance;
 
           $this->objPdf->SetFont('Arial','B',9);          
           $this->objPdf->SetXY(199, $this->objPdf->GetY());                          
@@ -194,7 +197,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
 
         $columns = array(
                    'A'=>array("width"=>11,"label"=>"DATE"),
-                   'B'=>array("width"=>14,"label"=>"TYPE SEAT"),
+                   'B'=>array("width"=>14,"label"=>"TYPE"),
                    'C'=>array("width"=>10,"label"=>"SEAT"),
                    'D'=>array("width"=>15,"label"=>"REFERENCE"),
                    'E'=>array("width"=>15,"label"=>"SETTLEMENT"),
@@ -222,7 +225,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               if (!empty($key)){
                 $showacumdebit = abs($acumdebit);
                 $showacumcredit = abs($acumcredit);
-                $showbalance = abs($balance);
+                $showbalance = $balance;
                 
                 $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':I'.$this->line)->applyFromArray($this->styleArray);
                 $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':I'.$this->line)->applyFromArray($this->CStyle);
@@ -252,7 +255,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               $infoaccount = Modelo_ChartAccount::getIndividual($value["CODMOV"]);
               $prevbalance = Modelo_Dpmovimi::reportLedger($_SESSION['acfSession']['id_empresa'],
                                                            $datefrom,trim($value["CODMOV"]));
-              $showprevbalance = abs($prevbalance["balance"]); 
+              $showprevbalance = $prevbalance["balance"]; 
 
               $objPHPExcel->getActiveSheet()->mergeCells('A'.$this->line.':C'.$this->line);
               $objPHPExcel->getActiveSheet()->mergeCells('D'.$this->line.':F'.$this->line);
@@ -284,7 +287,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
             $idmov = Utils::encriptar($value["IDCONT"]);
             $showdebit = abs($debit);  
             $showcredit = abs($credit);   
-            $showbalance = abs($balance); 
+            $showbalance = $balance; 
 
             $objPHPExcel->getActiveSheet()->getStyle('F'.$this->line)->getAlignment()->setWrapText(true);
             $objPHPExcel->setActiveSheetIndex(0)
@@ -301,7 +304,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
           } 
           $showacumdebit = abs($acumdebit);
           $showacumcredit = abs($acumcredit);
-          $showbalance = abs($balance);                  
+          $showbalance = $balance;                  
 
           $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':I'.$this->line)->applyFromArray($this->styleArray);
           $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':I'.$this->line)->applyFromArray($this->CStyle);  
@@ -316,6 +319,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
         $this->outputExcel("GENERAL_LEDGER_REPORT");  
       break; 
       default:
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_generalledger', $tags);         
       break;

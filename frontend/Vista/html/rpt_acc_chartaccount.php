@@ -1,5 +1,5 @@
 <div id="page-wrapper"><br />
-  <div class="alert alert-info"><p>Accounting / Report / Chart of Accounts</p></div>
+  <div class="alert alert-info"><p>Accounting / Report / Chart of Accounts / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Back</a></p></div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -33,8 +33,14 @@
             </div>
           </div>                                            
 
-          <div class="modal-footer">            
+          <div class="modal-footer">
+            <?php
+            if (isset($permission) && $permission["rd"] == 1){ 
+            ?>             
             <button style="float: left;" type="submit" name="register" id="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
+            <?php }else{ ?>
+              <button style="float: left;" type="button" class="btn btn-primary" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-eye"></i> Search</a></button> 
+            <?php } ?>  
             <span style="float: left; margin-left: 15px;">
               <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
@@ -51,17 +57,38 @@
     $url .= (!empty($accto)) ? $accto."/" : "";    
   ?>
   <br>
-  <span id="pdf" style="float: right; margin-left: 10px">
-    <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
-  </span>
-  <span id="excel" style="float: right">
-    <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
-  </span> 
+  <!--<div class="form-group col-md-6">
+    <label for="records" class="col-md-4 control-label">Number of records:</label>
+    <div class="col-md-2">
+      <select class="form-control" id="nrorecords" name="nrorecords">
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select> 
+    </div>    
+  </div>-->
+        
+  <?php if (isset($permission) && $permission["pri"] == 1){  ?>
+    <span id="pdf" style="float: right; margin-left: 10px;">
+      <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+    </span>
+    <span id="excel" style="float: right">
+      <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+    </span> 
+  <?php } else{ ?>
+    <span style="float: right; margin-left: 10px;">
+      <a href="javascript:void(0);" class="btn btn-success" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-excel-o"></i></a>
+    </span>
+    <span style="float: right;">
+      <a href="javascript:void(0);" class="btn btn-danger" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-pdf-o"></i></a>
+    </span> 
+  <?php } ?>
+    
   <br>                   
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
     <br>                     
-    <table width="100%" class="table table-striped table-bordered table-hover style-table" >
+    <table width="100%" class="table table-responsive table-striped style-table">
     <thead>
       <tr>        
         <th class="style-th">ACCOUNT</th>
@@ -69,6 +96,7 @@
       </tr>
     </thead>
     <tbody>
+    <tr><td colspan="2" class="style-td-special"></td></tr>
     <?php foreach( $results as $key=>$value ){ ?>
       <?php 
       $nro = substr_count($value["CODIGO"],".");   
@@ -101,8 +129,5 @@
   <br>
 <?php 
 } 
-else{
-  echo '<h4 style="text-align:center;">'.$message.'</h4>';
-}
 ?>  
 </div> <!-- FIN DE WRAPPER  -->

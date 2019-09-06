@@ -104,16 +104,221 @@
 <input type="hidden" name="field_name" id="field_name" value="" >
 <input type="text" hidden id="puerto_host" value="<?php echo PUERTO."://".HOST ;?>">
 
-<div class="modal fade" id="viewJournal" tabindex="-1" role="dialog" aria-labelledby="viewJournal" aria-hidden="true">
+<div class="modal" tabindex="-1" aria-hidden="true" role="dialog" id="loading">
+  <div class="modal-dialog modal-dialog-centered justify-content-center" role="document" >
+    <img src="<?php echo PUERTO."://".HOST."/imagenes/loader.gif"?>" width="30%" height="30%">    
+  </div>
+</div>
+
+<div class="modal" id="myModalJournal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabelList">Memorice Journal List</h4>
+            </div>
+            <div class="modal-body"  style="height:60%; overflow:auto;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                           <div class="tab-content">
+                                <div class="tab-pane fade in active">
+                                    <div class="table table-responsive">
+                                        <table width="100%" class="table table-striped table-bordered table-hover" id="journalList" style="text-align:center">
+                                            <thead>
+                                                <tr>
+                                                    <td align="center"><b>Type</b></td>
+                                                    <td align="center"><b>Journal</b></td>
+                                                    <td align="center" width="95"><b>Date</b></td>
+                                                    <td align="center" width="400"><b>Beneficiary</b></td>
+                                                    <td colspan="4" align="center"><b>Action</b></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach( $all_send as $registro2 ){ ?>
+                                                   <tr class='odd gradeX'>
+                                                       <td><?php echo $registro2['TIPO_ASI'] ?></td>
+                                                       <td><?php echo $registro2['ASIENTO'] ?></td>
+                                                       <td><?php echo date('m/d/Y', strtotime($registro2['FECHA_ASI'])); ?></td>
+                                                       <td><?php echo $registro2['BENEFICIAR']; ?></td>
+
+                                                       <?php
+
+                                                        $f1 = $f2 = $f3 = $f4 = "onclick=\"viewMessage('You cannot execute this action')\"";
+
+                                                        if($_SESSION['acfSession']['permission'][$item]['rd'] == 1){
+                                                            $f1 = "onclick=\"viewJournal('".Utils::encriptar($registro2['IDCONT'])."')\"";
+                                                        }
+
+                                                        if($_SESSION['acfSession']['permission'][$item]['edi'] == 1){
+                                                            $f2 = "onclick=\"searchJournal('','".Utils::encriptar($registro2['IDCONT'])."')\"";
+                                                            $f4 = 'href="'.PUERTO.'://'.HOST.'/deleteMemorice/'.Utils::encriptar($registro2['IDCONT']).'/"';
+                                                        }
+
+                                                        if($_SESSION['acfSession']['permission'][$item]['sav'] == 1){
+                                                            $f3 = "onclick=\"copyJournal('".Utils::encriptar($registro2['IDCONT'])."')\"";
+                                                        }
+
+                                                       ?>
+                                                       <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal memorice" <?php echo $f1; ?>><i class="fa fa-eye"></i></a></td>
+                                                       <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal memorice" <?php echo $f2; ?>><i class="fa fa-edit"></i></a></td>
+                                                       <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Copy journal" <?php echo $f3; ?>><i class="fa fa-copy"></i></a></td>
+                                                       <td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Delete journal memorice" <?php echo $f4; ?>><i class="fa fa-trash"></i></a></td>              
+                                                   </tr>
+                                               <?php } ?>
+                                           </tbody>
+                                       </table>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="buttonClose">Close</button>
+            </div>
+       </div>
+   </div>
+</div>
+
+<div class="modal" id="myModalTrans" tabindex="-1" role="dialog" aria-labelledby="myModalTrans" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabelNotif">Notification</h4>
+            </div>
+            <div class="modal-body" style="height:20%; overflow:auto;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body" align="center">
+                            <div id="mjs"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span title="PDF" style="float: left"><a id="pdf_notif" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a></span>
+                <span title="EXCEL" style="float: left"><a id="excel_notif" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a></span>
+                <button type="button" class="btn btn-primary" id="btn_edit"><i class="glyphicon glyphicon-pencil"></i> Update</button>
+                <button type="button" class="btn btn-warning" id="btn_annul"><i class="glyphicon glyphicon-remove"></i> Void</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModalConf" tabindex="-1" role="dialog" aria-labelledby="myModalConf" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabelConf">Confirmation</h4>
+            </div>
+            <div class="modal-body" style="height:20%; overflow:auto;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body" align="center">
+                            <div id="mjs2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" id="btn_conf"><i class="fa fa-check"></i> Ok</a>
+                <a class="btn btn-danger" id="btn_cancel" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModalList" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalListLabel">Journal List</h4>
+            </div>
+            <div class="modal-body"  style="height:70%; overflow:auto;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                           <div class="tab-content">
+                                <div class="tab-pane fade in active">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="float:left" class="col-md-4 control-label" for="datefilter1">Range(date): </label>
+                                            <div class="col-md-7" style="float:left">
+                                                <input type="text" class="form-control" id="datefilter" name="datefilter" value="<?php echo date("m/d/Y",strtotime(date('m/d/Y')."- 1 year")).' - '.date('m/d/Y'); ?>" style="font-size: 11px" />
+                                            </div>
+                                            <div class="col-md-1" style="float:right;padding-left: 0px;padding-right: 0px;padding-top: 8px; cursor:pointer">
+                                                <i id="cleanFecha" class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="bottom" title="Clear date"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <label class="col-md-2 control-label" for="datefilter1">Type: </label>
+                                            <div class="col-md-10">
+                                                <select id="type_select" name="type_select" class="form-control" style="font-size: 11px">
+                                                    <option value="" selected>Select an option</option>
+                                                <?php foreach((array) $fetch_dp as $rest) {
+                                                    echo '<option value="'.$rest['TIPO_ASI'].'"';
+                                                    if($type_default == $rest['TIPO_ASI']){
+                                                        echo ' selected';
+                                                    } 
+                                                    echo '>'.$rest['TIPO_ASI'].' - '.$rest['NOMBRE'].'</option>';
+                                                } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1" align="center">
+                                            <?php 
+                                                if($_SESSION['acfSession']['permission'][$item]['rd'] == 1){ ?>
+                                                    <button type="button" class="btn btn-primary" id="btnSearch2"><i class="glyphicon glyphicon-search" data-toggle="tooltip" data-placement="bottom" title="Search"></i></button>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="table table-responsive">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="journalListAll" style="text-align:center">
+                                        <thead>
+                                            <tr>
+                                                <td align="center"><b>Type</b></td>
+                                                <td align="center"><b>Journal</b></td>
+                                                <td align="center" width="95"><b>Date</b></td>
+                                                <td align="center" width="400"><b>Beneficiary</b></td>
+                                                <td colspan="2" align="center"><b>Action</b></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="bodyContent">
+                                            
+                                       </tbody>
+                                   </table>
+                               </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="buttonClose">Close</button>
+            </div>
+       </div>
+   </div>
+</div>
+
+<div class="modal" id="viewJournal" tabindex="-1" role="dialog" aria-labelledby="viewJournal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabelNotif">View Journal</h4>
             </div>
-            <div class="modal-body" style="height:66%; overflow:auto;">
+            <div class="modal-body" style="height:70%; overflow:auto;">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" id="body_view">
                         <div class="panel-body" align="center">
                             <div>
                                 <div class="form-group col-md-12">
@@ -159,6 +364,8 @@
                             </div>
                         </div>
                     </div>
+                    <div id="body_view_loader" style="display: none; height: 70%; vertical-align: middle;">
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -170,14 +377,14 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModalRow" tabindex="-1" role="dialog" aria-labelledby="myModalRow" aria-hidden="true">
+<div class="modal" id="myModalRow" tabindex="-1" role="dialog" aria-labelledby="myModalRow" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">New entry</h4>
             </div>
-            <div class="modal-body" style="height:63%; overflow: auto">
+            <div class="modal-body" style="height:70%; overflow: auto">
                 <div class="col-lg-12" id="entry">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -286,7 +493,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModalExist" tabindex="-1" role="dialog" aria-labelledby="myModalExist" aria-hidden="true">
+<div class="modal" id="myModalExist" tabindex="-1" role="dialog" aria-labelledby="myModalExist" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
@@ -311,7 +518,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal">
+<div class="modal" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 750px; margin-left:-100px">
         

@@ -1,5 +1,5 @@
 <div id="page-wrapper"><br />
-    <div class="alert alert-info"><p>Operations / Files / Types of Calculations / <?php echo $type; ?> <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/typeCalList/'; ?>">Volver</a></p></div>
+    <div class="alert alert-info"><p>Operations / Files / Types of Calculations / <?php echo $type; ?> <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/typeCalList/'; ?>">Back</a></p></div>
     <div class="row">
         <div class="col-lg-12">
             <div class="col-lg-5">

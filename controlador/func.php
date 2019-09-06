@@ -1,5 +1,4 @@
-<?php   
- 
+<?php
     if (!defined('PUERTO')) {
         define('PUERTO', 'http');
         define('HOST', 'localhost/fernando/acf'); 
@@ -56,7 +55,9 @@
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
                     <?php if($acceso = 1){
+
                         $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
+
                       } else{
                         $enlace = $data_sql['src_head'];
                       }

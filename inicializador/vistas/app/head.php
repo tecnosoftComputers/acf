@@ -89,37 +89,34 @@ $all_upde = $upde->fetchAll(PDO::FETCH_ASSOC);
         </div>
     <ul class="nav navbar-top-links navbar-right">
     <li class=""><a style="font-size: 22px; font-weight: bold; color:#c61818" href="?cid=dashboard/init">ACF</a></li>
-    <li class="">
         
-            <select id="y" name="y" class="form-control" onchange='enviar()' style="width: 200px;">
-            <?php foreach ((array )$all_upde as $vale_conf) { ?>
-                <?php if ($id_param == $vale_conf['id_config']){ ?>
-                    <option value="<?php
-                        echo $vale_conf['id_config']; ?>" style="font-size: 15px;" selected=""> 
-                        <?php echo $vale_conf['name_access']; ?></option>
-                <?php }else{ ?>
-                    <option value="<?php echo $vale_conf['id_config'] ?>" style="font-size: 15px;"> 
-                        <?php echo $vale_conf['name_access']; ?></option>
-            <?php } } ?>
-            </select>
-        <noscript><input type="submit" value="Submit" /></noscript>
-        
+    <li class="">      
+      <select id="x" name="x" class="form-control" onchange='enviar()' style="width: 300px;">
+      <?php foreach ( (array) $all_upd as $vale){ ?>
+      <?php if ($elvalor == $vale['id_empresa']) { ?>
+            <option value="<?php echo $vale['id_empresa']; ?>" style="font-size: 15px;" selected=""> <?php
+                    echo $vale['nombre_empresa'] ?></option>
+        <?php } else{ ?>
+            <option value="<?php echo $vale['id_empresa'] ?>" style="font-size: 15px;"> 
+            <?php echo $vale['nombre_empresa']; ?></option>
+      <?php } } ?>
+      </select>
+      <noscript><input type="submit" value="Submit" /></noscript>        
     </li>
-    
-    <li class="">
-      
-            <select id="x" name="x" class="form-control" onchange='enviar()' style="width: 300px;">
-            <?php foreach ( (array) $all_upd as $vale){ ?>
-            <?php if ($elvalor == $vale['id_empresa']) { ?>
-                    <option value="<?php echo $vale['id_empresa']; ?>" style="font-size: 15px;" selected=""> <?php
-                            echo $vale['nombre_empresa'] ?></option>
-                <?php } else{ ?>
-                    <option value="<?php echo $vale['id_empresa'] ?>" style="font-size: 15px;"> 
-                    <?php echo $vale['nombre_empresa']; ?></option>
-            <?php } } ?>
-            </select>
-        <noscript><input type="submit" value="Submit" /></noscript>
-        
+
+    <li class="">        
+      <select id="y" name="y" class="form-control" onchange='enviar()' style="width: 200px;">
+      <?php foreach ((array )$all_upde as $vale_conf) { ?>
+            <?php if ($id_param == $vale_conf['id_config']){ ?>
+                <option value="<?php
+                    echo $vale_conf['id_config']; ?>" style="font-size: 15px;" selected=""> 
+                    <?php echo $vale_conf['name_access']; ?></option>
+            <?php }else{ ?>
+                <option value="<?php echo $vale_conf['id_config'] ?>" style="font-size: 15px;"> 
+                    <?php echo $vale_conf['name_access']; ?></option>
+      <?php } } ?>
+      </select>
+      <noscript><input type="submit" value="Submit" /></noscript>        
     </li>
     </form>
 <?php

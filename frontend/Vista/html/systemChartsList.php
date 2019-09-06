@@ -1,5 +1,5 @@
 <div id="page-wrapper"><br />
-    <div class="alert alert-info"><p>Operations / Files / System Charts  <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/dashboard/'; ?>">Volver</a></p></div>
+    <div class="alert alert-info"><p>Operations / Files / System Charts  <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/dashboard/'; ?>">Back</a></p></div>
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">

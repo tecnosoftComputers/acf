@@ -110,13 +110,13 @@ RewriteRule ^productsParametersDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar
 RewriteRule ^productsParametersReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters&opcion=report&tipo=$1 [L]
 
 #journalEntries
-RewriteRule ^journalEntries/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalEntries&item=30 [L]
-RewriteRule ^annulJournal/(.*)/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=annulJournal&item=30&id=$1 [L]
+RewriteRule ^journalEntries/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalEntries&item=30 [L]
+RewriteRule ^annulJournal/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=annulJournal&item=30&id=$1 [L]
 RewriteRule ^saveJournal/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveJournal&item=30 [L]
-RewriteRule ^saveMemoriceJournal/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveMemoriceJournal&item=30 [L]
+RewriteRule ^saveMemoriceJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=saveMemoriceJournal&item=30 [L]
 RewriteRule ^updateJournal/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateJournal&item=30 [L]
-RewriteRule ^updateMemoriceJournal/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateMemoriceJournal&item=30 [L]
-RewriteRule ^deleteMemorice/(.*)/?$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=deleteMemorice&item=30&id=$1 [L]
+RewriteRule ^updateMemoriceJournal/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=updateMemoriceJournal&item=30 [L]
+RewriteRule ^deleteMemorice/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=deleteMemorice&item=30&id=$1 [L]
 RewriteRule ^journalReport/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=accounts&opcion=journalReport&item=30&tipo=$1&idcont=$2 [L]
 
 #reports
@@ -142,15 +142,16 @@ RewriteRule ^report/generalledger/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?m
 RewriteRule ^report/generalledger/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportGeneralLedger&item=33&action=search [L]
 RewriteRule ^report/generalledger/$ %{ENV:REWRITEBASE}index.php?mostrar=reportGeneralLedger&item=33 [L]
 
-#ledger account
-RewriteRule ^report/ledgeraccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reportLedgerAccount [L]
+#trial balance
+RewriteRule ^report/trialbalance/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35&action=search [L]
+RewriteRule ^report/trialbalance/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35 [L]
 
 #balance sheet
 RewriteRule ^report/balancesheet/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet [L]
 
 #chart account
 RewriteRule ^report/chartaccount/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1&accfrom=$2&accto=$3 [L]
-RewriteRule ^report/chartaccount/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reports&option=chartAccount&item=43&action=$1&accfrom=$2 [L]
+RewriteRule ^report/chartaccount/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1&accfrom=$2 [L]
 RewriteRule ^report/chartaccount/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1 [L]
 RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=search [L]
 RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43 [L]

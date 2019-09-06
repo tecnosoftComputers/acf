@@ -13,16 +13,8 @@
     te = String.fromCharCode(tecla);
     return patron.test(te);
 }
-
-$('#template').on('click',function(){
-  console.log('entro');
-  $.ajax({
-    type:"POST",
-    url:'',
-    dataType: 'json',
-    data: {}
-    success:function(r){
-      
-    }
-  });
+ 
+$('#viewTemplate').on('click',function(){
+  var temp = $('#print').val();
+  window.open('http://localhost/fernando/acf/templates/'+temp+'.pdf', '_blank');
 });

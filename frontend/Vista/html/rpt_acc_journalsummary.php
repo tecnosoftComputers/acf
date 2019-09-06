@@ -1,5 +1,5 @@
 <div id="page-wrapper"><br />
-  <div class="alert alert-info"><p>Accounting / Report / Journal Entry Summary</p></div>
+  <div class="alert alert-info"><p>Accounting / Report / Journal Entry Summary / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Back</a></p></div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -57,8 +57,14 @@
             </div>
           </div>
 
-          <div class="modal-footer">            
-            <button style="float: left;" type="submit" name="register" id="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
+          <div class="modal-footer">
+            <?php
+            if (isset($permission) && $permission["rd"] == 1){ 
+            ?>            
+              <button style="float: left;" type="submit" name="register" id="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
+            <?php }else{ ?>
+              <button style="float: left;" type="button" class="btn btn-primary" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-eye"></i> Search</a></button> 
+            <?php } ?>  
             <span style="float: left; margin-left: 15px;">
               <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
@@ -77,26 +83,36 @@
     if ($typereport == "S"){     
   ?>
       <br>
-      <span id="pdf" style="float: right; margin-left: 10px">
-        <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
-      </span>
-      <span id="excel" style="float: right">
-        <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
-      </span> 
+      <?php if (isset($permission) && $permission["pri"] == 1){  ?>
+        <span id="pdf" style="float: right; margin-left: 10px;">
+          <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+        </span>
+        <span id="excel" style="float: right;">
+          <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+        </span> 
+      <?php } else{ ?>
+        <span style="float: right; margin-left: 10px;">
+          <a href="javascript:void(0);" class="btn btn-success" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-excel-o"></i></a>
+        </span>
+        <span style="float: right;">
+          <a href="javascript:void(0);" class="btn btn-danger" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-pdf-o"></i></a>
+        </span> 
+      <?php } ?>    
       <br>
       <div class="tab-content">
         <div class="tab-pane fade in active" id="home-pills">
         <br>                     
-        <table width="100%" class="table table-striped table-bordered table-hover style-table" >
+        <table width="100%" class="table table-responsive table-striped style-table">
         <thead>
           <tr>        
-            <th class="style-th">ACCOUNT</th>
-            <th class="style-th">NAME ACCOUNT</th>        
-            <th class="style-th">DEBIT</th>
-            <th class="style-th">CREDIT</th>        
+            <th class="style-th" width="10%">ACCOUNT</th>
+            <th class="style-th" width="60%">NAME ACCOUNT</th>        
+            <th class="style-th" width="15%">DEBIT</th>
+            <th class="style-th" width="15%">CREDIT</th>        
           </tr>
         </thead>
         <tbody>
+        <tr><td colspan="8" class="style-td-special"></td></tr> 
         <?php             
         $acumdebit = 0;
         $acumcredit = 0;
@@ -116,8 +132,8 @@
          $showacumcredit = abs($acumcredit);       
          echo "<tr>                             
                 <td colspan='2' align='right'><strong>Total:</strong></td>
-                <td align='right'><strong>".number_format($showacumdebit,2)."</strong></td>
-                <td align='right'><strong>".number_format($showacumcredit,2)."</strong></td>
+                <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
+                <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>
               </tr>";           
         ?>      
         </tbody>    
@@ -129,27 +145,37 @@
     }
     if ($typereport == "D"){ ?>
       <br>
-      <span id="pdf" style="float: right; margin-left: 10px">
-        <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
-      </span>
-      <span id="excel" style="float: right">
-        <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
-      </span> 
+      <?php if (isset($permission) && $permission["pri"] == 1){  ?>
+        <span id="pdf" style="float: right; margin-left: 10px">
+          <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+        </span>
+        <span id="excel" style="float: right">
+          <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+        </span>
+      <?php } else{ ?>
+        <span style="float: right; margin-left: 10px;">
+          <a href="javascript:void(0);" onclick="viewMessage('You cannot execute this action');" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+        </span>
+        <span id="excel" style="float: right;">
+          <a href="javascript:void(0);" onclick="viewMessage('You cannot execute this action');" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+        </span>
+      <?php } ?>     
       <br>
       <div class="tab-content">
         <div class="tab-pane fade in active" id="home-pills">
         <br>                     
-        <table width="100%" class="table table-striped table-bordered table-hover style-table" >
+        <table width="100%" class="table table-responsive table-striped style-table">
         <thead>
           <tr>        
-            <th class="style-th">TYPE SEAT</th>
-            <th class="style-th">DESCRIPTION</th>        
-            <th class="style-th">DEBIT</th>
-            <th class="style-th">CREDIT</th>        
-            <th class="style-th">(DB - CR)</th>        
+            <th class="style-th" width="10%">TYPE SEAT</th>
+            <th class="style-th" width="45%">DESCRIPTION</th>        
+            <th class="style-th" width="15%">DEBIT</th>
+            <th class="style-th" width="15%">CREDIT</th>        
+            <th class="style-th" width="15%">(DB - CR)</th>        
           </tr>
         </thead>
         <tbody>
+        <tr><td colspan="5" class="style-td-special"></td></tr> 
         <?php     
         $account = '';      
         $acumdebit = 0;
@@ -166,18 +192,18 @@
               $totresta = $totresta + $acumresta;
               $showacumdebit = abs($acumdebit);
               $showacumcredit = abs($acumcredit);     
-              $showacumresta = abs($acumresta);
+              $showacumresta = $acumresta;
               echo "<tr>                                  
                      <td colspan='2' align='right'><strong>Subtotal:</strong></td>       
-                     <td align='right'><strong>".number_format($showacumdebit,2)."</strong></td>
-                     <td align='right'><strong>".number_format($showacumcredit,2)."</strong></td> 
-                     <td align='right'><strong>".number_format($showacumresta,2)."</strong></td>
+                     <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
+                     <td class='style-td-totals'>".number_format($showacumcredit,2)."</td> 
+                     <td class='style-td-totals'>".number_format($showacumresta,2)."</td>
                     </tr>";    
               echo "<tr><td colspan='5'>&nbsp;</td></tr>";         
             }
-            echo "<tr>               
-                   <td><strong>".$value["CODMOV"]."</strong></td>
-                   <td><strong>".$value["NOMBRE"]."</strong></td> 
+            echo "<tr class='style-tr-cab'>               
+                   <td>".$value["CODMOV"]."</td>
+                   <td>".$value["NOMBRE"]."</td> 
                    <td colspan='3'>&nbsp;</td>                                      
                  </tr>";   
             $account = $value["CODMOV"];   
@@ -190,10 +216,10 @@
           $acumresta = $acumresta + $value["debit"] + $value["credit"];           
           $showdebit = abs($value["debit"]);  
           $showcredit = abs($value["credit"]);  
-          $showresta = abs($value["debit"] + $value["credit"]);  
+          $showresta = $value["debit"] + $value["credit"];           
           echo "<tr>               
                   <td>".$value["TIPO_ASI"]."</td>
-                  <td>".$value["nombre_asiento"]."</td>                                                
+                  <td>".$value["nameseat"]."</td>                                                
                   <td align='right'>".number_format($showdebit,2)."</td>
                   <td align='right'>".number_format($showcredit,2)."</td>                
                   <td align='right'>".number_format($showresta,2)."</td>                
@@ -204,22 +230,22 @@
          $totresta = $totresta + $acumresta; 
          $showacumdebit = abs($acumdebit);
          $showacumcredit = abs($acumcredit);  
-         $showacumresta = abs($acumresta);     
+         $showacumresta = $acumresta;     
          $showtotdebit = abs($totdebit);
          $showtotcredit = abs($totcredit);
          $showtotresta = abs($totresta);
          echo "<tr>                                  
                  <td colspan='2' align='right'><strong>Subtotal:</strong></td>       
-                 <td align='right'><strong>".number_format($showacumdebit,2)."</strong></td>
-                 <td align='right'><strong>".number_format($showacumcredit,2)."</strong></td> 
-                 <td align='right'><strong>".number_format($showacumresta,2)."</strong></td>
+                 <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
+                 <td class='style-td-totals'>".number_format($showacumcredit,2)."</td> 
+                 <td class='style-td-totals'>".number_format($showacumresta,2)."</td>
                </tr>";
          echo "<tr><td colspan='5'>&nbsp;</td></tr>";       
          echo "<tr>                                  
                  <td colspan='2' align='right'><strong>Totals:</strong></td>       
-                 <td align='right'><strong>".number_format($showtotdebit,2)."</strong></td>
-                 <td align='right'><strong>".number_format($showtotcredit,2)."</strong></td>
-                 <td align='right'><strong>".number_format($showtotresta,2)."</strong></td>
+                 <td class='style-td-totals'>".number_format($showtotdebit,2)."</td>
+                 <td class='style-td-totals'>".number_format($showtotcredit,2)."</td>
+                 <td class='style-td-totals'>".number_format($showtotresta,2)."</td>
                </tr>";      
         ?>      
         </tbody>    
@@ -229,9 +255,6 @@
       <br>
 <?php    
   }  
-} 
-else{
-  echo '<h4 style="text-align:center;">'.$message.'</h4>';
-}      
+}       
 ?>  
 </div> <!-- FIN DE WRAPPER  -->
