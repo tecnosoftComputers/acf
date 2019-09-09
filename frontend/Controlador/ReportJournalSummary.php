@@ -1,7 +1,7 @@
 <?php
 class Controlador_ReportJournalSummary extends Controlador_Reports {
 
-  public $module = 32;
+  public $item = 32;
 
   public function construirPagina(){   
   	$tags = array();    
@@ -35,10 +35,11 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
           $tags["results"] = Modelo_Dpmovimi::reportSummaryD($_SESSION['acfSession']['id_empresa'],
                                                              $datefrom,$dateto,$ccfrom,$ccto); 
         } 
+        $tags["types_account"] = Modelo_Dasbal::getParams();
         if (empty($tags["results"])){
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";
         }      
-        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module]; 
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item]; 
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_journalsummary', $tags);  
       break;
@@ -52,6 +53,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
         $ccfrom = (!empty($accfrom)) ? Modelo_ChartAccount::getIndAux($accfrom)["CODIGO"]: '';
         $ccto = (!empty($accto)) ? Modelo_ChartAccount::getIndAux($accto)["CODIGO"] : '';        
         $typereport = Utils::getParam('typereport','S',$this->data);
+        $types_account = Modelo_Dasbal::getParams();
 
         $from = date("m/d/Y", strtotime($datefrom));
         $to = date("m/d/Y", strtotime($dateto));
@@ -128,12 +130,15 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
             } 
             if ($account <> $value["CODMOV"]){
               if (!empty($key)){
+                $sign = Utils::getSign(trim($account),array("ACTIVO","EGRESOS"),$types_account); 
                 $totdebit = $totdebit + $acumdebit;
                 $totcredit = $totcredit + $acumcredit;
                 $totresta = $totresta + $acumresta;
                 $showacumdebit = abs($acumdebit);
-                $showacumcredit = abs($acumcredit);     
-                $showacumresta = $acumresta;
+                $showacumcredit = abs($acumcredit);  
+                $showacumresta = round($acumresta,2);               
+                $showacumresta = ($sign) ? $showacumresta : $showacumresta * -1; 
+                $showacumresta = (empty($showacumresta)) ? abs($showacumresta) : $showacumresta;
 
                 $this->objPdf->SetFont('Arial','B',9);          
                 $this->objPdf->SetXY(140, $this->objPdf->GetY());                          
@@ -161,12 +166,16 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
               $acumcredit = 0;
               $acumresta = 0;  
             }
+            $sign = Utils::getSign(trim($value["CODMOV"]),array("ACTIVO","EGRESOS"),$types_account); 
             $acumdebit = $acumdebit + $value["debit"];
             $acumcredit = $acumcredit + $value["credit"]; 
             $acumresta = $acumresta + $value["debit"] + $value["credit"];           
             $showdebit = abs($value["debit"]);  
             $showcredit = abs($value["credit"]);  
-            $showresta = $value["debit"] + $value["credit"];  
+            $showresta = $value["debit"] + $value["credit"]; 
+            $showresta = round($showresta,2);               
+            $showresta = ($sign) ? $showresta : $showresta * -1; 
+            $showresta = (empty($showresta)) ? abs($showresta) : $showresta; 
 
             $this->objPdf->SetFont('Arial','',9);                                       
             //$this->objPdf->Cell(189,5,'',0,1);                              
@@ -181,11 +190,16 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
            $totcredit = $totcredit + $acumcredit;
            $totresta = $totresta + $acumresta; 
            $showacumdebit = abs($acumdebit);
-           $showacumcredit = abs($acumcredit);  
-           $showacumresta = $acumresta;     
+           $showacumcredit = abs($acumcredit); 
+           $showacumresta = round($acumresta,2);               
+           $showacumresta = ($sign) ? $showacumresta : $showacumresta * -1; 
+           $showacumresta = (empty($showacumresta)) ? abs($showacumresta) : $showacumresta;
+           
            $showtotdebit = abs($totdebit);
-           $showtotcredit = abs($totcredit);
-           $showtotresta = abs($totresta);
+           $showtotcredit = abs($totcredit);           
+           $showtotresta = round($totresta,2);               
+           $showtotresta = ($sign) ? $showtotresta : $showtotresta * -1; 
+           $showtotresta = (empty($showtotresta)) ? abs($showtotresta) : $showtotresta;
 
            $this->objPdf->SetFont('Arial','B',9);          
            $this->objPdf->SetXY(140, $this->objPdf->GetY());                          
@@ -228,6 +242,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
         $ccfrom = (!empty($accfrom)) ? Modelo_ChartAccount::getIndAux($accfrom)["CODIGO"]: '';
         $ccto = (!empty($accto)) ? Modelo_ChartAccount::getIndAux($accto)["CODIGO"] : '';        
         $typereport = Utils::getParam('typereport','S',$this->data);
+        $types_account = Modelo_Dasbal::getParams();
                
         $from = date("m/d/Y", strtotime($datefrom));
         $to = date("m/d/Y", strtotime($dateto));  
@@ -328,12 +343,15 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
             foreach($results as $key=>$value){ 
               if ($account <> $value["CODMOV"]){
                 if (!empty($key)){
+                  $sign = Utils::getSign(trim($account),array("ACTIVO","EGRESOS"),$types_account); 
                   $totdebit = $totdebit + $acumdebit;
                   $totcredit = $totcredit + $acumcredit;
                   $totresta = $totresta + $acumresta;
                   $showacumdebit = abs($acumdebit);
                   $showacumcredit = abs($acumcredit);
-                  $showacumresta = $acumresta;
+                  $showacumresta = round($acumresta,2);               
+                  $showacumresta = ($sign) ? $showacumresta : $showacumresta * -1; 
+                  $showacumresta = (empty($showacumresta)) ? abs($showacumresta) : $showacumresta;
 
                   $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);  
                   $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);
@@ -368,12 +386,16 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 $acumcredit = 0;
                 $acumresta = 0;  
               }
+              $sign = Utils::getSign(trim($value["CODMOV"]),array("ACTIVO","EGRESOS"),$types_account); 
               $acumdebit = $acumdebit + $value["debit"];
               $acumcredit = $acumcredit + $value["credit"]; 
               $acumresta = $acumresta + $value["debit"] + $value["credit"];           
               $showdebit = abs($value["debit"]);  
               $showcredit = abs($value["credit"]);  
               $showresta = $value["debit"] + $value["credit"]; 
+              $showresta = round($showresta,2);               
+              $showresta = ($sign) ? $showresta : $showresta * -1; 
+              $showresta = (empty($showresta)) ? abs($showresta) : $showresta; 
 
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);  
               $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);    
@@ -390,10 +412,16 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
              $totresta = $totresta + $acumresta; 
              $showacumdebit = abs($acumdebit);
              $showacumcredit = abs($acumcredit);  
-             $showacumresta = $acumresta;     
+                          
+             $showacumresta = round($acumresta,2);               
+             $showacumresta = ($sign) ? $showacumresta : $showacumresta * -1; 
+             $showacumresta = (empty($showacumresta)) ? abs($showacumresta) : $showacumresta;
+
              $showtotdebit = abs($totdebit);
-             $showtotcredit = abs($totcredit);
-             $showtotresta = abs($totresta);
+             $showtotcredit = abs($totcredit);             
+             $showtotresta = round($totresta,2);               
+             $showtotresta = ($sign) ? $showtotresta : $showtotresta * -1; 
+             $showtotresta = (empty($showtotresta)) ? abs($showtotresta) : $showtotresta;
 
              $objPHPExcel->setActiveSheetIndex(0)                
                 ->setCellValue('A'.$this->line,'')
@@ -431,7 +459,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
         $this->outputExcel("JOURNAL_ENTRY_SUMMARY_REPORT");
       break;
       default:	
-        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
         $tags["typereport"] = "S";
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_journalsummary', $tags);  	

@@ -48,9 +48,15 @@ class Modelo_ChartAccount{
     return $result = $GLOBALS['db']->insert('dp01a110',$datos);
   }
 
-  public static function report($accfrom='', $accto=''){    
-    $sql = "CALL rpt_acc_chartaccounts('".$accfrom."','".$accto."',0,0)";
-    return $GLOBALS['db']->procedure($sql);    
+  public static function report($accfrom='', $accto=''){
+    $sql = "SELECT CODIGO, NOMBRE FROM dp01a110 WHERE (CTAINACTIVA IS NULL OR CTAINACTIVA = 0)";
+    if (!empty($accfrom)){
+      $sql .= " AND CODIGO_AUX >= '".$accfrom."'";
+    }
+    if (!empty($accto)){
+      $sql .= " AND (CODIGO_AUX <= '".$accto."' OR CODIGO_AUX LIKE '".$accto."%')";
+    }
+    return $GLOBALS['db']->auto_array($sql,array(),true);
   }
 
   public static function getIndividual($codigo){

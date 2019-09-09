@@ -49,7 +49,7 @@ class Controlador_Reports extends Controlador_Base {
       //$this->objPdf->SetMargins(7,7);     
       $this->objPdf->AddPage();
     }
-    $this->objPdf->Image(FRONTEND_RUTA.'imagenes/logoinicial.jpg', 239,10,50,26,'JPG');
+    $this->objPdf->Image(FRONTEND_RUTA.PATH_LOGO.$info_company["rentas_logo"], 239,10,50,26,'JPG');
 
     $this->objPdf->SetFont('Arial','B',14);
     $this->objPdf->Cell(189  ,5,'',0,1);//end of line
@@ -107,7 +107,7 @@ class Controlador_Reports extends Controlador_Base {
     $objDrawing = new PHPExcel_Worksheet_Drawing(); 
     $objDrawing->setName('Logo'); 
     $objDrawing->setDescription('Logo'); 
-    $objDrawing->setPath(FRONTEND_RUTA.'imagenes/logoinicial.jpg'); 
+    $objDrawing->setPath(FRONTEND_RUTA.PATH_LOGO.$info_company["rentas_logo"]); 
     $objDrawing->setCoordinates($columlogo); 
     
     //setOffsetX works properly 

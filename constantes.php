@@ -15,5 +15,5 @@ define('RUTA_VISTA', FRONTEND_RUTA.'frontend/Vista/');
 define('KEY_ENCRIPTAR','acfecuador123456');
 define('PREVIOUS_SYSTEM','localhost/fernanda/acf/');
 define('DASHBOARD', 'inicializador/vistas/app/in.php');
-
+define('PATH_LOGO','inicializador/img/');
 ?>

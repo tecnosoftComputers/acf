@@ -101,7 +101,6 @@ RewriteRule ^typeTransUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeTran
 RewriteRule ^typeTransDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeTrans&opcion=delete&id=$1 [L]
 RewriteRule ^typeTransReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeTrans&opcion=report&tipo=$1 [L]
 
-
 #productsParameters
 RewriteRule ^productsParametersList/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters [L]
 RewriteRule ^productsParametersCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters&opcion=create [L]
@@ -143,6 +142,9 @@ RewriteRule ^report/generalledger/search/$ %{ENV:REWRITEBASE}index.php?mostrar=r
 RewriteRule ^report/generalledger/$ %{ENV:REWRITEBASE}index.php?mostrar=reportGeneralLedger&item=33 [L]
 
 #trial balance
+RewriteRule ^report/trialbalance/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35&action=$1&datefrom=$2&dateto=$3&accfrom=$4&accto=$5 [L]
+RewriteRule ^report/trialbalance/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35&action=$1&datefrom=$2&dateto=$3&accfrom=$4 [L]
+RewriteRule ^report/trialbalance/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35&action=$1&datefrom=$2&dateto=$3 [L]
 RewriteRule ^report/trialbalance/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35&action=search [L]
 RewriteRule ^report/trialbalance/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35 [L]
 

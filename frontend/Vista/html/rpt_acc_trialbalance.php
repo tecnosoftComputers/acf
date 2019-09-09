@@ -100,34 +100,48 @@
     </thead>
     <tbody>
     <tr><td colspan="9" class="style-td-special"></td></tr>
-    <?php   
-    $acumbalance = 0;
+    <?php       
     $acumdebit = 0;
-    $acumcredit = 0;      
-    foreach($results as $key=>$value){                               
-      $acumbalance = $acumbalance + $value["balance"];
-      $acumdebit = $acumdebit + $value["debit"];
-      $acumcredit = $acumcredit + $value["credit"];    
-      
+    $acumcredit = 0;          
+    foreach($results as $key=>$value){  
+      $nro = substr_count($value["CODIGO"],".");      
+      //only sum mayors
+      if ($nro == 1){
+        $acumdebit = $acumdebit + $value["debit"];
+        $acumcredit = $acumcredit + $value["credit"];    
+      }                
+      $resta = $value["balance"] + $value["debit"] + $value["credit"];      
+
+      $sign = Utils::getSign(trim($value["CODIGO"]),array("ACTIVO","EGRESOS"),$types_account);
       $showdebit = abs($value["debit"]);  
-      $showcredit = abs($value["credit"]);   
-      $showbalance = $value["balance"];
+      $showcredit = abs($value["credit"]); 
+
+      $showbalance = round($value["balance"],2);               
+      $showbalance = ($sign) ? $showbalance : $showbalance * -1; 
+      $showbalance = (empty($showbalance)) ? abs($showbalance) : $showbalance;         
+
+      $showresta = round($resta,2);               
+      $showresta = ($sign) ? $showresta : $showresta * -1; 
+      $showresta = (empty($showresta)) ? abs($showresta) : $showresta;
+
       echo "<tr>               
               <td>"." ".$value["CODIGO"]."</td>
               <td>".$value["NOMBRE"]."</td>
               <td align='right'>".number_format($showbalance,2)."</td>
               <td align='right'>".number_format($showdebit,2)."</td>
-              <td align='right'>".number_format($showcredit,2)."</td>              
+              <td align='right'>".number_format($showcredit,2)."</td>
+              <td align='right'>".number_format($showresta,2)."</td>
             </tr>";                     
     } 
     $showacumdebit = abs($acumdebit);
     $showacumcredit = abs($acumcredit);
-    $showbalance = $acumbalance;
+    $showacumresta = $acumdebit + $acumcredit;
+    $showacumresta = abs($showacumresta);                   
     echo "<tr>                           
-            <td colspan='2'><strong>Totals:</strong></td>
-            <td class='style-td-totals'>".number_format($showbalance,2)."</td>
+            <td colspan='3' align='right'><strong>Totals:</strong></td>
             <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
-            <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>            
+            <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>
+            <td class='style-td-totals'>".number_format($showacumresta,2)."</td>            
           </tr>";       
     ?>      
     </tbody>    

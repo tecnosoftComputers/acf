@@ -642,5 +642,16 @@ public static function validarCelularConvencional($contenido){
     
   }
 
+  public static function getSign($acc,$columns=array(),$data=array()){
+    if (empty($acc) || empty($columns) || empty($data)){ return false; }
+    $parent_acc = strstr($acc, '.', true);
+    foreach($columns as $key=>$value){            
+      if (array_search($parent_acc, $data[$value]) !== false){
+        return true;
+      }      
+    }
+    return false;
+  }
+
 }
 ?>

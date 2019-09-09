@@ -4,6 +4,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <form action="<?php echo PUERTO."://".HOST."/report/generalledger/search/";?>" method="post" class="form-horizontal">
+        <input type="hidden" name="item" id="item" value=""> 
         <fieldset>
           <legend class="mibread" style="text-align: center;"><strong>General Ledger Report</strong></legend>
           
@@ -104,13 +105,20 @@
     <tbody>
     <tr><td colspan="9" class="style-td-special"></td></tr>
     <?php     
-    $account = '';      
+    $account = ''; 
+    $sign = '';         
     foreach($results as $key=>$value){ 
       if ($account != $value["CODMOV"]){ 
-        if (!empty($key)){
+        //get sign of the account
+        $sign = Utils::getSign(trim($account),array("ACTIVO","EGRESOS"),$types_account);
+
+        if (!empty($key)){          
           $showacumdebit = abs($acumdebit);
-          $showacumcredit = abs($acumcredit);
-          $showbalance = $balance;
+          $showacumcredit = abs($acumcredit);  
+          $showbalance = round($balance,2);               
+          $showbalance = ($sign) ? $showbalance : $showbalance * -1; 
+          $showbalance = (empty($showbalance)) ? abs($showbalance) : $showbalance;         
+          
           echo "<tr>               
                 <td colspan='5'>&nbsp;</td>
                 <td><strong>Current Balance:</strong></td>
@@ -124,9 +132,13 @@
         $infoaccount = Modelo_ChartAccount::getIndividual(trim($value["CODMOV"]));          
         $prevbalance = Modelo_Dpmovimi::reportLedger($_SESSION['acfSession']['id_empresa'],
                                                      date("Y-m-d",$dbdatefrom),
-                                                     trim($value["CODMOV"]));
+                                                     trim($value["CODMOV"]));                
         
-        $showprevbalance = $prevbalance["balance"]; 
+        $sign = Utils::getSign(trim($value["CODMOV"]),array("ACTIVO","EGRESOS"),$types_account);
+        $showprevbalance = round($prevbalance["balance"],2);               
+        $showprevbalance = ($sign) ? $showprevbalance : $showprevbalance * -1;
+        $showprevbalance = (empty($showprevbalance)) ? abs($showprevbalance) : $showprevbalance;
+        
         echo "<tr class='style-tr-cab'>
                 <td colspan='3'>".$value["CODMOV"]."</td>
                 <td colspan='3'>".$infoaccount["NOMBRE"]."</td>
@@ -147,8 +159,11 @@
       $acumcredit = $acumcredit + $credit;    
       $idmov = Utils::encriptar($value["IDCONT"]);
       $showdebit = abs($debit);  
-      $showcredit = abs($credit);   
-      $showbalance = $balance;
+      $showcredit = abs($credit);
+      $showbalance = round($balance,2);
+      $showbalance = ($sign) ? $showbalance : $showbalance * -1;      
+      $showbalance = (empty($showbalance)) ? abs($showbalance) : $showbalance;      
+      
       echo "<tr>               
               <td>".date("m/d/Y",strtotime($value["FECHA_ASI"]))."</td>
               <td>".$value["TIPO_ASI"]."</td>
@@ -163,7 +178,10 @@
     } 
     $showacumdebit = abs($acumdebit);
     $showacumcredit = abs($acumcredit);
-    $showbalance = $balance;
+    $showbalance = round($balance,2);     
+    $showbalance = ($sign) ? $showbalance : $showbalance * -1;    
+    $showbalance = (empty($showbalance)) ? abs($showbalance) : $showbalance;    
+        
     echo "<tr>               
             <td colspan='5'>&nbsp;</td>
             <td><strong>Current Balance:</strong></td>
