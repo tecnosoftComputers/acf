@@ -1,9 +1,9 @@
 <?php require_once ("../../../datos/db/connect.php"); ?>
 
 <?php
-    $iduser = $_SESSION['usuario'];
-    $cid = $_SESSION['nivel'];
-    $empresa = $_SESSION['id_empresa'];
+    $iduser = $_SESSION['acfSession']['usuario'];
+    $cid = $_SESSION['acfSession']['nivel'];
+    $empresa = $_SESSION['acfSession']['id_empresa'];
 
     // Verifica si el nivel que entró aquí, tiene una clave protegida, sino la tiene, se le pide que genere una.
     // Si la tiene, se le ofrece el cambio de clave. 

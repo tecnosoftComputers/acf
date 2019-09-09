@@ -5,7 +5,7 @@
 ?>
 
 <?php
-    $userid = $_SESSION['usuario'];
+    $userid = $_SESSION['acfSession']['usuario'];
     $sql = $cc->prepare("SELECT * FROM dp01a110 ");
     $sql->execute();
     

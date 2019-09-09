@@ -5,7 +5,7 @@
 ?>
 <style> .unselectable{background-color: #ddd;cursor: not-allowed;} </style>
 <?php
-    $userid = $_SESSION['usuario'];
+    $userid = $_SESSION['acfSession']['usuario'];
     $stmt = $cc->prepare("SELECT * FROM dp01a110 ");
     $stmt->execute();
     $one = $stmt->fetchAll(PDO::FETCH_ASSOC);

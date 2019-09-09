@@ -1,6 +1,6 @@
 <?php
  session_start();  
- if(isset($_SESSION["correo"]))  {
+ if(isset($_SESSION['acfSession']["correo"]))  {
     require_once ("../head_unico.php");
     require_once ("../../../../datos/db/connect.php");
     
@@ -10,7 +10,7 @@
         $laid = $_REQUEST['cid'];
         
         
-        $lasesion   = $_SESSION['lasesion'];
+        $lasesion   = $_SESSION['acfSession']['lasesion'];
         /******   E X T R A E R   L A   ID   D E  L A    E M P R E S A   ******/
         $buscar = DBSTART::abrirDB()->prepare("SELECT * FROM sesion_init WHERE num_sesion='$lasesion'");
         $buscar->execute();

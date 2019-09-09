@@ -8,7 +8,7 @@
 </style>
 <?php
     @session_start();
-    if(isset($_SESSION["correo"]))  {
+    if(isset($_SESSION['acfSession']["correo"]))  {
     }else{
         session_unset();
         session_destroy();
@@ -16,15 +16,16 @@
     }
 ?>
 <?php 
-    require_once ("../../../../controlador/conf.php");
-    require_once ("../../../../datos/db/connect.php");
-    require_once ("../../../../controlador/func.php");
+    require_once FRONTEND_RUTA."controlador/conf.php";
+    require_once FRONTEND_RUTA."datos/db/connect.php";
+    require_once FRONTEND_RUTA."controlador/func.php";
     
     $cc = new DBSTART;
     $db = $cc->abrirDB();
-    $cid      = $_SESSION['correo'];
-    $user     = $_SESSION['usuario'];
-    $lasesion = $_SESSION['lasesion'];
+    $cid      = $_SESSION['acfSession']['correo'];
+    $user     = $_SESSION['acfSession']['usuario'];
+    //$lasesion = $_SESSION['acfSession']['lasesion'];
+    $id_empresa = $_SESSION['acfSession']['id_empresa'];
 ?>
  <?php
     $upd = $db->prepare("select * from usuarios_empresas eu inner join usuarios u on u.id_usuario = eu.id_user 
@@ -33,15 +34,15 @@
     $all_upd = $upd->fetchAll(PDO::FETCH_ASSOC);
     
     /******   E X T R A E R   L A     I D    D E   L A    E M P R E S A   ******/
-    $buscar = $db->prepare("SELECT * FROM sesion_init WHERE num_sesion='$lasesion'");
+    /*$buscar = $db->prepare("SELECT * FROM sesion_init WHERE num_sesion='$lasesion'");
     $buscar->execute();
     $all_buscar = $buscar->fetchAll(PDO::FETCH_ASSOC);
 
         foreach((array) $all_buscar as $data_buscar) {
             $elvalor    = $data_buscar['id_empresa'];
             $id_param   = $data_buscar['modulo'];
-        }
-        $sql = $db->prepare("SELECT * FROM empresa WHERE id_empresa='$elvalor'");
+        }*/
+        $sql = $db->prepare("SELECT * FROM empresa WHERE id_empresa='$id_empresa'");
         $sql->execute();
         $all_sql = $sql->fetchAll(PDO::FETCH_ASSOC);
         foreach( $all_sql as $newdata){
@@ -70,14 +71,14 @@
     <meta name="author" content="" />
 
     <title>ACF</title>
-    <link href="../../../../inicializador/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../../../../inicializador/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" />
-    <link href="../../../../inicializador/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" />
-    <link href="../../../../inicializador/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" />
-    <link href="../../../../inicializador/dist/css/sb-admin-2.css" rel="stylesheet" />
-    <link href="../../../../inicializador/dist/css/nativo.css" rel="stylesheet" />
-    <link href="../../../../inicializador/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <script src="../../../../inicializador/js/jquery-2.2.4.min.js"></script>
+    <link href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/dist/css/sb-admin-2.css" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/dist/css/nativo.css" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/js/jquery-2.2.4.min.js"></script>
 </head>
 <body >
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="border-bottom:1px solid #b1d09e; margin-bottom: -60px">
@@ -92,7 +93,7 @@
 
     <ul class="nav navbar-top-links navbar-right">
         <li class="">
-            <form action="../../../../controlador/c_sesion/generar.php" class="navbar-form" method="request">
+            <form action="<?php echo PUERTO.'://'.HOST; ?>/controlador/c_sesion/generar.php" class="navbar-form" method="request">
                 <select name="y" class="form-control" onchange='this.form.submit()' style="width: 200px;">
                     <?php foreach((array) $all_upde as $vale_conf) { ?>
                     <?php if ($id_param == $vale_conf['id_config']){ ?>
@@ -106,7 +107,7 @@
         </li>
         
         <li class="">
-            <form action="../../../../controlador/c_sesion/generar.php" class="navbar-form" method="request">
+            <form action="<?php echo PUERTO.'://'.HOST; ?>/controlador/c_sesion/generar.php" class="navbar-form" method="request">
                 <select name="x" class="form-control" onchange='this.form.submit()' style="width: 300px;">
                     <?php foreach((array) $all_upd as $vale) { ?>
                         <?php if ($elvalor == $vale['id_empresa']){ ?>
@@ -122,14 +123,14 @@
                     // 1. Nivel de usuario o rol    2. Base de datos     3. Administración de entrada
                     head_inits($cid, $db,$id_param,$user); ?>
                 
-            <li><a><i class="fa fa-user"></i> <?php echo strtoupper($_SESSION["elrol"]);  ?> </a></li>
+            <li><a><i class="fa fa-user"></i> <?php echo strtoupper($_SESSION['acfSession']["elrol"]);  ?> </a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-sign-in fa-fw"></i> <?php //echo $_SESSION["persona"]; ?>&nbsp;</a>
+                <i class="fa fa-sign-in fa-fw"></i> <?php //echo $_SESSION['acfSession']["persona"]; ?>&nbsp;</a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href=""><?php echo strtoupper($_SESSION["persona"]); ?></a></li>
+                        <li><a href=""><?php echo strtoupper($_SESSION['acfSession']["persona"]); ?></a></li>
                         <li class="divider"></li> 
-                        <li><a href="../../../../datos/db/close.php"><i class="fa fa-sign-out fa-fw"></i> CERRAR SESIÓN</a></li>
+                        <li><a href="<?php echo PUERTO.'://'.HOST; ?>/datos/db/close.php"><i class="fa fa-sign-out fa-fw"></i> CERRAR SESIÓN</a></li>
                     </ul>
                 </li>
             </ul>
@@ -139,12 +140,13 @@
                     <div class="sidebar-nav navbar-collapse"> 
                         <ul class="nav" id="side-menu">
                             <li><a href="../in.php?cid=dashboard/init"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-                            <?php if ($_SESSION['correo'] == 1){
-                                    require_once ("permisos/seguridad_h.php");
-                                    require_once ("permisos/company_h.php");
+                            <?php if ($_SESSION['acfSession']['correo'] == 1){
+                                require_once FRONTEND_RUTA.INICIALIZADOR."permisos/seguridad.php";
+                                require_once FRONTEND_RUTA.INICIALIZADOR."permisos/company.php";
                             }else{
-                                    require_once ("permisos/company_h.php");
-                            }?>
+                                require_once FRONTEND_RUTA.INICIALIZADOR."permisos/company.php";
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>

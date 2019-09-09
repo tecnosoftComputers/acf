@@ -1,5 +1,5 @@
 <?php
-    require_once ("../../../datos/db/connect.php");
+    require_once FRONTEND_RUTA."datos/db/connect.php";
     $usuario = $_SESSION['correo'];
         
     $stmt = DBSTART::abrirDB()->prepare("SELECT * FROM dp02a110 WHERE STATUS='A'");
@@ -36,8 +36,8 @@
                             <td><?php echo $registro2['CODMOV']; ?></td>
                             <td><?php echo $registro2['NOMBREBCO']; ?></td>
                             <td><?php echo $registro2['NUMEROCH']; ?></td>
-                            <td><a href="../../../inicializador/vistas/app/files/view_banks_edit.php?cid=<?php echo $registro2['CODIGOBCO'] ?>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="../../../inicializador/vistas/app/files/view_banks_del.php?cid=<?php echo $registro2['CODIGOBCO'] ?>"><i class="fa fa-trash"></i></a></td>   
+                            <td><a href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vistas/app/files/view_banks_edit.php?cid=<?php echo $registro2['CODIGOBCO'] ?>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vistas/app/files/view_banks_del.php?cid=<?php echo $registro2['CODIGOBCO'] ?>"><i class="fa fa-trash"></i></a></td>   
                  </tr>
         <?php } ?>
             </tbody>

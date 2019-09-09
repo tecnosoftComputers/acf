@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_SESSION["correo"])) {
+    if(isset($_SESSION['acfSession']["correo"])) {
     require_once ("../../../../datos/db/connect.php"); $new = new DBSTART(); $db = $new->abrirDB();
     require_once ("../head_unico.php");
 

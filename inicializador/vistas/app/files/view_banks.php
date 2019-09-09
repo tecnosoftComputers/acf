@@ -1,9 +1,9 @@
 <?php
-    require_once ("../../../datos/db/connect.php");
+    require_once FRONTEND_RUTA."datos/db/connect.php";
     $env = new DBSTART;
     $cc = $env::abrirDB();
 
-    $userid = $_SESSION['usuario'];
+    $userid = $_SESSION['acfSession']['usuario'];
     $sql = $cc->prepare("SELECT * FROM usuarios WHERE id_usuario='$userid' AND estado='A' ");
     $sql->execute();
     
@@ -37,8 +37,8 @@
     $dinero = $money->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-<script type="text/javascript" src="../../js/files_banks.js"></script>
-<script type="text/javascript" src="../../js/jsFunctions.js"></script>
+<script type="text/javascript" src="<?php echo PUERTO.'://'.HOST; ?>/js/files_banks.js"></script>
+<script type="text/javascript" src="<?php echo PUERTO.'://'.HOST; ?>/js/jsFunctions.js"></script>
 <div id="page-wrapper"><br /><br />
 
     <div class="alert alert-info"><p>Accounting / Files / Banks</p></div>
@@ -54,13 +54,13 @@
 <div class="tab-content"> <!-- Tab panes -->
     <div class="tab-pane fade in active" id="list-pills"><br>
         <div class="col-lg-12">
-<?php require_once ("../../../controlador/c_files/c_list_banks.php"); ?>
+<?php require_once FRONTEND_RUTA."controlador/c_files/c_list_banks.php"; ?>
         </div>
     </div> <!-- FIN DE TIPOS DE ASIENTOS -->
 
   <div class="tab-pane fade" id="form-pills"><br />
 <div class="col-lg-5">
-    <form action="../../../controlador/c_files/add_bank.php" method="post" class="form-horizontal">
+    <form action="<?php echo PUERTO.'://'.HOST; ?>/controlador/c_files/add_bank.php" method="post" class="form-horizontal">
         <fieldset>
     <legend class="mibread"><strong>Banks</strong></legend>
             <div class="form-group">

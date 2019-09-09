@@ -4,7 +4,7 @@
 	$env = new DBSTART;
 	$cc = $env::abrirDB();
 
-    $usuario = $_SESSION['correo'];
+    $usuario = $_SESSION['acfSession']['correo'];
     
     //Consultar los dos permisos: accounting / operations    
     $new = $cc->prepare("SELECT * FROM usuarios

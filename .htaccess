@@ -14,10 +14,14 @@ RewriteEngine On
     Header always set Access-Control-Allow-Origin "*"
 </FilesMatch>
 
+#login
+RewriteRule ^$ %{ENV:REWRITEBASE}index.php?mostrar=login [L]
+RewriteRule ^login/$ %{ENV:REWRITEBASE}index.php?mostrar=login [L]
+
 
 #operations
 RewriteRule ^dashboard/$ %{ENV:REWRITEBASE}index.php?mostrar=operations [L]
-RewriteRule ^close/$ %{ENV:REWRITEBASE}index.php?mostrar=operations&opcion=close [L]
+RewriteRule ^close/$ %{ENV:REWRITEBASE}index.php?mostrar=logout [L]
 RewriteRule ^reestablecerSistema/$ %{ENV:REWRITEBASE}index.php?mostrar=operations&opcion=reestablecerSistema [L]
 
 #accounts

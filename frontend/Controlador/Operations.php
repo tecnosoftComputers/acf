@@ -6,7 +6,7 @@ class Controlador_Operations extends Controlador_Base {
     $tags = array();         
 
     if(!Utils::estaLogueado()){
-      header("Location: ".PUERTO."://".PREVIOUS_SYSTEM."login.php");
+      header("Location: ".PUERTO."://".HOST."/login/");
     } 
 
     $opcion = Utils::getParam('opcion','',$this->data);
@@ -14,10 +14,10 @@ class Controlador_Operations extends Controlador_Base {
       case 'reestablecerSistema':
         self::reestablecerSistema();
       break;
-      case 'close':
+      /*case 'close':
         session_destroy();
-        header("Location: ".PUERTO."://".PREVIOUS_SYSTEM."/login.php");
-      break;
+        header("Location: ".PUERTO."://".HOST."/login/");
+      break;*/
       default:          
       	$tags = array();
         Vista::render('dashboard', $tags);

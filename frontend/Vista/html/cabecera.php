@@ -46,5 +46,7 @@
 </script>
 <body>
 
-<?php echo $menu; ?>
-<br/><br/><br/>
+<?php if($menu != ''){
+    echo $menu;
+    echo '<br/><br/><br/>'; 
+} ?>

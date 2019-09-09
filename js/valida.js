@@ -1,6 +1,80 @@
 $(document).ready(function(){ 
   $('[data-toggle="tooltip"]').tooltip();   
+
+  $('#btnSearch2').on('click',function(){
+    general();
+  });
+
+  $('#cleanFecha').on('click',function(){
+    $('#datefilter').val('');
+  });
+
 });
+
+function general(){
+
+  var type = $('#type_select').val();
+  var range = $('#datefilter').val().split(' - ');
+  $('#bodyContent').html('<tr><td colspan="5" align="center"><img src="'+$('#puerto_host').val()+'/imagenes/loader.gif" width="150" /></td></tr>');
+  $.ajax({
+    type:"POST",
+    data:{type:type, range:range, item:$('#item').val()},
+    dataType : 'json',
+    url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
+    beforeSend: function(){
+     $('#loading').modal('show');
+    },
+    complete:function(){
+      $('#loading').modal('hide');
+    },
+    success:function(r){
+      if(r.journal.length > 0){
+
+        var p = r.permission;
+
+        var html = '';
+        for (var i = 0; i < r.journal.length; i++) {
+
+          var ediF = viewF = 'onclick="viewMessage(\'You cannot execute this action\')"';
+          if(p.rd == 1){
+            viewF = 'onclick="viewJournal(\''+r.journal[i].IDCONT+'\')"';
+          }
+
+          if(p.edi == 1){
+            ediF = 'onclick="searchJournal(\'\',\''+r.journal[i].IDCONT+'\')"';
+          }
+          html += '<tr>';
+          html += '<td>'+r.journal[i].TIPO_ASI+'</td>';
+          html += '<td>'+r.journal[i].ASIENTO+'</td>';
+
+          var date =  new Date(r.journal[i].FECHA_ASI);
+          var day = date.getDate()+1;
+          var month = date.getMonth()+1;
+          if(month < 10){
+            month = '0'+month;
+          }
+
+          if(day < 10){
+            day = '0'+day;
+          }
+
+          var year = date.getFullYear();
+
+          html += '<td>'+month+'/'+day+'/'+(year-1)+'</td>';
+          html += '<td>'+r.journal[i].BENEFICIAR+'</td>';
+          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal" '+viewF+'><i class="fa fa-eye"></i></a></td>';
+          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal" '+ediF+'><i class="fa fa-edit"></i></a></td>';
+          html += '</tr>';
+        }
+        
+      }else{
+        html += '<tr align="center"><td colspan="5">No matching records found</td></tr>';
+      }
+      $('#bodyContent').html(html);
+    }
+  });
+}
+
 
 function enviarForm(){
   $('#form_g').submit();
@@ -748,3 +822,4 @@ function viewMessage(msj){
     animation: true
   });   
 } 
+

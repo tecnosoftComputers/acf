@@ -6,7 +6,7 @@ class Controlador_TRA extends Controlador_Base {
     $tags = array();    
 
     if(!Utils::estaLogueado()){
-      header("Location: ".PUERTO."://".PREVIOUS_SYSTEM."login.php");
+      header("Location: ".PUERTO."://".HOST."/login/");
     } 
 
     $opcion = Utils::getParam('opcion','',$this->data); 

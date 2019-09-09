@@ -6,7 +6,7 @@ class Controlador_Accounts extends Controlador_Base {
     $tags = array();    
  
     if(!Utils::estaLogueado()){
-      header("Location: ".PUERTO."://".PREVIOUS_SYSTEM."login.php");
+      header("Location: ".PUERTO."://".HOST."/login/");
     } 
 
     if(!empty($_SESSION['id_empresa'])){

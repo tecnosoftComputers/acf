@@ -28,9 +28,9 @@ try {
                     $cant = $sql->fetchAll(PDO::FETCH_ASSOC);
 
                     foreach((array) $cant as $val) {
-                        $sesiones = $val['contador'];
+                        echo $sesiones = $val['contador'];
                         $sesiones = $sesiones + 1;
-                    }
+                    }exit;
                     $_SESSION["correo"]      = $empresa["position"];
                     $_SESSION["usuario"]     = $empresa["id_usuario"];
                     $_SESSION["elrol"]       = $empresa["role"];
@@ -77,11 +77,11 @@ try {
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
   <script>
-  grecaptcha.ready(function() {
+ /* grecaptcha.ready(function() {
       grecaptcha.execute('reCAPTCHA_site_key', {action: '?cid=init/view_voucher'}).then(function(token) {
          ...
       });
-  });
+  });*/
   </script>
 <style>
 .login-block{background: white;  /* fallback for old browsers */width:100%;padding : 25px 0; height: 100%; margin:0 auto}

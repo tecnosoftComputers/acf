@@ -6,7 +6,7 @@
 
 	$cc = $env::abrirDB();
 
-    $userid     = $_SESSION['usuario'];
+    $userid     = $_SESSION['acfSession']['usuario'];
 
     
 

@@ -6,7 +6,7 @@
 
 <style>.ast{color:red}</style>
 
-<?php $empresa = $_SESSION['id_empresa']; ?>
+<?php $empresa = $_SESSION['acfSession']['id_empresa']; ?>
 
 <script type="text/javascript" src="../../js/cs_users.js"></script>
 

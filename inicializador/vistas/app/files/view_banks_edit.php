@@ -1,7 +1,7 @@
 <style> .unselectable{background-color: #ddd;cursor: not-allowed;} </style>
 <?php
  session_start();  
- if(isset($_SESSION["correo"])) {
+ if(isset($_SESSION['acfSession']["correo"])) {
 
     require_once ("../head_unico.php");
     require_once ("../../../../datos/db/connect.php");

@@ -24,24 +24,23 @@ class Utils{
   }
   
   static public function createSession(){               
-    //ini_set("session.cookie_lifetime","900");
-    //ini_set("session.gc_maxlifetime","900");
-  /*  session_id('acfSession');
-    session_name('acfSession');*/
+
+    session_name('acfSession');
+    ini_set("session.gc_maxlifetime","900");
     session_start();  
 
-    $_SESSION['acfSession']['correo'] = $_SESSION['correo'];
+    /*$_SESSION['acfSession']['correo'] = $_SESSION['correo'];
     $_SESSION['acfSession']['usuario'] = $_SESSION['usuario'];
     $_SESSION['acfSession']['lasesion'] = $_SESSION['lasesion'];
     $_SESSION['acfSession']['elrol'] = $_SESSION['elrol'];
     $_SESSION['acfSession']['persona'] = $_SESSION['persona'];
     $_SESSION['acfSession']['id_empresa'] = $_SESSION['id_empresa'];    
-    $_SESSION['acfSession']['id_modulo'] = (isset($_SESSION['id_modulo'])) ? $_SESSION['id_modulo'] : 1;
+    $_SESSION['acfSession']['id_modulo'] = (isset($_SESSION['id_modulo'])) ? $_SESSION['id_modulo'] : 1;*/
     $_SESSION['acfSession']['code_iso'] = 'USD';
     $_SESSION['acfSession']['locale'] = 'en_US';
     $_SESSION['acfSession']['simbolo'] = '$';
 
-    $_SESSION['acfSession']['permission'] = Modelo_Access::searchPermission($_SESSION['acfSession']['usuario']);        
+    /*$_SESSION['acfSession']['permission'] = Modelo_Access::searchPermission($_SESSION['acfSession']['usuario']);  */      
   } 
  
   static public function getArrayParam($paramName,$array, $default=false){
@@ -640,7 +639,7 @@ public static function validarCelularConvencional($contenido){
     if ( !isset($_SESSION) || !isset($_SESSION['acfSession']['usuario'] )){            
       return false;
     }else{
-        return true;
+      return true;
     }   
     
   }

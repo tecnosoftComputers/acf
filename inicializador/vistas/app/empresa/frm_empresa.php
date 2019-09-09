@@ -1,6 +1,6 @@
 <?php require_once ("../../../datos/db/connect.php"); ?>
 
-<?php $empresa = $_SESSION['id_empresa']; ?>
+<?php $empresa = $_SESSION['acfSession']['id_empresa']; ?>
 <?php 
 
     $stmt = DBSTART::abrirDB()->prepare("SELECT * FROM c_roles");

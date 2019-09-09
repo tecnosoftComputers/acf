@@ -1,10 +1,11 @@
-<script src="../../../jquery/jquery-1.11.0.min.js"></script>
+<script src="<?php echo PUERTO.'://'.HOST.'/js/jquery/jquery-1.11.0.min.js'; ?>"></script>
 <?php
-	require_once ("../../../datos/db/connect.php");
+
+	require_once FRONTEND_RUTA.'datos/db/connect.php';
 	$env = new DBSTART;
 	$cc = $env::abrirDB();
 
-    $usuario = $_SESSION['correo'];
+    $usuario = $_SESSION['acfSession']['correo'];
     
     $sql = $cc->prepare("SELECT * FROM tab_asientos");
     $sql->execute();
@@ -26,14 +27,15 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="home-pills">
-                        <?php require_once ("../../../controlador/c_files/vouchers_list.php"); ?>
+                        <?php 
+                        require_once FRONTEND_RUTA.'controlador/c_files/vouchers_list.php'; ?>
                     </div>
                 <div class="tab-pane fade" id="profile-pills"><br />
                 <div class="col-lg-6">
                 <fieldset>
                 <legend class="mibread"><strong>Voucher</strong></legend>
                 
-    <form id="addForm" class="form-horizontal" method="post" action="../../../controlador/c_files/add_vouchers.php">
+    <form id="addForm" class="form-horizontal" method="post" action="<?php echo PUERTO.'://'.HOST.'/controlador/c_files/add_vouchers.php'; ?>">
         <div class="form-group">
               <label class="col-md-4 control-label" for="name">Type of accounty entry: </label>
               <div class="col-md-8">
@@ -89,7 +91,7 @@
 <script>
     function preguntar(id) {
         if (confirm('Esta seguro que desea inactivar este usuario ' )){
-            window.location.href = "../../../controlador/c_company_users/delete.php?id="+ id;
+            window.location.href = "<?php echo FRONTEND_RUTA; ?>controlador/c_company_users/delete.php?id="+ id;
         }
     }
 </script>
@@ -97,7 +99,7 @@
 <script>
     function preguntarActivar(id) {
         if (confirm('Esta seguro que desea activar este usuario ' )){
-            window.location.href = "../../../controlador/c_company_users/activar_user.php?id="+ id;
+            window.location.href = "<?php echo FRONTEND_RUTA; ?>controlador/c_company_users/activar_user.php?id="+ id;
         }
     }
 </script>

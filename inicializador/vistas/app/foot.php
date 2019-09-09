@@ -1,24 +1,24 @@
     </div>
 
-    <script src="../../../inicializador/js/valida.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/js/valida.js"></script>
     
-    <script src="../../../inicializador/vendor/jquery/jquery.min.js"></script>
-    <script src="../../../inicializador/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../../inicializador/vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/metisMenu/metisMenu.min.js"></script>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="../../../inicializador/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="../../../inicializador/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="../../../inicializador/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/datatables-responsive/dataTables.responsive.js"></script>
     
-    <script src="../../../inicializador/dist/js/sb-admin-2.js"></script>
-    <script src="../../../inicializador/vendor/flot/excanvas.min.js"></script>
-    <script src="../../../inicializador/vendor/flot/jquery.flot.js"></script>
-    <script src="../../../inicializador/vendor/flot/jquery.flot.pie.js"></script>
-    <script src="../../../inicializador/vendor/flot/jquery.flot.resize.js"></script>
-    <script src="../../../inicializador/vendor/flot/jquery.flot.time.js"></script>
-    <script src="../../../inicializador/vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
-    <script src="../../../inicializador/data/flot-data.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/dist/js/sb-admin-2.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/flot/excanvas.min.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/flot/jquery.flot.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/flot/jquery.flot.time.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+    <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/data/flot-data.js"></script>
 
     <script>
         $(document).ready(function() {

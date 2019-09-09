@@ -1,7 +1,7 @@
 <?php
     session_start();
- if(isset($_SESSION["correo"]))  {    
-    $empresa = $_SESSION['id_empresa'];        
+ if(isset($_SESSION['acfSession']["correo"]))  {    
+    $empresa = $_SESSION['acfSession']['id_empresa'];        
 	require_once ("../head_unico.php");
 	require_once ("../../../../datos/db/connect.php");
 	

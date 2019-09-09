@@ -1,5 +1,5 @@
 <?php
-    require_once ("../../../datos/db/connect.php");
+    require_once FRONTEND_RUTA."datos/db/connect.php";
     $usuario = $_SESSION['correo'];
     
     $send = DBSTART::abrirDB()->prepare("SELECT * FROM Finacli as f INNER JOIN tab_tclient c ON c.codtipo = f.CLASIFICA WHERE f.STATUS='A'");
@@ -28,8 +28,8 @@
                      <td><?php echo $registro2['NOMEMP'] ?></td>
                      <td><?php echo $registro2['COUNTRY'] ?></td>
                      <td><?php echo $registro2['DIRDOM']; ?></td>
-                     <td><a href="../../../inicializador/vistas/app/files/view_directory_edit.php?cid=<?php echo $registro2['NO_ID'] ?>"><i class="fa fa-edit"></i></a></td>
-                     <td><a href="../../../inicializador/vistas/app/files/view_directory_del.php?cid=<?php echo $registro2['NO_ID'] ?>"><i class="fa fa-trash"></i></a></td>                 
+                     <td><a href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vistas/app/files/view_directory_edit.php?cid=<?php echo $registro2['NO_ID'] ?>"><i class="fa fa-edit"></i></a></td>
+                     <td><a href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vistas/app/files/view_directory_del.php?cid=<?php echo $registro2['NO_ID'] ?>"><i class="fa fa-trash"></i></a></td>                 
                  </tr>
         <?php } ?>
             </tbody>

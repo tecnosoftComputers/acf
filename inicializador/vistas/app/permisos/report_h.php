@@ -6,9 +6,9 @@
 
     $db = $cc->abrirDB();
 
-    $empresa = $_SESSION['id_empresa'];
+    $empresa = $_SESSION['acfSession']['id_empresa'];
 
-    $cid = $_SESSION['correo'];
+    $cid = $_SESSION['acfSession']['correo'];
 
 
 

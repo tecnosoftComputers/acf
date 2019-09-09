@@ -1,6 +1,6 @@
 <form role="form" name="formulario" id="formulario" action="#"  method="post" >
     <div id="page-wrapper2" style="    padding: 0 30px;"><br />
-        <div class="alert alert-info"><p>Accounting / Activities / Journal Entries / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Back</a></p></div>
+        <div class="alert alert-info"><p>Accounting / Activities / Journal Entries / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".HOST.'/dashboard/'; ?>">Back</a></p></div>
 
         <div class="row">
             <div class="col-lg-12">

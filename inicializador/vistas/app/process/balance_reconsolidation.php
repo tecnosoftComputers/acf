@@ -5,7 +5,7 @@ $cc = $env::abrirDB();
 ?>
 
 <?php
-$userid = $_SESSION['usuario'];
+$userid = $_SESSION['acfSession']['usuario'];
 $sql = $cc->prepare("SELECT * FROM usuarios WHERE id_usuario='$userid' AND estado='A' ");
 $sql->execute();
 

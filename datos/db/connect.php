@@ -1,5 +1,5 @@
 <?php 
-	require 'config.php';
+	require_once FRONTEND_RUTA.'/datos/db/config.php';
 
 	class DBSTART extends CONFIG{
 		public static function abrirDB() {

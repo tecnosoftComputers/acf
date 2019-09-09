@@ -1,8 +1,8 @@
 <?php
-    if (!defined('PUERTO')) {
+    /*if (!defined('PUERTO')) {
         define('PUERTO', 'http');
         define('HOST', 'localhost/fernando/acf'); 
-    } 
+    } */
 
     function head_init($role,$db, $acceso) {
     // Mostrar items del modulo

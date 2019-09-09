@@ -4,7 +4,7 @@
 	$cc = $env::abrirDB();
 ?>
 
-<?php $empresa = $_SESSION['id_empresa']; ?>
+<?php $empresa = $_SESSION['acfSession']['id_empresa']; ?>
 
 <script type="text/javascript" src="../../js/cs_files_system_charts.js"></script>
 

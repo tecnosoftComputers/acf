@@ -150,73 +150,7 @@ $('#btnSearch1').on('click',function(){
   $('#myModalList').modal('show');
 });
 
-$('#btnSearch2').on('click',function(){
-  general();
-});
 
-function general(){
-
-  var type = $('#type_select').val();
-  var range = $('#datefilter').val().split(' - ');
-  $('#bodyContent').html('<tr><td colspan="5" align="center"><img src="'+$('#puerto_host').val()+'/imagenes/loader.gif" width="150" /></td></tr>');
-  $.ajax({
-    type:"POST",
-    data:{type:type, range:range, item:$('#item').val()},
-    dataType : 'json',
-    url:$('#puerto_host').val()+"/index.php?mostrar=accounts&opcion=searchJournal",
-    beforeSend: function(){
-     $('#loading').modal('show');
-    },
-    complete:function(){
-      $('#loading').modal('hide');
-    },
-    success:function(r){
-      if(r.journal.length > 0){
-
-        var p = r.permission;
-
-        var html = '';
-        for (var i = 0; i < r.journal.length; i++) {
-
-          var ediF = viewF = 'onclick="viewMessage(\'You cannot execute this action\')"';
-          if(p.rd == 1){
-            viewF = 'onclick="viewJournal(\''+r.journal[i].IDCONT+'\')"';
-          }
-
-          if(p.edi == 1){
-            ediF = 'onclick="searchJournal(\'\',\''+r.journal[i].IDCONT+'\')"';
-          }
-          html += '<tr>';
-          html += '<td>'+r.journal[i].TIPO_ASI+'</td>';
-          html += '<td>'+r.journal[i].ASIENTO+'</td>';
-
-          var date =  new Date(r.journal[i].FECHA_ASI);
-          var day = date.getDate()+1;
-          var month = date.getMonth()+1;
-          if(month < 10){
-            month = '0'+month;
-          }
-
-          if(day < 10){
-            day = '0'+day;
-          }
-
-          var year = date.getFullYear();
-
-          html += '<td>'+month+'/'+day+'/'+(year-1)+'</td>';
-          html += '<td>'+r.journal[i].BENEFICIAR+'</td>';
-          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="View journal" '+viewF+'><i class="fa fa-eye"></i></a></td>';
-          html += '<td align="center"><a data-toggle="tooltip" data-placement="bottom" title="Update journal" '+ediF+'><i class="fa fa-edit"></i></a></td>';
-          html += '</tr>';
-        }
-        
-      }else{
-        html += '<tr align="center"><td colspan="5">No matching records found</td></tr>';
-      }
-      $('#bodyContent').html(html);
-    }
-  });
-}
 
 function runTable(numInput){
 
@@ -740,22 +674,22 @@ function editJournal(id){
 
       if(r.journal != ''){
 
-         var sel = document.getElementById( '_seleccion' ),
+        var sel = document.getElementById( '_seleccion' ),
           opts = sel.options;
 
-          for ( var i = 0; i < opts.length; i++ ) {
-              
-            if(r.journal['TIPO_ASI'] != ''){ 
-              var value = r.journal['TIPO_ASI'].trim();
-            }else{
-              var value = 0;
-            }
-
-            if ( opts[i].value == value ) {
-              sel.selectedIndex = i;
-              break;
-            }
+        for ( var i = 0; i < opts.length; i++ ) {
+            
+          if(r.journal['TIPO_ASI'] != ''){ 
+            var value = r.journal['TIPO_ASI'].trim();
+          }else{
+            var value = 0;
           }
+
+          if ( opts[i].value == value ) {
+            sel.selectedIndex = i;
+            break;
+          }
+        }
         $('#_actual').val(r.journal['ASIENTO']);
         data_journal(r, false);
       }
@@ -885,6 +819,24 @@ function copyJournal(id){
      
       if(r.journal != ''){
         clearForm();
+
+        var sel = document.getElementById( '_seleccion' ),
+          opts = sel.options;
+
+        for ( var i = 0; i < opts.length; i++ ) {
+            
+          if(r.journal['TIPO_ASI'] != ''){ 
+            var value = r.journal['TIPO_ASI'].trim();
+          }else{
+            var value = 0;
+          }
+
+          if ( opts[i].value == value ) {
+            sel.selectedIndex = i;
+            break;
+          }
+        }
+        
         $('#_actual').val('');
         data_journal(r, true);
         recalculate('#save','#memorice');
@@ -1018,10 +970,6 @@ function data_journal(r,copy){
     insertRow2(account,name,type,codep,ref,memo,typeTrans,debit,credit,documento,liq,r.journal['ANULADO']);
   }
 }
-
-$('#cleanFecha').on('click',function(){
-  $('#datefilter').val('');
-});
 
 $('#cleanSeat').on('click',function(){
   $('#_actual').val('');

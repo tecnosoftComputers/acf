@@ -13,6 +13,7 @@ define('RUTA_INCLUDES', FRONTEND_RUTA.'includes/');
 define('RUTA_FRONTEND', FRONTEND_RUTA.'frontend/'); 
 define('RUTA_VISTA', FRONTEND_RUTA.'frontend/Vista/');
 define('KEY_ENCRIPTAR','acfecuador123456');
-define('PREVIOUS_SYSTEM','localhost/fernando/acf/');
+//define('PREVIOUS_SYSTEM','localhost/fernando/acf/');
 define('DASHBOARD', 'inicializador/vistas/app/in.php');
+define('INICIALIZADOR', 'inicializador/vistas/app/');
 ?>

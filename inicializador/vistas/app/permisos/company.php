@@ -1,9 +1,9 @@
 <?php
-    require_once ("../../../datos/db/connect.php");
+    require_once (FRONTEND_RUTA."datos/db/connect.php");
     $cc = new DBSTART;
     $db = $cc->abrirDB();
-    //$empresa = $_SESSION['id_empresa'];
-    $cid = $_SESSION['correo'];
+    //$empresa = $_SESSION['acfSession']['id_empresa'];
+    $cid = $_SESSION['acfSession']['correo'];
     // Mostrar items del modulo
     $sql = $db->prepare("SELECT * FROM permisos p INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo 
                             WHERE p.permisos_modulo=1 AND p.nivel='$cid' AND mi.estado='A'");

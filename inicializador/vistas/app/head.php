@@ -8,27 +8,30 @@
 </style>
 
 <?php
-    require_once ("../../../controlador/conf.php");
-    require_once ("../../../controlador/func.php");
-    require_once ("../../../datos/db/connect.php");
-    
+
+    require_once FRONTEND_RUTA."controlador/conf.php";
+    require_once FRONTEND_RUTA."controlador/func.php";
+    require_once FRONTEND_RUTA."datos/db/connect.php";
+   
     $cc = new DBSTART;
     $db = $cc->abrirDB();
     
-    $cid        = $_SESSION['correo'];
-    $user       = $_SESSION['usuario'];
-    $lasesion   = $_SESSION['lasesion']; // Número de sesión en la tabla - contador
+    $cid        = $_SESSION['acfSession']['correo'];
+    $user       = $_SESSION['acfSession']['usuario'];
+    $id_empresa = $_SESSION['acfSession']['id_empresa'];
+    $id_param = $_SESSION['acfSession']['id_modulo'];
+    //$lasesion   = $_SESSION['acfSession']['lasesion']; // Número de sesión en la tabla - contador
 
 /******   E X T R A E R   L A   ID   D E  L A    E M P R E S A   ******/
-$buscar = $db->prepare("SELECT * FROM sesion_init WHERE num_sesion='$lasesion'");
+/*$buscar = $db->prepare("SELECT * FROM sesion_init WHERE num_sesion='$lasesion'");
 $buscar->execute();
 $all_buscar = $buscar->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ((array )$all_buscar as $data_buscar){
     $elvalor = $data_buscar['id_empresa'];
     $id_param = $data_buscar['modulo'];
-}
-$sql = $db->prepare("SELECT * FROM empresa WHERE id_empresa='$elvalor'");
+}*/
+$sql = $db->prepare("SELECT * FROM empresa WHERE id_empresa='$id_empresa'");
 $sql->execute();
 $all_sql = $sql->fetchAll(PDO::FETCH_ASSOC);
 foreach ($all_sql as $newdata){
@@ -66,18 +69,18 @@ $all_upde = $upde->fetchAll(PDO::FETCH_ASSOC);
     <meta name="author" content="" />
 
     <title>ACF</title>
-    <link href="../../../inicializador/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../../../inicializador/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" />
-    <link href="../../../inicializador/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" />
-    <link href="../../../inicializador/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" />
-    <link href="../../../inicializador/dist/css/sb-admin-2.css" rel="stylesheet" />
-    <link href="../../../inicializador/dist/css/nativo.css" rel="stylesheet" />
-    <link href="../../../inicializador/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo PUERTO.'://'.HOST.'/inicializador/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST.'/inicializador/vendor/metisMenu/metisMenu.min.css'; ?>" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST.'/inicializador/vendor/datatables-plugins/dataTables.bootstrap.css'; ?>" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST.'/inicializador/vendor/datatables-responsive/dataTables.responsive.css'; ?>" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST.'/inicializador/dist/css/sb-admin-2.css'; ?>" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST.'/inicializador/dist/css/nativo.css'; ?>" rel="stylesheet" />
+    <link href="<?php echo PUERTO.'://'.HOST.'/inicializador/vendor/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css" />
     
 </head>
-</script>
+
 <body >
-    <form id="form_g" action="../../../controlador/c_sesion/generar.php" class="navbar-form" method="request">
+    <form id="form_g" action="<?php echo PUERTO.'://'.HOST.'/controlador/c_sesion/generar.php'; ?>" class="navbar-form" method="request">
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="border-bottom:1px solid #b1d09e; margin-bottom: -60px">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -120,18 +123,19 @@ $all_upde = $upde->fetchAll(PDO::FETCH_ASSOC);
     </li>
     </form>
 <?php
+
     // 1. Nivel de usuario o rol    2. Base de datos     3. Administración de entrada
     head_init($cid, $db, $id_param); ?>
-    <li><a><i class="fa fa-user"></i> <?php echo strtoupper($_SESSION["elrol"]); ?> </a></li>
+    <li><a><i class="fa fa-user"></i> <?php echo strtoupper($_SESSION['acfSession']["elrol"]); ?> </a></li>
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-sign-in fa-fw"></i> <?php
-//echo $_SESSION["persona"]; ?>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
+//echo $_SESSION['acfSession']["persona"]; ?>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
         </a>
         <ul class="dropdown-menu dropdown-user">
-            <li><a href=""><?php echo strtoupper($_SESSION["persona"]);?></a></li>
-        <li><a href="../../../controlador/c_security/c_system_end.php"><i class="fa fa-eye fa-fw"></i> RESTABLECER SISTEMA</a></li>
+            <li><a href=""><?php echo strtoupper($_SESSION['acfSession']["persona"]);?></a></li>
+        <li><a href="<?php echo PUERTO.'://'.HOST.'/controlador/c_security/c_system_end.php'; ?>"><i class="fa fa-eye fa-fw"></i> RESTABLECER SISTEMA</a></li>
         <li class="divider"></li> 
-        <li><a href="../../../datos/db/close.php"><i class="fa fa-sign-out fa-fw"></i> CERRAR SESIÓN</a></li>
+        <li><a href="<?php echo PUERTO.'://'.HOST.'/close/';?>"><i class="fa fa-sign-out fa-fw"></i> CERRAR SESIÓN</a></li>
     </ul>
     </li>
 </ul>
@@ -142,11 +146,11 @@ $all_upde = $upde->fetchAll(PDO::FETCH_ASSOC);
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
             <li><a href="?cid=dashboard/init"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-<?php if ($_SESSION['correo'] == 1){
-    require_once ("permisos/seguridad.php");
-    require_once ("permisos/company.php");
+<?php if ($_SESSION['acfSession']['correo'] == 1){
+    require_once FRONTEND_RUTA.INICIALIZADOR."permisos/seguridad.php";
+    require_once FRONTEND_RUTA.INICIALIZADOR."permisos/company.php";
 }else{
-    require_once ("permisos/company.php");
+    require_once FRONTEND_RUTA.INICIALIZADOR."permisos/company.php";
 }
 ?>
         </ul>
