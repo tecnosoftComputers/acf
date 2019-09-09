@@ -43,6 +43,7 @@ class Controlador_Reports extends Controlador_Base {
   public function construirPagina(){}
 
   public function printHeaderPdf($title,$from,$to,$new=false){
+    Utils::log("MONEDA ".print_r($_SESSION,true));
     $info_company = Modelo_Companie::searchCompanies($_SESSION['acfSession']['id_empresa']);
     if ($new == true){
       $this->objPdf = new FPDF('P','mm','A3'); 

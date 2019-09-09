@@ -14,10 +14,10 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
       case 'search':                
   	    $accfrom = Utils::getParam('accfrom','',$this->data);
   	    $accto = Utils::getParam('accto','',$this->data);
+        //$nrorecords = Utils::getParam('nrorecords',25,$this->data);
   	    $tags["accfrom"] = $accfrom;
   	    $tags["accto"] = $accto;
-  	    $tags["results"] = Modelo_ChartAccount::report($accfrom,$accto);
-        Utils::log("RESULTADOS ".print_r($tags["results"],true));
+  	    $tags["results"] = Modelo_ChartAccount::report($accfrom,$accto);        
         if (empty($tags["results"])){
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";
         }        
