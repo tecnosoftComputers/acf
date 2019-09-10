@@ -21,7 +21,7 @@ class Pagination {
     return ($this->page - 1) * $this->rowsperpage; 
   } 
       
-  private function getLastPage() {     
+  private function getLastPage() { 
     return ceil($this->totalrows / $this->rowsperpage); 
   } 
      
@@ -100,8 +100,7 @@ class Pagination {
         } 
       } 
       
-      //if ($page < $counter - 1){  
-      
+      //if ($page < $counter - 1){          
       if ($page < $counter - 1){            
         $pagination .= '<li class="page-item"><a class="page-link" href="'.$this->website.'/'.$next.'/">>></a></li>'; 
       }    

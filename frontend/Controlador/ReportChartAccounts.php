@@ -12,17 +12,17 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
     $action = Utils::getParam('action','',$this->data);
     switch($action){      
       case 'search':         
-  	    $accfrom = Utils::getParam('accfrom','',$this->data);
-  	    $accto = Utils::getParam('accto','',$this->data);
+        $accfrom = Utils::getParam('accfrom','',$this->data);
+        $accto = Utils::getParam('accto','',$this->data);
         $limit = Utils::getParam('limit','',$this->data);
         $limit = (empty($limit)) ? $this->vlrecords[0] : $limit; 
         $page = Utils::getParam('page',1,$this->data);        
-  	    $tags["accfrom"] = $accfrom;
-  	    $tags["accto"] = $accto;                
+        $tags["accfrom"] = $accfrom;
+        $tags["accto"] = $accto;                
         $start = ($page - 1) * $limit;
         
         $arr = Modelo_ChartAccount::report($accfrom,$accto,$start,$limit);
-  	    $tags["results"] = $arr["records"];
+        $tags["results"] = $arr["records"];
         $url = PUERTO."://".HOST."/report/chartaccount/search";        
         $url .= (!empty($accfrom)) ? "/".$accfrom : "";
         $url .= (!empty($accto)) ? "/".$accto : "";
@@ -38,25 +38,25 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         $tags["limit"] = $limit; 
         $tags["vlrecords"] = $this->vlrecords;      
         $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
-  	    $tags["template_js"][] = "reports";     
-  	    Vista::render('rpt_acc_chartaccount', $tags);                       
+        $tags["template_js"][] = "reports";     
+        Vista::render('rpt_acc_chartaccount', $tags);                       
       break;        
       case 'pdf':     
         $accfrom = Utils::getParam('accfrom','',$this->data);
-  	    $accto = Utils::getParam('accto','',$this->data);
-  	    $arr = Modelo_ChartAccount::report($accfrom,$accto);
+        $accto = Utils::getParam('accto','',$this->data);
+        $arr = Modelo_ChartAccount::report($accfrom,$accto);
         $results = $arr["records"];
 
-  	    $this->printHeaderPdf("CHART ACCOUNTS REPORT",$accfrom,$accto,true); 
+        $this->printHeaderPdf("CHART ACCOUNTS REPORT",$accfrom,$accto,true); 
 
-  	    $columns = array();
-  	    $columns[] = array("width"=>80,"label"=>"ACCOUNT");  
-  	    $columns[] = array("width"=>198,"label"=>"NAME ACCOUNT");  
-  	    $this->printHeaderTablePdf($columns);  
+        $columns = array();
+        $columns[] = array("width"=>80,"label"=>"ACCOUNT");  
+        $columns[] = array("width"=>198,"label"=>"NAME ACCOUNT");  
+        $this->printHeaderTablePdf($columns);  
 
-  	    $this->objPdf->SetFont('Arial','',9);    
+        $this->objPdf->SetFont('Arial','',9);    
 
-  	    if (!empty($results)){                      
+        if (!empty($results)){                      
           foreach($results as $key=>$value){   
             if ($this->objPdf->GetY() > $this->limitline){
               $this->objPdf->AddPage();
@@ -85,7 +85,7 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
             }               
             $this->objPdf->Cell(189  ,5,'',0,1);//end of line              
           }                                  
-  	    }
+        }
         $this->objPdf->Output();
       break; 
       case 'excel':
@@ -144,6 +144,6 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         Vista::render('rpt_acc_chartaccount', $tags);       
       break;
     }    
-  }	
+  } 
 }
 ?>

@@ -5,7 +5,7 @@ class Controlador_Reports extends Controlador_Base {
   public $objPdf;
   public $limitline = 370;
   public $line = 10;
-  public $vlrecords = array(10,25,50,100);
+   public $vlrecords = array(10,25,50,100);
 
   //style for all cells
   public $styleArray = array(
