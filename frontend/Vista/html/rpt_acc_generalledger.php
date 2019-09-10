@@ -12,8 +12,7 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <form action="<?php echo PUERTO."://".HOST."/report/generalledger/search/";?>" method="post" class="form-horizontal">
-        <input type="hidden" name="item" id="item" value=""> 
+      <form action="<?php echo PUERTO."://".HOST."/report/generalledger/search/";?>" method="post" class="form-horizontal">        
         <fieldset>
           <legend class="mibread" style="text-align: center;"><strong>General Ledger Report</strong></legend>
           

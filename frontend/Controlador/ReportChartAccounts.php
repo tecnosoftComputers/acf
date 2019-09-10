@@ -27,9 +27,10 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         $url .= (!empty($accfrom)) ? "/".$accfrom : "";
         $url .= (!empty($accto)) ? "/".$accto : "";
         $url .= "/".$limit;
-        
+                
         $pagination = new Pagination($arr["nrorecords"],$limit,$url);  
-        $pagination->setPage($page);      
+        $pagination->setPage($page); 
+
         $tags["pagination"] = $pagination->showPage();
 
         if (empty($tags["results"])){
