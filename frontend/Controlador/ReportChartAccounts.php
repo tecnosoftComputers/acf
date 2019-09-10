@@ -26,7 +26,6 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         $url = PUERTO."://".HOST."/report/chartaccount/search";        
         $url .= (!empty($accfrom)) ? "/".$accfrom : "";
         $url .= (!empty($accto)) ? "/".$accto : "";
-
         $url .= "/".$limit;
         
         $pagination = new Pagination($arr["nrorecords"],$limit,$url);  
@@ -38,7 +37,6 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         } 
         $tags["limit"] = $limit; 
         $tags["vlrecords"] = $this->vlrecords;      
-
         $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
   	    $tags["template_js"][] = "reports";     
   	    Vista::render('rpt_acc_chartaccount', $tags);                       
