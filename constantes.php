@@ -8,7 +8,7 @@ define('FRONTEND_RUTA', 'c:/xampp/htdocs/fernando/acf/');
 define('DBSERVIDOR', 'localhost');
 define('DBUSUARIO', 'root'); 
 define('DBCLAVE', '');  
-define('DBNOMBRE', 'acf_localff2');   
+define('DBNOMBRE', 'tecnoso1_acf');   
 define('RUTA_INCLUDES', FRONTEND_RUTA.'includes/');
 define('RUTA_FRONTEND', FRONTEND_RUTA.'frontend/'); 
 define('RUTA_VISTA', FRONTEND_RUTA.'frontend/Vista/');

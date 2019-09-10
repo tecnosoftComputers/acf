@@ -13,7 +13,6 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <form action="<?php echo PUERTO."://".HOST."/report/generalledger/search/";?>" method="post" class="form-horizontal">
-        <input type="hidden" name="item" id="item" value=""> 
         <fieldset>
           <legend class="mibread" style="text-align: center;"><strong>General Ledger Report</strong></legend>
           
@@ -79,10 +78,10 @@
   ?>
   <br>
   <?php if (isset($permission) && $permission["pri"] == 1){  ?>
-    <span id="pdf" style="float: right; margin-left: 10px">
+    <span id="pdf_general" style="float: right; margin-left: 10px">
       <a href="<?php echo PUERTO."://".HOST."/report/generalledger/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
     </span>
-    <span id="excel" style="float: right">
+    <span id="excel_general" style="float: right">
       <a href="<?php echo PUERTO."://".HOST."/report/generalledger/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
     </span>
   <?php } else{ ?>
