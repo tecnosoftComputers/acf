@@ -87,6 +87,11 @@ $(document).ready(function(){
     close: function() {
       $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
     }
-  });   
+  });
+
+  $('#optrecords').on('change', function(){
+    $('#limit').val(this.value);
+    $('#frmreport').submit();
+  });  
 
 });
