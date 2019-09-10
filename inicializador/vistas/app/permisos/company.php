@@ -4,6 +4,7 @@
     $db = $cc->abrirDB();
     //$empresa = $_SESSION['acfSession']['id_empresa'];
     $cid = $_SESSION['acfSession']['correo'];
+    $id_modulo = $_SESSION['acfSession']['id_modulo'];
     // Mostrar items del modulo
     $sql = $db->prepare("SELECT * FROM permisos p INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo 
                             WHERE p.permisos_modulo=1 AND p.nivel='$cid' AND mi.estado='A'");
@@ -26,7 +27,16 @@
             <ul class="nav nav-second-level">
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
-                    <a href="<?php echo $data_sql['src_head'] ?>"><i class="fa fa-caret-right"></i> <?php echo $data_sql['nombre_item'] ?></a>
+                    <?php if($id_modulo = 1){
+
+                        $enlace = PUERTO.'://'.HOST.'/'.DASHBOARD.$data_sql['src_head'];
+
+                      } else{
+                        $enlace = $data_sql['src_head'];
+                      }
+                     ?>
+
+                    <a href="<?php echo $enlace; ?>"><i class="fa fa-caret-right"></i> <?php echo $data_sql['nombre_item'] ?></a>
                 </li>
             <?php } ?>
             </ul>

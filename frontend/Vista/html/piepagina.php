@@ -92,7 +92,7 @@
 
         function openNav() {
           document.getElementById("mySidenav").style.width = "250px";
-          $('ul.nav').removeClass('collapse');
+          //$('ul.nav').removeClass('collapse');
         }
 
         function closeNav() {

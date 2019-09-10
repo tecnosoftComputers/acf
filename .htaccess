@@ -91,6 +91,20 @@ RewriteRule ^creditOfficersUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=cre
 RewriteRule ^creditOfficersDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=creditOfi&opcion=delete&id=$1 [L]
 RewriteRule ^creditOfficersReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=creditOfi&opcion=report&tipo=$1 [L]
 
+#cservicies
+RewriteRule ^cserviciesList/$ %{ENV:REWRITEBASE}index.php?mostrar=cservicies [L]
+RewriteRule ^cserviciesCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=cservicies&opcion=create [L]
+RewriteRule ^cserviciesUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=cservicies&opcion=update&id=$1 [L]
+RewriteRule ^cserviciesDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=cservicies&opcion=delete&id=$1 [L]
+RewriteRule ^cserviciesReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=cservicies&opcion=report&tipo=$1 [L]
+
+#ccredit
+RewriteRule ^ccreditList/$ %{ENV:REWRITEBASE}index.php?mostrar=ccredit [L]
+RewriteRule ^ccreditCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=ccredit&opcion=create [L]
+RewriteRule ^ccreditUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=ccredit&opcion=update&id=$1 [L]
+RewriteRule ^ccreditDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=ccredit&opcion=delete&id=$1 [L]
+RewriteRule ^ccreditReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=ccredit&opcion=report&tipo=$1 [L]
+
 #products
 RewriteRule ^productsList/$ %{ENV:REWRITEBASE}index.php?mostrar=products [L]
 RewriteRule ^productsCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=products&opcion=create [L]

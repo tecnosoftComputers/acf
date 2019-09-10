@@ -97,6 +97,12 @@ function obtieneControlador($nombre){
     case 'products':
       return 'PRO';
     break;
+    case 'cservicies':
+      return 'CSE';
+    break;
+    case 'ccredit':
+      return 'CCR';
+    break;
     case 'currencies':
       return 'Currencies';
     break;

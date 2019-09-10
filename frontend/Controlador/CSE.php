@@ -1,5 +1,5 @@
 <?php
-class Controlador_ACT extends Controlador_Base {
+class Controlador_CSE extends Controlador_Base {
   
   public function construirPagina(){
   
@@ -13,7 +13,7 @@ class Controlador_ACT extends Controlador_Base {
     $tabla = $_SESSION['acfSession']['tabla'];
     switch($opcion){
       case 'create': 
-        $view = 'activitiesCreate'; 
+        $view = 'cserviciesCreate'; 
         
         if(Utils::getParam('create') == 1){
           try{ 
@@ -22,10 +22,11 @@ class Controlador_ACT extends Controlador_Base {
             $datos = array('CODIGO'=>$data['code'],'NOMBRE'=>$data['name']);
 
             $GLOBALS['db']->beginTrans();
+            
             if(!Modelo_TabGeneral::insert($datos,$tabla)){
-              throw new Exception('The activity could not be created, try again.');
+              throw new Exception('The service classification could not be created, try again.');
             }
-            $_SESSION['acfSession']['mostrar_exito'] = 'The activity was successfully created.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The service classification was successfully created.';
             $GLOBALS['db']->commit();
           }
           catch(Exception $e){
@@ -33,16 +34,16 @@ class Controlador_ACT extends Controlador_Base {
             $_SESSION['acfSession']['mostrar_error'] = $e->getMessage(); 
             $_SESSION['acfSession']['error'] = true;
           } 
-          Utils::doRedirect(PUERTO.'://'.HOST.'/activitiesList/');
+          Utils::doRedirect(PUERTO.'://'.HOST.'/cserviciesList/');
         }
 
         $tags = array('type'=>'Create',
                       'view'=>$view);
 
-        $tags["template_js"][] = "activities";
+        $tags["template_js"][] = "cservicies";
         $tags["template_css"][] = "";
 
-        Vista::render('activities', $tags);  
+        Vista::render('cservicies', $tags);  
       break;
       case 'update':
 
@@ -57,27 +58,27 @@ class Controlador_ACT extends Controlador_Base {
 
             $GLOBALS['db']->beginTrans();
             if(!Modelo_TabGeneral::setUpdate($id,$datos,$tabla)){
-              throw new Exception('The activity could not be edited, try again.');
+              throw new Exception('The service classification could not be edited, try again.');
             }
-            $_SESSION['acfSession']['mostrar_exito'] = 'The activity was successfully edited.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The service classification was successfully edited.';
             $GLOBALS['db']->commit();
-            Utils::doRedirect(PUERTO.'://'.HOST.'/activitiesList/');
+            Utils::doRedirect(PUERTO.'://'.HOST.'/cserviciesList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
             $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
         }
-        $activities = Modelo_TabGeneral::getUpdate($id,$tabla);
-        $view = 'activitiesUpdate';
-        $tags = array('rows'=>$activities,
+        $cservicies = Modelo_TabGeneral::getUpdate($id,$tabla);
+        $view = 'cserviciesUpdate';
+        $tags = array('rows'=>$cservicies,
                       'type'=>'Update',
                       'view'=>$view);
 
-        $tags["template_js"][] = "activities";
+        $tags["template_js"][] = "cservicies";
         $tags["template_css"][] = "";
 
-        Vista::render('activities', $tags);
+        Vista::render('cservicies', $tags);
       break;
       case 'delete':
 
@@ -89,32 +90,32 @@ class Controlador_ACT extends Controlador_Base {
             
             $GLOBALS['db']->beginTrans();
             if(!Modelo_TabGeneral::delete($id,$tabla)){
-              throw new Exception('The activity could not be deleted, try again.');
+              throw new Exception('The service classification could not be deleted, try again.');
             }
-            $_SESSION['acfSession']['mostrar_exito'] = 'The activity was successfully delete.';
+            $_SESSION['acfSession']['mostrar_exito'] = 'The service classification was successfully delete.';
             $GLOBALS['db']->commit();
-            Utils::doRedirect(PUERTO.'://'.HOST.'/activitiesList/');
+            Utils::doRedirect(PUERTO.'://'.HOST.'/cserviciesList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
             $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
         }
-        $activities = Modelo_TabGeneral::getUpdate($id,$tabla);
-        $view = 'activitiesDelete';
-        $tags = array('rows'=>$activities,
+        $cservicies = Modelo_TabGeneral::getUpdate($id,$tabla);
+        $view = 'cserviciesDelete';
+        $tags = array('rows'=>$cservicies,
                       'type'=>'Delete',
                       'view'=>$view);
 
-        $tags["template_js"][] = "activities";
+        $tags["template_js"][] = "cservicies";
         $tags["template_css"][] = "";
 
-        Vista::render('activities', $tags);
+        Vista::render('cservicies', $tags);
       break;
       case 'report':
 
-        $activities = Modelo_TabGeneral::search($tabla);
-        $nombre_archivo = 'activities_List';
+        $cservicies = Modelo_TabGeneral::search($tabla);
+        $nombre_archivo = 'service_classification_List';
         $tipo = Utils::getParam('tipo','',$this->data);
 
         if($tipo == 'excel'){
@@ -122,9 +123,9 @@ class Controlador_ACT extends Controlador_Base {
           $objPHPExcel = new PHPExcel();
           $objPHPExcel->getProperties()
             ->setCreator("Lcda. Mariana Vera")
-            ->setTitle("activities List")
-            ->setSubject("activities List")
-            ->setCategory("activities List");
+            ->setTitle("service_classification_List")
+            ->setSubject("service_classification_List")
+            ->setCategory("service_classification_List");
 
             $BStyle = array(
             'borders' => array(
@@ -156,7 +157,7 @@ class Controlador_ACT extends Controlador_Base {
           $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
           $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', 'ACTIVITIES LIST');
+              ->setCellValue('A1', 'SERVICE CLASSIFICATION LIST');
 
           $objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true); 
 
@@ -183,7 +184,7 @@ class Controlador_ACT extends Controlador_Base {
               ),
           );
 
-          foreach ($activities as $key => $item) {
+          foreach ($cservicies as $key => $item) {
 
             $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->applyFromArray($BStyle);
             $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->applyFromArray($styleArray);
@@ -212,7 +213,7 @@ class Controlador_ACT extends Controlador_Base {
           $pdf->Cell(189  ,10,'',0,1);//end of line
 
           $pdf->Image(FRONTEND_RUTA.'imagenes/logoinicial.jpg', 139,10,50,26,'JPG');
-          $pdf->Cell(59,5,'ACTIVITIES LIST',0,1);//end of line
+          $pdf->Cell(59,5,'SERVICE CLASSIFICATION LIST',0,1);//end of line
           $pdf->Cell(189,10,'',0,1); //end of line
           $pdf->SetFont('Arial','B',12);
           $pdf->Ln(6);
@@ -223,7 +224,7 @@ class Controlador_ACT extends Controlador_Base {
           $pdf->Ln(6);
 
           $pdf->SetFillColor(255,255,255);
-          foreach ($activities as $key => $item) {
+          foreach ($cservicies as $key => $item) {
             $pdf->SetFont('Arial','B',12);
             $pdf->Cell(50,6,$item['CODIGO'],1,0,'L',1);
             $pdf->Cell(135,6,$item['NOMBRE'],1,0,'L',1);    
@@ -242,17 +243,17 @@ class Controlador_ACT extends Controlador_Base {
         }
         unset($_SESSION['acfSession']['error']);
 
-        $activities = Modelo_TabGeneral::search($tabla);
-        $view = 'activitiesCreate'; 
-        $tags = array('activities'=>$activities,
+        $cservicies = Modelo_TabGeneral::search($tabla);
+        $view = 'cserviciesCreate'; 
+        $tags = array('cservicies'=>$cservicies,
                       'type'=>'Create',
                       'view'=>$view,
                       'error'=>$error);
 
-        $tags["template_js"][] = "activities";
+        $tags["template_js"][] = "cservicies";
         $tags["template_css"][] = "";
 
-        Vista::render('activitiesList', $tags);
+        Vista::render('cserviciesList', $tags);
       break;
     }
     

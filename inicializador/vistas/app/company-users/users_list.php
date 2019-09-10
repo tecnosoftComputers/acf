@@ -1,10 +1,11 @@
 <script src="../../../jquery/jquery-1.11.0.min.js"></script>
 <?php
+
 	require_once ("../../../datos/db/connect.php");
 	$env = new DBSTART;
 	$cc = $env::abrirDB();
 
-    $usuario = $_SESSION['acfSession']['correo'];
+    $usuario = $_SESSION['correo'];
     
     //Consultar los dos permisos: accounting / operations    
     $new = $cc->prepare("SELECT * FROM usuarios

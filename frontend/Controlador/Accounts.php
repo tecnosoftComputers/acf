@@ -15,7 +15,7 @@ class Controlador_Accounts extends Controlador_Base {
 
     $_SESSION['acfSession']['rule'] = PUERTO.'://'.HOST.'/journalReport';
     $opcion = Utils::getParam('opcion','',$this->data); 
-    $item = Utils::getParam('item','',$this->data); 
+    $item = Utils::getParam('item','30',$this->data); 
 
     switch($opcion){
       case 'searchTemplate':

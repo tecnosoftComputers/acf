@@ -1,4 +1,6 @@
 <?php
+require_once "../../constantes.php";
+require_once FRONTEND_RUTA."init.php";
     if (isset($_POST['register'])) {
 	require_once ("../../datos/db/connect.php");
 	$env = new DBSTART;
