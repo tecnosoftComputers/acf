@@ -147,6 +147,9 @@ RewriteRule ^report/generalledger/search/$ %{ENV:REWRITEBASE}index.php?mostrar=r
 RewriteRule ^report/generalledger/$ %{ENV:REWRITEBASE}index.php?mostrar=reportGeneralLedger&item=33 [L]
 
 #trial balance
+RewriteRule ^report/trialbalance/(.*)/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35&action=$1&datefrom=$2&dateto=$3&accfrom=$4&accto=$5 [L]
+RewriteRule ^report/trialbalance/(.*)/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35&action=$1&datefrom=$2&dateto=$3&accfrom=$4 [L]
+RewriteRule ^report/trialbalance/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35&action=$1&datefrom=$2&dateto=$3 [L]
 RewriteRule ^report/trialbalance/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35&action=search [L]
 RewriteRule ^report/trialbalance/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTrialBalance&item=35 [L]
 
@@ -154,8 +157,11 @@ RewriteRule ^report/trialbalance/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTri
 RewriteRule ^report/balancesheet/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet [L]
 
 #chart account
-RewriteRule ^report/chartaccount/(.*)/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1&accfrom=$2&accto=$3 [L]
-RewriteRule ^report/chartaccount/(.*)/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1&accfrom=$2 [L]
-RewriteRule ^report/chartaccount/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1 [L]
+RewriteRule ^report/chartaccount/(pdf|excel)/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1&accfrom=$2&accto=$3 [L]
+RewriteRule ^report/chartaccount/search/([0-9]+)/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=search&accfrom=$1&accto=$2&page=$3 [L]
+RewriteRule ^report/chartaccount/(pdf|excel)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1&accfrom=$2 [L]
+RewriteRule ^report/chartaccount/search/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=search&accfrom=$1&page=$2 [L]
+RewriteRule ^report/chartaccount/(pdf|excel)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1 [L]
+RewriteRule ^report/chartaccount/search/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=search&page=$1 [L]
 RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=search [L]
 RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43 [L]

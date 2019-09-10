@@ -1,5 +1,14 @@
 <div id="page-wrapper"><br />
-  <div class="alert alert-info"><p>Accounting / Report / Journal Entry Summary / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Back</a></p></div>
+  <div class="alert alert-info">
+    <div class="row">
+      <div class="col-md-6">
+        <p>Accounting / Report / Journal Entry Summary</p>
+      </div>
+      <div class="col-md-6">
+        <p class="text-right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>">Back</a></p>
+      </div>  
+    </div>    
+  </div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -185,14 +194,18 @@
         $totcredit = 0;
         $totresta = 0;
         foreach($results as $key=>$value){ 
-          if ($account <> $value["CODMOV"]){
+          if ($account <> $value["CODMOV"]){            
             if (!empty($key)){
+              $sign = Utils::getSign(trim($account),array("ACTIVO","EGRESOS"),$types_account); 
               $totdebit = $totdebit + $acumdebit;
               $totcredit = $totcredit + $acumcredit;
               $totresta = $totresta + $acumresta;
               $showacumdebit = abs($acumdebit);
-              $showacumcredit = abs($acumcredit);     
-              $showacumresta = $acumresta;
+              $showacumcredit = abs($acumcredit);               
+              $showacumresta = round($acumresta,2);               
+              $showacumresta = ($sign) ? $showacumresta : $showacumresta * -1; 
+              $showacumresta = (empty($showacumresta)) ? abs($showacumresta) : $showacumresta;     
+
               echo "<tr>                                  
                      <td colspan='2' align='right'><strong>Subtotal:</strong></td>       
                      <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
@@ -211,12 +224,16 @@
             $acumcredit = 0;
             $acumresta = 0;  
           }
+          $sign = Utils::getSign(trim($value["CODMOV"]),array("ACTIVO","EGRESOS"),$types_account); 
           $acumdebit = $acumdebit + $value["debit"];
           $acumcredit = $acumcredit + $value["credit"]; 
           $acumresta = $acumresta + $value["debit"] + $value["credit"];           
           $showdebit = abs($value["debit"]);  
           $showcredit = abs($value["credit"]);  
           $showresta = $value["debit"] + $value["credit"];           
+          $showresta = round($showresta,2);               
+          $showresta = ($sign) ? $showresta : $showresta * -1; 
+          $showresta = (empty($showresta)) ? abs($showresta) : $showresta;           
           echo "<tr>               
                   <td>".$value["TIPO_ASI"]."</td>
                   <td>".$value["nameseat"]."</td>                                                
@@ -229,11 +246,16 @@
          $totcredit = $totcredit + $acumcredit;
          $totresta = $totresta + $acumresta; 
          $showacumdebit = abs($acumdebit);
-         $showacumcredit = abs($acumcredit);  
-         $showacumresta = $acumresta;     
+         $showacumcredit = abs($acumcredit); 
+         $showacumresta = round($acumresta,2);               
+         $showacumresta = ($sign) ? $showacumresta : $showacumresta * -1; 
+         $showacumresta = (empty($showacumresta)) ? abs($showacumresta) : $showacumresta;
+         
          $showtotdebit = abs($totdebit);
-         $showtotcredit = abs($totcredit);
-         $showtotresta = abs($totresta);
+         $showtotcredit = abs($totcredit);         
+         $showtotresta = round($totresta,2);               
+         $showtotresta = ($sign) ? $showtotresta : $showtotresta * -1; 
+         $showtotresta = (empty($showtotresta)) ? abs($showtotresta) : $showtotresta;
          echo "<tr>                                  
                  <td colspan='2' align='right'><strong>Subtotal:</strong></td>       
                  <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>

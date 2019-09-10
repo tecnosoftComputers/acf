@@ -16,4 +16,5 @@ define('KEY_ENCRIPTAR','acfecuador123456');
 //define('PREVIOUS_SYSTEM','localhost/fernando/acf/');
 define('DASHBOARD', 'inicializador/vistas/app/in.php');
 define('INICIALIZADOR', 'inicializador/vistas/app/');
+define('PATH_LOGO','inicializador/img/');
 ?>

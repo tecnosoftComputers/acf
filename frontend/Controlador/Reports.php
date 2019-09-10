@@ -49,7 +49,7 @@ class Controlador_Reports extends Controlador_Base {
       //$this->objPdf->SetMargins(7,7);     
       $this->objPdf->AddPage();
     }
-    $this->objPdf->Image(FRONTEND_RUTA.'imagenes/logoinicial.jpg', 239,10,50,26,'JPG');
+    $this->objPdf->Image(FRONTEND_RUTA.PATH_LOGO.$info_company["rentas_logo"], 239,10,50,26,'JPG');
 
     $this->objPdf->SetFont('Arial','B',14);
     $this->objPdf->Cell(189  ,5,'',0,1);//end of line
@@ -103,11 +103,12 @@ class Controlador_Reports extends Controlador_Base {
     foreach($columns as $key=>$value){
       $this->objExcel->getActiveSheet()->getColumnDimension($key)->setWidth($value["width"]);
     }
+
     //logo
     $objDrawing = new PHPExcel_Worksheet_Drawing(); 
     $objDrawing->setName('Logo'); 
     $objDrawing->setDescription('Logo'); 
-    $objDrawing->setPath(FRONTEND_RUTA.'imagenes/logoinicial.jpg'); 
+    $objDrawing->setPath(FRONTEND_RUTA.PATH_LOGO.$info_company["rentas_logo"]); 
     $objDrawing->setCoordinates($columlogo); 
     
     //setOffsetX works properly 
@@ -165,15 +166,10 @@ class Controlador_Reports extends Controlador_Base {
     ));
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A7', 'From: '.$from. '     To: '.$to.' '.'     Date: '.date('m/d/Y'));     
-    $this->objExcel->getActiveSheet()->getStyle('A7')->applyFromArray($styleArray);           
+    $this->objExcel->getActiveSheet()->getStyle('A7')->applyFromArray($styleArray);          
               
     //header
-    $styleArray = array(
-      /*'borders' => array(
-        'allborders' => array(
-           'style' => PHPExcel_Style_Border::BORDER_THIN
-         )
-      ),*/
+    $styleArray = array(      
       'borders' => array(
         'top' => array(
           'style' => PHPExcel_Style_Border::BORDER_THIN,
@@ -207,11 +203,11 @@ class Controlador_Reports extends Controlador_Base {
 
   public function outputExcel($title){
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');
+    header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');    
     header('Cache-Control: max-age=0');
     $objWriter = PHPExcel_IOFactory::createWriter($this->objExcel, 'Excel2007');
+    //ob_end_clean();
     $objWriter->save('php://output');    
   }
-
-}  
+}
 ?>

@@ -1,5 +1,14 @@
 <div id="page-wrapper"><br />
-  <div class="alert alert-info"><p>Accounting / Report / Journal Entries / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Back</a></p></div>
+  <div class="alert alert-info">
+    <div class="row">
+      <div class="col-md-6">
+        <p>Accounting / Report / Journal Entries</p>
+      </div>
+      <div class="col-md-6">
+        <p class="text-right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>">Back</a></p>
+      </div>  
+    </div>    
+  </div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">

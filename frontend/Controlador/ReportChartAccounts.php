@@ -1,7 +1,7 @@
 <?php
 class Controlador_ReportChartAccounts extends Controlador_Reports {
 
-  public $module = 43;
+  public $item = 43;
 
   public function construirPagina(){   
 
@@ -11,24 +11,36 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
     } 
     $action = Utils::getParam('action','',$this->data);
     switch($action){      
-      case 'search':                
+      case 'search':         
   	    $accfrom = Utils::getParam('accfrom','',$this->data);
   	    $accto = Utils::getParam('accto','',$this->data);
+        $limit = Utils::getParam('nrorecords',25,$this->data);
+        $page = Utils::getParam('page',1,$this->data);
   	    $tags["accfrom"] = $accfrom;
-  	    $tags["accto"] = $accto;
-  	    $tags["results"] = Modelo_ChartAccount::report($accfrom,$accto);
-        Utils::log("RESULTADOS ".print_r($tags["results"],true));
+  	    $tags["accto"] = $accto;        
+        $start = ($page - 1) * $limit;
+        $offset = $page * $limit; 
+        $arr = Modelo_ChartAccount::report($accfrom,$accto,$start,$offset);           
+  	    $tags["results"] = $arr["records"];
+        $url = PUERTO."://".HOST."/report/chartaccount/search";        
+        $url .= (!empty($accfrom)) ? "/".$accfrom : "";
+        $url .= (!empty($accto)) ? "/".$accto : "";
+        
+        $pagination = new Pagination($arr["nrorecords"],$limit,$url);        
+        $tags["pagination"] = $pagination->showPage();
         if (empty($tags["results"])){
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";
-        }        
-        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
+        }  
+        $tags["limit"] = $limit;      
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
   	    $tags["template_js"][] = "reports";     
   	    Vista::render('rpt_acc_chartaccount', $tags);                       
       break;        
       case 'pdf':     
         $accfrom = Utils::getParam('accfrom','',$this->data);
   	    $accto = Utils::getParam('accto','',$this->data);
-  	    $results = Modelo_ChartAccount::report($accfrom,$accto);
+  	    $arr = Modelo_ChartAccount::report($accfrom,$accto);
+        $results = $arr["records"];
 
   	    $this->printHeaderPdf("CHART ACCOUNTS REPORT",$accfrom,$accto,true); 
 
@@ -74,7 +86,8 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
       case 'excel':
         $accfrom = Utils::getParam('accfrom','',$this->data);
         $accto = Utils::getParam('accto','',$this->data);
-        $results = Modelo_ChartAccount::report($accfrom,$accto);    
+        $arr = Modelo_ChartAccount::report($accfrom,$accto);    
+        $results = $arr["records"];
 
         $info_company = Modelo_Companie::searchCompanies($_SESSION['acfSession']['id_empresa']); 
 
@@ -121,7 +134,7 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         $this->outputExcel("CHART_ACCOUNTS_REPORT");   
       break;
       default:  
-        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_chartaccount', $tags);       
       break;

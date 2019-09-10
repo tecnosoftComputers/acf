@@ -1,12 +1,20 @@
-<div id="page-wrapper"><br />
-  <div class="alert alert-info"><p>Accounting / Report / Chart of Accounts / <a style="float: right; color: #fff" href="<?php echo PUERTO."://".PREVIOUS_SYSTEM.DASHBOARD; ?>">Back</a></p></div>
+<div id="page-wrapper"><br>
+  <div class="alert alert-info">
+    <div class="row">
+      <div class="col-md-6">
+        <p>Accounting / Report / Chart of Accounts</p>        
+      </div>
+      <div class="col-md-6">
+        <p class="text-right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>">Back</a></p>
+      </div>  
+    </div>    
+  </div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <form action="<?php echo PUERTO."://".HOST."/report/chartaccount/search/";?>" method="post" class="form-horizontal">
         <fieldset>
           <legend class="mibread" style="text-align: center;"><strong>Chart Accounts Report</strong></legend>
-          
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account From:</label>
             <div class="col-md-4">
@@ -61,9 +69,11 @@
     <label for="records" class="col-md-4 control-label">Number of records:</label>
     <div class="col-md-2">
       <select class="form-control" id="nrorecords" name="nrorecords">
-        <option value="25">25</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
+        <?php //Utils::log(print_r(PAGINATION,true));?>
+        <?php //foreach(PAGINATION as $nro){ 
+          //echo '<option value="'.$nro.'">'.$nro.'</option>';
+        //} 
+        ?>                  
       </select> 
     </div>    
   </div>-->
@@ -126,8 +136,13 @@
     </table>  
    </div>
   </div>
+  <center>
+  <?php if (!empty($pagination)){
+    echo $pagination;
+  }?>
+  </center>
   <br>
-<?php 
+<?php   
 } 
 ?>  
 </div> <!-- FIN DE WRAPPER  -->

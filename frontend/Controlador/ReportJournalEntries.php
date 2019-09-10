@@ -1,7 +1,7 @@
 <?php
 class Controlador_ReportJournalEntries extends Controlador_Reports {
 
-  public $module = 31;
+  public $item = 31;
 
   public function construirPagina(){   
     $tags = array();    
@@ -36,14 +36,14 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";
         }
         $tags["type_seats"] = Modelo_TypeSeat::searchSeat();
-        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
         $tags["template_js"][] = "reports";  
 
         Vista::render('rpt_acc_journalentries', $tags);        
       break;
       case 'pdf':
-        if (!isset($_SESSION['acfSession']['permission'][$this->module]) || 
-            empty($_SESSION['acfSession']['permission'][$this->module]["pri"])){
+        if (!isset($_SESSION['acfSession']['permission'][$this->item]) || 
+            empty($_SESSION['acfSession']['permission'][$this->item]["pri"])){
           $this->redirectToController('journalentries');
         }
 
@@ -149,8 +149,8 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
         $this->objPdf->Output();  
       break;    
       case 'excel':
-        if (!isset($_SESSION['acfSession']['permission'][$this->module]) || 
-            empty($_SESSION['acfSession']['permission'][$this->module]["pri"])){
+        if (!isset($_SESSION['acfSession']['permission'][$this->item]) || 
+            empty($_SESSION['acfSession']['permission'][$this->item]["pri"])){
           $this->redirectToController('journalentries');
         }
         $aux_datefrom = Utils::getParam('datefrom','',$this->data);
@@ -273,7 +273,7 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
       break;   
       default:  
         $tags["type_seats"] = Modelo_TypeSeat::searchSeat();
-        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->module];
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
         $tags["template_js"][] = "reports";        
         Vista::render('rpt_acc_journalentries', $tags);       
       break;
