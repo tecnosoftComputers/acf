@@ -1,5 +1,6 @@
 <?php
- session_start();  
+require_once "../../../../constantes.php";
+require_once FRONTEND_RUTA."init.php";  
  if(isset($_SESSION['acfSession']["correo"])) {
     require_once ("../head_unico.php");
     require_once ("../../../../datos/db/connect.php");
@@ -19,7 +20,7 @@
     }
 ?>
 <div id="page-wrapper"><br />
-<div class="alert alert-info"><p>Security / Profile / Update  <a style="float: right; color: #fff" href="../in.php?cid=seguridad/nivel">Volver</a></p></div>
+<div class="alert alert-info"><p>Security / Profile / Update  <a style="float: right; color: #fff" href="../in.php?cid=seguridad/nivel">Back</a></p></div>
     <div class="row">
         <div class="col-lg-12">
         <h2>Update Profile</h2>

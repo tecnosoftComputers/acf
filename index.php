@@ -32,7 +32,7 @@ function dispatch() {
     return $controlador->construirPagina(); 
 
   }else{
-echo 'entro';
+//echo 'entro';
     /*require_once FRONTEND_RUTA.'inicializador/vistas/app/head.php';
     print_r($_GET);
     if( isset($_GET['cid']) ) {
@@ -48,7 +48,7 @@ echo 'entro';
     }
     require_once $fflush;
     require_once FRONTEND_RUTA.'inicializador/vistas/app/foot.php';*/
-    print_r($_SESSION); exit;
+    //print_r($_SESSION); exit;
     //header("location: ".FRONTEND_RUTA.'inicializador/vistas/app/in.php');
   }
 }

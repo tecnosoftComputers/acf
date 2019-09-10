@@ -1,9 +1,10 @@
 <?php
- session_start();  
+ require_once "../../../../constantes.php";
+ require_once FRONTEND_RUTA."init.php";
  if(isset($_SESSION['acfSession']["correo"])) {
 
-    require_once FRONTEND_RUTA."head_unico.php";
-    require_once FRONTEND_RUTA."datos/db/connect.php";
+    require_once ("../head_unico.php");
+    require_once ("../../../../datos/db/connect.php");
 
     if (isset($_REQUEST['cid'])){
         $laid = $_REQUEST['cid'];
@@ -37,14 +38,14 @@
 }
 ?>
 <div id="page-wrapper"><br />
-<div class="alert alert-info"><p>Accounting / Files / Chart Account / Update  <a style="float: right; color: #fff" href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vistas/app/in.php?cid=files/chart_account">Volver</a></p></div>
+<div class="alert alert-info"><p>Accounting / Files / Chart Account / Update  <a style="float: right; color: #fff" href="../../../../inicializador/vistas/app/in.php?cid=files/chart_account">Volver</a></p></div>
     <div class="row">
         <div class="col-lg-12">
         <div class="col-lg-7">
         <div class="panel panel-default">
 
     <div class="panel-body">
-    <form id="addForm" class="form-horizontal" method="post" action="<?php echo PUERTO.'://'.HOST; ?>/controlador/c_files/edit_account.php">
+    <form id="addForm" class="form-horizontal" method="post" action="../../../../controlador/c_files/edit_account.php">
 
         <fieldset>
         <legend class="mibread"><strong>Chart of Accounts</strong></legend>
@@ -99,7 +100,7 @@
         <div class="modal-footer">
             <button style="float: left;" type="submit" name="update" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a></button>
             <button style="float: left;" type="reset" class="btn btn-success"><span class="fa fa-repeat"></span> Clean</a></button>
-            <span style="float: right"><a href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vistas/app/in.php?cid=files/chart_account" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
+            <span style="float: right"><a href="../../../../inicializador/vistas/app/in.php?cid=files/chart_account" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
         </div>
 
         </fieldset>
@@ -116,7 +117,7 @@ require_once ("../foot_unico.php");
 }else{
     session_unset();
     session_destroy();
-    header("Location:  ".PUERTO.'://'.HOST; ."/login.php");
+    header('Location:  ../../../../login.php');
 } 
 
  ?>

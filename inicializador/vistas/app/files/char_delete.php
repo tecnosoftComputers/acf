@@ -1,5 +1,6 @@
 <?php
- session_start();  
+require_once "../../../../constantes.php";
+require_once FRONTEND_RUTA."init.php";  
  if(isset($_SESSION['acfSession']["correo"])) {
 
     require_once ("../head_unico.php");
@@ -67,7 +68,7 @@
         <div class="modal-footer">
             <?php if( ord($movi) == 1 ) { ?>
                     <div class="alert alert-danger">
-                        <p> <strong>* Importante: </strong>Esta cuenta tiene movimientos y no se puede eliminar. <a href="../../../../inicializador/vistas/app/in.php?cid=files/chart_account">Volver</a></p>
+                        <p> <strong>* Importante: </strong>Esta cuenta tiene movimientos y no se puede eliminar. <a href="../../../../inicializador/vistas/app/in.php?cid=files/chart_account">Back</a></p>
                     </div>
                   <?php }else{?>
                   <button style="float: left;" type="submit" name="delete" class="btn btn-primary" ><span class="glyphicon glyphicon-floppy-remove"></span> Delete</a></button>

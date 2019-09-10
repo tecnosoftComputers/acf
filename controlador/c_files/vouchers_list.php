@@ -1,6 +1,6 @@
 <?php
-    require_once FRONTEND_RUTA."datos/db/connect.php";
-    $usuario = $_SESSION['correo'];
+    require_once ("../../../datos/db/connect.php");
+    $usuario = $_SESSION['acfSession']['correo'];
     
     $send = DBSTART::abrirDB()->prepare("SELECT * FROM DPNUMERO WHERE status = 'A'");
     $send->execute();
@@ -25,8 +25,8 @@
                      <td><?php echo $registro2['TIPO_ASI'] ?></td>
                      <td><?php echo $registro2['NOMBRE'] ?></td>
                      <td><?php echo $registro2['ASIENTO']; ?></td>
-                     <td><a href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vistas/app/files/view_voucher_edit.php?cid=<?php echo $registro2['ns'] ?>"><i class="fa fa-edit"></i></a></td>
-                     <td><a href="<?php echo PUERTO.'://'.HOST; ?>/inicializador/vistas/app/files/view_voucher_del.php?cid=<?php echo $registro2['ns'] ?>"><i class="fa fa-trash"></i></a></td>                 
+                     <td><a href="../../../inicializador/vistas/app/files/view_voucher_edit.php?cid=<?php echo $registro2['ns'] ?>"><i class="fa fa-edit"></i></a></td>
+                     <td><a href="../../../inicializador/vistas/app/files/view_voucher_del.php?cid=<?php echo $registro2['ns'] ?>"><i class="fa fa-trash"></i></a></td>                 
                  </tr>
         <?php } ?>
             </tbody>

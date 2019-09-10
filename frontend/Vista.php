@@ -261,7 +261,7 @@ class Vista {
       if($acceso == 3 || ($acceso == 1 && $modulo == 4)){
         $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
       } else{
-        $enlace = PUERTO.'://'.HOST.'/index.php'.$data_sql['src_head'];
+        $enlace = PUERTO.'://'.HOST.'/inicializador/vistas/app/in.php'.$data_sql['src_head'];
       }
 
       $submenu .= '<a href="'.$enlace.'"><i class="fa fa-caret-right"></i>'.$data_sql['nombre_item'].'</a>

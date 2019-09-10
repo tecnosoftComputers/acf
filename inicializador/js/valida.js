@@ -14,7 +14,9 @@
     return patron.test(te);
 }
  
-$('#viewTemplate').on('click',function(){
-  var temp = $('#print').val();
-  window.open('http://localhost/fernando/acf/templates/'+temp+'.pdf', '_blank');
-});
+if(document.getElementById('viewTemplate')){
+  $('#viewTemplate').on('click',function(){
+    var temp = $('#print').val();
+    window.open('http://localhost/fernando/acf/templates/'+temp+'.pdf', '_blank');
+  });
+}

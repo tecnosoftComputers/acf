@@ -7,7 +7,8 @@
 @media screen and (max-height: 450px) {.sidenav {padding-top: 15px;}.sidenav a {font-size: 18px;}}
 </style>
 <?php
-    @session_start();
+    require_once '../../../../constantes.php';
+require_once FRONTEND_RUTA.'init.php'; 
     if(isset($_SESSION['acfSession']["correo"]))  {
     }else{
         session_unset();
@@ -26,6 +27,7 @@
     $user     = $_SESSION['acfSession']['usuario'];
     //$lasesion = $_SESSION['acfSession']['lasesion'];
     $id_empresa = $_SESSION['acfSession']['id_empresa'];
+    $id_param = $_SESSION['acfSession']['id_modulo'];
 ?>
  <?php
     $upd = $db->prepare("select * from usuarios_empresas eu inner join usuarios u on u.id_usuario = eu.id_user 
@@ -81,6 +83,7 @@
     <script src="<?php echo PUERTO.'://'.HOST; ?>/inicializador/js/jquery-2.2.4.min.js"></script>
 </head>
 <body >
+    <form id="form_g" action="<?php echo PUERTO.'://'.HOST.'/controlador/c_sesion/generar.php'; ?>" class="navbar-form" method="request">
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="border-bottom:1px solid #b1d09e; margin-bottom: -60px">
     <div class="navbar-header"> 
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -92,25 +95,12 @@
     </div>
 
     <ul class="nav navbar-top-links navbar-right">
+
         <li class="">
             <form action="<?php echo PUERTO.'://'.HOST; ?>/controlador/c_sesion/generar.php" class="navbar-form" method="request">
-                <select name="y" class="form-control" onchange='this.form.submit()' style="width: 200px;">
-                    <?php foreach((array) $all_upde as $vale_conf) { ?>
-                    <?php if ($id_param == $vale_conf['id_config']){ ?>
-                            <option value="<?php echo $vale_conf['id_config'] ?>" style="font-size: 15px;" selected=""> <?php echo $vale_conf['name_access'] ?></option>
-                        <?php }else{ ?>
-                            <option value="<?php echo $vale_conf['id_config'] ?>" style="font-size: 15px;"> <?php echo $vale_conf['name_access'] ?></option>
-                    <?php } } ?>
-                    </select>
-                <noscript><input type="submit" value="Submit" /></noscript>
-            </form>
-        </li>
-        
-        <li class="">
-            <form action="<?php echo PUERTO.'://'.HOST; ?>/controlador/c_sesion/generar.php" class="navbar-form" method="request">
-                <select name="x" class="form-control" onchange='this.form.submit()' style="width: 300px;">
+                <select name="x" class="form-control" onchange='enviar()' style="width: 300px;">
                     <?php foreach((array) $all_upd as $vale) { ?>
-                        <?php if ($elvalor == $vale['id_empresa']){ ?>
+                        <?php if ($id_empresa == $vale['id_empresa']){ ?>
                         <option value="<?php echo $vale['id_empresa'] ?>" style="font-size: 15px;" selected=""> <?php echo $vale['nombre_empresa'] ?></option>
                     <?php }else{ ?>
                         <option value="<?php echo $vale['id_empresa'] ?>" style="font-size: 15px;"> <?php echo $vale['nombre_empresa'] ?></option>
@@ -119,9 +109,25 @@
                 <noscript><input type="submit" value="Submit" /></noscript>
             </form>
         </li>
+
+        <li class="">
+            
+                <select name="y" class="form-control" onchange='enviar()' style="width: 200px;">
+                    <?php foreach((array) $all_upde as $vale_conf) { ?>
+                    <?php if ($id_param == $vale_conf['id_config']){ ?>
+                            <option value="<?php echo $vale_conf['id_config'] ?>" style="font-size: 15px;" selected=""> <?php echo $vale_conf['name_access'] ?></option>
+                        <?php }else{ ?>
+                            <option value="<?php echo $vale_conf['id_config'] ?>" style="font-size: 15px;"> <?php echo $vale_conf['name_access'] ?></option>
+                    <?php } } ?>
+                    </select>
+                <noscript><input type="submit" value="Submit" /></noscript>
+            
+        </li>
+        </form>
+        
                 <?php
                     // 1. Nivel de usuario o rol    2. Base de datos     3. Administración de entrada
-                    head_inits($cid, $db,$id_param,$user); ?>
+                    head_inits($cid, $db,$id_param/*,$user*/); ?>
                 
             <li><a><i class="fa fa-user"></i> <?php echo strtoupper($_SESSION['acfSession']["elrol"]);  ?> </a></li>
             <li class="dropdown">
@@ -160,6 +166,12 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
+
+function enviar(){
+ 
+  $('#form_g').submit();
+}
+
 </script>
 </nav>
 <br /><br /><br />

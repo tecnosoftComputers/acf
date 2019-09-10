@@ -1,4 +1,7 @@
-<?php require_once ("../../datos/db/connect.php"); $env = new DBSTART; $db = $env->abrirDB();
+<?php 
+require_once "../../constantes.php";
+require_once FRONTEND_RUTA."init.php";
+require_once ("../../datos/db/connect.php"); $env = new DBSTART; $db = $env->abrirDB();
 
 if (isset($_POST['register'])){
     $cod    = $_POST['number'];

@@ -1,5 +1,5 @@
-
 <?php
+
 require_once FRONTEND_RUTA."/datos/db/connect.php";
 $env   = new DBSTART;
 $cc    = $env::abrirDB();

@@ -1,6 +1,8 @@
 <?php
+require_once "../../../constantes.php";
+require_once FRONTEND_RUTA."init.php"; 
     require_once ("../../../datos/db/connect.php");
-    $usuario = $_SESSION['correo'];
+    $usuario = $_SESSION['acfSession']['correo'];
         
     $stmt = DBSTART::abrirDB()->prepare("SELECT u.id_rol, u.nombre_rol, u.fecha_registro, u.fecha_modificacion, u.estado 
                                             FROM roles u ORDER BY u.id_rol DESC");

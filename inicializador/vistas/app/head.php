@@ -96,7 +96,7 @@ $all_upde = $upde->fetchAll(PDO::FETCH_ASSOC);
     <li class="">      
       <select id="x" name="x" class="form-control" onchange='enviar()' style="width: 300px;">
       <?php foreach ( (array) $all_upd as $vale){ ?>
-      <?php if ($elvalor == $vale['id_empresa']) { ?>
+      <?php if ($id_empresa == $vale['id_empresa']) { ?>
             <option value="<?php echo $vale['id_empresa']; ?>" style="font-size: 15px;" selected=""> <?php
                     echo $vale['nombre_empresa'] ?></option>
         <?php } else{ ?>

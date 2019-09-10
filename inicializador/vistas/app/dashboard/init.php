@@ -44,7 +44,7 @@ input:checked + .slider {
 }
 </style>
 
-<link href="inicializador/vendor/morrisjs/morris.css" rel="stylesheet" />
+<!--<link href="inicializador/vendor/morrisjs/morris.css" rel="stylesheet" />-->
 
 <div id="page-wrapper">
     <div class="row"><br />

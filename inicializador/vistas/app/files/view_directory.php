@@ -1,6 +1,6 @@
 <?php
 @header("Content-Type: text/html;charset=utf-8");
-require_once FRONTEND_RUTA."datos/db/connect.php";
+require_once ("../../../datos/db/connect.php");
 $env = new DBSTART;
 $cc = $env::abrirDB();
 ?>
@@ -51,13 +51,13 @@ foreach ((array )$fetch as $results){
 <div class="tab-content"> <!-- Tab panes -->
     <div class="tab-pane fade in active" id="list-pills"><br />
         <div class="col-lg-12">
-<?php  require_once FRONTEND_RUTA."controlador/c_files/c_list_directory.php"; ?>
+<?php  require_once ("../../../controlador/c_files/c_list_directory.php"); ?>
         </div>
     </div> <!-- FIN DE TIPOS DE ASIENTOS -->
 
   <div class="tab-pane fade" id="form-pills"><br />
 <div class="col-lg-9">
-    <form action="<?php echo PUERTO.'://'.HOST; ?>/controlador/c_files/add_directory.php" method="post" class="form-horizontal">
+    <form action="../../../controlador/c_files/add_directory.php" method="post" class="form-horizontal">
         <fieldset>
     <legend class="mibread"><strong>Directory</strong></legend>
         <div class="form-row">
@@ -255,7 +255,7 @@ foreach ((array )$fetch as $results){
 <script>
     function preguntar(id) {
         if (confirm('Esta seguro que desea inactivar este usuario ' )){
-            window.location.href = "<?php echo PUERTO.'://'.HOST; ?>/controlador/c_company_users/delete.php?id="+ id;
+            window.location.href = "../../../controlador/c_company_users/delete.php?id="+ id;
         }
     }
 </script>
@@ -263,7 +263,7 @@ foreach ((array )$fetch as $results){
 <script>
     function preguntarActivar(id) {
         if (confirm('Esta seguro que desea activar este usuario ' )){
-            window.location.href = "<?php echo PUERTO.'://'.HOST; ?>/controlador/c_company_users/activar_user.php?id="+ id;
+            window.location.href = "../../../controlador/c_company_users/activar_user.php?id="+ id;
         }
     }
 </script>

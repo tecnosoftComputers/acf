@@ -1,5 +1,6 @@
 <?php
-    session_start();
+require_once "../../../../constantes.php";
+require_once FRONTEND_RUTA."init.php"; 
     if(isset($_SESSION['acfSession']["correo"])) {
     require_once ("../../../../datos/db/connect.php"); $new = new DBSTART(); $db = $new->abrirDB();
     require_once ("../head_unico.php");
@@ -70,7 +71,7 @@ $(document).ready(function () {
         <div class="col-lg-12">
         <div class="alert alert-info" style="margin-top: 10px">
             <p style="float: left;">Security / Profile / Assign</p>
-            <p style="float: right"><a style="color: #fff;" href="../../../../inicializador/vistas/app/in.php?cid=seguridad/nivel">Volver</a></p><br /><hr />
+            <p style="float: right"><a style="color: #fff;" href="../../../../inicializador/vistas/app/in.php?cid=seguridad/nivel">Back</a></p><br /><hr />
             <p><b><i class="fa fa-lock"></i> Asignar permisos del sistema para este perfil (<?php echo $na ?>)</b></p>
         </div>
         

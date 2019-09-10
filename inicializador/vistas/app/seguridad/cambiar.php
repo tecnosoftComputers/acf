@@ -1,4 +1,8 @@
-<?php require_once ("../../../datos/db/connect.php"); ?>
+<?php 
+
+require_once "../../../../constantes.php";
+require_once FRONTEND_RUTA."init.php"; 
+require_once ("../../../../datos/db/connect.php"); ?>
 
 <?php
     $iduser = $_SESSION['acfSession']['usuario'];

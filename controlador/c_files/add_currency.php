@@ -1,4 +1,6 @@
 <?php
+require_once "../../constantes.php";
+require_once FRONTEND_RUTA."init.php";
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
     

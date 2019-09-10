@@ -1,5 +1,6 @@
 <?php
- session_start();  
+  require_once "../../../../constantes.php";
+ require_once FRONTEND_RUTA."init.php";  
  if(isset($_SESSION['acfSession']["correo"])) {
 
     require_once ("../head_unico.php");

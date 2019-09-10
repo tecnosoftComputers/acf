@@ -28,9 +28,12 @@ class Controlador_Login extends Controlador_Base {
 
           $_SESSION['acfSession']['id_empresa'] = $usuario['id_user_emp'];  
           $_SESSION['acfSession']['permission'] = Modelo_Access::searchPermission($usuario["id_usuario"]);   
-
+          $_SESSION['acfSession']['code_iso'] = 'USD';
+          $_SESSION['acfSession']['locale'] = 'en_US';
+          $_SESSION['acfSession']['simbolo'] = '$';
+    
           session_write_close();  
-          header("location: ".PUERTO."://".HOST."/dashboard/");
+          header("location: ".PUERTO."://".HOST."/inicializador/vistas/app/in.php");
         }
         else{
           throw new Exception('Datos Incorrectos');

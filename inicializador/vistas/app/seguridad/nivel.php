@@ -1,5 +1,7 @@
 <script src="../../../jquery/jquery-1.11.0.min.js"></script>
 <?php
+require_once "../../../constantes.php";
+require_once FRONTEND_RUTA."init.php"; 
 	require_once ("../../../datos/db/connect.php");
 	$env = new DBSTART;
 	$cc = $env::abrirDB();
