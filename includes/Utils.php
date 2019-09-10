@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class Utils{
  
   static public function log($msg,$bypass=false){
@@ -24,7 +24,6 @@ class Utils{
   }
   
   static public function createSession(){               
-
     session_name('acfSession');
     ini_set("session.gc_maxlifetime","900");
     session_start();        
@@ -641,6 +640,5 @@ public static function validarCelularConvencional($contenido){
     }
     return false;
   }
-
 }
 ?>

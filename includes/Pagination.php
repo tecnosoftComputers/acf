@@ -21,7 +21,7 @@ class Pagination {
     return ($this->page - 1) * $this->rowsperpage; 
   } 
       
-  private function getLastPage() { 
+  private function getLastPage() {     
     return ceil($this->totalrows / $this->rowsperpage); 
   } 
      
