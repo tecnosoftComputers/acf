@@ -48,16 +48,23 @@ class Modelo_ChartAccount{
     return $result = $GLOBALS['db']->insert('dp01a110',$datos);
   }
 
-  public static function report($accfrom='', $accto=''){
-    $sql = "SELECT CODIGO, NOMBRE FROM dp01a110 WHERE (CTAINACTIVA IS NULL OR CTAINACTIVA = 0)";
+  public static function report($accfrom='', $accto='',$start='',$limit=''){    
+    $sql = "SELECT CODIGO, NOMBRE FROM dp01a110 WHERE (CTAINACTIVA IS NULL OR CTAINACTIVA = 0)";    
     if (!empty($accfrom)){
       $sql .= " AND CODIGO_AUX >= '".$accfrom."'";
     }
     if (!empty($accto)){
       $sql .= " AND (CODIGO_AUX <= '".$accto."' OR CODIGO_AUX LIKE '".$accto."%')";
     }
-    return $GLOBALS['db']->auto_array($sql,array(),true);
-  }
+    $rs = $GLOBALS['db']->Query($sql);
+    $total = $GLOBALS['db']->rows_affected();    
+    if (!empty($limit)){
+      $sql .= " LIMIT ".$start.", ".$limit;    
+    }
+    $arr["records"] = $GLOBALS['db']->auto_array($sql,array(),true);
+    $arr["nrorecords"] = $total;
+    return $arr;
+  }  
 
   public static function getIndividual($codigo){
     if (empty($codigo)){ return false; }

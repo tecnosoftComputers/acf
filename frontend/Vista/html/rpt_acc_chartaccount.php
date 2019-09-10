@@ -2,7 +2,7 @@
   <div class="alert alert-info">
     <div class="row">
       <div class="col-md-6">
-        <p>Accounting / Report / Chart of Accounts</p>
+        <p>Accounting / Report / Chart of Accounts</p>        
       </div>
       <div class="col-md-6">
         <p class="text-right"><a href="<?php echo PUERTO."://".HOST."/report/dashboard/";?>">Back</a></p>
@@ -69,9 +69,11 @@
     <label for="records" class="col-md-4 control-label">Number of records:</label>
     <div class="col-md-2">
       <select class="form-control" id="nrorecords" name="nrorecords">
-        <option value="25">25</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
+        <?php //Utils::log(print_r(PAGINATION,true));?>
+        <?php //foreach(PAGINATION as $nro){ 
+          //echo '<option value="'.$nro.'">'.$nro.'</option>';
+        //} 
+        ?>                  
       </select> 
     </div>    
   </div>-->
@@ -134,8 +136,13 @@
     </table>  
    </div>
   </div>
+  <center>
+  <?php if (!empty($pagination)){
+    echo $pagination;
+  }?>
+  </center>
   <br>
-<?php 
+<?php   
 } 
 ?>  
 </div> <!-- FIN DE WRAPPER  -->

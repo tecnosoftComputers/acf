@@ -43,7 +43,6 @@ class Controlador_Reports extends Controlador_Base {
   public function construirPagina(){}
 
   public function printHeaderPdf($title,$from,$to,$new=false){
-    Utils::log("MONEDA ".print_r($_SESSION,true));
     $info_company = Modelo_Companie::searchCompanies($_SESSION['acfSession']['id_empresa']);
     if ($new == true){
       $this->objPdf = new FPDF('P','mm','A3'); 
@@ -104,6 +103,7 @@ class Controlador_Reports extends Controlador_Base {
     foreach($columns as $key=>$value){
       $this->objExcel->getActiveSheet()->getColumnDimension($key)->setWidth($value["width"]);
     }
+
     //logo
     $objDrawing = new PHPExcel_Worksheet_Drawing(); 
     $objDrawing->setName('Logo'); 
@@ -166,15 +166,10 @@ class Controlador_Reports extends Controlador_Base {
     ));
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A7', 'From: '.$from. '     To: '.$to.' '.'     Date: '.date('m/d/Y'));     
-    $this->objExcel->getActiveSheet()->getStyle('A7')->applyFromArray($styleArray);           
+    $this->objExcel->getActiveSheet()->getStyle('A7')->applyFromArray($styleArray);          
               
     //header
-    $styleArray = array(
-      /*'borders' => array(
-        'allborders' => array(
-           'style' => PHPExcel_Style_Border::BORDER_THIN
-         )
-      ),*/
+    $styleArray = array(      
       'borders' => array(
         'top' => array(
           'style' => PHPExcel_Style_Border::BORDER_THIN,
@@ -208,9 +203,10 @@ class Controlador_Reports extends Controlador_Base {
 
   public function outputExcel($title){
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');
+    header('Content-Disposition: attachment;filename="'.$title.'.xlsx"');    
     header('Cache-Control: max-age=0');
     $objWriter = PHPExcel_IOFactory::createWriter($this->objExcel, 'Excel2007');
+    //ob_end_clean();
     $objWriter->save('php://output');    
   }
 

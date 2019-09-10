@@ -130,7 +130,7 @@ class Modelo_Dpmovimi{
 			  WHERE ID_EMPRESA = '".$empresa."' AND 
 				    FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."') AS temp
 			ON c.CODIGO = temp.CODMOV
-			INNER JOIN dpnumero t ON t.TIPO_ASI = temp.TIPO_ASI      
+			INNER JOIN DPNUMERO t ON t.TIPO_ASI = temp.TIPO_ASI      
 			WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0)";
     if (!empty($accfrom)){
       $sql .= " AND temp.CODMOV >= '".$accfrom."'";

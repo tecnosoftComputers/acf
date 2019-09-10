@@ -101,6 +101,7 @@ RewriteRule ^typeTransUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeTran
 RewriteRule ^typeTransDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeTrans&opcion=delete&id=$1 [L]
 RewriteRule ^typeTransReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=typeTrans&opcion=report&tipo=$1 [L]
 
+
 #productsParameters
 RewriteRule ^productsParametersList/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters [L]
 RewriteRule ^productsParametersCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=productsParameters&opcion=create [L]
