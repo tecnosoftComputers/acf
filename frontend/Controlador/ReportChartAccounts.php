@@ -14,24 +14,29 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
       case 'search':         
   	    $accfrom = Utils::getParam('accfrom','',$this->data);
   	    $accto = Utils::getParam('accto','',$this->data);
-        $limit = Utils::getParam('nrorecords',25,$this->data);
-        $page = Utils::getParam('page',1,$this->data);
+        $limit = Utils::getParam('limit','',$this->data);
+        $limit = (empty($limit)) ? $this->vlrecords[0] : $limit; 
+        $page = Utils::getParam('page',1,$this->data);        
   	    $tags["accfrom"] = $accfrom;
-  	    $tags["accto"] = $accto;        
+  	    $tags["accto"] = $accto;                
         $start = ($page - 1) * $limit;
-        $offset = $page * $limit; 
-        $arr = Modelo_ChartAccount::report($accfrom,$accto,$start,$offset);           
+        
+        $arr = Modelo_ChartAccount::report($accfrom,$accto,$start,$limit);
   	    $tags["results"] = $arr["records"];
         $url = PUERTO."://".HOST."/report/chartaccount/search";        
         $url .= (!empty($accfrom)) ? "/".$accfrom : "";
         $url .= (!empty($accto)) ? "/".$accto : "";
+        $url .= "/".$limit;
         
-        $pagination = new Pagination($arr["nrorecords"],$limit,$url);        
+        $pagination = new Pagination($arr["nrorecords"],$limit,$url);  
+        $pagination->setPage($page);      
         $tags["pagination"] = $pagination->showPage();
+
         if (empty($tags["results"])){
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";
-        }  
-        $tags["limit"] = $limit;      
+        } 
+        $tags["limit"] = $limit; 
+        $tags["vlrecords"] = $this->vlrecords;      
         $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
   	    $tags["template_js"][] = "reports";     
   	    Vista::render('rpt_acc_chartaccount', $tags);                       

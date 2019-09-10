@@ -12,9 +12,10 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <form action="<?php echo PUERTO."://".HOST."/report/chartaccount/search/";?>" method="post" class="form-horizontal">
+      <form action="<?php echo PUERTO."://".HOST."/report/chartaccount/search/";?>" method="post" class="form-horizontal" id="frmreport" name="frmreport">
         <fieldset>
           <legend class="mibread" style="text-align: center;"><strong>Chart Accounts Report</strong></legend>
+          <input type="hidden" name="limit" id="limit" value="<?php echo $limit;?>">
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account From:</label>
             <div class="col-md-4">
@@ -65,18 +66,23 @@
     $url .= (!empty($accto)) ? $accto."/" : "";    
   ?>
   <br>
-  <!--<div class="form-group col-md-6">
+  <div class="form-group col-md-6">
     <label for="records" class="col-md-4 control-label">Number of records:</label>
     <div class="col-md-2">
-      <select class="form-control" id="nrorecords" name="nrorecords">
-        <?php //Utils::log(print_r(PAGINATION,true));?>
-        <?php //foreach(PAGINATION as $nro){ 
-          //echo '<option value="'.$nro.'">'.$nro.'</option>';
-        //} 
-        ?>                  
+      <select class="form-control" id="optrecords" name="optrecords">        
+      <?php 
+      foreach($vlrecords as $nro){  
+        if ($nro == $limit){
+          echo '<option value="'.$nro.'" selected="selected">'.$nro.'</option>';
+        } 
+        else{
+          echo '<option value="'.$nro.'">'.$nro.'</option>';          
+        } 
+      } 
+      ?>                  
       </select> 
     </div>    
-  </div>-->
+  </div>
         
   <?php if (isset($permission) && $permission["pri"] == 1){  ?>
     <span id="pdf" style="float: right; margin-left: 10px;">
