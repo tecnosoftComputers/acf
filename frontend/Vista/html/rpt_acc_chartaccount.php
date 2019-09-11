@@ -103,7 +103,8 @@
   <br>                   
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
-    <br>                     
+    <br> 
+    <div class="table table-responsive">
     <table width="100%" class="table table-responsive table-striped style-table">
     <thead>
       <tr>        
@@ -139,7 +140,8 @@
       </tr>            
     <?php } ?>      
     </tbody>    
-    </table>  
+    </table> 
+   </div>  
    </div>
   </div>
   <center>

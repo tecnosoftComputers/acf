@@ -207,6 +207,7 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
                 $objPHPExcel->setActiveSheetIndex(0)              
                   ->setCellValue('G'.$this->line, " ".number_format($acum_debits,2))
                   ->setCellValue('H'.$this->line, " ".number_format(abs($acum_credits),2));
+                $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);  
                                   
                 $this->line++;  
                 //print blank line
@@ -217,16 +218,17 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
                   ->setCellValue('D'.$this->line, '')
                   ->setCellValue('E'.$this->line, '')
                   ->setCellValue('F'.$this->line, '');
+                $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);  
                 $this->line++;   
               }
-              $objPHPExcel->getActiveSheet()->mergeCells('C'.$this->line.':H'.$this->line);                
+              $objPHPExcel->getActiveSheet()->mergeCells('C'.$this->line.':H'.$this->line);             
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':H'.$this->line)->applyFromArray($this->styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':H'.$this->line)->applyFromArray($this->BoldStyle);
               $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A'.$this->line, "Date: ".date("m/d/Y",strtotime($item["FECHA_ASI"])))
                 ->setCellValue('B'.$this->line, "No. ".$typeseat." ".$item["ASIENTO"])
                 ->setCellValue('C'.$this->line, $item["DESC_ASI"]."   ".$item['cabliquida']);
-                    
+              $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);                     
               $seataux = $item["ASIENTO"]; 
               $acum_debits = 0;
               $acum_credits = 0;                
@@ -245,7 +247,8 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
               $credit = " ".number_format(abs($item['IMPORTE']),2); 
               $acum_credits = $acum_credits + $item['IMPORTE'];
             }
-            $objPHPExcel->getActiveSheet()->getStyle('F'.$this->line)->getAlignment()->setWrapText(true);         
+            $objPHPExcel->getActiveSheet()->getStyle('F'.$this->line)->getAlignment()->setWrapText(true);
+            $objPHPExcel->getActiveSheet()->getStyle('B'.$this->line)->getAlignment()->setWrapText(true);         
             $objPHPExcel->setActiveSheetIndex(0)
               ->setCellValue('A'.$this->line, " ".$item['CODMOV'])
               ->setCellValue('B'.$this->line, $item['NOMBRE'])
@@ -254,9 +257,7 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
               ->setCellValue('E'.$this->line, $item['LIQUIDA_NO'])
               ->setCellValue('F'.$this->line, $item['CONCEPTO'])
               ->setCellValue('G'.$this->line, $debit)
-              ->setCellValue('H'.$this->line, $credit)
-            ;              
-            
+              ->setCellValue('H'.$this->line, $credit);            
             $this->line++;      
           }
                       
@@ -266,7 +267,8 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
           $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':H'.$this->line)->applyFromArray($this->BoldStyle);
           $objPHPExcel->setActiveSheetIndex(0)              
             ->setCellValue('G'.$this->line, " ".number_format($acum_debits,2))
-            ->setCellValue('H'.$this->line, " ".number_format(abs($acum_credits),2));            
+            ->setCellValue('H'.$this->line, " ".number_format(abs($acum_credits),2)); 
+          $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);    
         }
 
         $this->outputExcel("JOURNAL_ENTRIES_REPORT");

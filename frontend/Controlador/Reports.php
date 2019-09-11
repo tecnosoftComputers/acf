@@ -5,7 +5,8 @@ class Controlador_Reports extends Controlador_Base {
   public $objPdf;
   public $limitline = 370;
   public $line = 10;
-   public $vlrecords = array(10,25,50,100);
+  public $vlrecords = array(10,25,50,100);
+  public $hexcel = 20;
 
   //style for all cells
   public $styleArray = array(
@@ -102,7 +103,7 @@ class Controlador_Reports extends Controlador_Base {
                    ->setSubject($title)
                    ->setCategory($title);
     foreach($columns as $key=>$value){
-      $this->objExcel->getActiveSheet()->getColumnDimension($key)->setWidth($value["width"]);
+      $this->objExcel->getActiveSheet()->getColumnDimension($key)->setWidth($value["width"]);      
     }
 
     //logo
@@ -130,6 +131,7 @@ class Controlador_Reports extends Controlador_Base {
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A1', $info_company["nombre_empresa"]);
     $this->objExcel->getActiveSheet()->getStyle('A1')->applyFromArray($styleArray);
+    $this->objExcel->getActiveSheet()->getRowDimension('1')->setRowHeight($this->hexcel); 
 
     //address company
     $styleArray = array(
@@ -141,11 +143,13 @@ class Controlador_Reports extends Controlador_Base {
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A2', $info_company["direccion_empresa"]);
     $this->objExcel->getActiveSheet()->getStyle('A2')->applyFromArray($styleArray);
+    $this->objExcel->getActiveSheet()->getRowDimension('2')->setRowHeight($this->hexcel); 
 
     //telephone company
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A3', $info_company["telefono_empresa"]);
     $this->objExcel->getActiveSheet()->getStyle('A3')->applyFromArray($styleArray);
+    $this->objExcel->getActiveSheet()->getRowDimension('3')->setRowHeight($this->hexcel); 
 
     //title
     $styleArray = array(
@@ -157,6 +161,7 @@ class Controlador_Reports extends Controlador_Base {
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A6', $title);
     $this->objExcel->getActiveSheet()->getStyle('A6')->applyFromArray($styleArray);
+    $this->objExcel->getActiveSheet()->getRowDimension('6')->setRowHeight($this->hexcel); 
 
     //dates
     $styleArray = array(
@@ -168,6 +173,7 @@ class Controlador_Reports extends Controlador_Base {
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A7', 'From: '.$from. '     To: '.$to.' '.'     Date: '.date('m/d/Y'));     
     $this->objExcel->getActiveSheet()->getStyle('A7')->applyFromArray($styleArray);          
+    $this->objExcel->getActiveSheet()->getRowDimension('7')->setRowHeight($this->hexcel); 
               
     //header
     $styleArray = array(      
@@ -199,7 +205,8 @@ class Controlador_Reports extends Controlador_Base {
        $this->objExcel->setActiveSheetIndex(0)->setCellValue($key.'9', $value["label"]); 
        $this->objExcel->getActiveSheet()->getStyle($key.'9')->applyFromArray($styleArray);       
     }        
-    $this->objExcel->getActiveSheet()->mergeCells('A7:'.$key.'7');
+    $this->objExcel->getActiveSheet()->getRowDimension('9')->setRowHeight($this->hexcel); 
+    $this->objExcel->getActiveSheet()->mergeCells('A7:'.$key.'7');    
   }
 
   public function outputExcel($title){

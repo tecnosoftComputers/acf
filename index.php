@@ -121,6 +121,9 @@ function obtieneControlador($nombre){
     case 'reportTrialBalance':
       return 'ReportTrialBalance';
     break;
+    case 'reportIncomeStatement':
+      return 'ReportIncomeStatement';
+    break;
     /*default:
       return 'Operations'; 
     break;*/

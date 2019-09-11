@@ -184,7 +184,8 @@ class Modelo_Dpmovimi{
             $results[$keyparent]["debit"] = $results[$keyparent]["debit"] + $value["debit"]; 
             $results[$keyparent]["credit"] = $results[$keyparent]["credit"] + $value["credit"];
             $cod = substr($cod,0,strrpos($cod,"."));
-          }           
+          }          
+          $results[$keyparent]["parent"] = (empty($cod)) ? 1 : 0;          
       	}
       }      
       foreach($results as $key=>$value){

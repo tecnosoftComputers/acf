@@ -63,6 +63,7 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
        
         $this->objPdf->SetFont('Arial','',9); 
         if (!empty($results)){
+          $acumbalance = 0;
           $acumdebit = 0;
           $acumcredit = 0;          
           foreach($results as $key=>$value){ 
@@ -70,10 +71,10 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
               $this->objPdf->AddPage();
               $this->printHeaderPdf("TRIAL BALANCE REPORT",$from,$to);   
               $this->printHeaderTablePdf($columns);              
-            }   
-            $nro = substr_count($value["CODIGO"],".");      
+            }               
             //only sum mayors
-            if ($nro == 1){
+            if (isset($value["parent"]) && $value["parent"] == 1){
+              $acumbalance = $acumbalance + $value["balance"];
               $acumdebit = $acumdebit + $value["debit"];
               $acumcredit = $acumcredit + $value["credit"];    
             }                
@@ -101,19 +102,22 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
             $this->objPdf->Cell(40 ,5,number_format($showresta,2),0,0,'R');
             $this->objPdf->Cell(189  ,5,'',0,1);//end of line                           
           } 
+          $showacumbalance = abs($acumbalance);
           $showacumdebit = abs($acumdebit);
           $showacumcredit = abs($acumcredit);
           $showacumresta = $acumdebit + $acumcredit;
-          $showacumresta = abs($showacumresta);  
+          $showacumresta = abs($showacumresta);            
 
           $this->objPdf->SetFont('Arial','B',9);          
-          $this->objPdf->SetXY(168, $this->objPdf->GetY());                          
+          $this->objPdf->SetXY(138, $this->objPdf->GetY());                          
+          $this->objPdf->Cell(40, 5,'______________________',0,0);
           $this->objPdf->Cell(40, 5,'______________________',0,0);
           $this->objPdf->Cell(40, 5,'______________________',0,0);
           $this->objPdf->Cell(40, 5,'______________________',0,0);
           $this->objPdf->Cell(189  ,5,'',0,1);   
-          $this->objPdf->SetXY(127, $this->objPdf->GetY());        
-          $this->objPdf->Cell(40 ,5,'Totals:',0,0);
+          $this->objPdf->SetXY(90, $this->objPdf->GetY());        
+          $this->objPdf->Cell(37 ,5,'Totals:',0,0);
+          $this->objPdf->Cell(40 ,5,number_format($showacumbalance,2),0,0,'R');
           $this->objPdf->Cell(40 ,5,number_format($showacumdebit,2),0,0,'R');
           $this->objPdf->Cell(40 ,5,number_format($showacumcredit,2),0,0,'R');
           $this->objPdf->Cell(40 ,5,number_format($showacumresta,2),0,0,'R');  
@@ -158,12 +162,13 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
         $objPHPExcel->getActiveSheet()->mergeCells('E1:F6');
        
         if (!empty($results)){
+          $acumbalance = 0;
           $acumdebit = 0;
           $acumcredit = 0;          
-          foreach($results as $key=>$value){  
-            $nro = substr_count($value["CODIGO"],".");      
+          foreach($results as $key=>$value){              
             //only sum mayors
-            if ($nro == 1){
+            if (isset($value["parent"]) && $value["parent"] == 1){
+              $acumbalance = $acumbalance + $value["balance"];
               $acumdebit = $acumdebit + $value["debit"];
               $acumcredit = $acumcredit + $value["credit"];    
             }                
@@ -191,22 +196,25 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
               ->setCellValue('D'.$this->line, " ".number_format($showdebit,2))
               ->setCellValue('E'.$this->line, " ".number_format($showcredit,2))
               ->setCellValue('F'.$this->line, " ".number_format($showresta,2));
-
+            $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);
             $this->line++;                                
           } 
+          $showacumbalance = abs($acumbalance);
           $showacumdebit = abs($acumdebit);
           $showacumcredit = abs($acumcredit);
           $showacumresta = $acumdebit + $acumcredit;
           $showacumresta = abs($showacumresta); 
 
           $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':F'.$this->line)->applyFromArray($this->styleArray);          
-          $objPHPExcel->getActiveSheet()->getStyle('D'.$this->line.':F'.$this->line)->applyFromArray($this->AmtStyle);
-          $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':F'.$this->line)->applyFromArray($this->BoldStyle); 
+          $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':F'.$this->line)->applyFromArray($this->AmtStyle);
+          $objPHPExcel->getActiveSheet()->getStyle('B'.$this->line.':F'.$this->line)->applyFromArray($this->BoldStyle); 
           $objPHPExcel->setActiveSheetIndex(0)              
-            ->setCellValue('C'.$this->line, "Totals:")
+            ->setCellValue('B'.$this->line, "Totals:")
+            ->setCellValue('C'.$this->line, " ".number_format($showacumbalance,2))
             ->setCellValue('D'.$this->line, " ".number_format($showacumdebit,2))
             ->setCellValue('E'.$this->line, " ".number_format($showacumcredit,2))
-            ->setCellValue('F'.$this->line, " ".number_format($showacumresta,2));            
+            ->setCellValue('F'.$this->line, " ".number_format($showacumresta,2));
+          $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);              
         }
         $this->outputExcel("TRIAL_BALANCE_REPORT");  
       break;
