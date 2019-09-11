@@ -282,6 +282,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 ->setCellValue('B'.$this->line, $value['NOMBRE'])
                 ->setCellValue('C'.$this->line, " ".number_format($showdebit,2))
                 ->setCellValue('D'.$this->line, " ".number_format($showcredit,2)); 
+              $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);
 
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':D'.$this->line)->applyFromArray($this->styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':D'.$this->line)->applyFromArray($this->AmtStyle);
@@ -296,6 +297,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 ->setCellValue('B'.$this->line,'')                
                 ->setCellValue('C'.$this->line,'')
                 ->setCellValue('D'.$this->line,'');
+             $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel); 
              $this->line++;
 
              $objPHPExcel->setActiveSheetIndex(0)                
@@ -303,6 +305,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 ->setCellValue('B'.$this->line,'Total:')                
                 ->setCellValue('C'.$this->line, " ".number_format($showacumdebit,2))
                 ->setCellValue('D'.$this->line, " ".number_format($showacumcredit,2));
+             $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel); 
 
              $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':D'.$this->line)->applyFromArray($this->styleArray);   
              $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':D'.$this->line)->applyFromArray($this->AmtStyle);
@@ -363,6 +366,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                     ->setCellValue('C'.$this->line, " ".number_format($showacumdebit,2))
                     ->setCellValue('D'.$this->line, " ".number_format($showacumcredit,2))
                     ->setCellValue('E'.$this->line, " ".number_format($showacumresta,2)); 
+                  $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);  
                   $this->line++;                    
 
                   $objPHPExcel->setActiveSheetIndex(0)
@@ -371,6 +375,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                     ->setCellValue('C'.$this->line, " ")
                     ->setCellValue('D'.$this->line, " ")
                     ->setCellValue('E'.$this->line, " "); 
+                  $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);  
                   $this->line++;  
                 }
 
@@ -379,6 +384,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 $objPHPExcel->setActiveSheetIndex(0)
                   ->setCellValue('A'.$this->line, " ".$value['CODMOV'])
                   ->setCellValue('B'.$this->line, $value['NOMBRE']); 
+                $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);  
                 $this->line++;  
                 
                 $account = $value["CODMOV"];   
@@ -405,6 +411,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 ->setCellValue('C'.$this->line, " ".number_format($showdebit,2))
                 ->setCellValue('D'.$this->line, " ".number_format($showcredit,2))
                 ->setCellValue('E'.$this->line, " ".number_format($showresta,2)); 
+              $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);
               $this->line++;                              
              }
              $totdebit = $totdebit + $acumdebit;
@@ -429,6 +436,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 ->setCellValue('C'.$this->line, " ".number_format($showacumdebit,2))
                 ->setCellValue('D'.$this->line, " ".number_format($showacumcredit,2))
                 ->setCellValue('E'.$this->line, " ".number_format($showacumresta,2));
+             $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel); 
              $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);   
              $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);
              $objPHPExcel->getActiveSheet()->getStyle('B'.$this->line.':E'.$this->line)->applyFromArray($this->BoldStyle); 
@@ -440,7 +448,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 ->setCellValue('C'.$this->line,'')
                 ->setCellValue('D'.$this->line,'')
                 ->setCellValue('E'.$this->line,'');
-
+             $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel); 
              $this->line++;   
 
              $objPHPExcel->setActiveSheetIndex(0)                
@@ -449,6 +457,7 @@ class Controlador_ReportJournalSummary extends Controlador_Reports {
                 ->setCellValue('C'.$this->line, " ".number_format($showtotdebit,2))
                 ->setCellValue('D'.$this->line, " ".number_format($showtotcredit,2))
                 ->setCellValue('E'.$this->line, " ".number_format($showtotresta,2));
+             $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);
              $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':E'.$this->line)->applyFromArray($this->styleArray);
              $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':E'.$this->line)->applyFromArray($this->AmtStyle);       
              $objPHPExcel->getActiveSheet()->getStyle('B'.$this->line.':E'.$this->line)->applyFromArray($this->BoldStyle);

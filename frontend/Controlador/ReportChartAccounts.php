@@ -124,13 +124,15 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
                 $objPHPExcel->setActiveSheetIndex(0)
                   ->setCellValue('A'.$this->line, " ".$item['CODIGO'])
                   ->setCellValue('B'.$this->line, $blank_spaces.$item['NOMBRE']);
+                $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);  
               }     
               else{
                 $blank_spaces .= "   ";                
                 $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':B'.$this->line)->getFont()->setBold(false); 
                 $objPHPExcel->setActiveSheetIndex(0)
                   ->setCellValue('A'.$this->line, " ".$item['CODIGO'])
-                  ->setCellValue('B'.$this->line, $blank_spaces.$item['NOMBRE']);                
+                  ->setCellValue('B'.$this->line, $blank_spaces.$item['NOMBRE']); 
+                $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);                 
               }                               
               
               $this->line++;      
