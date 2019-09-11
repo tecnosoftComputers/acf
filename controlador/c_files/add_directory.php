@@ -37,7 +37,7 @@ require_once FRONTEND_RUTA."init.php";
        
        $new_type = $_POST['type_type'];
 
-         $stmt = $db->prepare("INSERT INTO Finacli
+         $stmt = $db->prepare("INSERT INTO finacli
             (CLASIFICA, TC, TID, CEDRUC, NOMEMP,NAMECONTACT,CONTAC_T1,CONTAC_T2,CIUDAD, STATE, COUNTRY, ZIPCODE,
             DIRDOM, TELEFONO, TELEFONO2,ACTIVIDAD, OFICIAL, TIPOCLI, EMAIL, EMAIL2,FALTACLI, WEBSITE, STATUS) VALUES
             

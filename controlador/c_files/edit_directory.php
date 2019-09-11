@@ -38,7 +38,7 @@ require_once FRONTEND_RUTA."init.php";
        
        $new_type = $_POST['type_type'];
 
-         $stmt = $db->prepare("UPDATE Finacli SET
+         $stmt = $db->prepare("UPDATE finacli SET
                                                 CLASIFICA='$cony',
                                                 TID='$new_type',
                                                 CEDRUC='$idnu',
@@ -74,7 +74,7 @@ require_once FRONTEND_RUTA."init.php";
     
     
     
-     /*$stmt = $db->prepare("INSERT INTO Finacli 
+     /*$stmt = $db->prepare("INSERT INTO finacli 
             (CLASIFICA, TC, TID, CEDRUC, NOMEMP, NAMECONTACT,APELLIDOS, NOMBRES, APE_CONY, NOM_CONY, APE_CONY2, NOM_CONY2,CONTAC_T1,
              CONTAC_T2, CED_CONY, CIUDAD, STATE, COUNTRY, ZIPCODE, DIRDOM, DIRCOM, DIROFI, TELEFONO, TELEFONO2, 
             ACTIVIDAD, PATRIMONIO, OFICIAL, REFER1, REFER2, REFER3, TIPOCLI, TIPOCRE, FECHACT, EMAIL, EMAIL2, SSN, 

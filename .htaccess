@@ -179,3 +179,13 @@ RewriteRule ^report/chartaccount/(pdf|excel)/$ %{ENV:REWRITEBASE}index.php?mostr
 RewriteRule ^report/chartaccount/search/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=search&limit=$1&page=$2 [L]
 RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=search [L]
 RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43 [L]
+
+#brokers
+RewriteRule ^brokersList/$ %{ENV:REWRITEBASE}index.php?mostrar=brokers [L]
+RewriteRule ^brokersCreate/$ %{ENV:REWRITEBASE}index.php?mostrar=brokers&opcion=create [L]
+RewriteRule ^brokersUpdate/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=brokers&opcion=update&id=$1 [L]
+RewriteRule ^brokersDelete/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=brokers&opcion=delete&id=$1 [L]
+RewriteRule ^brokersReport/(.*)/$ %{ENV:REWRITEBASE}index.php?mostrar=brokers&opcion=report&tipo=$1 [L]
+
+#parameterControl
+RewriteRule ^parameterControl/$ %{ENV:REWRITEBASE}index.php?mostrar=parameterControl [L]

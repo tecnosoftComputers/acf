@@ -33,7 +33,7 @@
     if (isset($_REQUEST['cid'])){
         $laid = $_REQUEST['cid'];
 
-        $sql = DBSTART::abrirDB()->prepare("SELECT * FROM Finacli WHERE NO_ID = '$laid' ");
+        $sql = DBSTART::abrirDB()->prepare("SELECT * FROM finacli WHERE NO_ID = '$laid' ");
         $sql->execute();
         $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
 

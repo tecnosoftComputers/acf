@@ -2,7 +2,7 @@
     require_once ("../../../datos/db/connect.php");
     $usuario = $_SESSION['acfSession']['correo'];
     
-    $send = DBSTART::abrirDB()->prepare("SELECT * FROM Finacli as f INNER JOIN tab_tclient c ON c.codtipo = f.CLASIFICA WHERE f.STATUS='A'");
+    $send = DBSTART::abrirDB()->prepare("SELECT * FROM finacli as f INNER JOIN tab_tclient c ON c.codtipo = f.CLASIFICA WHERE f.STATUS='A'");
     $send->execute();
     $all_send = $send->fetchAll(PDO::FETCH_ASSOC);
 ?>

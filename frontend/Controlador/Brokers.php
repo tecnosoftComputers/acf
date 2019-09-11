@@ -1,9 +1,6 @@
 <?php
-class Controlador_Currencies extends Controlador_Base {
+class Controlador_Brokers extends Controlador_Base {
   
-  public $state = array('1'=>'Active','0'=>'Inactive');
-  public $symbol = array('&dollar;'=>'$','&euro;'=>'€', '&pound;'=>'£');
-
   public function construirPagina(){
   
     $tags = array();    
@@ -13,18 +10,19 @@ class Controlador_Currencies extends Controlador_Base {
     } 
 
     $opcion = Utils::getParam('opcion','',$this->data); 
+    //$state = array('1'=>'Active','0'=>'Inactive');
     switch($opcion){
       case 'create': 
-        $view = 'currenciesCreate'; 
+        $view = 'brokersCreate'; 
         
-        if(Utils::getParam('create') == 1){
+        /*if(Utils::getParam('create') == 1){
           try{ 
             $campos = array('name'=>1,'type'=>1,'factor'=>1,'symbol'=>1,'tenth'=>1,'state'=>1);
             $data = $this->camposRequeridos($campos);
             $datos = array('NOMBREMON'=>$data['name'],'TIPO_MON'=>$data['type'],'SIMBOLO'=>$data['symbol'],'DECIMA'=>$data['tenth'],'FACTOR'=>$data['factor'],'ESTADOMON'=>(int)$data['state']);
 
             $GLOBALS['db']->beginTrans();
-            if(!Modelo_Currencies::insert($datos)){
+            if(!Modelo_Brokers::insert($datos)){
               throw new Exception('The currency could not be created, try again.');              
             }
             $_SESSION['acfSession']['mostrar_exito'] = 'The currency was successfully created.';
@@ -36,24 +34,24 @@ class Controlador_Currencies extends Controlador_Base {
             $_SESSION['acfSession']['mostrar_error'] = $e->getMessage(); 
             $_SESSION['acfSession']['error'] = true;          
           }
-          Utils::doRedirect(PUERTO.'://'.HOST.'/currenciesList/');
-        }
+          Utils::doRedirect(PUERTO.'://'.HOST.'/brokersList/');
+        }*/
 
         $tags = array('type'=>'Create',
                       'state'=>$state,
                       'view'=>$view);
 
-        $tags["template_js"][] = "currencies";
+        $tags["template_js"][] = "brokers";
         $tags["template_css"][] = "";
 
-        Vista::render('currencies', $tags);  
+        Vista::render('brokers', $tags);  
       break;
       case 'update':
 
         $id = Utils::getParam('id','',$this->data);
         $id = (!empty($id))?Utils::desencriptar($id):'';
 
-        if(Utils::getParam('save') == 1){
+        /*if(Utils::getParam('save') == 1){
           try{ 
 
             $campos = array('name'=>1,'type'=>1,'factor'=>1,'symbol'=>1,'tenth'=>1,'state'=>1);
@@ -62,67 +60,67 @@ class Controlador_Currencies extends Controlador_Base {
             $datos = array('NOMBREMON'=>$data['name'],'TIPO_MON'=>$data['type'],'SIMBOLO'=>$data['symbol'],'DECIMA'=>$data['tenth'],'FACTOR'=>$data['factor'],'ESTADOMON'=>(int)$data['state']);
 
             $GLOBALS['db']->beginTrans();
-            if(!Modelo_Currencies::setUpdate($id,$datos)){
+            if(!Modelo_Brokers::setUpdate($id,$datos)){
               throw new Exception('The currency could not be edited, try again.');
             }
             $_SESSION['acfSession']['mostrar_exito'] = 'The currency was successfully edited.';
             $GLOBALS['db']->commit();
-            Utils::doRedirect(PUERTO.'://'.HOST.'/currenciesList/');
+            Utils::doRedirect(PUERTO.'://'.HOST.'/brokersList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
             $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
-        }
-        $currencies = Modelo_Currencies::getUpdate($id);
-        $view = 'currenciesUpdate';
-        $tags = array('rows'=>$currencies,
+        }*/
+        $brokers = Modelo_Brokers::getUpdate($id);
+        $view = 'brokersUpdate';
+        $tags = array('rows'=>$brokers,
                       'type'=>'Update',
                       'state'=>$state,
                       'view'=>$view);
 
-        $tags["template_js"][] = "currencies";
+        $tags["template_js"][] = "brokers";
         $tags["template_css"][] = "";
 
-        Vista::render('currencies', $tags);
+        Vista::render('brokers', $tags);
       break;
       case 'delete':
 
         $id = Utils::getParam('id','',$this->data);
         $id = (!empty($id))?Utils::desencriptar($id):'';
 
-        if(Utils::getParam('save') == 1){
+        /*if(Utils::getParam('save') == 1){
           try{ 
             
             $GLOBALS['db']->beginTrans();
-            if(!Modelo_Currencies::delete($id)){
+            if(!Modelo_Brokers::delete($id)){
               throw new Exception('The currency could not be deleted, try again.');
             }
             $_SESSION['acfSession']['mostrar_exito'] = 'The currency was successfully delete.';
             $GLOBALS['db']->commit();
-            Utils::doRedirect(PUERTO.'://'.HOST.'/currenciesList/');
+            Utils::doRedirect(PUERTO.'://'.HOST.'/brokersList/');
           }
           catch(Exception $e){
             $GLOBALS['db']->rollback();
             $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();           
           }
-        }
-        $currencies = Modelo_Currencies::getUpdate($id);
-        $view = 'currenciesDelete';
-        $tags = array('rows'=>$currencies,
+        }*/
+        $brokers = Modelo_Brokers::getUpdate($id);
+        $view = 'brokersDelete';
+        $tags = array('rows'=>$brokers,
                       'type'=>'Delete',
                       'state'=>$state,
                       'view'=>$view);
 
-        $tags["template_js"][] = "currencies";
+        $tags["template_js"][] = "brokers";
         $tags["template_css"][] = "";
 
-        Vista::render('currencies', $tags);
+        Vista::render('brokers', $tags);
       break;
       case 'report':
 
-        $currencies = Modelo_Currencies::search();
-        $nombre_archivo = 'currencies_List';
+        $brokers = Modelo_Brokers::search();
+        $nombre_archivo = 'brokers_List';
         $tipo = Utils::getParam('tipo','',$this->data);
 
         if($tipo == 'excel'){
@@ -130,9 +128,9 @@ class Controlador_Currencies extends Controlador_Base {
           $objPHPExcel = new PHPExcel();
           $objPHPExcel->getProperties()
             ->setCreator("Lcda. Mariana Vera")
-            ->setTitle("currencies List")
-            ->setSubject("currencies List")
-            ->setCategory("currencies List");
+            ->setTitle("Brokers List")
+            ->setSubject("Brokers List")
+            ->setCategory("Brokers List");
 
             $BStyle = array(
             'borders' => array(
@@ -164,23 +162,19 @@ class Controlador_Currencies extends Controlador_Base {
           $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 
           $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A1', 'CURRENCIES LIST');
+              ->setCellValue('A1', 'BROKERS LIST');
 
           $objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true); 
 
           $objPHPExcel->setActiveSheetIndex(0)
-              ->setCellValue('A2', 'TYPES')
-              ->setCellValue('B2', 'NAMES')
-              ->setCellValue('C2', 'FACTOR')
-              ->setCellValue('D2', 'SYMBOL')
-              ->setCellValue('E2', 'TENTH')
-              ->setCellValue('F2', 'STATE')
+              ->setCellValue('A2', 'TYPE')
+              ->setCellValue('B2', 'NAME')
               ;
 
-          $objPHPExcel->getActiveSheet()->getStyle('A2:F2')->getFont()->setBold(true);
-          $objPHPExcel->getActiveSheet()->getStyle('A2:F2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-          $objPHPExcel->getActiveSheet()->getStyle('A2:F2')->applyFromArray($BStyle);
-          $objPHPExcel->getActiveSheet()->getStyle('A2:F2')->getFill()
+          $objPHPExcel->getActiveSheet()->getStyle('A2:B2')->getFont()->setBold(true);
+          $objPHPExcel->getActiveSheet()->getStyle('A2:B2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+          $objPHPExcel->getActiveSheet()->getStyle('A2:B2')->applyFromArray($BStyle);
+          $objPHPExcel->getActiveSheet()->getStyle('A2:B2')->getFill()
             ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
             ->getStartColor()->setRGB('808080');
 
@@ -195,17 +189,13 @@ class Controlador_Currencies extends Controlador_Base {
               ),
           );
 
-          foreach ($currencies as $key => $item) {
+          foreach ($brokers as $key => $item) {
 
-            $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':F'.$cont)->applyFromArray($BStyle);
-            $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':F'.$cont)->applyFromArray($styleArray);
+            $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->applyFromArray($BStyle);
+            $objPHPExcel->getActiveSheet()->getStyle('A'.$cont.':B'.$cont)->applyFromArray($styleArray);
             $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('A'.$cont, $item['TIPO_MON'])
             ->setCellValue('B'.$cont, $item['NOMBREMON'])
-            ->setCellValue('C'.$cont, $item['FACTOR'])
-            ->setCellValue('D'.$cont, chr($item['SIMBOLO']))
-            ->setCellValue('E'.$cont, $item['DECIMA'])
-            ->setCellValue('F'.$cont, $state[$item['ESTADOMON']])
             ;
 
             $cont++;      
@@ -228,31 +218,21 @@ class Controlador_Currencies extends Controlador_Base {
           $pdf->Cell(189  ,10,'',0,1);//end of line
 
           $pdf->Image(FRONTEND_RUTA.'imagenes/logoinicial.jpg', 139,10,50,26,'JPG');
-          $pdf->Cell(59,5,'CURRENCIES LIST',0,1);//end of line
+          $pdf->Cell(59,5,'brokers LIST',0,1);//end of line
           $pdf->Cell(189,10,'',0,1); //end of line
           $pdf->SetFont('Arial','B',12);
           $pdf->Ln(6);
 
           $pdf->SetFillColor(128,128,128);
-          $pdf->Cell(20,6,'TYPES',1,0,'C',1);
-          $pdf->Cell(70,6,'NAMES',1,0,'C',1);
-          $pdf->Cell(30,6,'FACTOR',1,0,'C',1);
-          $pdf->Cell(20,6,'SYMBOL',1,0,'C',1);
-          $pdf->Cell(30,6,'TENTH',1,0,'C',1);
-          $pdf->Cell(20,6,'STATE',1,0,'C',1);
+          $pdf->Cell(50,6,'CODES',1,0,'C',1);
+          $pdf->Cell(135,6,'NAMES',1,0,'C',1);
           $pdf->Ln(6);
 
           $pdf->SetFillColor(255,255,255);
-          foreach ($currencies as $key => $item) {
-
+          foreach ($brokers as $key => $item) {
             $pdf->SetFont('Arial','B',12);
-            $pdf->Cell(20,6,$item['TIPO_MON'],1,0,'L',1);
-            $pdf->Cell(70,6,$item['NOMBREMON'],1,0,'L',1);  
-            $pdf->Cell(30,6,$item['FACTOR'],1,0,'L',1);
-            $pdf->Cell(20,6,chr(trim($item['SIMBOLO'])),1,0,'L',1);  
-            $pdf->Cell(30,6,$item['DECIMA'],1,0,'L',1);
-            $pdf->Cell(20,6,$state[$item['ESTADOMON']],1,0,'L',1);
-
+            $pdf->Cell(50,6,$item['TIPO_MON'],1,0,'L',1);
+            $pdf->Cell(135,6,$item['NOMBREMON'],1,0,'L',1);    
             $pdf->Ln(6);
           }
 
@@ -268,18 +248,18 @@ class Controlador_Currencies extends Controlador_Base {
         }
         unset($_SESSION['acfSession']['error']);
 
-        $currencies = Modelo_Currencies::search();
-        $view = 'currenciesCreate'; 
-        $tags = array('currencies'=>$currencies,
+        $brokers = Modelo_Brokers::search();
+        $view = 'brokersCreate'; 
+        $tags = array('brokers'=>$brokers,
                       'type'=>'Create',
                       'view'=>$view,
                       'state'=>$state,
                       'error'=>$error);
 
-        $tags["template_js"][] = "currencies";
+        $tags["template_js"][] = "brokers";
         $tags["template_css"][] = "";
 
-        Vista::render('currenciesList', $tags);
+        Vista::render('brokersList', $tags);
       break;
     }
     

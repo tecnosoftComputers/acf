@@ -136,7 +136,7 @@ require_once FRONTEND_RUTA.'init.php';
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href=""><?php echo strtoupper($_SESSION['acfSession']["persona"]); ?></a></li>
                         <li class="divider"></li> 
-                        <li><a href="<?php echo PUERTO.'://'.HOST; ?>/datos/db/close.php"><i class="fa fa-sign-out fa-fw"></i> CERRAR SESIÓN</a></li>
+                        <li><a href="<?php echo PUERTO.'://'.HOST; ?>/close/"><i class="fa fa-sign-out fa-fw"></i> CERRAR SESIÓN</a></li>
                     </ul>
                 </li>
             </ul>

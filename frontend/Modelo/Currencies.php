@@ -2,6 +2,7 @@
 
 class Modelo_Currencies{
 
+  
   public static function search(){
 
     $sql = "SELECT * FROM fimoneda";

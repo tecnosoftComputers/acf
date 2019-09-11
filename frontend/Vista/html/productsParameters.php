@@ -226,7 +226,7 @@
 
                                     <div class="col-md-4 form-group">
                                       <input class="form-check-input" type="checkbox" name="cm" id="cm" value="1" <?php if($rows['CALMORA']==1){ echo 'checked'; } ?> <?php if($type == 'Delete'){ echo 'disabled="true" readonly="true"'; } ?>>
-                                      <label class="form-check-label" for="inlineCheckbox3">Calculate Mora</label>
+                                      <label class="form-check-label" for="inlineCheckbox3">Calculate Late</label>
                                     </div>
 
                                     <div class="col-md-3 form-group">

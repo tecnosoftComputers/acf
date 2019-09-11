@@ -5,6 +5,7 @@
     } */
 
     function head_init($role,$db, $acceso) {
+
     // Mostrar items del modulo
     $sql = $db->prepare("SELECT * FROM permisos p
                             INNER JOIN modulos_items mi ON mi.modulo = p.permisos_modulo
@@ -54,7 +55,7 @@
         <ul class="dropdown-menu dropdown-messages">
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
-                    <?php if($acceso = 1){
+                    <?php if($acceso == 1){
 
                         $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
 
@@ -91,7 +92,7 @@
     <ul class="dropdown-menu dropdown-messages">
         <?php foreach ((array) $all_sql as $data_sql) { ?>
             <li>
-                 <?php if($acceso = 1){
+                 <?php if($acceso == 1){
                     $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
                   } else{
                     $enlace = $data_sql['src_head'];
@@ -185,7 +186,7 @@ function head_inits($role,$db, $acceso) {
         <ul class="dropdown-menu dropdown-messages">
             <?php foreach ((array) $all_sql as $data_sql) { ?>
                 <li>
-                    <?php if($acceso = 1){
+                    <?php if($acceso == 1){
                         $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
                       } else{
                         $enlace = $data_sql['src_head'];
@@ -220,7 +221,7 @@ function head_inits($role,$db, $acceso) {
     <ul class="dropdown-menu dropdown-messages">
         <?php foreach ((array) $all_sql as $data_sql) { ?>
             <li>
-                <?php if($acceso = 1){
+                <?php if($acceso == 1){
                     $enlace = PUERTO.'://'.HOST.'/'.$data_sql['src_head'];
                   } else{
                     $enlace = $data_sql['src_head'];

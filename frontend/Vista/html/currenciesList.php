@@ -38,7 +38,7 @@
                                             <td><?php echo $registro2['TIPO_MON'] ?></td>
                                             <td><?php echo $registro2['NOMBREMON'] ?></td>
                                             <td><?php echo $registro2['FACTOR'] ?></td>
-                                            <td><?php echo $registro2['SIMBOLO'] ?></td>
+                                            <td><?php echo utf8_encode(chr($registro2['SIMBOLO'])) ?></td>
                                             <td><?php echo $registro2['DECIMA'] ?></td>
                                             <td><?php echo $state[$registro2['ESTADOMON']] ?></td>
                                             <td align="center"><a href="<?php echo PUERTO."://".HOST.'/currenciesUpdate/'.Utils::encriptar($registro2['IDMON']).'/'; ?>"><i class="fa fa-edit"></i></a></td>
