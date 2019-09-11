@@ -1,5 +1,7 @@
 <?php
 class Controlador_ReportBalanceSheet extends Controlador_Reports {
+
+  public $item = 36;
   
   public function construirPagina(){   
 

@@ -95,7 +95,8 @@
   <br>
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
-    <br>                     
+    <br> 
+    <div class="table table-responsive">                    
     <table width="100%" class="table table-responsive table-striped style-table">
     <thead>
       <tr>        
@@ -109,13 +110,14 @@
     </thead>
     <tbody>
     <tr><td colspan="9" class="style-td-special"></td></tr>
-    <?php       
+    <?php     
+    $acumbalance = 0;  
     $acumdebit = 0;
     $acumcredit = 0;          
-    foreach($results as $key=>$value){  
-      $nro = substr_count($value["CODIGO"],".");      
+    foreach($results as $key=>$value){              
       //only sum mayors
-      if ($nro == 1){
+      if (isset($value["parent"]) && $value["parent"] == 1){
+        $acumbalance = $acumbalance + $value["balance"];
         $acumdebit = $acumdebit + $value["debit"];
         $acumcredit = $acumcredit + $value["credit"];    
       }                
@@ -142,19 +144,22 @@
               <td align='right'>".number_format($showresta,2)."</td>
             </tr>";                     
     } 
+    $showacumbalance = abs($acumbalance);
     $showacumdebit = abs($acumdebit);
     $showacumcredit = abs($acumcredit);
     $showacumresta = $acumdebit + $acumcredit;
     $showacumresta = abs($showacumresta);                   
     echo "<tr>                           
-            <td colspan='3' align='right'><strong>Totals:</strong></td>
+            <td colspan='2' align='right'><strong>Totals:</strong></td>
+            <td class='style-td-totals'>".number_format($showacumbalance,2)."</td>
             <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
             <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>
             <td class='style-td-totals'>".number_format($showacumresta,2)."</td>            
           </tr>";       
     ?>      
     </tbody>    
-    </table>  
+    </table> 
+   </div>  
    </div>
   </div>
   <br>

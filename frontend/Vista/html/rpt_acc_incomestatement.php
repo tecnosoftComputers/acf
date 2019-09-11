@@ -2,7 +2,7 @@
   <div class="alert alert-info">
     <div class="row">
       <div class="col-md-6">
-        <p>Accounting / Report / Journal Entry Summary</p>
+        <p>Accounting / Report / Income Statement</p>
       </div>
       <div class="col-md-6">
         <p class="text-right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>">Back</a></p>
@@ -12,57 +12,36 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <form action="<?php echo PUERTO."://".HOST."/report/journalsummary/search/";?>" method="post" class="form-horizontal">
+      <form action="<?php echo PUERTO."://".HOST."/report/incomestatement/search/";?>" method="post" class="form-horizontal">
         <fieldset>
-          <legend class="mibread" style="text-align: center;"><strong>Journal Entry Summary Report</strong></legend>
+          <legend class="mibread" style="text-align: center;"><strong>Income Statement Report</strong></legend>
           
           <div class="form-group">
-            <label class="col-md-4 control-label" for="name">Account From:</label>
+            <label class="col-md-4 control-label" for="name">Level Account:</label>
             <div class="col-md-4">
               <div class="input-group"> 
-                <input maxlength="8" id="accfrom" name="accfrom" type="text" value="<?php echo (isset($accfrom) && !empty($accfrom)) ? $accfrom : ''; ?>" class="form-control input-sm"> 
-                <span class="input-group-btn"> 
-                  <button class="btn btn-default"  type="button" data-toggle="modal" data-target="#myModal" onclick="loadModal('accfrom','name_',true,true,true);" ><span style="padding-top: 1px; padding-bottom: 1px" class="glyphicon glyphicon-search"></span></button> 
-                </span>
+                <input maxlength="8" id="acclevel" name="acclevel" type="text" value="<?php echo (isset($acclevel) && !empty($acclevel)) ? $acclevel : ''; ?>" class="form-control input-sm"> 
               </div>
             </div>
-          </div>                        
+          </div>                                              
+          
             
           <div class="form-group">
-            <label class="col-md-4 control-label" for="name">Account To:</label>
-            <div class="col-md-4">
-              <div class="input-group"> 
-                <input maxlength="8" id="accto" name="accto" type="text" value="<?php echo (isset($accto) && !empty($accto)) ? $accto : ''; ?>" class="form-control input-sm"> 
-                <span class="input-group-btn"> 
-                  <button class="btn btn-default"  type="button" data-toggle="modal" data-target="#myModal" onclick="loadModal('accto','name_',true,true,true);" ><span style="padding-top: 1px; padding-bottom: 1px" class="glyphicon glyphicon-search"></span></button> 
-                </span>
-              </div>              
-            </div>
-          </div>                                            
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="name">Date From:</label>
+            <label class="col-md-4 control-label" for="name">Date:</label>
             <div class="col-md-3">
-              <input type="text" name="datefrom" id="datefrom" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($datefrom) && !empty($datefrom)) ? $datefrom : date("m/01/Y");?>" readonly />
-            </div>
-          </div>
-            
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="name">Date To:</label>
-            <div class="col-md-3">
-              <input type="text" name="dateto" id="dateto" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($dateto) && !empty($dateto)) ? $dateto : date("m/t/Y"); ?>" readonly />  
+              <input type="text" name="dateto" id="dateto" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($dateto) && !empty($dateto)) ? $dateto : date("m/d/Y"); ?>" readonly />  
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Type:</label>
             <div class="col-md-3">
-              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="S" <?php echo (isset($typereport) && $typereport == "S") ? 'checked="checked"' : ''; ?>>
-              <label class="form-check-label" for="typereport">Summarized</label>
+              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="A" <?php echo (isset($typereport) && $typereport == "A") ? 'checked="checked"' : ''; ?>>
+              <label class="form-check-label" for="typereport">Accumulated</label>
             </div>
             <div class="col-md-3">
-              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="D" <?php echo (isset($typereport) && $typereport == "D") ? 'checked="checked"' : ''; ?>>
-              <label class="form-check-label" for="typereport">Detailed</label>
+              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="M" <?php echo (isset($typereport) && $typereport == "M") ? 'checked="checked"' : ''; ?>>
+              <label class="form-check-label" for="typereport">Monthly</label>
             </div>
           </div>
 
@@ -75,7 +54,7 @@
               <button style="float: left;" type="button" class="btn btn-primary" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-eye"></i> Search</a></button> 
             <?php } ?>  
             <span style="float: left; margin-left: 15px;">
-              <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
+              <a href="<?php echo PUERTO."://".HOST."/report/incomestatement/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
           </div>
         </fieldset>
@@ -89,15 +68,15 @@
     $url = $dbdatefrom."/".$dbdateto."/".$typereport."/";
     $url .= (!empty($accfrom)) ? $accfrom."/" : ""; 
     $url .= (!empty($accto)) ? $accto."/" : "";   
-    if ($typereport == "S"){     
+    if ($typereport == "A"){     
   ?>
       <br>
       <?php if (isset($permission) && $permission["pri"] == 1){  ?>
         <span id="pdf" style="float: right; margin-left: 10px;">
-          <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+          <a href="<?php echo PUERTO."://".HOST."/report/incomestatement/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
         </span>
         <span id="excel" style="float: right;">
-          <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+          <a href="<?php echo PUERTO."://".HOST."/report/incomestatement/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
         </span> 
       <?php } else{ ?>
         <span style="float: right; margin-left: 10px;">
@@ -172,8 +151,7 @@
       <br>
       <div class="tab-content">
         <div class="tab-pane fade in active" id="home-pills">
-        <br> 
-        <div class="table table-responsive">                    
+        <br>                     
         <table width="100%" class="table table-responsive table-striped style-table">
         <thead>
           <tr>        
@@ -272,8 +250,7 @@
                </tr>";      
         ?>      
         </tbody>    
-        </table>
-        </div>  
+        </table>  
        </div>
       </div>
       <br>
