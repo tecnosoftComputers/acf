@@ -96,10 +96,10 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
             $this->objPdf->Cell(189,5,'',0,1);                              
             $this->objPdf->Cell(35 ,5,$value["CODIGO"],0,0);
             $this->objPdf->Cell(82 ,5,$value["NOMBRE"],0,0);                             
-            $this->objPdf->Cell(40 ,5,number_format($showbalance,2),0,0,'R');
-            $this->objPdf->Cell(40 ,5,number_format($showdebit,2),0,0,'R');
-            $this->objPdf->Cell(40 ,5,number_format($showcredit,2),0,0,'R');
-            $this->objPdf->Cell(40 ,5,number_format($showresta,2),0,0,'R');
+            $this->objPdf->Cell(40 ,5,number_format($showbalance,2,',','.'),0,0,'R');
+            $this->objPdf->Cell(40 ,5,number_format($showdebit,2,',','.'),0,0,'R');
+            $this->objPdf->Cell(40 ,5,number_format($showcredit,2,',','.'),0,0,'R');
+            $this->objPdf->Cell(40 ,5,number_format($showresta,2,',','.'),0,0,'R');
             $this->objPdf->Cell(189  ,5,'',0,1);//end of line                           
           } 
           $showacumbalance = abs($acumbalance);
@@ -117,10 +117,10 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
           $this->objPdf->Cell(189  ,5,'',0,1);   
           $this->objPdf->SetXY(90, $this->objPdf->GetY());        
           $this->objPdf->Cell(37 ,5,'Totals:',0,0);
-          $this->objPdf->Cell(40 ,5,number_format($showacumbalance,2),0,0,'R');
-          $this->objPdf->Cell(40 ,5,number_format($showacumdebit,2),0,0,'R');
-          $this->objPdf->Cell(40 ,5,number_format($showacumcredit,2),0,0,'R');
-          $this->objPdf->Cell(40 ,5,number_format($showacumresta,2),0,0,'R');  
+          $this->objPdf->Cell(40 ,5,number_format($showacumbalance,2,',','.'),0,0,'R');
+          $this->objPdf->Cell(40 ,5,number_format($showacumdebit,2,',','.'),0,0,'R');
+          $this->objPdf->Cell(40 ,5,number_format($showacumcredit,2,',','.'),0,0,'R');
+          $this->objPdf->Cell(40 ,5,number_format($showacumresta,2,',','.'),0,0,'R');  
         }  
         $this->objPdf->Output(); 
       break;
@@ -151,15 +151,8 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
                    'F'=>array("width"=>25,"label"=>"CURRENT BALANCE")         
                  );
 
-        $this->printHeaderExcel("TRIAL BALANCE REPORT",$columns,'E1',140,$info_company,$from,$to);
-        $objPHPExcel = $this->objExcel;  
-        $objPHPExcel->getActiveSheet()->mergeCells('A1:D1');
-        $objPHPExcel->getActiveSheet()->mergeCells('A2:D2'); 
-        $objPHPExcel->getActiveSheet()->mergeCells('A3:D3');
-        $objPHPExcel->getActiveSheet()->mergeCells('A4:D4');
-        $objPHPExcel->getActiveSheet()->mergeCells('A5:D5');
-        $objPHPExcel->getActiveSheet()->mergeCells('A6:D6');          
-        $objPHPExcel->getActiveSheet()->mergeCells('E1:F6');
+        $this->printHeaderExcel("TRIAL BALANCE REPORT",$columns,'E',140,$info_company,$from,$to,'D');
+        $objPHPExcel = $this->objExcel;          
        
         if (!empty($results)){
           $acumbalance = 0;
@@ -192,10 +185,10 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
             $objPHPExcel->setActiveSheetIndex(0)
               ->setCellValue('A'.$this->line, " ".$value["CODIGO"])
               ->setCellValue('B'.$this->line, $value["NOMBRE"])
-              ->setCellValue('C'.$this->line, " ".number_format($showbalance,2))
-              ->setCellValue('D'.$this->line, " ".number_format($showdebit,2))
-              ->setCellValue('E'.$this->line, " ".number_format($showcredit,2))
-              ->setCellValue('F'.$this->line, " ".number_format($showresta,2));
+              ->setCellValue('C'.$this->line, " ".number_format($showbalance,2,',','.'))
+              ->setCellValue('D'.$this->line, " ".number_format($showdebit,2,',','.'))
+              ->setCellValue('E'.$this->line, " ".number_format($showcredit,2,',','.'))
+              ->setCellValue('F'.$this->line, " ".number_format($showresta,2,',','.'));
             $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);
             $this->line++;                                
           } 
@@ -210,10 +203,10 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
           $objPHPExcel->getActiveSheet()->getStyle('B'.$this->line.':F'.$this->line)->applyFromArray($this->BoldStyle); 
           $objPHPExcel->setActiveSheetIndex(0)              
             ->setCellValue('B'.$this->line, "Totals:")
-            ->setCellValue('C'.$this->line, " ".number_format($showacumbalance,2))
-            ->setCellValue('D'.$this->line, " ".number_format($showacumdebit,2))
-            ->setCellValue('E'.$this->line, " ".number_format($showacumcredit,2))
-            ->setCellValue('F'.$this->line, " ".number_format($showacumresta,2));
+            ->setCellValue('C'.$this->line, " ".number_format($showacumbalance,2,',','.'))
+            ->setCellValue('D'.$this->line, " ".number_format($showacumdebit,2,',','.'))
+            ->setCellValue('E'.$this->line, " ".number_format($showacumcredit,2,',','.'))
+            ->setCellValue('F'.$this->line, " ".number_format($showacumresta,2,',','.'));
           $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);              
         }
         $this->outputExcel("TRIAL_BALANCE_REPORT");  

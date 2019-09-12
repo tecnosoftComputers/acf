@@ -101,11 +101,8 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
                      'A'=>array("width"=>50, "label"=>"ACCOUNT"),
                      'B'=>array("width"=>100, "label"=>"NAME ACCOUNT")
                    );          
-        $this->printHeaderExcel("CHART ACCOUNTS REPORT",$columns,'B1',500,$info_company,$accfrom,$accto);                    
-        $objPHPExcel = $this->objExcel;                                              
-
-        $objPHPExcel->getActiveSheet()->mergeCells('B1:B6');          
-        $objPHPExcel->getActiveSheet()->mergeCells('A7:B7');                  
+        $this->printHeaderExcel("CHART ACCOUNTS REPORT",$columns,'B',500,$info_company,$accfrom,$accto,'A');                    
+        $objPHPExcel = $this->objExcel;                      
 
         if (!empty($results)){               
           foreach ($results as $key => $item) {              

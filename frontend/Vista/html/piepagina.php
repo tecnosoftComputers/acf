@@ -353,7 +353,7 @@
                                     <div class="col-md-4">
                                         <input type="text" class="form-control input-sm" disabled readonly autocomplete="off" id="_doc2" name="_doc2" maxlength="19"/>
                                     </div>
-                                    <label class="col-md-2 control-label" for="name">Settlement: </label>
+                                    <label class="col-md-2 control-label" for="name">Liquidation: </label>
                                     <div class="col-md-4">
                                         <input type="text" class="form-control input-sm" disabled readonly autocomplete="off" id="_settlement2" name="_settlement2" maxlength="19"/> 
                                     </div>
@@ -450,7 +450,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6" id="seccion_liq">
-                                    <label class="col-md-4 control-label" for="liq">Settlement: </label>
+                                    <label class="col-md-4 control-label" for="liq">Liquidation: </label>
                                     <div class="col-md-8">
                                         <div id="err_liq" class="help-block with-errors"></div>
                                         <input id="liq" name="liq" type="text" class="form-control input-sm" maxlength="8" value=""/>

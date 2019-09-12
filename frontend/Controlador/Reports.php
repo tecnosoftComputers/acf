@@ -41,10 +41,34 @@ class Controlador_Reports extends Controlador_Base {
             'bold'  => true,                           
           )
         );
+
+  public $TitleStyle = array(
+          'font'  => array(
+            'bold'  => true,              
+            'size'  => 11,
+            'name'  => 'Arial'
+          ),
+          'alignment' => array(
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,
+            'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+          ) 
+         );
+
+  public $NameCompStyle = array(
+          'font'  => array(
+            'bold'  => true,              
+            'size'  => 12,
+            'name'  => 'Arial'
+          ),
+          'alignment' => array(
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,
+            'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+          ) 
+         );
   
   public function construirPagina(){}
 
-  public function printHeaderPdf($title,$from,$to,$new=false){
+  public function printHeaderPdf($title,$from,$to,$new=false){    
     $info_company = Modelo_Companie::searchCompanies($_SESSION['acfSession']['id_empresa']);
     if ($new == true){
       $this->objPdf = new FPDF('P','mm','A3'); 
@@ -65,6 +89,11 @@ class Controlador_Reports extends Controlador_Base {
     $this->objPdf->Cell(246 ,5,$title,0,0);//end of line 
     $this->objPdf->Cell(250 ,5,'Page: '.$this->objPdf->PageNo(),0,1);              
     $this->objPdf->SetFont('Arial','',11);
+    $this->objPdf->Cell(11 ,5,'User:',0,0);
+    $this->objPdf->Cell(235 ,5,$_SESSION["acfSession"]["persona"],0,0);
+    $this->objPdf->Cell(11 ,5,'Time:',0,0);
+    $this->objPdf->Cell(20 ,5,date('h:i:s'),0,0);
+    $this->objPdf->Cell(189 ,5,'',0,1); //end of line
     $this->objPdf->Cell(11 ,5,'From:',0,0);
     $this->objPdf->Cell(28 ,5, $from ,0,0);
     $this->objPdf->Cell(7, 5,'To:',0,0);
@@ -82,12 +111,12 @@ class Controlador_Reports extends Controlador_Base {
     }    
     $this->objPdf->Cell(189,10,'',0,1); //end of line                       
     $this->objPdf->SetLineWidth(1.2);
-    $this->objPdf->Line(11, 58, 287, 58);
+    $this->objPdf->Line(11, 63, 287, 63);
     $this->objPdf->Cell(189,1,'',0,1); //end of line                       
     $this->objPdf->SetLineWidth(0.2);
   }
 
-  public function printHeaderExcel($title,$columns,$columlogo,$setxlogo,$info_company,$from,$to){
+  public function printHeaderExcel($title,$columns,$columlogo,$setxlogo,$info_company,$from,$to,$colummerge){
     $this->objExcel = new PHPExcel();          
     $this->objExcel->getActiveSheet()->getPageSetup()
                    ->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
@@ -111,7 +140,7 @@ class Controlador_Reports extends Controlador_Base {
     $objDrawing->setName('Logo'); 
     $objDrawing->setDescription('Logo'); 
     $objDrawing->setPath(FRONTEND_RUTA.PATH_LOGO.$info_company["rentas_logo"]); 
-    $objDrawing->setCoordinates($columlogo); 
+    $objDrawing->setCoordinates($columlogo.'1'); 
     
     //setOffsetX works properly 
     $objDrawing->setOffsetX($setxlogo);//360 80
@@ -120,59 +149,39 @@ class Controlador_Reports extends Controlador_Base {
     $objDrawing->setWidth(110); 
     $objDrawing->setHeight(110); 
     $objDrawing->setWorksheet($this->objExcel->getActiveSheet());    
-
-    //company name
-    $styleArray = array(
-      'font'  => array(
-        'bold'  => true,              
-        'size'  => 12,
-        'name'  => 'Arial'
-    ));               
+              
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A1', $info_company["nombre_empresa"]);
-    $this->objExcel->getActiveSheet()->getStyle('A1')->applyFromArray($styleArray);
+    $this->objExcel->getActiveSheet()->getStyle('A1')->applyFromArray($this->NameCompStyle);    
     $this->objExcel->getActiveSheet()->getRowDimension('1')->setRowHeight($this->hexcel); 
-
-    //address company
-    $styleArray = array(
-      'font'  => array(
-        'bold'  => false,              
-        'size'  => 10,
-        'name'  => 'Arial'
-    ));
+    
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A2', $info_company["direccion_empresa"]);
-    $this->objExcel->getActiveSheet()->getStyle('A2')->applyFromArray($styleArray);
+    $this->objExcel->getActiveSheet()->getStyle('A2')->applyFromArray($this->styleArray);
     $this->objExcel->getActiveSheet()->getRowDimension('2')->setRowHeight($this->hexcel); 
 
     //telephone company
     $this->objExcel->setActiveSheetIndex(0)
                    ->setCellValue('A3', $info_company["telefono_empresa"]);
-    $this->objExcel->getActiveSheet()->getStyle('A3')->applyFromArray($styleArray);
+    $this->objExcel->getActiveSheet()->getStyle('A3')->applyFromArray($this->styleArray);
     $this->objExcel->getActiveSheet()->getRowDimension('3')->setRowHeight($this->hexcel); 
-
-    //title
-    $styleArray = array(
-      'font'  => array(
-        'bold'  => true,              
-        'size'  => 11,
-        'name'  => 'Arial'
-    ));
+    
     $this->objExcel->setActiveSheetIndex(0)
-                   ->setCellValue('A6', $title);
-    $this->objExcel->getActiveSheet()->getStyle('A6')->applyFromArray($styleArray);
-    $this->objExcel->getActiveSheet()->getRowDimension('6')->setRowHeight($this->hexcel); 
-
-    //dates
-    $styleArray = array(
-      'font'  => array(
-        'bold'  => false,              
-        'size'  => 10,
-        'name'  => 'Arial'
-    ));
+                   ->setCellValue('A5', $title);
+    $this->objExcel->getActiveSheet()->getStyle('A5')->applyFromArray($this->TitleStyle);    
+    $this->objExcel->getActiveSheet()->getRowDimension('5')->setRowHeight($this->hexcel); 
+    
     $this->objExcel->setActiveSheetIndex(0)
-                   ->setCellValue('A7', 'From: '.$from. '     To: '.$to.' '.'     Date: '.date('m/d/Y'));     
-    $this->objExcel->getActiveSheet()->getStyle('A7')->applyFromArray($styleArray);          
+                   ->setCellValue('A6', 'User: '.$_SESSION["acfSession"]["persona"])
+                   ->setCellValue($columlogo.'6', 'Time: '.date('h:i:s'));
+    $this->objExcel->getActiveSheet()->getStyle('A6:'.$columlogo.'6')->applyFromArray($this->styleArray);
+    $this->objExcel->getActiveSheet()->getStyle($columlogo.'6')->applyFromArray($this->AmtStyle);
+    $this->objExcel->getActiveSheet()->getRowDimension('6')->setRowHeight($this->hexcel);                
+    $this->objExcel->setActiveSheetIndex(0)
+                   ->setCellValue('A7', 'From: '.$from. '     To: '.$to)
+                   ->setCellValue($columlogo.'7', 'Date: '.date('m/d/Y'));     
+    $this->objExcel->getActiveSheet()->getStyle('A7:'.$columlogo.'7')->applyFromArray($this->styleArray);
+    $this->objExcel->getActiveSheet()->getStyle($columlogo.'7')->applyFromArray($this->AmtStyle);
     $this->objExcel->getActiveSheet()->getRowDimension('7')->setRowHeight($this->hexcel); 
               
     //header
@@ -206,7 +215,20 @@ class Controlador_Reports extends Controlador_Base {
        $this->objExcel->getActiveSheet()->getStyle($key.'9')->applyFromArray($styleArray);       
     }        
     $this->objExcel->getActiveSheet()->getRowDimension('9')->setRowHeight($this->hexcel); 
-    $this->objExcel->getActiveSheet()->mergeCells('A7:'.$key.'7');    
+    
+    if ($colummerge != 'A'){
+      $this->objExcel->getActiveSheet()->mergeCells('A1:'.$colummerge.'1');
+      $this->objExcel->getActiveSheet()->mergeCells('A2:'.$colummerge.'2'); 
+      $this->objExcel->getActiveSheet()->mergeCells('A3:'.$colummerge.'3');
+      $this->objExcel->getActiveSheet()->mergeCells('A4:'.$colummerge.'4');
+      $this->objExcel->getActiveSheet()->mergeCells('A5:'.$colummerge.'5');
+    }
+    $this->objExcel->getActiveSheet()->mergeCells($columlogo.'1:'.$key.'5');
+    $this->objExcel->getActiveSheet()->mergeCells('A6:'.$colummerge.'6');
+    $this->objExcel->getActiveSheet()->mergeCells($columlogo.'6:'.$key.'6');
+    $this->objExcel->getActiveSheet()->mergeCells('A7:'.$colummerge.'7');   
+    $this->objExcel->getActiveSheet()->mergeCells($columlogo.'7:'.$key.'7');                 
+    $this->objExcel->getActiveSheet()->mergeCells('A8:'.$key.'8');    
   }
 
   public function outputExcel($title){

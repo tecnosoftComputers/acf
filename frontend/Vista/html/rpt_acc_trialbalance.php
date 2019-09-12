@@ -138,10 +138,10 @@
       echo "<tr>               
               <td>"." ".$value["CODIGO"]."</td>
               <td>".$value["NOMBRE"]."</td>
-              <td align='right'>".number_format($showbalance,2)."</td>
-              <td align='right'>".number_format($showdebit,2)."</td>
-              <td align='right'>".number_format($showcredit,2)."</td>
-              <td align='right'>".number_format($showresta,2)."</td>
+              <td align='right'>".number_format($showbalance,2,',','.')."</td>
+              <td align='right'>".number_format($showdebit,2,',','.')."</td>
+              <td align='right'>".number_format($showcredit,2,',','.')."</td>
+              <td align='right'>".number_format($showresta,2,',','.')."</td>
             </tr>";                     
     } 
     $showacumbalance = abs($acumbalance);
@@ -151,10 +151,10 @@
     $showacumresta = abs($showacumresta);                   
     echo "<tr>                           
             <td colspan='2' align='right'><strong>Totals:</strong></td>
-            <td class='style-td-totals'>".number_format($showacumbalance,2)."</td>
-            <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
-            <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>
-            <td class='style-td-totals'>".number_format($showacumresta,2)."</td>            
+            <td class='style-td-totals'>".number_format($showacumbalance,2,',','.')."</td>
+            <td class='style-td-totals'>".number_format($showacumdebit,2,',','.')."</td>
+            <td class='style-td-totals'>".number_format($showacumcredit,2,',','.')."</td>
+            <td class='style-td-totals'>".number_format($showacumresta,2,',','.')."</td>            
           </tr>";       
     ?>      
     </tbody>    

@@ -51,7 +51,7 @@
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
     <br>                     
-    <table width="100%" class="table table-striped table-bordered table-hover style-table" >
+    <table width="100%" class="table table-responsive style-table" >
     <thead>
       <tr>        
         <th class="style-th">ACCOUNT</th>

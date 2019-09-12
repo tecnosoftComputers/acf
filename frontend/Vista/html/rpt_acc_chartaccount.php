@@ -105,7 +105,7 @@
     <div class="tab-pane fade in active" id="home-pills">
     <br> 
     <div class="table table-responsive">
-    <table width="100%" class="table table-responsive table-striped style-table">
+    <table width="100%" class="table table-responsive style-table">
     <thead>
       <tr>        
         <th class="style-th">ACCOUNT</th>

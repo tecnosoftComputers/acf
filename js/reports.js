@@ -94,4 +94,11 @@ $(document).ready(function(){
     $('#frmreport').submit();
   });  
 
+  $('#clearJournal').on('click',function(){
+    $('#seatfrom').val('');
+    $('#seatto').val('');
+    $("#typeseatfrom").prop('selectedIndex', 0);
+    $("#typeseatto").prop('selectedIndex', 0);
+  });
+
 });

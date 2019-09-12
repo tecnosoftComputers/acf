@@ -82,7 +82,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
         $columns[] = array("width"=>20,"label"=>"TYPE");  
         $columns[] = array("width"=>20,"label"=>"SEAT");  
         $columns[] = array("width"=>25,"label"=>"REFERENCE");  
-        $columns[] = array("width"=>25,"label"=>"SETTLEMENT");  
+        $columns[] = array("width"=>25,"label"=>"LIQUIDATION");  
         $columns[] = array("width"=>80,"label"=>"CONCEPT");  
         $columns[] = array("width"=>30,"label"=>"DEBIT");  
         $columns[] = array("width"=>30,"label"=>"CREDIT");
@@ -116,9 +116,9 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
                 $this->objPdf->Cell(189  ,5,'',0,1);   
                 $this->objPdf->SetXY(96, $this->objPdf->GetY());        
                 $this->objPdf->Cell(103 ,5,'Current Balance:',0,0);
-                $this->objPdf->Cell(30 ,5,number_format($showacumdebit,2),0,0,'R');
-                $this->objPdf->Cell(30 ,5,number_format($showacumcredit,2),0,0,'R');
-                $this->objPdf->Cell(30 ,5,number_format($showbalance,2),0,0,'R');                
+                $this->objPdf->Cell(30 ,5,number_format($showacumdebit,2,',','.'),0,0,'R');
+                $this->objPdf->Cell(30 ,5,number_format($showacumcredit,2,',','.'),0,0,'R');
+                $this->objPdf->Cell(30 ,5,number_format($showbalance,2,',','.'),0,0,'R');                
                 $this->objPdf->Cell(189  ,5,'',0,1);   
                 $this->objPdf->Cell(189  ,5,'',0,1);
                 $this->objPdf->Cell(189  ,5,'',0,1);   
@@ -137,7 +137,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               $this->objPdf->Cell(50 ,5,$value["CODMOV"],0,0);
               $this->objPdf->Cell(138 ,5,$infoaccount["NOMBRE"],0,0);
               $this->objPdf->Cell(60 ,5,"Previous Balance:",0,0);
-              $this->objPdf->Cell(30 ,5,number_format($showprevbalance,2),0,0,'R');
+              $this->objPdf->Cell(30 ,5,number_format($showprevbalance,2,',','.'),0,0,'R');
               $this->objPdf->Cell(189  ,5,'',0,1);   
 
               $account = $value["CODMOV"];    
@@ -169,9 +169,9 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
             $starty = $this->objPdf->GetY();              
             $this->objPdf->MultiCell(80,3,trim($value["CONCEPTO"]), 0, 'L', 0);
             $this->objPdf->SetXY(198, $starty); 
-            $this->objPdf->Cell(30 ,5,number_format($showdebit,2),0,0,'R');
-            $this->objPdf->Cell(30 ,5,number_format($showcredit,2),0,0,'R');
-            $this->objPdf->Cell(30 ,5,number_format($showbalance,2),0,0,'R');            
+            $this->objPdf->Cell(30 ,5,number_format($showdebit,2,',','.'),0,0,'R');
+            $this->objPdf->Cell(30 ,5,number_format($showcredit,2,',','.'),0,0,'R');
+            $this->objPdf->Cell(30 ,5,number_format($showbalance,2,',','.'),0,0,'R');            
             $this->objPdf->Cell(189  ,5,'',0,1);//end of line                          
           } 
           $showacumdebit = abs($acumdebit);
@@ -188,9 +188,9 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
           $this->objPdf->Cell(189  ,5,'',0,1);   
           $this->objPdf->SetXY(96, $this->objPdf->GetY());        
           $this->objPdf->Cell(103 ,5,'Current Balance:',0,0);
-          $this->objPdf->Cell(30 ,5,number_format($showacumdebit,2),0,0,'R');
-          $this->objPdf->Cell(30 ,5,number_format($showacumcredit,2),0,0,'R');
-          $this->objPdf->Cell(30 ,5,number_format($showbalance,2),0,0,'R');          
+          $this->objPdf->Cell(30 ,5,number_format($showacumdebit,2,',','.'),0,0,'R');
+          $this->objPdf->Cell(30 ,5,number_format($showacumcredit,2,',','.'),0,0,'R');
+          $this->objPdf->Cell(30 ,5,number_format($showbalance,2,',','.'),0,0,'R');          
         }
         $this->objPdf->Output(); 
       break;
@@ -217,23 +217,15 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
                    'B'=>array("width"=>14,"label"=>"TYPE"),
                    'C'=>array("width"=>10,"label"=>"SEAT"),
                    'D'=>array("width"=>15,"label"=>"REFERENCE"),
-                   'E'=>array("width"=>15,"label"=>"SETTLEMENT"),
+                   'E'=>array("width"=>15,"label"=>"LIQUIDATION"),
                    'F'=>array("width"=>65,"label"=>"CONCEPT"),                   
                    'G'=>array("width"=>20,"label"=>"DEBIT"),
                    'H'=>array("width"=>20,"label"=>"CREDIT"),
                    'I'=>array("width"=>20,"label"=>"BALANCE")
                  );
 
-        $this->printHeaderExcel("GENERAL LEDGER REPORT",$columns,'H1',80,$info_company,$from,$to);
-        $objPHPExcel = $this->objExcel;          
-
-        $objPHPExcel->getActiveSheet()->mergeCells('A1:G1');
-        $objPHPExcel->getActiveSheet()->mergeCells('A2:G2'); 
-        $objPHPExcel->getActiveSheet()->mergeCells('A3:G3');
-        $objPHPExcel->getActiveSheet()->mergeCells('A4:G4');
-        $objPHPExcel->getActiveSheet()->mergeCells('A5:G5');
-        $objPHPExcel->getActiveSheet()->mergeCells('A6:G6');          
-        $objPHPExcel->getActiveSheet()->mergeCells('H1:I6');           
+        $this->printHeaderExcel("GENERAL LEDGER REPORT",$columns,'H',80,$info_company,$from,$to,'G');
+        $objPHPExcel = $this->objExcel;                  
                       
         if (!empty($results)){
           $account = '';      
@@ -253,9 +245,9 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
                 $objPHPExcel->getActiveSheet()->getStyle('E'.$this->line.':I'.$this->line)->applyFromArray($this->BoldStyle); 
                 $objPHPExcel->setActiveSheetIndex(0)              
                   ->setCellValue('F'.$this->line, "Current Balance:")
-                  ->setCellValue('G'.$this->line, " ".number_format($showacumdebit,2))
-                  ->setCellValue('H'.$this->line, " ".number_format($showacumcredit,2))
-                  ->setCellValue('I'.$this->line, " ".number_format($showbalance,2));
+                  ->setCellValue('G'.$this->line, " ".number_format($showacumdebit,2,',','.'))
+                  ->setCellValue('H'.$this->line, " ".number_format($showacumcredit,2,',','.'))
+                  ->setCellValue('I'.$this->line, " ".number_format($showbalance,2,',','.'));
                 $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);   
                 $this->line++; 
 
@@ -293,7 +285,7 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
                 ->setCellValue('A'.$this->line, $value["CODMOV"])
                 ->setCellValue('D'.$this->line, $infoaccount["NOMBRE"])
                 ->setCellValue('G'.$this->line, "Previous Balance:")
-                ->setCellValue('I'.$this->line, " ".number_format($showprevbalance,2));
+                ->setCellValue('I'.$this->line, " ".number_format($showprevbalance,2,',','.'));
               $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);
               $this->line++;    
 
@@ -326,9 +318,9 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
               ->setCellValue('D'.$this->line, $value["REFER"])
               ->setCellValue('E'.$this->line, $value["LIQUIDA_NO"])
               ->setCellValue('F'.$this->line, trim($value["CONCEPTO"]))
-              ->setCellValue('G'.$this->line, " ".number_format($showdebit,2))
-              ->setCellValue('H'.$this->line, " ".number_format($showcredit,2))
-              ->setCellValue('I'.$this->line, " ".number_format($showbalance,2));            
+              ->setCellValue('G'.$this->line, " ".number_format($showdebit,2,',','.'))
+              ->setCellValue('H'.$this->line, " ".number_format($showcredit,2,',','.'))
+              ->setCellValue('I'.$this->line, " ".number_format($showbalance,2,',','.'));            
             $this->line++;                              
           } 
           $showacumdebit = abs($acumdebit);
@@ -343,9 +335,9 @@ class Controlador_ReportGeneralLedger extends Controlador_Reports {
           $objPHPExcel->getActiveSheet()->getStyle('E'.$this->line.':I'.$this->line)->applyFromArray($this->BoldStyle); 
           $objPHPExcel->setActiveSheetIndex(0)              
             ->setCellValue('F'.$this->line, "Current Balance:")
-            ->setCellValue('G'.$this->line, " ".number_format($showacumdebit,2))
-            ->setCellValue('H'.$this->line, " ".number_format($showacumcredit,2))
-            ->setCellValue('I'.$this->line, " ".number_format($showbalance,2)); 
+            ->setCellValue('G'.$this->line, " ".number_format($showacumdebit,2,',','.'))
+            ->setCellValue('H'.$this->line, " ".number_format($showacumcredit,2,',','.'))
+            ->setCellValue('I'.$this->line, " ".number_format($showbalance,2,',','.')); 
           $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);    
         }
         $this->outputExcel("GENERAL_LEDGER_REPORT");  

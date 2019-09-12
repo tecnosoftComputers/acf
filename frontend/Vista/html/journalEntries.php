@@ -107,7 +107,7 @@
                     </div>   
 
                     <div class="form-group col-md-5">
-                        <label class="col-md-3 control-label" for="_liq">Settlement: </label>
+                        <label class="col-md-3 control-label" for="_liq">Liquidation: </label>
                         <div class="col-md-9">
                             <div id="err_docu" class="help-block with-errors"></div>
                             <input id="_liq" name="_liq" type="text" class="form-control input-sm" maxlength="8" value=""/>

@@ -71,7 +71,7 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
         $columns[] = array("width"=>45,"label"=>"NAME ACCOUNT");  
         $columns[] = array("width"=>15,"label"=>"TYPE");  
         $columns[] = array("width"=>25,"label"=>"REFERENCE");  
-        $columns[] = array("width"=>30,"label"=>"SETTLEMENT");  
+        $columns[] = array("width"=>30,"label"=>"LIQUIDATION");  
         $columns[] = array("width"=>73,"label"=>"CONCEPT");  
         $columns[] = array("width"=>30,"label"=>"DEBIT");
         $columns[] = array("width"=>30,"label"=>"CREDIT");    
@@ -99,14 +99,14 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
                 $this->objPdf->Cell(189  ,5,'',0,1);                  
                 $this->objPdf->SetXY(224, $this->objPdf->GetY());                  
                 $this->objPdf->SetFont('Arial','B',9);
-                $this->objPdf->Cell(30 ,5,number_format($acum_debits,2),0,0,'R');
-                $this->objPdf->Cell(30 ,5,number_format(abs($acum_credit),2),0,0,'R');                  
+                $this->objPdf->Cell(30 ,5,number_format($acum_debits,2,',','.'),0,0,'R');
+                $this->objPdf->Cell(30 ,5,number_format(abs($acum_credit),2,',','.'),0,0,'R');                  
                 $this->objPdf->Cell(189  ,5,'',0,1);                  
                 $this->objPdf->Cell(189  ,5,'',0,1);
               }                     
               $this->objPdf->SetFont('Arial','B',9);                           
               $this->objPdf->Cell(30 ,5,"Date: ".date("m/d/Y",strtotime($value["FECHA_ASI"])),0,0);
-              $this->objPdf->Cell(45 ,5,"No. ".$typeseat." ".$value["ASIENTO"],0,0);
+              $this->objPdf->Cell(45 ,5,"No. ".$value["TIPO_ASI"]." ".$value["ASIENTO"],0,0);
               $this->objPdf->Cell(200 ,5,$value["DESC_ASI"]."  ".$value["cabliquida"],0,0);
               $seataux = $value["ASIENTO"]; 
               $acum_debits = 0;
@@ -123,13 +123,13 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
             $this->objPdf->MultiCell(73,3,trim($value['CONCEPTO']), 0, 'L', 0);
             $this->objPdf->SetXY(224, $starty);              
             if ($value["IMPORTE"] > 0){                             
-              $this->objPdf->Cell(30 ,5,number_format($value['IMPORTE'],2),0,0,'R');
-              $this->objPdf->Cell(30 ,5,'0.00',0,0,'R');      
+              $this->objPdf->Cell(30 ,5,number_format($value['IMPORTE'],2,',','.'),0,0,'R');
+              $this->objPdf->Cell(30 ,5,'0,00',0,0,'R');      
               $acum_debits = $acum_debits + $value['IMPORTE'];
             }
             else{
-              $this->objPdf->Cell(30 ,5,'0.00',0,0,'R');
-              $this->objPdf->Cell(30 ,5,number_format(abs($value['IMPORTE']),2),0,0,'R');       
+              $this->objPdf->Cell(30 ,5,'0,00',0,0,'R');
+              $this->objPdf->Cell(30 ,5,number_format(abs($value['IMPORTE']),2,',','.'),0,0,'R');       
               $acum_credit = $acum_credit + $value['IMPORTE'];
             }              
             $this->objPdf->Cell(189  ,5,'',0,1);//end of line              
@@ -143,8 +143,8 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
           $this->objPdf->Cell(189  ,5,'',0,1);      
           $this->objPdf->SetXY(224, $this->objPdf->GetY());  
           $this->objPdf->SetFont('Arial','B',9);      
-          $this->objPdf->Cell(30 ,5,number_format($acum_debits,2),0,0,'R');
-          $this->objPdf->Cell(30 ,5,number_format(abs($acum_credit),2),0,0,'R');                      
+          $this->objPdf->Cell(30 ,5,number_format($acum_debits,2,',','.'),0,0,'R');
+          $this->objPdf->Cell(30 ,5,number_format(abs($acum_credit),2,',','.'),0,0,'R');                      
         } 
         $this->objPdf->Output();  
       break;    
@@ -177,21 +177,13 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
                    'B'=>array("width"=>30,"label"=>"NAME ACCOUNT"),
                    'C'=>array("width"=>10,"label"=>"TYPE"),
                    'D'=>array("width"=>20,"label"=>"REFERENCE"),
-                   'E'=>array("width"=>20,"label"=>"SETTLEMENT"),
+                   'E'=>array("width"=>20,"label"=>"LIQUIDATION"),
                    'F'=>array("width"=>50,"label"=>"CONCEPT"),
                    'G'=>array("width"=>20,"label"=>"DEBIT"),
                    'H'=>array("width"=>20,"label"=>"CREDIT")
                  );          
-        $this->printHeaderExcel("JOURNAL ENTRIES REPORT",$columns,'G1',80,$info_company,$from,$to);
-        $objPHPExcel = $this->objExcel;          
-
-        $objPHPExcel->getActiveSheet()->mergeCells('A1:F1');
-        $objPHPExcel->getActiveSheet()->mergeCells('A2:F2'); 
-        $objPHPExcel->getActiveSheet()->mergeCells('A3:F3');
-        $objPHPExcel->getActiveSheet()->mergeCells('A4:F4');
-        $objPHPExcel->getActiveSheet()->mergeCells('A5:F5');
-        $objPHPExcel->getActiveSheet()->mergeCells('A6:F6');          
-        $objPHPExcel->getActiveSheet()->mergeCells('G1:H6');
+        $this->printHeaderExcel("JOURNAL ENTRIES REPORT",$columns,'G',80,$info_company,$from,$to,'F');
+        $objPHPExcel = $this->objExcel;                  
       
         if (!empty($results)){
           $acum_debits = 0;
@@ -204,29 +196,25 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
                 $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':H'.$this->line)->applyFromArray($this->CStyle);
                 $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':H'.$this->line)->applyFromArray($this->AmtStyle);
                 $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':H'.$this->line)->applyFromArray($this->BoldStyle);
+                $objPHPExcel->getActiveSheet()->mergeCells('A'.$this->line.':F'.$this->line); 
                 $objPHPExcel->setActiveSheetIndex(0)              
-                  ->setCellValue('G'.$this->line, " ".number_format($acum_debits,2))
-                  ->setCellValue('H'.$this->line, " ".number_format(abs($acum_credits),2));
-                $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);  
-                                  
+                  ->setCellValue('G'.$this->line, " ".number_format($acum_debits,2,',','.'))
+                  ->setCellValue('H'.$this->line, " ".number_format(abs($acum_credits),2,',','.'));
+                $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);                                    
                 $this->line++;  
+
                 //print blank line
-                $objPHPExcel->setActiveSheetIndex(0)              
-                  ->setCellValue('A'.$this->line, '')
-                  ->setCellValue('B'.$this->line, '')
-                  ->setCellValue('C'.$this->line, '')
-                  ->setCellValue('D'.$this->line, '')
-                  ->setCellValue('E'.$this->line, '')
-                  ->setCellValue('F'.$this->line, '');
+                $objPHPExcel->getActiveSheet()->mergeCells('A'.$this->line.':H'.$this->line); 
                 $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);  
-                $this->line++;   
+                $this->line++; 
+
               }
               $objPHPExcel->getActiveSheet()->mergeCells('C'.$this->line.':H'.$this->line);             
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':H'.$this->line)->applyFromArray($this->styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':H'.$this->line)->applyFromArray($this->BoldStyle);
               $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A'.$this->line, "Date: ".date("m/d/Y",strtotime($item["FECHA_ASI"])))
-                ->setCellValue('B'.$this->line, "No. ".$typeseat." ".$item["ASIENTO"])
+                ->setCellValue('B'.$this->line, "No. ".$item["TIPO_ASI"]." ".$item["ASIENTO"])
                 ->setCellValue('C'.$this->line, $item["DESC_ASI"]."   ".$item['cabliquida']);
               $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);                     
               $seataux = $item["ASIENTO"]; 
@@ -238,13 +226,13 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
             $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':H'.$this->line)->applyFromArray($this->styleArray);
             $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':H'.$this->line)->applyFromArray($this->AmtStyle); 
             if ($item["IMPORTE"] > 0){                 
-              $debit = " ".number_format($item['IMPORTE'],2);
-              $credit = " 0.00";
+              $debit = " ".number_format($item['IMPORTE'],2,',','.');
+              $credit = " 0,00";
               $acum_debits = $acum_debits + $item['IMPORTE'];
             }
             else{
-              $debit = " 0.00";                
-              $credit = " ".number_format(abs($item['IMPORTE']),2); 
+              $debit = " 0,00";                
+              $credit = " ".number_format(abs($item['IMPORTE']),2,',','.'); 
               $acum_credits = $acum_credits + $item['IMPORTE'];
             }
             $objPHPExcel->getActiveSheet()->getStyle('F'.$this->line)->getAlignment()->setWrapText(true);
@@ -265,9 +253,10 @@ class Controlador_ReportJournalEntries extends Controlador_Reports {
           $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':H'.$this->line)->applyFromArray($this->CStyle);
           $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':H'.$this->line)->applyFromArray($this->AmtStyle);
           $objPHPExcel->getActiveSheet()->getStyle('G'.$this->line.':H'.$this->line)->applyFromArray($this->BoldStyle);
+          $objPHPExcel->getActiveSheet()->mergeCells('A'.$this->line.':F'.$this->line); 
           $objPHPExcel->setActiveSheetIndex(0)              
-            ->setCellValue('G'.$this->line, " ".number_format($acum_debits,2))
-            ->setCellValue('H'.$this->line, " ".number_format(abs($acum_credits),2)); 
+            ->setCellValue('G'.$this->line, " ".number_format($acum_debits,2,',','.'))
+            ->setCellValue('H'.$this->line, " ".number_format(abs($acum_credits),2,',','.')); 
           $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);    
         }
 

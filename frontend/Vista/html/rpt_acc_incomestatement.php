@@ -90,7 +90,7 @@
       <div class="tab-content">
         <div class="tab-pane fade in active" id="home-pills">
         <br>                     
-        <table width="100%" class="table table-responsive table-striped style-table">
+        <table width="100%" class="table table-responsive style-table">
         <thead>
           <tr>        
             <th class="style-th" width="10%">ACCOUNT</th>
@@ -112,16 +112,16 @@
           echo "<tr>               
                   <td>".$value["CODMOV"]."</td>
                   <td>".$value["NOMBRE"]."</td>                                                
-                  <td align='right'>".number_format($showdebit,2)."</td>
-                  <td align='right'>".number_format($showcredit,2)."</td>                
+                  <td align='right'>".number_format($showdebit,2,',','.')."</td>
+                  <td align='right'>".number_format($showcredit,2,',','.')."</td>                
                 </tr>";                     
          } 
          $showacumdebit = abs($acumdebit);
          $showacumcredit = abs($acumcredit);       
          echo "<tr>                             
                 <td colspan='2' align='right'><strong>Total:</strong></td>
-                <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
-                <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>
+                <td class='style-td-totals'>".number_format($showacumdebit,2,',','.')."</td>
+                <td class='style-td-totals'>".number_format($showacumcredit,2,',','.')."</td>
               </tr>";           
         ?>      
         </tbody>    
@@ -187,9 +187,9 @@
 
               echo "<tr>                                  
                      <td colspan='2' align='right'><strong>Subtotal:</strong></td>       
-                     <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
-                     <td class='style-td-totals'>".number_format($showacumcredit,2)."</td> 
-                     <td class='style-td-totals'>".number_format($showacumresta,2)."</td>
+                     <td class='style-td-totals'>".number_format($showacumdebit,2,',','.')."</td>
+                     <td class='style-td-totals'>".number_format($showacumcredit,2,',','.')."</td> 
+                     <td class='style-td-totals'>".number_format($showacumresta,2,',','.')."</td>
                     </tr>";    
               echo "<tr><td colspan='5'>&nbsp;</td></tr>";         
             }
@@ -216,9 +216,9 @@
           echo "<tr>               
                   <td>".$value["TIPO_ASI"]."</td>
                   <td>".$value["nameseat"]."</td>                                                
-                  <td align='right'>".number_format($showdebit,2)."</td>
-                  <td align='right'>".number_format($showcredit,2)."</td>                
-                  <td align='right'>".number_format($showresta,2)."</td>                
+                  <td align='right'>".number_format($showdebit,2,',','.')."</td>
+                  <td align='right'>".number_format($showcredit,2,',','.')."</td>                
+                  <td align='right'>".number_format($showresta,2,',','.')."</td>                
                 </tr>";                     
          }
          $totdebit = $totdebit + $acumdebit;
@@ -237,16 +237,16 @@
          $showtotresta = (empty($showtotresta)) ? abs($showtotresta) : $showtotresta;
          echo "<tr>                                  
                  <td colspan='2' align='right'><strong>Subtotal:</strong></td>       
-                 <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
-                 <td class='style-td-totals'>".number_format($showacumcredit,2)."</td> 
-                 <td class='style-td-totals'>".number_format($showacumresta,2)."</td>
+                 <td class='style-td-totals'>".number_format($showacumdebit,2,',','.')."</td>
+                 <td class='style-td-totals'>".number_format($showacumcredit,2,',','.')."</td> 
+                 <td class='style-td-totals'>".number_format($showacumresta,2,',','.')."</td>
                </tr>";
          echo "<tr><td colspan='5'>&nbsp;</td></tr>";       
          echo "<tr>                                  
                  <td colspan='2' align='right'><strong>Totals:</strong></td>       
-                 <td class='style-td-totals'>".number_format($showtotdebit,2)."</td>
-                 <td class='style-td-totals'>".number_format($showtotcredit,2)."</td>
-                 <td class='style-td-totals'>".number_format($showtotresta,2)."</td>
+                 <td class='style-td-totals'>".number_format($showtotdebit,2,',','.')."</td>
+                 <td class='style-td-totals'>".number_format($showtotcredit,2,',','.')."</td>
+                 <td class='style-td-totals'>".number_format($showtotresta,2,',','.')."</td>
                </tr>";      
         ?>      
         </tbody>    

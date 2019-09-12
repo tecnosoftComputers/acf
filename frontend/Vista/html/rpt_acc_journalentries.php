@@ -30,7 +30,7 @@
           </div>
             
           <div class="form-group">
-            <label class="col-md-4 control-label" for="name">Seat From:</label>
+            <label class="col-md-4 control-label" for="name">Journal From:</label>
             <div class="col-md-4">
               <select name="typeseatfrom" id="typeseatfrom" class="form-control">
                 <option value="0">Select an option</option>
@@ -43,12 +43,22 @@
             </div>
             
             <div class="col-md-3">
-              <input type="text" autocomplete="off" id="seatfrom" name="seatfrom" class="form-control" maxlength="8" size="8" value="<?php echo (isset($seatfrom) && !empty($seatfrom)) ? $seatfrom : ''; ?>" />
+              <input type="text" autocomplete="off" id="seatfrom" name="seatfrom" class="form-control" maxlength="8" size="8" value="<?php echo (isset($seatfrom) && !empty($seatfrom)) ? $seatfrom : ''; ?>" placeholder="00000000" />
             </div>
+
+            <div class="col-md-1" style="cursor:pointer"> 
+              <span style="float: left; margin-left:-20px;margin-top:5px;">
+                <a href="javascript:void(0);" id="clearJournal"><i class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="bottom" title="Clear Journal"></i></a>
+              </span> 
+            </div>  
+
+            <!--<div class="col-md-1" style="cursor:pointer">
+              <i id="cleanSeat" class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="bottom" title="Clear seat"></i>
+            </div>-->
           </div>
             
           <div class="form-group">
-            <label class="col-md-4 control-label" for="name">Seat To:</label>
+            <label class="col-md-4 control-label" for="name">Journal To:</label>
             <div class="col-md-4">
               <select name="typeseatto" id="typeseatto" class="form-control">
                 <option value="0">Select an option</option>
@@ -61,7 +71,7 @@
             </div>
             
             <div class="col-md-3">
-              <input type="text" autocomplete="off" id="seatto" name="seatto" class="form-control" maxlength="8" size="8" value="<?php echo (isset($seatto) && !empty($seatto)) ? $seatto : ''; ?>" />
+              <input type="text" autocomplete="off" id="seatto" name="seatto" class="form-control" maxlength="8" size="8" value="<?php echo (isset($seatto) && !empty($seatto)) ? $seatto : ''; ?>" placeholder="00000000" />
             </div>
           </div>
 
@@ -114,14 +124,14 @@
     <div class="tab-pane fade in active" id="home-pills">
     <br>
     <div class="table table-responsive">                     
-    <table width="100%" class="table table-responsive table-striped style-table" >
+    <table width="100%" class="table table-responsive style-table" >
     <thead>
       <tr>        
         <th class="style-th" width="10%">ACCOUNT</th>
         <th class="style-th" width="15%">NAME ACCOUNT</th>
         <th class="style-th" width="5%">TYPE</th>
         <th class="style-th" width="10%">REFERENCE</th>
-        <th class="style-th" width="11%">SETTLEMENT</th>
+        <th class="style-th" width="11%">LIQUIDATION</th>
         <th class="style-th" width="25%">CONCEPT</th>
         <th class="style-th" width="12%">DEBIT</th>
         <th class="style-th" width="12%">CREDIT</th>          
@@ -134,8 +144,8 @@
           <?php if (!empty($key)){ ?>
             <tr>
               <td colspan="6">&nbsp;</td>
-              <td class="style-td-totals"><?php echo number_format($acum_debit,2);?></td>
-              <td class="style-td-totals"><?php echo number_format(abs($acum_credit),2);?></td>
+              <td class="style-td-totals"><?php echo number_format($acum_debit,2,',','.');?></td>
+              <td class="style-td-totals"><?php echo number_format(abs($acum_credit),2,',','.');?></td>
             </tr> 
             <tr><td colspan="8">&nbsp;</td></tr>
           <?php } ?>          
@@ -143,7 +153,7 @@
            <td colspan="8">
              Date: <?php echo date("m/d/Y",strtotime($value["FECHA_ASI"])); ?>
              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             No. <?php echo $typeseat." ".$value["ASIENTO"];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             No. <?php echo $value["TIPO_ASI"]." ".$value["ASIENTO"];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              <?php echo $value["DESC_ASI"];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              <?php echo $value["cabliquida"];?>
            </td>           
@@ -170,21 +180,21 @@
          if ($value["IMPORTE"] > 0){ 
            $acum_debit = $value["IMPORTE"] + $acum_debit;  
          ?>
-           <td align="right"><?php echo number_format($value["IMPORTE"],2);?></td>   
-           <td align="right"><?php echo number_format(0,2); ?></td>    
+           <td align="right"><?php echo number_format($value["IMPORTE"],2,',','.');?></td>   
+           <td align="right"><?php echo number_format(0,2,',','.'); ?></td>    
          <?php 
          } else{ 
            $acum_credit = $value["IMPORTE"] + $acum_credit;
          ?>
-           <td align="right"><?php echo number_format(0,2); ?></td>   
-           <td align="right"><?php echo number_format(abs($value["IMPORTE"]),2);?></td>    
+           <td align="right"><?php echo number_format(0,2,',','.'); ?></td>   
+           <td align="right"><?php echo number_format(abs($value["IMPORTE"]),2,',','.');?></td>    
          <?php } ?>            
       </tr>            
       <?php } ?>
       <tr>
         <td colspan="6">&nbsp;</td>
-        <td class="style-td-totals"><?php echo number_format($acum_debit,2);?></td>
-        <td class="style-td-totals"><?php echo number_format(abs($acum_credit),2);?></td>
+        <td class="style-td-totals"><?php echo number_format($acum_debit,2,',','.');?></td>
+        <td class="style-td-totals"><?php echo number_format(abs($acum_credit),2,',','.');?></td>
       </tr> 
     </tbody>    
     </table> 

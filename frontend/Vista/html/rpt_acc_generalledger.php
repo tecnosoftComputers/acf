@@ -97,14 +97,14 @@
     <div class="tab-pane fade in active" id="home-pills">
     <br>
     <div class="table table-responsive">                     
-    <table width="100%" class="table table-responsive table-striped style-table">
+    <table width="100%" class="table table-responsive style-table">
     <thead>
       <tr>        
         <th class="style-th" width="7%">DATE</th>
         <th class="style-th" width="5%">TYPE</th>        
         <th class="style-th" width="7%">SEAT</th>        
         <th class="style-th" width="8%">REFERENCE</th>
-        <th class="style-th" width="8%">SETTLEMENT</th>
+        <th class="style-th" width="8%">LIQUIDATION</th>
         <th class="style-th" width="29%">CONCEPT</th>
         <th class="style-th" width="12%">DEBIT</th>
         <th class="style-th" width="12%">CREDIT</th>
@@ -131,9 +131,9 @@
           echo "<tr>               
                 <td colspan='5'>&nbsp;</td>
                 <td><strong>Current Balance:</strong></td>
-                <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
-                <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>
-                <td class='style-td-totals'>".number_format($showbalance,2)."</td>
+                <td class='style-td-totals'>".number_format($showacumdebit,2,',','.')."</td>
+                <td class='style-td-totals'>".number_format($showacumcredit,2,',','.')."</td>
+                <td class='style-td-totals'>".number_format($showbalance,2,',','.')."</td>
               </tr>"; 
           echo "<tr><td colspan='9'>&nbsp;</td></tr>"; 
         }
@@ -152,7 +152,7 @@
                 <td colspan='3'>".$value["CODMOV"]."</td>
                 <td colspan='3'>".$infoaccount["NOMBRE"]."</td>
                 <td colspan='2'>Previous Balance:</td>
-                <td align='right'>".number_format($showprevbalance,2)."</td>
+                <td align='right'>".number_format($showprevbalance,2,',','.')."</td>
               </tr>";
         $account = $value["CODMOV"];    
         $acumdebit = 0;
@@ -180,9 +180,9 @@
               <td>".$value["REFER"]."</td>
               <td>".$value["LIQUIDA_NO"]."</td>
               <td>".$value["CONCEPTO"]."</td>
-              <td align='right'>".number_format($showdebit,2)."</td>
-              <td align='right'>".number_format($showcredit,2)."</td>
-              <td align='right'>".number_format($showbalance,2)."</td>
+              <td align='right'>".number_format($showdebit,2,',','.')."</td>
+              <td align='right'>".number_format($showcredit,2,',','.')."</td>
+              <td align='right'>".number_format($showbalance,2,',','.')."</td>
             </tr>";                     
     } 
     $showacumdebit = abs($acumdebit);
@@ -194,9 +194,9 @@
     echo "<tr>               
             <td colspan='5'>&nbsp;</td>
             <td><strong>Current Balance:</strong></td>
-            <td class='style-td-totals'>".number_format($showacumdebit,2)."</td>
-            <td class='style-td-totals'>".number_format($showacumcredit,2)."</td>
-            <td class='style-td-totals'>".number_format($showbalance,2)."</td>
+            <td class='style-td-totals'>".number_format($showacumdebit,2,',','.')."</td>
+            <td class='style-td-totals'>".number_format($showacumcredit,2,',','.')."</td>
+            <td class='style-td-totals'>".number_format($showbalance,2,',','.')."</td>
           </tr>";       
     ?>      
     </tbody>    
