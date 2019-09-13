@@ -135,12 +135,26 @@
                  <td colspan='4'>&nbsp;</td>                  
                </tr>";                     
          $total = abs($acumingresos) - abs($acumegresos);
-         echo "<tr>                             
+         if ($total > 0){
+           foreach($accdeudora as $deudora){
+             echo "<tr>                             
+                <td>".$deudora["CODIGO"]."</td>                
+                <td>".$deudora["NOMBRE"]."</td>                
                 <td>&nbsp;</td>                
-                <td>&nbsp;</td>                
+                <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
+              </tr>";             
+           }
+         }
+         else{
+           foreach($accacreedora as $acreedora){
+             echo "<tr>                             
+                <td>".$acreedora["CODIGO"]."</td>                
+                <td>".$acreedora["NOMBRE"]."</td>                
                 <td>&nbsp;</td>                
                 <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
               </tr>";           
+          }
+         }         
         ?>      
         </tbody>    
         </table>  
@@ -149,129 +163,8 @@
       <br>
 <?php 
     }
-    if ($typereport == "D"){ ?>
-      <br>
-      <?php if (isset($permission) && $permission["pri"] == 1){  ?>
-        <span id="pdf" style="float: right; margin-left: 10px">
-          <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
-        </span>
-        <span id="excel" style="float: right">
-          <a href="<?php echo PUERTO."://".HOST."/report/journalsummary/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
-        </span>
-      <?php } else{ ?>
-        <span style="float: right; margin-left: 10px;">
-          <a href="javascript:void(0);" onclick="viewMessage('You cannot execute this action');" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
-        </span>
-        <span id="excel" style="float: right;">
-          <a href="javascript:void(0);" onclick="viewMessage('You cannot execute this action');" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
-        </span>
-      <?php } ?>     
-      <br>
-      <div class="tab-content">
-        <div class="tab-pane fade in active" id="home-pills">
-        <br>                     
-        <table width="100%" class="table table-responsive table-striped style-table">
-        <thead>
-          <tr>        
-            <th class="style-th" width="10%">TYPE SEAT</th>
-            <th class="style-th" width="45%">DESCRIPTION</th>        
-            <th class="style-th" width="15%">DEBIT</th>
-            <th class="style-th" width="15%">CREDIT</th>        
-            <th class="style-th" width="15%">(DB - CR)</th>        
-          </tr>
-        </thead>
-        <tbody>
-        <tr><td colspan="5" class="style-td-special"></td></tr> 
-        <?php     
-        $account = '';      
-        $acumdebit = 0;
-        $acumcredit = 0;
-        $acumresta = 0;
-        $totdebit = 0;
-        $totcredit = 0;
-        $totresta = 0;
-        foreach($results as $key=>$value){ 
-          if ($account <> $value["CODMOV"]){            
-            if (!empty($key)){
-              $sign = Utils::getSign(trim($account),array("ACTIVO","EGRESOS"),$types_account); 
-              $totdebit = $totdebit + $acumdebit;
-              $totcredit = $totcredit + $acumcredit;
-              $totresta = $totresta + $acumresta;
-              $showacumdebit = abs($acumdebit);
-              $showacumcredit = abs($acumcredit);               
-              $showacumresta = round($acumresta,2);               
-              $showacumresta = ($sign) ? $showacumresta : $showacumresta * -1; 
-              $showacumresta = (empty($showacumresta)) ? abs($showacumresta) : $showacumresta;     
-
-              echo "<tr>                                  
-                     <td colspan='2' align='right'><strong>Subtotal:</strong></td>       
-                     <td class='style-td-totals'>".number_format($showacumdebit,2,',','.')."</td>
-                     <td class='style-td-totals'>".number_format($showacumcredit,2,',','.')."</td> 
-                     <td class='style-td-totals'>".number_format($showacumresta,2,',','.')."</td>
-                    </tr>";    
-              echo "<tr><td colspan='5'>&nbsp;</td></tr>";         
-            }
-            echo "<tr class='style-tr-cab'>               
-                   <td>".$value["CODMOV"]."</td>
-                   <td>".$value["NOMBRE"]."</td> 
-                   <td colspan='3'>&nbsp;</td>                                      
-                 </tr>";   
-            $account = $value["CODMOV"];   
-            $acumdebit = 0;
-            $acumcredit = 0;
-            $acumresta = 0;  
-          }
-          $sign = Utils::getSign(trim($value["CODMOV"]),array("ACTIVO","EGRESOS"),$types_account); 
-          $acumdebit = $acumdebit + $value["debit"];
-          $acumcredit = $acumcredit + $value["credit"]; 
-          $acumresta = $acumresta + $value["debit"] + $value["credit"];           
-          $showdebit = abs($value["debit"]);  
-          $showcredit = abs($value["credit"]);  
-          $showresta = $value["debit"] + $value["credit"];           
-          $showresta = round($showresta,2);               
-          $showresta = ($sign) ? $showresta : $showresta * -1; 
-          $showresta = (empty($showresta)) ? abs($showresta) : $showresta;           
-          echo "<tr>               
-                  <td>".$value["TIPO_ASI"]."</td>
-                  <td>".$value["nameseat"]."</td>                                                
-                  <td align='right'>".number_format($showdebit,2,',','.')."</td>
-                  <td align='right'>".number_format($showcredit,2,',','.')."</td>                
-                  <td align='right'>".number_format($showresta,2,',','.')."</td>                
-                </tr>";                     
-         }
-         $totdebit = $totdebit + $acumdebit;
-         $totcredit = $totcredit + $acumcredit;
-         $totresta = $totresta + $acumresta; 
-         $showacumdebit = abs($acumdebit);
-         $showacumcredit = abs($acumcredit); 
-         $showacumresta = round($acumresta,2);               
-         $showacumresta = ($sign) ? $showacumresta : $showacumresta * -1; 
-         $showacumresta = (empty($showacumresta)) ? abs($showacumresta) : $showacumresta;
-         
-         $showtotdebit = abs($totdebit);
-         $showtotcredit = abs($totcredit);         
-         $showtotresta = round($totresta,2);               
-         $showtotresta = ($sign) ? $showtotresta : $showtotresta * -1; 
-         $showtotresta = (empty($showtotresta)) ? abs($showtotresta) : $showtotresta;
-         echo "<tr>                                  
-                 <td colspan='2' align='right'><strong>Subtotal:</strong></td>       
-                 <td class='style-td-totals'>".number_format($showacumdebit,2,',','.')."</td>
-                 <td class='style-td-totals'>".number_format($showacumcredit,2,',','.')."</td> 
-                 <td class='style-td-totals'>".number_format($showacumresta,2,',','.')."</td>
-               </tr>";
-         echo "<tr><td colspan='5'>&nbsp;</td></tr>";       
-         echo "<tr>                                  
-                 <td colspan='2' align='right'><strong>Totals:</strong></td>       
-                 <td class='style-td-totals'>".number_format($showtotdebit,2,',','.')."</td>
-                 <td class='style-td-totals'>".number_format($showtotcredit,2,',','.')."</td>
-                 <td class='style-td-totals'>".number_format($showtotresta,2,',','.')."</td>
-               </tr>";      
-        ?>      
-        </tbody>    
-        </table>  
-       </div>
-      </div>
-      <br>
+    if ($typereport == "M"){ ?>
+      
 <?php    
   }  
 }       

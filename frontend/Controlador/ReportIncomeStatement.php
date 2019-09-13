@@ -20,7 +20,16 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         $tags["dbdateto"] = strtotime($dateto);        
         $tags["typereport"] = $typereport;
         $tags["acclevel"] = $acclevel;
-        $tags["types_account"] = $types_account;          
+        $tags["types_account"] = $types_account;
+        //cuenta acreedora y deudora
+        $accdeudora = array();
+        $accacreedora = array();
+        foreach($types_account["RESULTADOD"] as $deudora){
+          $accdeudora[] = Modelo_ChartAccount::getIndAux($deudora); 
+        }
+        foreach($types_account["RESULTADOA"] as $acreedora){
+          $accacreedora[] = Modelo_ChartAccount::getIndAux($acreedora); 
+        }                         
         if ($typereport == "A"){             
           $tags["results"] = Modelo_Dpmovimi::reportIncomeA($_SESSION['acfSession']['id_empresa'],
                                                             $dateto,$types_account["INGRESOS"],
@@ -32,7 +41,9 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         }         
         if (empty($tags["results"])){
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";
-        }      
+        } 
+        $tags['accdeudora'] = $accdeudora;     
+        $tags['accacreedora'] = $accacreedora;     
         $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item]; 
         $tags["template_js"][] = "reports";     
         Vista::render('rpt_acc_incomestatement', $tags);  
