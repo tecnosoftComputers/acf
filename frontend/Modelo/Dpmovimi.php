@@ -246,11 +246,19 @@ class Modelo_Dpmovimi{
             $results[$keyparent]["level"] = (empty($cod)) ? 1 : 2;
           }                    
       	}
-      }      
+      }   
+      //aqui volarselo el level dependiendo de lo que le llegue por parametro
       foreach($results as $key=>$value){
+        if ($level == 1 && $value["level"] <> $level){
+          unset($results[$key]);
+        }
+        elseif ($level == 2 && $value["level"] > $level){
+          unset($results[$key]);
+        }        
       	if (empty($value["ingreso"]) && empty($value["egreso"])){
       	  unset($results[$key]);
       	}
+
       }
     }    
     return $results;    
@@ -315,6 +323,12 @@ class Modelo_Dpmovimi{
         }
       }      
       foreach($results as $key=>$value){
+        if ($level == 1 && $value["level"] <> $level){
+          unset($results[$key]);
+        }
+        elseif ($level == 2 && $value["level"] > $level){
+          unset($results[$key]);
+        }  
         if (empty($value["ingreso"]) && empty($value["egreso"])){
           unset($results[$key]);
         }

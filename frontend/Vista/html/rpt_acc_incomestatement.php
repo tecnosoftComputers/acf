@@ -66,8 +66,7 @@
   if (isset($results) && !empty($results)) {
     $url = $dbdatefrom."/".$dbdateto."/".$typereport."/";
     $url .= (!empty($accfrom)) ? $accfrom."/" : ""; 
-    $url .= (!empty($accto)) ? $accto."/" : "";   
-    
+    $url .= (!empty($accto)) ? $accto."/" : "";       
   ?>
     <br>
     <?php if (isset($permission) && $permission["pri"] == 1){  ?>
