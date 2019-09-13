@@ -199,28 +199,28 @@ class Modelo_Dpmovimi{
 			  (SELECT CODMOV, SUM(IMPORTE) AS ingreso
 			   FROM dpmovimi 
 			   WHERE FECHA_ASI <= '".$dateto."' AND (";
-	foreach($accingresos as $key=>$value){		   
-	  $sql .= " CODMOV LIKE '4%' OR";
-	}
-	$sql = substr($sql,0,-2);
-	$sql .= ") GROUP BY CODMOV) AS ingresos ON ingresos.CODMOV = c.CODIGO
-			LEFT JOIN
-			  (SELECT CODMOV, SUM(IMPORTE) AS egreso
-			   FROM dpmovimi 
-			   WHERE FECHA_ASI <= '".$dateto."' AND (";
-    foreach($accegresos as $key=>$value){
-      $sql .= " CODMOV LIKE '".$value."%' OR";
-    }
-    $sql = substr($sql,0,-2);
-	$sql .= ") GROUP BY CODMOV) AS egresos ON egresos.CODMOV = c.CODIGO
-			WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0) AND (";
-    foreach($accingresos as $key=>$value){		   
-	  $sql .= " c.CODIGO LIKE '".$value."%' OR";
-	}	
-	foreach($accegresos as $key=>$value){		   
-	  $sql .= " c.CODIGO LIKE '".$value."%' OR";
-	}
-	$sql = substr($sql,0,-2);
+  	foreach($accingresos as $key=>$value){		   
+  	  $sql .= " CODMOV LIKE '4%' OR";
+  	}
+  	$sql = substr($sql,0,-2);
+  	$sql .= ") GROUP BY CODMOV) AS ingresos ON ingresos.CODMOV = c.CODIGO
+  			LEFT JOIN
+  			  (SELECT CODMOV, SUM(IMPORTE) AS egreso
+  			   FROM dpmovimi 
+  			   WHERE FECHA_ASI <= '".$dateto."' AND (";
+      foreach($accegresos as $key=>$value){
+        $sql .= " CODMOV LIKE '".$value."%' OR";
+      }
+      $sql = substr($sql,0,-2);
+  	$sql .= ") GROUP BY CODMOV) AS egresos ON egresos.CODMOV = c.CODIGO
+  			WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0) AND (";
+      foreach($accingresos as $key=>$value){		   
+  	  $sql .= " c.CODIGO LIKE '".$value."%' OR";
+  	}	
+  	foreach($accegresos as $key=>$value){		   
+  	  $sql .= " c.CODIGO LIKE '".$value."%' OR";
+  	}
+  	$sql = substr($sql,0,-2);
     $sql .= ") ORDER BY c.CODIGO, ingresos.ingreso, egresos.egreso";
     $results = $GLOBALS['db']->auto_array($sql,array(),true); 
     /*3 tipos de niveles
