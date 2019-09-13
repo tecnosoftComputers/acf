@@ -200,7 +200,7 @@ class Modelo_Dpmovimi{
 			   FROM dpmovimi 
 			   WHERE FECHA_ASI <= '".$dateto."' AND (";
   	foreach($accingresos as $key=>$value){		   
-  	  $sql .= " CODMOV LIKE '4%' OR";
+  	  $sql .= " CODMOV LIKE '".$value."%' OR";
   	}
   	$sql = substr($sql,0,-2);
   	$sql .= ") GROUP BY CODMOV) AS ingresos ON ingresos.CODMOV = c.CODIGO
@@ -254,6 +254,73 @@ class Modelo_Dpmovimi{
       }
     }    
     return $results;    
-  } 	
+  } 
+
+  public static function reportIncomeM($empresa,$datefrom,$dateto,$accingresos=array(),
+                                       $accegresos=array(),$level){
+    if (empty($empresa) || empty($datefrom) || empty($dateto) || empty($accingresos) || 
+      empty($accegresos) || empty($level)){ return false; }
+    $sql = "SELECT c.CODIGO, c.NOMBRE, ingresos.ingreso, egresos.egreso
+      FROM dp01a110 c 
+      LEFT JOIN 
+        (SELECT CODMOV, SUM(IMPORTE) AS ingreso
+         FROM dpmovimi 
+         WHERE FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."' AND (";
+    foreach($accingresos as $key=>$value){       
+      $sql .= " CODMOV LIKE '".$value."%' OR";
+    }
+    $sql = substr($sql,0,-2);
+    $sql .= ") GROUP BY CODMOV) AS ingresos ON ingresos.CODMOV = c.CODIGO
+        LEFT JOIN
+          (SELECT CODMOV, SUM(IMPORTE) AS egreso
+           FROM dpmovimi 
+           WHERE FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."' AND (";
+      foreach($accegresos as $key=>$value){
+        $sql .= " CODMOV LIKE '".$value."%' OR";
+      }
+      $sql = substr($sql,0,-2);
+    $sql .= ") GROUP BY CODMOV) AS egresos ON egresos.CODMOV = c.CODIGO
+        WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0) AND (";
+      foreach($accingresos as $key=>$value){       
+      $sql .= " c.CODIGO LIKE '".$value."%' OR";
+    } 
+    foreach($accegresos as $key=>$value){      
+      $sql .= " c.CODIGO LIKE '".$value."%' OR";
+    }
+    $sql = substr($sql,0,-2);
+    $sql .= ") ORDER BY c.CODIGO, ingresos.ingreso, egresos.egreso";
+    $results = $GLOBALS['db']->auto_array($sql,array(),true); 
+    /*3 tipos de niveles
+    3=> cuentas detalle
+    2=> padres de la de detalle}
+    1=> padres principales*/
+    if (!empty($results)){
+      foreach($results as $key=>$value){
+        if (empty($value["ingreso"]) && empty($value["egreso"])){
+          continue; 
+        }
+        else{
+          $codigoaux = $value["CODIGO"];                    
+          $cod = substr($codigoaux,0,strrpos($codigoaux,".")); 
+          $results[$key]["level"] = 3;
+          //$contlevel = 0;
+          while (!empty($cod)){                                    
+            $keyparent = array_search($cod.".", array_column($results, 'CODIGO')); 
+            $results[$keyparent]["level"] = 2;         
+            $results[$keyparent]["ingreso"] = $results[$keyparent]["ingreso"] + $value["ingreso"];
+            $results[$keyparent]["egreso"] = $results[$keyparent]["egreso"] + $value["egreso"];
+            $cod = substr($cod,0,strrpos($cod,"."));            
+            $results[$keyparent]["level"] = (empty($cod)) ? 1 : 2;
+          }                    
+        }
+      }      
+      foreach($results as $key=>$value){
+        if (empty($value["ingreso"]) && empty($value["egreso"])){
+          unset($results[$key]);
+        }
+      }
+    }    
+    return $results;    
+  }	
 }  
 ?>

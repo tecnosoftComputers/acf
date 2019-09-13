@@ -13,6 +13,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
       case 'search':
         $aux_dateto = Utils::getParam('dateto','',$this->data);
         $dateto = (!empty($aux_dateto)) ? date("Y-m-d", strtotime($aux_dateto)) : date('Y-m-d');        
+        $datefrom = date("Y-m-01",strtotime($aux_dateto));
         $acclevel = Utils::getParam('acclevel',$this->maxlevel,$this->data);        
         $typereport = Utils::getParam('typereport','A',$this->data);
         $types_account = Modelo_Dasbal::getParams();              
@@ -36,8 +37,9 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
                                                             $types_account["EGRESOS"],$acclevel); 
         }
         else{
-          //$tags["results"] = Modelo_Dpmovimi::reportSummaryD($_SESSION['acfSession']['id_empresa'],
-          //                                                   $datefrom,$dateto,$ccfrom,$ccto); 
+          $tags["results"] = Modelo_Dpmovimi::reportIncomeM($_SESSION['acfSession']['id_empresa'],
+                                                            $datefrom,$dateto,$types_account["INGRESOS"],
+                                                            $types_account["EGRESOS"],$acclevel); 
         }         
         if (empty($tags["results"])){
           $_SESSION['acfSession']['mostrar_error'] = "Not found records";

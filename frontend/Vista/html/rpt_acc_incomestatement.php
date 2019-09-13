@@ -67,106 +67,101 @@
     $url = $dbdatefrom."/".$dbdateto."/".$typereport."/";
     $url .= (!empty($accfrom)) ? $accfrom."/" : ""; 
     $url .= (!empty($accto)) ? $accto."/" : "";   
-    if ($typereport == "A"){     
+    
   ?>
-      <br>
-      <?php if (isset($permission) && $permission["pri"] == 1){  ?>
-        <span id="pdf" style="float: right; margin-left: 10px;">
-          <a href="<?php echo PUERTO."://".HOST."/report/incomestatement/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
-        </span>
-        <span id="excel" style="float: right;">
-          <a href="<?php echo PUERTO."://".HOST."/report/incomestatement/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
-        </span> 
-      <?php } else{ ?>
-        <span style="float: right; margin-left: 10px;">
-          <a href="javascript:void(0);" class="btn btn-success" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-excel-o"></i></a>
-        </span>
-        <span style="float: right;">
-          <a href="javascript:void(0);" class="btn btn-danger" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-pdf-o"></i></a>
-        </span> 
-      <?php } ?>    
-      <br>
-      <div class="tab-content">
-        <div class="tab-pane fade in active" id="home-pills">
-        <br>                     
-        <table width="100%" class="table table-responsive style-table">
-        <thead>
-          <tr>        
-            <th class="style-th" width="10%">ACCOUNT</th>
-            <th class="style-th" width="50%">NAME ACCOUNT</th>        
-            <th class="style-th" width="20%">BALANCE</th>
-            <th class="style-th" width="20%">TOTAL</th>        
-          </tr>
-        </thead>
-        <tbody>
-        <tr><td colspan="8" class="style-td-special"></td></tr> 
-        <?php
-        $total = 0; 
-        $printblank = 0;        
-        $acumingresos = 0;
-        $acumegresos = 0;
-        foreach($results as $key=>$value){                    
-          if (empty($value["ingreso"]) && $printblank == 0){
-            echo "<tr>               
-                  <td colspan='4'>&nbsp;</td>                  
-                  </tr>";                                 
-            $printblank = 1;      
-          } 
-          if ($value["level"] == 1){
-            $cod = str_replace(".","",$value["CODIGO"]);
-            if (in_array($cod,$types_account["INGRESOS"])){
-              $acumingresos = $acumingresos + $value["ingreso"];
-            } 
-            if (in_array($cod,$types_account["EGRESOS"])){
-              $acumegresos = $acumegresos + $value["egreso"];
-            }
-          }         
-          $balance = (!empty($value["ingreso"])) ? $value["ingreso"] * -1 : $value["egreso"];           
-          $total = ($value["level"] != 3) ? $balance : 0;   
-          $balance = ($value["level"] == 3) ? $balance : 0;          
+    <br>
+    <?php if (isset($permission) && $permission["pri"] == 1){  ?>
+      <span id="pdf" style="float: right; margin-left: 10px;">
+        <a href="<?php echo PUERTO."://".HOST."/report/incomestatement/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+      </span>
+      <span id="excel" style="float: right;">
+        <a href="<?php echo PUERTO."://".HOST."/report/incomestatement/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+      </span> 
+    <?php } else{ ?>
+      <span style="float: right; margin-left: 10px;">
+        <a href="javascript:void(0);" class="btn btn-success" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-excel-o"></i></a>
+      </span>
+      <span style="float: right;">
+        <a href="javascript:void(0);" class="btn btn-danger" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-pdf-o"></i></a>
+      </span> 
+    <?php } ?>    
+    <br>
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="home-pills">
+      <br>                     
+      <table width="100%" class="table table-responsive style-table">
+      <thead>
+        <tr>        
+          <th class="style-th" width="10%">ACCOUNT</th>
+          <th class="style-th" width="50%">NAME ACCOUNT</th>        
+          <th class="style-th" width="20%">BALANCE</th>
+          <th class="style-th" width="20%">TOTAL</th>        
+        </tr>
+      </thead>
+      <tbody>
+      <tr><td colspan="8" class="style-td-special"></td></tr> 
+      <?php
+      $total = 0; 
+      $printblank = 0;        
+      $acumingresos = 0;
+      $acumegresos = 0;
+      foreach($results as $key=>$value){                    
+        if (empty($value["ingreso"]) && $printblank == 0){
           echo "<tr>               
-                  <td>".$value["CODIGO"]."</td>
-                  <td>".$value["NOMBRE"]."</td>                                                
-                  <td align='right'>".number_format($balance,2,',','.')."</td>
-                  <td align='right'>".number_format($total,2,',','.')."</td>                
-                </tr>";                     
-         }   
-         echo "<tr>               
-                 <td colspan='4'>&nbsp;</td>                  
-               </tr>";                     
-         $total = abs($acumingresos) - abs($acumegresos);
-         if ($total > 0){
-           foreach($accdeudora as $deudora){
-             echo "<tr>                             
-                <td>".$deudora["CODIGO"]."</td>                
-                <td>".$deudora["NOMBRE"]."</td>                
-                <td>&nbsp;</td>                
-                <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
-              </tr>";             
-           }
-         }
-         else{
-           foreach($accacreedora as $acreedora){
-             echo "<tr>                             
-                <td>".$acreedora["CODIGO"]."</td>                
-                <td>".$acreedora["NOMBRE"]."</td>                
-                <td>&nbsp;</td>                
-                <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
-              </tr>";           
+                <td colspan='4'>&nbsp;</td>                  
+                </tr>";                                 
+          $printblank = 1;      
+        } 
+        if ($value["level"] == 1){
+          $cod = str_replace(".","",$value["CODIGO"]);
+          if (in_array($cod,$types_account["INGRESOS"])){
+            $acumingresos = $acumingresos + $value["ingreso"];
+          } 
+          if (in_array($cod,$types_account["EGRESOS"])){
+            $acumegresos = $acumegresos + $value["egreso"];
           }
-         }         
-        ?>      
-        </tbody>    
-        </table>  
-       </div>
-      </div>
-      <br>
-<?php 
-    }
-    if ($typereport == "M"){ ?>
-      
+        }         
+        $balance = (!empty($value["ingreso"])) ? $value["ingreso"] * -1 : $value["egreso"];           
+        $total = ($value["level"] != 3) ? $balance : 0;   
+        $balance = ($value["level"] == 3) ? $balance : 0;          
+        echo "<tr>               
+                <td>".$value["CODIGO"]."</td>
+                <td>".$value["NOMBRE"]."</td>                                                
+                <td align='right'>".number_format($balance,2,',','.')."</td>
+                <td align='right'>".number_format($total,2,',','.')."</td>                
+              </tr>";                     
+       }   
+       echo "<tr>               
+               <td colspan='4'>&nbsp;</td>                  
+             </tr>";                     
+       $total = abs($acumingresos) - abs($acumegresos);
+       if ($total > 0){
+         foreach($accdeudora as $deudora){
+           echo "<tr>                             
+              <td>".$deudora["CODIGO"]."</td>                
+              <td>".$deudora["NOMBRE"]."</td>                
+              <td>&nbsp;</td>                
+              <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
+            </tr>";             
+         }
+       }
+       else{
+         foreach($accacreedora as $acreedora){
+           echo "<tr>                             
+              <td>".$acreedora["CODIGO"]."</td>                
+              <td>".$acreedora["NOMBRE"]."</td>                
+              <td>&nbsp;</td>                
+              <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
+            </tr>";           
+        }
+       }         
+      ?>      
+      </tbody>    
+      </table>  
+     </div>
+    </div>
+    <br>      
 <?php    
-  }  
 }       
 ?>  
 </div> <!-- FIN DE WRAPPER  -->
