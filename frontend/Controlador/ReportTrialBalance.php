@@ -189,6 +189,12 @@ class Controlador_ReportTrialBalance extends Controlador_Reports {
               ->setCellValue('D'.$this->line, " ".number_format($showdebit,2,',','.'))
               ->setCellValue('E'.$this->line, " ".number_format($showcredit,2,',','.'))
               ->setCellValue('F'.$this->line, " ".number_format($showresta,2,',','.'));
+            
+            /*$objPHPExcel->getActiveSheet()
+              ->getStyle('E'.$this->line.':F'.$this->line) 
+              ->getNumberFormat()
+              ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_NUMBER);*/
+
             $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);
             $this->line++;                                
           } 

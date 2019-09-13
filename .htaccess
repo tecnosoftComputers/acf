@@ -157,7 +157,8 @@ RewriteRule ^report/trialbalance/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTri
 RewriteRule ^report/balancesheet/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet&item=36 [L]
 
 #income statement
-RewriteRule ^report/incomestatement/$ %{ENV:REWRITEBASE}index.php?mostrar=reportIncomeStatement&item=39 [L]
+RewriteRule ^report/incomestatement/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportIncomeStatement&item=43&action=search [L]
+RewriteRule ^report/incomestatement/$ %{ENV:REWRITEBASE}index.php?mostrar=reportIncomeStatement&item=43 [L]
 
 #chart account
 RewriteRule ^report/chartaccount/(pdf|excel)/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1&accfrom=$2&accto=$3 [L]

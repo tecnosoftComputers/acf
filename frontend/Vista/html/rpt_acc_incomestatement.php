@@ -24,8 +24,7 @@
               </div>
             </div>
           </div>                                              
-          
-            
+                      
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Date:</label>
             <div class="col-md-3">
@@ -94,34 +93,53 @@
         <thead>
           <tr>        
             <th class="style-th" width="10%">ACCOUNT</th>
-            <th class="style-th" width="60%">NAME ACCOUNT</th>        
-            <th class="style-th" width="15%">DEBIT</th>
-            <th class="style-th" width="15%">CREDIT</th>        
+            <th class="style-th" width="50%">NAME ACCOUNT</th>        
+            <th class="style-th" width="20%">BALANCE</th>
+            <th class="style-th" width="20%">TOTAL</th>        
           </tr>
         </thead>
         <tbody>
         <tr><td colspan="8" class="style-td-special"></td></tr> 
-        <?php             
-        $acumdebit = 0;
-        $acumcredit = 0;
-        foreach($results as $key=>$value){                         
-          $acumdebit = $acumdebit + $value["debit"];
-          $acumcredit = $acumcredit + $value["credit"];            
-          $showdebit = abs($value["debit"]);  
-          $showcredit = abs($value["credit"]);           
+        <?php
+        $total = 0; 
+        $printblank = 0;        
+        $acumingresos = 0;
+        $acumegresos = 0;
+        foreach($results as $key=>$value){                    
+          if (empty($value["ingreso"]) && $printblank == 0){
+            echo "<tr>               
+                  <td colspan='4'>&nbsp;</td>                  
+                  </tr>";                                 
+            $printblank = 1;      
+          } 
+          if ($value["level"] == 1){
+            $cod = str_replace(".","",$value["CODIGO"]);
+            if (in_array($cod,$types_account["INGRESOS"])){
+              $acumingresos = $acumingresos + $value["ingreso"];
+            } 
+            if (in_array($cod,$types_account["EGRESOS"])){
+              $acumegresos = $acumegresos + $value["egreso"];
+            }
+          }         
+          $balance = (!empty($value["ingreso"])) ? $value["ingreso"] * -1 : $value["egreso"];           
+          $total = ($value["level"] != 3) ? $balance : 0;   
+          $balance = ($value["level"] == 3) ? $balance : 0;          
           echo "<tr>               
-                  <td>".$value["CODMOV"]."</td>
+                  <td>".$value["CODIGO"]."</td>
                   <td>".$value["NOMBRE"]."</td>                                                
-                  <td align='right'>".number_format($showdebit,2,',','.')."</td>
-                  <td align='right'>".number_format($showcredit,2,',','.')."</td>                
+                  <td align='right'>".number_format($balance,2,',','.')."</td>
+                  <td align='right'>".number_format($total,2,',','.')."</td>                
                 </tr>";                     
-         } 
-         $showacumdebit = abs($acumdebit);
-         $showacumcredit = abs($acumcredit);       
+         }   
+         echo "<tr>               
+                 <td colspan='4'>&nbsp;</td>                  
+               </tr>";                     
+         $total = abs($acumingresos) - abs($acumegresos);
          echo "<tr>                             
-                <td colspan='2' align='right'><strong>Total:</strong></td>
-                <td class='style-td-totals'>".number_format($showacumdebit,2,',','.')."</td>
-                <td class='style-td-totals'>".number_format($showacumcredit,2,',','.')."</td>
+                <td>&nbsp;</td>                
+                <td>&nbsp;</td>                
+                <td>&nbsp;</td>                
+                <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
               </tr>";           
         ?>      
         </tbody>    

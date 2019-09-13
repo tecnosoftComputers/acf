@@ -7,6 +7,7 @@ class Controlador_Reports extends Controlador_Base {
   public $line = 10;
   public $vlrecords = array(10,25,50,100);
   public $hexcel = 20;
+  public $maxlevel = 20;
 
   //style for all cells
   public $styleArray = array(
