@@ -190,29 +190,29 @@ class Modelo_Dpmovimi{
   }
 
   public static function reportIncomeA($empresa,$dateto,$accingresos=array(),
-  	                                   $accegresos=array(),$level){
+  	                                   $accegresos=array(),$level,$start=false,$limit=false){
   	if (empty($empresa) || empty($dateto) || empty($accingresos) || 
   		empty($accegresos) || empty($level)){ return false; }
   	$sql = "SELECT c.CODIGO, c.NOMBRE, ingresos.ingreso, egresos.egreso
 			FROM dp01a110 c 
 			LEFT JOIN 
-			  (SELECT CODMOV, SUM(IMPORTE) AS ingreso
+			  (SELECT CODMOV, ID_EMPRESA, SUM(IMPORTE) AS ingreso
 			   FROM dpmovimi 
 			   WHERE FECHA_ASI <= '".$dateto."' AND (";
   	foreach($accingresos as $key=>$value){		   
   	  $sql .= " CODMOV LIKE '".$value."%' OR";
   	}
   	$sql = substr($sql,0,-2);
-  	$sql .= ") GROUP BY CODMOV) AS ingresos ON ingresos.CODMOV = c.CODIGO
+  	$sql .= ") AND ID_EMPRESA = ".$empresa." GROUP BY CODMOV) AS ingresos ON ingresos.CODMOV = c.CODIGO
   			LEFT JOIN
-  			  (SELECT CODMOV, SUM(IMPORTE) AS egreso
+  			  (SELECT CODMOV, ID_EMPRESA, SUM(IMPORTE) AS egreso
   			   FROM dpmovimi 
   			   WHERE FECHA_ASI <= '".$dateto."' AND (";
       foreach($accegresos as $key=>$value){
         $sql .= " CODMOV LIKE '".$value."%' OR";
       }
       $sql = substr($sql,0,-2);
-  	$sql .= ") GROUP BY CODMOV) AS egresos ON egresos.CODMOV = c.CODIGO
+  	$sql .= ") AND ID_EMPRESA = ".$empresa." GROUP BY CODMOV) AS egresos ON egresos.CODMOV = c.CODIGO
   			WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0) AND (";
       foreach($accingresos as $key=>$value){		   
   	  $sql .= " c.CODIGO LIKE '".$value."%' OR";
@@ -233,7 +233,7 @@ class Modelo_Dpmovimi{
       	  continue;	
       	}
       	else{
-      	  $codigoaux = $value["CODIGO"];      	        	  
+      	  $codigoaux = $value["CODIGO"];
   	  	  $cod = substr($codigoaux,0,strrpos($codigoaux,".")); 
   	  	  $results[$key]["level"] = 3;
   	  	  //$contlevel = 0;
@@ -246,7 +246,7 @@ class Modelo_Dpmovimi{
             $results[$keyparent]["level"] = (empty($cod)) ? 1 : 2;
           }                    
       	}
-      }   
+      }
       //aqui volarselo el level dependiendo de lo que le llegue por parametro
       foreach($results as $key=>$value){
         if ($level == 1 && $value["level"] <> $level){
@@ -260,20 +260,41 @@ class Modelo_Dpmovimi{
       	}
 
       }
-    }    
-    return $results;    
+
+      $arr['leveloneval'] = array();
+      foreach ($results as $key => $value) {
+        if ($value['level'] == 1){
+          array_push($arr['leveloneval'], $results[$key]);
+        }
+      }
+    }
+    if(!empty($limit)){
+      $reindexarray = array_values($results);
+      $auxarr = array();
+      foreach ($reindexarray as $key => $remove) {
+        if(($key) >= $start && ($key) < ($limit + $start)){
+          array_push($auxarr, $reindexarray[$key]);
+        }
+      }
+      $arr['nrorecords'] = count($results);
+      $arr['records'] = $auxarr;
+      return $arr;
+    } 
+    else{
+      return $results;
+    }  
   } 
 
   public static function reportIncomeM($empresa,$datefrom,$dateto,$accingresos=array(),
-                                       $accegresos=array(),$level){
+                                       $accegresos=array(),$level,$start=false,$limit=false){
     if (empty($empresa) || empty($datefrom) || empty($dateto) || empty($accingresos) || 
       empty($accegresos) || empty($level)){ return false; }
     $sql = "SELECT c.CODIGO, c.NOMBRE, ingresos.ingreso, egresos.egreso
       FROM dp01a110 c 
       LEFT JOIN 
-        (SELECT CODMOV, SUM(IMPORTE) AS ingreso
+        (SELECT CODMOV, ID_EMPRESA, SUM(IMPORTE) AS ingreso
          FROM dpmovimi 
-         WHERE FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."' AND (";
+         WHERE ID_EMPRESA = ".$empresa." AND FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."' AND (";
     foreach($accingresos as $key=>$value){       
       $sql .= " CODMOV LIKE '".$value."%' OR";
     }
@@ -282,7 +303,7 @@ class Modelo_Dpmovimi{
         LEFT JOIN
           (SELECT CODMOV, SUM(IMPORTE) AS egreso
            FROM dpmovimi 
-           WHERE FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."' AND (";
+           WHERE ID_EMPRESA = ".$empresa." AND FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."' AND (";
       foreach($accegresos as $key=>$value){
         $sql .= " CODMOV LIKE '".$value."%' OR";
       }
@@ -333,8 +354,179 @@ class Modelo_Dpmovimi{
           unset($results[$key]);
         }
       }
+
+      $arr['leveloneval'] = array();
+      foreach ($results as $key => $value) {
+        if ($value['level'] == 1){
+          array_push($arr['leveloneval'], $results[$key]);
+        }
+      }
     }    
-    return $results;    
-  }	
+    if(!empty($limit)){
+      $reindexarray = array_values($results);
+        $auxarr = array();
+        foreach ($reindexarray as $key => $remove) {
+          if(($key) >= $start && ($key) < ($limit + $start)){
+            array_push($auxarr, $reindexarray[$key]);
+          }
+        }
+        $arr['nrorecords'] = count($results);
+        $arr['records'] = $auxarr;
+        return $arr; 
+    } 
+    else{
+      return $results;
+    }
+  }
+
+  public static function reportBalanceSheet($empresa,$datebalance,$activo=array(),
+                                            $pasivo=array(),$capital=array(),
+                                            $accacreedora=array(),$accdeudora=array(),
+                                            $level=false,$start=false,$limit=false){
+    $sql = "SELECT c.CODIGO, c.NOMBRE, activos.activo, pasivos.pasivo, capitales.capital
+      FROM dp01a110 c 
+      LEFT JOIN 
+        (SELECT CODMOV, ID_EMPRESA, SUM(IMPORTE) AS activo
+         FROM dpmovimi 
+         WHERE FECHA_ASI <= '".$datebalance."' AND (";
+         foreach($activo as $key=>$value){
+            $sql .= " CODMOV LIKE '".$value."%' OR";
+          }
+          $sql = substr($sql,0,-2);
+         $sql .= ") AND ID_EMPRESA = ".$empresa." GROUP BY CODMOV) AS activos ON activos.CODMOV = c.CODIGO
+        LEFT JOIN
+          (SELECT CODMOV, ID_EMPRESA, SUM(IMPORTE) AS pasivo
+           FROM dpmovimi 
+           WHERE FECHA_ASI <= '".$datebalance."' AND ( ";
+
+           foreach($pasivo as $key=>$value){
+              $sql .= " CODMOV LIKE '".$value."%' OR";
+            }
+            $sql =substr($sql,0,-2);
+           $sql .= " ) AND ID_EMPRESA = ".$empresa." GROUP BY CODMOV) AS pasivos ON pasivos.CODMOV = c.CODIGO
+            LEFT JOIN
+            (SELECT CODMOV, ID_EMPRESA, SUM(IMPORTE) AS capital
+            FROM dpmovimi 
+            WHERE FECHA_ASI <= '".$datebalance."' AND ( ";
+           // $sql .= "CODMOV LIKE '3%' ) ";
+           foreach($capital as $key=>$value){
+              $sql .= " CODMOV LIKE '".$value."%' OR";
+            }
+            $sql = substr($sql,0,-2);
+           $sql .= " ) AND ID_EMPRESA = ".$empresa." GROUP BY CODMOV) AS capitales ON capitales.CODMOV = c.CODIGO
+            WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0) AND ( ";
+            foreach ($activo as $key => $value) {
+              $sql .= " c.CODIGO LIKE '".$value."%' OR";
+            }
+            foreach ($pasivo as $key => $value) {
+              $sql .= " c.CODIGO LIKE '".$value."%' OR";
+            }
+            foreach ($capital as $key => $value) {
+              $sql .= " c.CODIGO LIKE '".$value."%' OR";
+            }
+        $sql = substr($sql,0,-2);
+        $sql .= " ) ORDER BY c.CODIGO, activos.activo, capitales.capital;";
+        $results = $GLOBALS['db']->auto_array($sql,array(),true); 
+        if(!empty($results)){
+          foreach ($results as $key => $value) {
+            if(empty($value["activo"]) && empty($value["pasivo"]) && empty($value["capital"])
+              && !in_array($value["CODIGO"],array_column($accdeudora, "CODIGO"))
+              && !in_array($value["CODIGO"],array_column($accacreedora, "CODIGO"))){
+              continue;
+            }
+            else{
+              $codigoaux = $value["CODIGO"];
+              $cod = substr($codigoaux,0,strrpos($codigoaux,".")); 
+              $results[$key]["level"] = 3;
+              //$contlevel = 0;
+              while (!empty($cod)){                                    
+                $keyparent = array_search($cod.".", array_column($results, 'CODIGO')); 
+                $results[$keyparent]["level"] = 2;         
+                $results[$keyparent]["activo"] = $results[$keyparent]["activo"] + $value["activo"];
+                $results[$keyparent]["pasivo"] = $results[$keyparent]["pasivo"] + $value["pasivo"];
+                $results[$keyparent]["capital"] = $results[$keyparent]["capital"] + $value["capital"];
+
+                $cod = substr($cod,0,strrpos($cod,"."));            
+                $results[$keyparent]["level"] = (empty($cod)) ? 1 : 2;
+              }                    
+            }
+          }
+
+          foreach($results as $key=>$value){
+            if ($level == 1 && $value["level"] <> $level){
+              unset($results[$key]);
+            }
+            elseif ($level == 2 && $value["level"] > $level){
+              unset($results[$key]);
+            }  
+            if ((empty($value["activo"]) || $value['activo'] == 0)
+              && (empty($value["pasivo"]) || $value['pasivo'] == 0)
+              && (empty($value["capital"]) || $value['capital'] == 0) 
+              && !in_array($value["CODIGO"],array_column($accdeudora, "CODIGO"))
+              && !in_array($value["CODIGO"],array_column($accacreedora, "CODIGO"))){
+              unset($results[$key]);
+            }
+          }
+
+          $acumactivo = 0;
+          $acumpasivo = 0;
+          $acumcapital = 0;
+
+          foreach ($results as $key => $value) {
+            if ($value['level'] == 1){
+              if($value["activo"] != 0){
+                $acumactivo += $acumactivo + $value["activo"];
+              }
+              if($value["pasivo"] != 0){
+                $acumpasivo += $acumpasivo + $value["pasivo"];
+              }
+              if($value["capital"] != 0){
+                $acumcapital += $acumcapital + $value["capital"];
+              }
+            }
+          }
+          $total = ($acumactivo * -1) - ($acumpasivo);
+          // set value to net income
+          foreach ($results as $key => $value) {
+            if($total > 0){
+              foreach ($accdeudora as $deudora) {
+                if($deudora["CODIGO"] == $value["CODIGO"]){
+                  $results[$key]["capital"] = abs($total) + abs($acumcapital);
+                }
+              }
+            }
+            else{
+              foreach ($accacreedora as $acreedora) {
+                if($acreedora["CODIGO"] == $value["CODIGO"]){
+                  $results[$key]["capital"] = abs($total) + abs($acumcapital);
+                }
+              }
+            }
+
+            foreach ($capital as $value) {
+              if($value."." == $results[$key]["CODIGO"] && ($results[$key]["level"] == 2 || $results[$key]["level"] == 1)){
+                $results[$key]["capital"] = $total;
+              }
+            }
+          }
+
+        }
+        $arr["nrorecords"] = count($results);
+
+        if(!empty($limit)){
+          $reindexarray = array_values($results);
+          $auxarr = array();
+          foreach ($reindexarray as $key => $remove) {
+            if(($key) >= $start && ($key) < ($limit + $start)){
+              array_push($auxarr, $reindexarray[$key]);
+            }
+          }
+          $results = $auxarr;
+        } 
+        
+        $arr["records"] = $results;
+        
+        return $arr;
+  }
 }  
 ?>

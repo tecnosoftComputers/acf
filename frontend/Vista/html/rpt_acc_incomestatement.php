@@ -12,9 +12,10 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <form action="<?php echo PUERTO."://".HOST."/report/incomestatement/search/";?>" method="post" class="form-horizontal">
+      <form action="<?php echo PUERTO."://".HOST."/report/incomestatement/search/";?>" method="post" class="form-horizontal" id="frmreport" name="frmreport">
         <fieldset>
           <legend class="mibread" style="text-align: center;"><strong>Income Statement Report</strong></legend>
+          <input type="hidden" name="limit" id="limit" value="<?php echo $limit;?>">
           
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Level Account:</label>
@@ -64,11 +65,28 @@
 
   <?php 
   if (isset($results) && !empty($results)) {
-    $url = $dbdatefrom."/".$dbdateto."/".$typereport."/";
-    $url .= (!empty($accfrom)) ? $accfrom."/" : ""; 
-    $url .= (!empty($accto)) ? $accto."/" : "";       
+    $url = $acclevel."/".$dbdateto."/".$typereport."/";
+    // $url .= (!empty($accfrom)) ? $accfrom."/" : ""; 
+    // $url .= (!empty($accto)) ? $accto."/" : "";
   ?>
     <br>
+    <div class="form-group col-md-6">
+    <label for="records" class="col-md-4 control-label">Number of records:</label>
+    <div class="col-md-2">
+      <select class="form-control" id="optrecords" name="optrecords">        
+      <?php 
+      foreach($vlrecords as $nro){  
+        if ($nro == $limit){
+          echo '<option value="'.$nro.'" selected="selected">'.$nro.'</option>';
+        } 
+        else{
+          echo '<option value="'.$nro.'">'.$nro.'</option>';          
+        } 
+      } 
+      ?>                  
+      </select> 
+    </div>    
+  </div>
     <?php if (isset($permission) && $permission["pri"] == 1){  ?>
       <span id="pdf" style="float: right; margin-left: 10px;">
         <a href="<?php echo PUERTO."://".HOST."/report/incomestatement/excel/".$url; ?>" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
@@ -111,54 +129,68 @@
                 </tr>";                                 
           $printblank = 1;      
         } 
-        if ($value["level"] == 1){
-          $cod = str_replace(".","",$value["CODIGO"]);
-          if (in_array($cod,$types_account["INGRESOS"])){
-            $acumingresos = $acumingresos + $value["ingreso"];
-          } 
-          if (in_array($cod,$types_account["EGRESOS"])){
-            $acumegresos = $acumegresos + $value["egreso"];
-          }
-        }         
+                
         $balance = (!empty($value["ingreso"])) ? $value["ingreso"] * -1 : $value["egreso"];           
         $total = ($value["level"] != 3) ? $balance : 0;   
-        $balance = ($value["level"] == 3) ? $balance : 0;          
+        $balance = ($value["level"] == 3) ? $balance : 0;
         echo "<tr>               
                 <td>".$value["CODIGO"]."</td>
                 <td>".$value["NOMBRE"]."</td>                                                
                 <td align='right'>".number_format($balance,2,',','.')."</td>
                 <td align='right'>".number_format($total,2,',','.')."</td>                
               </tr>";                     
-       }   
-       echo "<tr>               
+       }  
+
+       
+
+       if(isset($leveloneval)){
+        foreach ($leveloneval as $key => $value) {
+          if ($value["level"] == 1){
+            $cod = str_replace(".","",$value["CODIGO"]);
+            if (in_array($cod,$types_account["INGRESOS"])){
+              $acumingresos = $acumingresos + $value["ingreso"];
+            } 
+            if (in_array($cod,$types_account["EGRESOS"])){
+              $acumegresos = $acumegresos + $value["egreso"];
+            }
+          }
+        } 
+        echo "<tr>               
                <td colspan='4'>&nbsp;</td>                  
              </tr>";                     
-       $total = abs($acumingresos) - abs($acumegresos);
-       if ($total > 0){
-         foreach($accdeudora as $deudora){
-           echo "<tr>                             
-              <td>".$deudora["CODIGO"]."</td>                
-              <td>".$deudora["NOMBRE"]."</td>                
-              <td>&nbsp;</td>                
-              <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
-            </tr>";             
+          $total = abs($acumingresos) - abs($acumegresos);
+           if ($total > 0){
+             foreach($accdeudora as $deudora){
+               echo "<tr>                             
+                  <td>".$deudora["CODIGO"]."</td>                
+                  <td>".$deudora["NOMBRE"]."</td>                
+                  <td>&nbsp;</td>                
+                  <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
+                </tr>";             
+             }
+           }
+           else{
+             foreach($accacreedora as $acreedora){
+               echo "<tr>                             
+                  <td>".$acreedora["CODIGO"]."</td>                
+                  <td>".$acreedora["NOMBRE"]."</td>                
+                  <td>&nbsp;</td>                
+                  <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
+                </tr>";           
+            }
          }
-       }
-       else{
-         foreach($accacreedora as $acreedora){
-           echo "<tr>                             
-              <td>".$acreedora["CODIGO"]."</td>                
-              <td>".$acreedora["NOMBRE"]."</td>                
-              <td>&nbsp;</td>                
-              <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
-            </tr>";           
-        }
        }         
       ?>      
       </tbody>    
       </table>  
      </div>
     </div>
+    <center>
+      <?php
+       if (!empty($pagination)){
+        echo $pagination;
+      }?>
+      </center>
     <br>      
 <?php    
 }       

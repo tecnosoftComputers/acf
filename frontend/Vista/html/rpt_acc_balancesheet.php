@@ -3,9 +3,10 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <form action="<?php echo PUERTO."://".HOST."/report/balancesheet/search/";?>" method="post" class="form-horizontal">
+      <form action="<?php echo PUERTO."://".HOST."/report/balancesheet/search/";?>" method="post" class="form-horizontal" id="frmreport">
         <fieldset>
           <legend class="mibread" style="text-align: center;"><strong>Balance Sheet Report</strong></legend>
+          <input type="hidden" name="limit" id="limit" value="<?php echo $limit;?>">
           
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Account Level:</label>
@@ -41,6 +42,23 @@
     $url .= (!empty($accto)) ? $accto."/" : "";    
   ?>
   <br>
+  <div class="form-group col-md-6">
+    <label for="records" class="col-md-4 control-label">Number of records:</label>
+    <div class="col-md-2">
+      <select class="form-control" id="optrecords" name="optrecords">        
+      <?php 
+      foreach($vlrecords as $nro){  
+        if ($nro == $limit){
+          echo '<option value="'.$nro.'" selected="selected">'.$nro.'</option>';
+        } 
+        else{
+          echo '<option value="'.$nro.'">'.$nro.'</option>';          
+        } 
+      } 
+      ?>                  
+      </select> 
+    </div>    
+  </div>
   <span id="pdf" style="float: right; margin-left: 10px">
     <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" target="_blank" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
   </span>
@@ -55,11 +73,19 @@
     <thead>
       <tr>        
         <th class="style-th">ACCOUNT</th>
-        <th class="style-th">NAME ACCOUNT</th>        
+        <th class="style-th">NAME ACCOUNT</th>  
+        <th class="style-th">BALANCES</th>
+        <th class="style-th">TOTAL</th>      
       </tr>
     </thead>
     <tbody>
-    <?php foreach( $results as $key=>$value ){ ?>
+    <?php
+    $acumactivo = 0;
+    $acumpasivo = 0;
+    $acumcapital = 0;
+    foreach( $results as $key=>$value ){ 
+    // echo $value["activo"]." -- ".$value["pasivo"]." -- ".$value["capital"]."<br>"; 
+      ?>
       <?php 
       $nro = substr_count($value["CODIGO"],".");   
       $lastc = substr($value["CODIGO"], -1);   
@@ -67,6 +93,29 @@
       <tr>                 
         <?php 
         $blank_spaces = "";
+
+        if($value["level"] == 1){
+          echo "<tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>";
+        }
+
+        // $balance = (!empty($value["activo"])) ? $value["activo"]  : $value["pasivo"] * -1;  
+        if(!empty($value["activo"])){
+          $balance = $value["activo"];
+        }
+        elseif(!empty($value["pasivo"])){
+          $balance = $value["pasivo"] * -1;
+        } 
+        else{
+          $balance = $value["capital"] * -1;
+        }        
+        $total = ($value["level"] != 3) ? $balance : 0;   
+        $balance = ($value["level"] == 3) ? $balance : 0;
+        // echo "eder. ".$balance;
         if ($nro>1){
           for($i=1;$i<$nro;$i++){
             $blank_spaces .= "&nbsp;&nbsp;";
@@ -75,19 +124,43 @@
         if ($lastc == '.'){
           echo "<td><strong>".$value["CODIGO"]."</strong></td>";
           echo "<td><strong>".$blank_spaces.$value["NOMBRE"]."</strong></td>";
+          echo "<td align='right'><strong>".number_format(bcdiv($balance,1,2),2,',','.')."</strong></td>";
+          echo "<td align='right'><strong>".number_format(bcdiv($total,1,2),2,',','.')."</strong></td>";
         }     
         else{
           $blank_spaces .= "&nbsp;&nbsp;&nbsp;";
           echo "<td>".$value["CODIGO"]."</td>";
           echo "<td>".$blank_spaces.$value["NOMBRE"]."</td>";
+          echo "<td align='right'><strong>".number_format(bcdiv($balance,1,2),2,',','.')."</strong></td>";
+          echo "<td align='right'><strong>".number_format(bcdiv($total,1,2),2,',','.')."</strong></td>";
         }        
         ?>        
       </tr>            
-    <?php } ?>      
+    <?php } 
+
+      if(isset($totalresult)){
+        echo "<tr>               
+               <td colspan='4'>&nbsp;</td>                  
+             </tr>"; 
+        echo "<tr>
+                <td></td>
+                <td><strong><h5>".$totalresult["labelthis"]."</h5></strong></td>
+                <td></td>
+                <td align='right'><strong><h5>".number_format(bcdiv($totalresult["valuethis"],1,2),2,',','.')."</h5></strong></td>
+              </tr>";
+      }
+
+    ?>      
     </tbody>    
     </table>  
    </div>
   </div>
+  <center>
+      <?php
+       if (!empty($pagination)){
+        echo $pagination;
+      }?>
+      </center>
   <br>
 <?php } ?>  
 </div> <!-- FIN DE WRAPPER  -->

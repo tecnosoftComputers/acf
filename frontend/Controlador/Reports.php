@@ -71,12 +71,13 @@ class Controlador_Reports extends Controlador_Base {
 
   public function printHeaderPdf($title,$from,$to,$new=false){    
     $info_company = Modelo_Companie::searchCompanies($_SESSION['acfSession']['id_empresa']);
+    $imageFormat = strtoupper((explode(".", $info_company["rentas_logo"]))[1]);
     if ($new == true){
       $this->objPdf = new FPDF('P','mm','A3'); 
       //$this->objPdf->SetMargins(7,7);     
       $this->objPdf->AddPage();
     }
-    $this->objPdf->Image(FRONTEND_RUTA.PATH_LOGO.$info_company["rentas_logo"], 239,10,50,26,'JPG');
+    $this->objPdf->Image(FRONTEND_RUTA.PATH_LOGO.$info_company["rentas_logo"], 239,10,50,26,$imageFormat);
 
     $this->objPdf->SetFont('Arial','B',14);
     $this->objPdf->Cell(189  ,5,'',0,1);//end of line
