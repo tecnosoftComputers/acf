@@ -13,12 +13,10 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
     switch($action){                            
       case 'search':
         $types_account = Modelo_Dasbal::getParams(); 
+        $datetoaux = Utils::getParam("datetoaux", "", $this->data);
         $datebalance = Utils::getParam('datebalance', '', $this->data);
-        // print_r($datebalance);
-        // $datebalance = (!empty($datebalance)) ? date("m/d/Y", $datebalance) : date("m/d/Y") ;
+        $datebalance = (!empty($datetoaux)) ? date("m/d/Y", $datetoaux) : $datebalance ;
         $acclevel = Utils::getParam('acclevel',$this->maxlevel,$this->data);
-        // print_r($acclevel);
-        // exit();
         $datebalanceaux =  date("Y-m-d", strtotime($datebalance));
         $tags["types_account"] = $types_account;
         $limit = Utils::getParam('limit','',$this->data);
@@ -41,11 +39,9 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
 
 
         $nrorecords = $tags["results"]["nrorecords"];
-        // print_r($nrorecords." - ".$start." - ".$limit);
         $tags["results"] = $tags["results"]["records"];
 
-        $url = PUERTO."://".HOST."/report/balancesheet/search/";
-        // print_r($page." - ".$limit);        
+        $url = PUERTO."://".HOST."/report/balancesheet/search/";     
         $url .= $acclevel."/".strtotime($datebalance)."/".$limit;
         $pagination = new Pagination($nrorecords,$limit,$url);  
         $pagination->setPage($page); 
@@ -66,8 +62,6 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
         }
         $tags["limit"] = $limit; 
         $tags["vlrecords"] = $this->vlrecords; 
-        // print_r($tags["vlrecords"]);
-        // exit();
         $tags["acclevel"] = $acclevel;
         
         $tags['datebalance'] = $datebalance;
@@ -80,7 +74,9 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
       case 'excel':
       break;
       default:         
-        $tags["template_js"][] = "reports";     
+        $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
+        $tags["template_js"][] = "reports";  
+        $tags["acclevel"] = $this->maxlevel;   
         Vista::render('rpt_acc_balancesheet', $tags); 
       break;
     }

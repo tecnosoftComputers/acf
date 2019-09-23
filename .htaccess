@@ -156,7 +156,7 @@ RewriteRule ^report/trialbalance/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTri
 #balance sheet
 RewriteRule ^report/balancesheet/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet&item=36 [L]
 RewriteRule ^report/balancesheet/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet&item=36&action=search [L]
-RewriteRule ^report/balancesheet/search/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet&item=36&action=search&acclevel=$1&datebalance=$2&limit=$3&page=$4 [L]
+RewriteRule ^report/balancesheet/search/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet&item=36&action=search&acclevel=$1&datetoaux=$2&limit=$3&page=$4 [L]
 
 
 #income statement
