@@ -22,7 +22,19 @@
             <div class="col-md-3">
               <input type="text" name="datebalance" id="datebalance" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($datebalance) && !empty($datebalance)) ? $datebalance : date("m/d/Y"); ?>" readonly />  
             </div>
-          </div>                                           
+          </div> 
+
+          <!-- <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Type:</label>
+            <div class="col-md-3">
+              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="A" <?php echo (isset($typereport) && $typereport == "A") ? 'checked="checked"' : ''; ?>>
+              <label class="form-check-label" for="typereport">Accumulated</label>
+            </div>
+            <div class="col-md-3">
+              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="M" <?php echo (isset($typereport) && $typereport == "M") ? 'checked="checked"' : ''; ?>>
+              <label class="form-check-label" for="typereport">Monthly</label>
+            </div>
+          </div> -->                                          
 
           <div class="modal-footer">            
             <button style="float: left;" type="submit" name="register" id="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>

@@ -39,6 +39,11 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
 
 
         $nrorecords = $tags["results"]["nrorecords"];
+
+        if(($page * $limit) >= $nrorecords){
+          $tags["totalresult"] = $tags["results"]["totalresult"];
+        }
+
         $tags["results"] = $tags["results"]["records"];
 
         $url = PUERTO."://".HOST."/report/balancesheet/search/";     
@@ -48,18 +53,6 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
         $tags["pagination"] = $pagination->showPage();
 
 
-        if(($page * $limit) >= $nrorecords){
-          $tags["totalresult"] = array();
-          $labelThis = "TOTAL";
-          foreach ($tags["results"] as $key => $value) {
-            if($value["level"] == 1 && ($value["pasivo"] != 0 || $value["capital"] != 0)){
-              $labelThis .= $value["NOMBRE"]." + ";
-              $valueThis +=  ($value["capital"] * -1) - ($value["pasivo"]); 
-            }
-          }
-          $labelThis = substr($labelThis, 0, -2);
-          $tags["totalresult"] = array("labelthis"=>$labelThis, "valuethis"=>$valueThis);
-        }
         $tags["limit"] = $limit; 
         $tags["vlrecords"] = $this->vlrecords; 
         $tags["acclevel"] = $acclevel;
@@ -70,10 +63,15 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
 
       break;  
       case 'pdf':
+
+
+
+
       break;
       case 'excel':
       break;
-      default:         
+      default:    
+        $tags["typereport"] = "A";     
         $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
         $tags["template_js"][] = "reports";  
         $tags["acclevel"] = $this->maxlevel;   

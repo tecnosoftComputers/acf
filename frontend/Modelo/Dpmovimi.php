@@ -511,6 +511,18 @@ class Modelo_Dpmovimi{
           }
 
         }
+        $totalresult = array();
+        $labelThis = "TOTAL";
+        foreach ($results as $key => $value) {
+          if($value["level"] == 1 && ($value["pasivo"] != 0 || $value["capital"] != 0)){
+            $labelThis .= $value["NOMBRE"]." + ";
+            $valueThis +=  ($value["capital"] * -1) - ($value["pasivo"]); 
+          }
+        }
+        $labelThis = substr($labelThis, 0, -2);
+        $totalresult = array("labelthis"=>$labelThis, "valuethis"=>$valueThis);
+        $arr["totalresult"] = $totalresult;
+
         $arr["nrorecords"] = count($results);
 
         if(!empty($limit)){
