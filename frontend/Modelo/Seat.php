@@ -83,15 +83,20 @@ class Modelo_Seat{
     return $rs;
   }
 
-  /*public static function deleteJournal($id){
+  public static function deleteJournal($id){
 
     if(empty($id)){return false;}
     return $GLOBALS['db']->delete('dpcabtra',"IDCONT = '$id'");
-  }*/
+  }
 
   public static function updateJournal($id, $datos){
 
     return $GLOBALS['db']->update("dpcabtra",$datos,"IDCONT='$id'");
+  }
+
+  public static function existJournal($company,$typeseat,$seat){
+    $sql = "select * from dpcabtra where  id_empresa = $company and tipo_asi = '$typeseat' and asiento = '$seat';";
+    return $GLOBALS['db']->auto_array($sql,array(),true);
   }
 
 }  

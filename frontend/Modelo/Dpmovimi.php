@@ -6,9 +6,20 @@ class Modelo_Dpmovimi{
 	return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
   }
 
+  public static function searchCompanyMovimiByAcc($empresa,$detailAcc){
+  $sql = "SELECT dpm.ID_EMPRESA,dpm.CODMOV,dpm.TIPO_ASI,dpm.IDCONT FROM dpmovimi dpm WHERE dpm.ID_EMPRESA = $empresa AND TRIM(dpm.CODMOV) = '$detailAcc'";
+  return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
+  }
+
+  public static function changeMovimiUpd($empresa,$prevaccount,$newaccount){
+    if(empty($empresa) || empty($prevaccount) || empty($newaccount)){return false;}
+    $sql = "UPDATE dpmovimi set CODMOV = '$newaccount' WHERE ID_EMPRESA = $empresa AND CODMOV = '$prevaccount'";
+    return $GLOBALS['db']->execute($sql);
+  }
+
   public static function searchMinSeat(){
-	$sql = "SELECT MIN(ASIENTO) AS minimo FROM dpmovimi";
-	return $rs = $GLOBALS['db']->auto_array($sql,array(),false);
+	 $sql = "SELECT MIN(ASIENTO) AS minimo FROM dpmovimi";
+	 return $rs = $GLOBALS['db']->auto_array($sql,array(),false);
   }
 
   public static function searchMovimi($type=false,$id){		
@@ -189,7 +200,7 @@ class Modelo_Dpmovimi{
     return $results;
   }
 
-  public static function reportIncomeA($empresa,$dateto,$accingresos=array(),
+  public static function reportIncomeA($empresa,$datefrom,$dateto,$accingresos=array(),
   	                                   $accegresos=array(),$level,$start=false,$limit=false){
   	if (empty($empresa) || empty($dateto) || empty($accingresos) || 
   		empty($accegresos) || empty($level)){ return false; }
@@ -207,7 +218,7 @@ class Modelo_Dpmovimi{
   			LEFT JOIN
   			  (SELECT CODMOV, ID_EMPRESA, SUM(IMPORTE) AS egreso
   			   FROM dpmovimi 
-  			   WHERE FECHA_ASI <= '".$dateto."' AND (";
+  			   WHERE FECHA_ASI <='".$dateto."' AND (";
       foreach($accegresos as $key=>$value){
         $sql .= " CODMOV LIKE '".$value."%' OR";
       }
@@ -539,6 +550,60 @@ class Modelo_Dpmovimi{
         $arr["records"] = $results;
         
         return $arr;
+  }
+
+  public static function accountRevision($empresa,$datefrom,$dateto){
+    $sql = "SELECT ASIENTO, CONCEPTO, TIPO_ASI, GROUP_CONCAT(TRIM(CODMOV)) as CODMOV, SUM(IMPORTE) AS IMPORTE, ID_EMPRESA FROM dpmovimi WHERE FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."' AND ID_EMPRESA = ".$empresa." GROUP BY TIPO_ASI, ASIENTO;";
+    $results = $GLOBALS['db']->auto_array($sql,array(),true);
+    return $results; 
+  }
+
+  public static function allYearMovimi($empresa,$dateto,$accingresos,$accegresos){
+    if (empty($empresa) || empty($dateto) || empty($accingresos) || 
+      empty($accegresos)){ return false; }
+      $sql = "SELECT c.CODIGO, c.NOMBRE, ingresos.ingreso, egresos.egreso, c.PLANMARCA
+        FROM dp01a110 c 
+        LEFT JOIN 
+          (SELECT CODMOV, ID_EMPRESA, SUM(IMPORTE) AS ingreso
+           FROM dpmovimi 
+           WHERE FECHA_ASI <= '".$dateto."' AND (";
+      foreach($accingresos as $key=>$value){       
+        $sql .= " CODMOV LIKE '".$value."%' OR";
+      }
+      $sql = substr($sql,0,-2);
+      $sql .= ") AND ID_EMPRESA = ".$empresa." GROUP BY CODMOV) AS ingresos ON ingresos.CODMOV = c.CODIGO
+          LEFT JOIN
+            (SELECT CODMOV, ID_EMPRESA, SUM(IMPORTE) AS egreso
+             FROM dpmovimi 
+             WHERE FECHA_ASI <= '".$dateto."' AND (";
+        foreach($accegresos as $key=>$value){
+          $sql .= " CODMOV LIKE '".$value."%' OR";
+        }
+        $sql = substr($sql,0,-2);
+      $sql .= ") AND ID_EMPRESA = ".$empresa." GROUP BY CODMOV) AS egresos ON egresos.CODMOV = c.CODIGO
+          WHERE (c.CTAINACTIVA IS NULL OR c.CTAINACTIVA = 0) AND (";
+        foreach($accingresos as $key=>$value){       
+        $sql .= " c.CODIGO LIKE '".$value."%' OR";
+      } 
+      foreach($accegresos as $key=>$value){      
+        $sql .= " c.CODIGO LIKE '".$value."%' OR";
+      }
+      $sql = substr($sql,0,-2);
+      $sql .= ") AND c.PLANMARCA = 1 ORDER BY c.CODIGO, ingresos.ingreso, egresos.egreso";
+      $results = $GLOBALS['db']->auto_array($sql,array(),true); 
+
+      foreach ($results as $key => $value) {
+        if ((empty($value["ingreso"]) || $value["ingreso"] == 0) && (empty($value["egreso"]) || $value["egreso"] == 0)){
+          unset($results[$key]);
+        }
+      }
+
+      foreach ($results as $key => $value) {
+        echo "<br>";
+        print_r($value);
+      }
+
+      return $results;
   }
 }  
 ?>

@@ -157,6 +157,13 @@ RewriteRule ^report/trialbalance/$ %{ENV:REWRITEBASE}index.php?mostrar=reportTri
 RewriteRule ^report/balancesheet/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet&item=36 [L]
 RewriteRule ^report/balancesheet/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet&item=36&action=search [L]
 RewriteRule ^report/balancesheet/search/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet&item=36&action=search&acclevel=$1&datetoaux=$2&limit=$3&page=$4 [L]
+RewriteRule ^report/balancesheet/(pdf|excel)/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportBalanceSheet&item=36&action=$1&acclevel=$2&datetoaux=$3[L]
+
+#account revision
+RewriteRule ^report/accountrevision/$ %{ENV:REWRITEBASE}index.php?mostrar=reportAccountRevision&item=36 [L]
+RewriteRule ^report/accountrevision/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportAccountRevision&action=search [L]
+RewriteRule ^report/accountrevision/(pdf|excel)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportAccountRevision&action=search&action=$1&dateto=$2 [L]
+RewriteRule ^report/accountrevision/search/([0-9]+)/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportAccountRevision&action=search&dateaux=$1&limit=$2&page=$3 [L]
 
 
 #income statement
@@ -164,6 +171,15 @@ RewriteRule ^report/incomestatement/search/$ %{ENV:REWRITEBASE}index.php?mostrar
 RewriteRule ^report/incomestatement/search/([0-9]+)/([0-9]+)/([A-Z])/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportIncomeStatement&item=43&action=search&acclevel=$1&datetoaux=$2&typereport=$3&limit=$4&page=$5 [L]
 RewriteRule ^report/incomestatement/$ %{ENV:REWRITEBASE}index.php?mostrar=reportIncomeStatement&item=43 [L]
 RewriteRule ^report/incomestatement/(pdf|excel)/([0-9]+)/([0-9]+)/([A-Z])/$ %{ENV:REWRITEBASE}index.php?mostrar=reportIncomeStatement&action=$1&acclevel=$2&dateto=$3&typereport=$4 [L]
+
+#LedgerAccount
+RewriteRule ^proccess/ledgeraccount/$ %{ENV:REWRITEBASE}index.php?mostrar=procledgeraccount [L]
+RewriteRule ^proccess/ledgeraccount/changeLedAcc/$ %{ENV:REWRITEBASE}index.php?mostrar=procledgeraccount&action=changeLedgerAccounts [L]
+
+#YearEndEntries
+RewriteRule ^proccess/yearendentries/$ %{ENV:REWRITEBASE}index.php?mostrar=procyearendentries [L]
+RewriteRule ^proccess/yearendentries/endyear/$ %{ENV:REWRITEBASE}index.php?mostrar=procyearendentries&action=prodend [L]
+RewriteRule ^proccess/yearendentries/endyear/([0-9/]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=procyearendentries&action=getCabtra&date=$1 [L]
 
 #chart account
 RewriteRule ^report/chartaccount/(pdf|excel)/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=$1&accfrom=$2&accto=$3 [L]

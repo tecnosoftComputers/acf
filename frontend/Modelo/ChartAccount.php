@@ -32,6 +32,17 @@ class Modelo_ChartAccount{
     return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
   }
 
+  public static function searchAccountsAct($codigo=false,$detail=false){
+    $sql = "SELECT t1.CODIGO_AUX,t1.CODIGO,t1.NOMBRE,t1.PLANMARCA FROM dp01a110 t1 WHERE (t1.CTAINACTIVA IS NULL OR t1.CTAINACTIVA = 0)";
+    if($codigo!=false){
+      $sql .= " AND t1.CODIGO = '$codigo'";
+    }
+    if($detail != false){
+      $sql .= " AND t1.PLANMARCA = $detail";
+    }
+    return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
+  }
+
   public static function getUpdate($codigo){
   	if(empty($codigo)){ return false;}
   	$sql = "SELECT * FROM dp01a110 t1 LEFT JOIN s01tab110 t2 ON (t1.CODTIPCTA = t2.codtipcta) WHERE t1.CODIGO = '$codigo'";
@@ -69,6 +80,12 @@ class Modelo_ChartAccount{
   public static function getIndividual($codigo){
     if (empty($codigo)){ return false; }
     $sql = "SELECT CODIGO,NOMBRE FROM dp01a110 WHERE CODIGO = ?";
+    return $GLOBALS['db']->auto_array($sql,array($codigo));
+  }
+
+  public static function getIndividualDetailAccount($codigo){
+    if (empty($codigo)){ return false; }
+    $sql = "SELECT CODIGO,NOMBRE FROM dp01a110 WHERE CODIGO = ? AND ";
     return $GLOBALS['db']->auto_array($sql,array($codigo));
   }
 

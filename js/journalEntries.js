@@ -526,6 +526,7 @@ $('#_actual').on('keypress',function(e){
   tecla = (document.all) ? e.keyCode : e.which;
   if (tecla==13){
     searchJournal($('#_seleccion').val(),$('#_actual').val());
+    // executefunction();
   } 
 });
 
@@ -1053,4 +1054,3 @@ function points(where)
     document.getElementById(where).value = cad2;
   }
 } 
-

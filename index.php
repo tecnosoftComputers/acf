@@ -124,6 +124,15 @@ function obtieneControlador($nombre){
     case 'reportIncomeStatement':
       return 'ReportIncomeStatement';
     break;
+    case 'reportAccountRevision':
+      return 'ReportAccountRevision' ;
+    break;
+    case 'procledgeraccount':
+      return 'ProcLedgerAccounts';
+    break;
+    case 'procyearendentries':
+      return 'ProcYearEndEntries';
+    break;
     /*default:
       return 'Operations'; 
     break;*/

@@ -6,6 +6,10 @@ $(document).ready(function(){
     $('#loading').modal('show');
   });
 
+  $("#formLedAcc").on("submit", function(){
+    $('#loading').modal('show');
+  })
+
   $('.myDatepicker').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,

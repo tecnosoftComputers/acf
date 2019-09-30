@@ -3,7 +3,7 @@ class Modelo_Dasbal{
 
   //get the params for sign in reports
   public static function getParams(){
-    $sql = "SELECT ACTIVO,PASIVO,CAPITAL,INGRESOS,EGRESOS,RESULTADOD,RESULTADOA FROM dasbal";
+    $sql = "SELECT ACTIVO,PASIVO,CAPITAL,INGRESOS,EGRESOS,RESULTADOD,RESULTADOA,ACUMULADOA,ACUMULADOD FROM dasbal";
     $rs = $GLOBALS['db']->auto_array($sql,array());    
     if (!empty($rs)){
       foreach($rs as $key=>$value){

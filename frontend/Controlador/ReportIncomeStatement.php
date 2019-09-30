@@ -26,7 +26,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
 
         $typereport = Utils::getParam('typereport','A',$this->data); 
         $tags["dbdateto"] = strtotime($dateto); 
-        $dateto = ($typereport != "A") ? date("Y-m-t", strtotime($dateto)) : $dateto ;    
+        $dateto = ($typereport != "A") ? date("Y-m-d", strtotime($dateto)) : $dateto ;    
         $datefrom = date("Y-m-01",strtotime($dateto));
         $acclevel = Utils::getParam('acclevel',$this->maxlevel,$this->data);        
         $types_account = Modelo_Dasbal::getParams();              
@@ -45,6 +45,8 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         // echo date("Y-m-t", strtotime($dateto));
         // exit();
         //cuenta acreedora y deudora
+        // print_r($dateto);
+        // exit();
         $accdeudora = array();
         $accacreedora = array();
         foreach($types_account["RESULTADOD"] as $deudora){
@@ -54,13 +56,14 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
           $accacreedora[] = Modelo_ChartAccount::getIndAux($acreedora); 
         }                   
         if ($typereport == "A"){             
-          $tags["results"] = Modelo_Dpmovimi::reportIncomeA($_SESSION['acfSession']['id_empresa'],
+          $tags["results"] = Modelo_Dpmovimi::reportIncomeA($_SESSION['acfSession']['id_empresa']
+                                                            ,date("Y-01-01", strtotime($dateto)),
                                                             $dateto,$types_account["INGRESOS"],
                                                             $types_account["EGRESOS"],$acclevel,$start,$limit); 
         }
         else{
           $tags["results"] = Modelo_Dpmovimi::reportIncomeM($_SESSION['acfSession']['id_empresa'],
-                                                            $datefrom,date("Y-m-t", strtotime($dateto)),$types_account["INGRESOS"],
+                                                            $datefrom,date("Y-m-d", strtotime($dateto)),$types_account["INGRESOS"],
                                                             $types_account["EGRESOS"],$acclevel,$start,$limit); 
         }
         $nrorecords = $tags["results"]["nrorecords"];
@@ -99,7 +102,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         $aux_dateto = Utils::getParam('dateto','',$this->data);
         $dateto = (!empty($aux_dateto)) ? date("Y-m-d", ($aux_dateto)) : date('Y-m-d');
         $typereport = Utils::getParam('typereport','',$this->data);
-        $dateto = ($typereport != "A") ? date("Y-m-t", strtotime($dateto)) : $dateto ;        
+        $dateto = ($typereport != "A") ? date("Y-m-d", strtotime($dateto)) : $dateto ;        
         $datefrom = date("Y-m-01",($aux_dateto));
         $acclevel = Utils::getParam('acclevel',$this->data);
         $types_account = Modelo_Dasbal::getParams();
@@ -115,7 +118,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         }                         
         if ($typereport == "A"){             
           $results = Modelo_Dpmovimi::reportIncomeA($_SESSION['acfSession']['id_empresa'],
-                                                            $dateto,$types_account["INGRESOS"],
+                                                            date("Y-01-01", strtotime($dateto)),$dateto,$types_account["INGRESOS"],
                                                             $types_account["EGRESOS"],$acclevel); 
         }
         else{
@@ -171,14 +174,17 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
 
           $balance = (!empty($value["ingreso"])) ? $value["ingreso"] * -1 : $value["egreso"];           
           $total = ($value["level"] != 3) ? $balance : 0;   
-          $balance = ($value["level"] == 3) ? $balance : 0; 
+          $balance = ($value["level"] == 3) ? $balance : 0;
+          $balance = ($balance != 0) ? number_format($balance,2,',','.') : "";
+          $total = ($total != 0) ? number_format($total,2,',','.') : ""; 
             $this->objPdf->SetFont('Arial',$leveladjust['resalt'],9);
             $this->objPdf->Cell(69,5,'',0,1);
             $this->objPdf->Cell(69,5,$leveladjust['space'].$value["CODIGO"],0,0); 
             $this->objPdf->Cell(69,5,$leveladjust['space'].$value["NOMBRE"],0,0);
             $this->objPdf->SetFont('Arial',"",9);
-            $this->objPdf->Cell(69.5,5,number_format($balance,2,',','.'),0,0); 
-          $this->objPdf->Cell(69.5,5,number_format($total,2,',','.'),0,0);
+            // $this->SetX(11.5);
+            $this->objPdf->Cell(69.5,5,$balance,0,0,"R"); 
+            $this->objPdf->Cell(69.5,5,$total,0,0,"R");
         }
 
         $this->objPdf->SetFont('Arial','',9);
@@ -192,7 +198,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
             $this->objPdf->Cell(69,5,$deudora["CODIGO"],0,0); 
             $this->objPdf->Cell(69,5,$deudora["NOMBRE"],0,0);
             $this->objPdf->Cell(69.5,5,"",0,0); 
-            $this->objPdf->Cell(69.5,5,number_format($total,2,',','.'),0,0);           
+            $this->objPdf->Cell(69.5,5,number_format($total,2,',','.'),0,0, "R");           
          }
        }
        else{
@@ -202,7 +208,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
             $this->objPdf->Cell(69,5,$acreedora["CODIGO"],0,0); 
             $this->objPdf->Cell(69,5,$acreedora["NOMBRE"],0,0);
             $this->objPdf->Cell(69.5,5,"",0,0); 
-            $this->objPdf->Cell(69.5,5,number_format($total,2,',','.'),0,0);           
+            $this->objPdf->Cell(69.5,5,number_format($total,2,',','.'),0,0, "R");           
         }
        }
 
@@ -219,7 +225,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         $aux_dateto = Utils::getParam('dateto','',$this->data);
         $dateto = (!empty($aux_dateto)) ? date("Y-m-d", ($aux_dateto)) : date('Y-m-d'); 
         $typereport = Utils::getParam('typereport','',$this->data); 
-        $dateto = ($typereport != "A") ? date("Y-m-t", strtotime($dateto)) : $dateto ;       
+        $dateto = ($typereport != "A") ? date("Y-m-d", strtotime($dateto)) : $dateto ;       
         $datefrom = date("Y-m-01",($aux_dateto));
         $acclevel = Utils::getParam('acclevel',$this->data);
         $types_account = Modelo_Dasbal::getParams();
@@ -238,7 +244,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
 
         if ($typereport == "A"){             
           $results = Modelo_Dpmovimi::reportIncomeA($_SESSION['acfSession']['id_empresa'],
-                                                            $dateto,$types_account["INGRESOS"],
+                                                            date("Y-01-01", strtotime($dateto)),$dateto,$types_account["INGRESOS"],
                                                             $types_account["EGRESOS"],$acclevel); 
         }
         else{
@@ -302,8 +308,8 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
               $objPHPExcel->setActiveSheetIndex(0)
                   ->setCellValue('A'.$this->line,   $leveladjust['space'].$value["CODIGO"])
                   ->setCellValue('B'.$this->line, $leveladjust['space'].$value["NOMBRE"])
-                  ->setCellValue('C'.$this->line, ($balance != 0) ? number_format($balance,2,',','.') : "-")
-                  ->setCellValue('D'.$this->line, ($total != 0) ? number_format($total,2,',','.') : "-");
+                  ->setCellValue('C'.$this->line, ($balance != 0) ? number_format($balance,2,',','.') : "")
+                  ->setCellValue('D'.$this->line, ($total != 0) ? number_format($total,2,',','.') : "");
               $this->line++; 
             
         }

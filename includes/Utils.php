@@ -642,5 +642,54 @@ public static function validarCelularConvencional($contenido){
     return false;
   }
 
+  public static function existAccount($data,$details=false){
+    $arrResult = array();
+    $flag = false;
+    $listChartAccount = array();
+    if($details == false){
+      if(is_array($data)){
+        $listChartAccount = Modelo_ChartAccount::searchAccountsAct();
+        foreach ($data as $key => $value) {
+          if(!in_array($value, array_column($listChartAccount, "CODIGO"))){
+            return $flag;
+          }
+        }
+        $flag = true;
+        return $flag;
+      }
+      else{
+        $account = Modelo_ChartAccount::searchAccountsAct($data);
+        if(!empty($account)){
+          $flag = true;
+        }
+        return $flag;
+      }
+    }
+    else{
+      $listChartAccount = Modelo_ChartAccount::searchAccountsDetail();
+      foreach ($data as $key => $value) {
+        $note = "";
+        $arrayAccountMov = explode(",", $value["CODMOV"]);
+        foreach($arrayAccountMov as $listcod){
+          if(!in_array(str_replace(".", "", $listcod), array_column($listChartAccount, "CODIGO_AUX"))){
+            $note .= $listcod.",";
+          }
+        }
+        $note = substr($note, 0,-1);
+        $data[$key]["NOEXIST"] = $note;
+        if(!empty($data[$key]["NOEXIST"]) || $data[$key]["NOEXIST"] != "" || $data[$key]["IMPORTE"] != 0){
+          $flag = true;
+        }
+        elseif((empty($data[$key]["NOEXIST"]) || $data[$key]["NOEXIST"] != "") && $data[$key]["IMPORTE"] == 0){
+          unset($data[$key]);
+        }
+      }
+      if($flag == true){
+        return $data;
+      }else{
+        return $flag;
+      }
+    }
+  }
 }
 ?>

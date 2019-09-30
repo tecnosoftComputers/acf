@@ -22,19 +22,7 @@
             <div class="col-md-3">
               <input type="text" name="datebalance" id="datebalance" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($datebalance) && !empty($datebalance)) ? $datebalance : date("m/d/Y"); ?>" readonly />  
             </div>
-          </div> 
-
-          <!-- <div class="form-group">
-            <label class="col-md-4 control-label" for="name">Type:</label>
-            <div class="col-md-3">
-              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="A" <?php echo (isset($typereport) && $typereport == "A") ? 'checked="checked"' : ''; ?>>
-              <label class="form-check-label" for="typereport">Accumulated</label>
-            </div>
-            <div class="col-md-3">
-              <input class="form-check-input" type="radio" name="typereport" id="typereport" value="M" <?php echo (isset($typereport) && $typereport == "M") ? 'checked="checked"' : ''; ?>>
-              <label class="form-check-label" for="typereport">Monthly</label>
-            </div>
-          </div> -->                                          
+          </div>                                           
 
           <div class="modal-footer">            
             <button style="float: left;" type="submit" name="register" id="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
@@ -48,10 +36,10 @@
     <div class="col-md-3"></div>
   </div> <!-- FIN DE ROW -->
 
-  <?php 
+  <?php
   if (isset($results) && !empty($results)) { 
-    $url = (!empty($accfrom)) ? $accfrom."/" : "";
-    $url .= (!empty($accto)) ? $accto."/" : "";    
+    $url = (!empty($acclevel)) ? $acclevel."/" : "";
+    $url .= (!empty($datebalance)) ? strtotime($datebalance)."/" : "";    
   ?>
   <br>
   <div class="form-group col-md-6">
@@ -71,12 +59,22 @@
       </select> 
     </div>    
   </div>
-  <span id="pdf" style="float: right; margin-left: 10px">
-    <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/excel/".$url; ?>" target="_blank" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
-  </span>
-  <span id="excel" style="float: right">
-    <a href="<?php echo PUERTO."://".HOST."/report/chartaccount/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
-  </span> 
+
+  <?php if (isset($permission) && $permission["pri"] == 1){  ?>
+      <span id="pdf" style="float: right; margin-left: 10px">
+        <a href="<?php echo PUERTO."://".HOST."/report/balancesheet/excel/".$url; ?>" target="_blank" class="btn btn-success"><i class="fa fa-file-excel-o"></i></a>
+      </span>
+      <span id="excel" style="float: right">
+        <a href="<?php echo PUERTO."://".HOST."/report/balancesheet/pdf/".$url; ?>" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i></a>
+      </span> 
+  <?php } else{ ?>
+    <span style="float: right; margin-left: 10px;">
+      <a href="javascript:void(0);" class="btn btn-success" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-excel-o"></i></a>
+    </span>
+    <span style="float: right;">
+      <a href="javascript:void(0);" class="btn btn-danger" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-file-pdf-o"></i></a>
+    </span> 
+  <?php } ?>
   <br>                   
   <div class="tab-content">
     <div class="tab-pane fade in active" id="home-pills">
@@ -92,9 +90,9 @@
     </thead>
     <tbody>
     <?php
-    $acumactivo = 0;
-    $acumpasivo = 0;
-    $acumcapital = 0;
+    // $acumactivo = 0;
+    // $acumpasivo = 0;
+    // $acumcapital = 0;
     foreach( $results as $key=>$value ){ 
     // echo $value["activo"]." -- ".$value["pasivo"]." -- ".$value["capital"]."<br>"; 
       ?>
@@ -115,7 +113,8 @@
                 </tr>";
         }
 
-        // $balance = (!empty($value["activo"])) ? $value["activo"]  : $value["pasivo"] * -1;  
+        // $balance = (!empty($value["activo"])) ? $value["activo"]  : $value["pasivo"] * -1; 
+        // $balance = 0; 
         if(!empty($value["activo"])){
           $balance = $value["activo"];
         }
@@ -127,6 +126,9 @@
         }        
         $total = ($value["level"] != 3) ? $balance : 0;   
         $balance = ($value["level"] == 3) ? $balance : 0;
+        $balance = ($balance != 0) ? number_format(bcdiv($balance,1,2),2,',','.'): "";
+        $total = ($total != 0) ? number_format(bcdiv($total,1,2),2,',','.') : "";
+
         // echo "eder. ".$balance;
         if ($nro>1){
           for($i=1;$i<$nro;$i++){
@@ -136,15 +138,15 @@
         if ($lastc == '.'){
           echo "<td><strong>".$value["CODIGO"]."</strong></td>";
           echo "<td><strong>".$blank_spaces.$value["NOMBRE"]."</strong></td>";
-          echo "<td align='right'><strong>".number_format(bcdiv($balance,1,2),2,',','.')."</strong></td>";
-          echo "<td align='right'><strong>".number_format(bcdiv($total,1,2),2,',','.')."</strong></td>";
+          echo "<td align='right'><strong>".$balance."</strong></td>";
+          echo "<td align='right'><strong>".$total."</strong></td>";
         }     
         else{
           $blank_spaces .= "&nbsp;&nbsp;&nbsp;";
           echo "<td>".$value["CODIGO"]."</td>";
           echo "<td>".$blank_spaces.$value["NOMBRE"]."</td>";
-          echo "<td align='right'><strong>".number_format(bcdiv($balance,1,2),2,',','.')."</strong></td>";
-          echo "<td align='right'><strong>".number_format(bcdiv($total,1,2),2,',','.')."</strong></td>";
+          echo "<td align='right'><strong>".$balance."</strong></td>";
+          echo "<td align='right'><strong>".$total."</strong></td>";
         }        
         ?>        
       </tr>            
@@ -168,11 +170,11 @@
    </div>
   </div>
   <center>
-      <?php
-       if (!empty($pagination)){
-        echo $pagination;
-      }?>
-      </center>
+    <?php
+     if (!empty($pagination)){
+      echo $pagination;
+    }?>
+  </center>
   <br>
 <?php } ?>  
 </div> <!-- FIN DE WRAPPER  -->

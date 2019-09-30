@@ -133,11 +133,13 @@
         $balance = (!empty($value["ingreso"])) ? $value["ingreso"] * -1 : $value["egreso"];           
         $total = ($value["level"] != 3) ? $balance : 0;   
         $balance = ($value["level"] == 3) ? $balance : 0;
+        $balance = ($balance != 0) ? number_format($balance,2,',','.') : "";
+        $total = ($total != 0) ? number_format($total,2,',','.') : "";
         echo "<tr>               
                 <td>".$value["CODIGO"]."</td>
                 <td>".$value["NOMBRE"]."</td>                                                
-                <td align='right'>".number_format($balance,2,',','.')."</td>
-                <td align='right'>".number_format($total,2,',','.')."</td>                
+                <td align='right'>".$balance."</td>
+                <td align='right'>".$total."</td>                
               </tr>";                     
        }  
 
