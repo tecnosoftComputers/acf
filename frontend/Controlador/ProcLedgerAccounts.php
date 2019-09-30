@@ -38,10 +38,11 @@ class Controlador_ProcLedgerAccounts extends Controlador_Reports {
         }
 
       $result = Modelo_Dpmovimi::changeMovimiUpd($_SESSION['acfSession']['id_empresa'],$prevaccount,$newaccount);
+      $rowsaffected = $GLOBALS['db']->rows_affected();
       if(!$result){
         throw new Exception("Has ocurred an error.");
       }
-      $_SESSION['acfSession']['mostrar_exito'] = 'The accounts were successfully edited.';
+      $_SESSION['acfSession']['mostrar_exito'] = 'The accounts were successfully edited. Rows affected: '.$rowsaffected;
     } catch (Exception $e) {
       $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();
       Utils::doRedirect(PUERTO.'://'.HOST.'/proccess/ledgeraccount/');

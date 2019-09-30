@@ -71,12 +71,7 @@
           <h4 class="modal-title">Confirm Year End Entries</h4>
         </div>
         <div class="modal-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>There is already a year end with this date. Are you sure you want to run the process again?.</p>
         </div>
         <div class="modal-footer">
           <button type="button" id="modalSubmit" class="btn btn-primary" data-dismiss="modal">Accept</button>

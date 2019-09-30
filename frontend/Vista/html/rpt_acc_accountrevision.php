@@ -1,11 +1,11 @@
 <div id="page-wrapper"><br />
-  <div class="alert alert-info"><p>Accounting / Report / Balance Sheet</p></div>
+  <div class="alert alert-info"><p>Accounting / Proccess / Account Revision</p></div>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <form action="<?php echo PUERTO."://".HOST."/report/accountrevision/search/";?>" method="post" class="form-horizontal" id="frmreport">
         <fieldset>
-          <legend class="mibread" style="text-align: center;"><strong>Balance Sheet Report</strong></legend>
+          <legend class="mibread" style="text-align: center;"><strong>Account Revision</strong></legend>
           <input type="hidden" name="limit" id="limit" value="<?php echo $limit;?>">
                                  
             

@@ -44,7 +44,7 @@ class Controlador_ProcYearEndEntries extends Controlador_Reports {
       if(empty($closingdate) || $closingdate == ""){
         throw new Exception("The accounting closing date is empty.");
       }
-      $dateto = date("Y-12-30", strtotime($closingdate));
+      $dateto = date("Y-m-d", strtotime($closingdate));
       $closingdate = date("Y-12-t", strtotime($closingdate));
       if(!Utils::valida_fecha($closingdate)){
         throw new Exception("The accounting date is not valid!.");
@@ -59,104 +59,122 @@ class Controlador_ProcYearEndEntries extends Controlador_Reports {
         $seatnumber = $seatnumberAux;
       }
       $types_account = Modelo_Dasbal::getParams();
-
+      $tipoasi = "DI";
 
       $getCabJournal = Modelo_Seat::existJournal($_SESSION['acfSession']['id_empresa'],$tipoasi,$seatnumber);
+      
       $GLOBALS['db']->beginTrans();
-      if($getCabJournal != false){
-        // $idcont = $getCabJournal["IDCONT"];
-        
-        // $deleteJournal = Modelo_Seat::deleteJournal($idcont);
-        // if($deleteJournal == false){
-        //   throw new Exception("Ha ocurrido un error al eliminar el journal Cab.");
+      if(!empty($getCabJournal)){
+        $idcont = $getCabJournal[0]["IDCONT"];
+        $deleteJournal = Modelo_Seat::deleteJournal($idcont);
+        if(empty($deleteJournal)){
+          throw new Exception("Ha ocurrido un error al eliminar el journal Cab.");
           
-        // }
-        // $deleteDpmovimi = Modelo_Dpmovimi::deleteMovimi($idcont);
-        // if($deleteDpmovimi == false){
-        //   throw new Exception("Ha ocurrido un error al eliminar los movimientos del journal.");
+        }
+        $deleteDpmovimi = Modelo_Dpmovimi::deleteMovimi($idcont);
+        if(empty($deleteDpmovimi)){
+          throw new Exception("Ha ocurrido un error al eliminar los movimientos del journal.");
           
-        // }
-        Utils::log("ederederederedereder");
+        }
       }
-
 
       $cont = Modelo_Seat::searchMaxCont()['suma']+1; 
       $dateSystem = date("Y-m-d");
       $hourSystem = date("H:i:s");
-      $tipoasi = "DI";
 
       $results = Modelo_Dpmovimi::allYearMovimi($_SESSION['acfSession']['id_empresa']
                                     ,$dateto,$types_account["INGRESOS"],
                                     $types_account["EGRESOS"]);
       $debitos = 0;
       $creditos = 0;
+      $datosMovimi = array();
       foreach ($results as $key => $value) {
+        $valueSet = 0;
         if(!empty($value["ingreso"])){
           $creditos += $value["ingreso"];
         }
         if(!empty($value["egreso"])){
           $debitos += $value["egreso"];
         }
+        $valueSet = (!empty($value["ingreso"])) ? $value["ingreso"] : $value["egreso"] ;
+        $importe = $valueSet * -1;
+        $valueSet1 = 0;
+        $valueSet2 = 0;
+        if(!empty($value["ingreso"])){
+          $valueSet1 = $value["ingreso"];
+          if($valueSet1 < 0){
+            $valueSet1 *= -1;
+          }
+        }
+        if(!empty($value["egreso"])){
+          $valueSet2 = $value["egreso"];
+          if($valueSet2 < 0){
+            $valueSet2 *= 1;
+          }
+        }
+
+        $datosMovimiArray = array('IDCONT'=>$cont,'TIPO_ASI'=>$tipoasi,'FECHA_ASI'=>$dateto,'ASIENTO'=>$seatnumber,'CONCEPTO'=>$closingseatdetail,'DB'=>str_replace(',', '',$valueSet1),'CR'=>str_replace(',', '',$valueSet2), 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'CODMOV'=>$value["CODIGO"],'CERRADO'=>(int)1,'IMPORTE'=>str_replace(',', '',$importe));
+
+        array_push($datosMovimi, $datosMovimiArray);
+
       }
 
-      $resultdebcred = ($creditos *-1)-$debitos;
-      echo $resultdebcred;
-      
+      // Utils::log("suma de primera: ".(169867.40000+19280.00000+46406.65000+7621.75640+10222.28911-36.47000+64619.03000+6959.77000+4000.00000+3165.90000-114.82000));
 
-      foreach($types_account["ACUMULADOD"] as $deudora){
-        $accdeudora[] = Modelo_ChartAccount::getIndAux($deudora); 
+      // Utils::log("suma de segunda: ".(-4000.00000-181368.30533-852203.93000-36592.37000-1769.65000-103.02000-895.00000-50.00000-655.32000));
+
+      $resultdebcred = (($creditos *-1)-$debitos) * - 1;
+      Utils::log("res eder: ".$resultdebcred);
+      $valueSet = 0;
+      if($resultdebcred >=0){
+        foreach($types_account["ACUMULADOD"] as $deudora){
+          $accdeudora[] = Modelo_ChartAccount::getIndAux($deudora);
+          foreach ($accdeudora as $key => $value) {
+            $valueSet = $resultdebcred;
+            $datosMovimiArray = array('IDCONT'=>$cont,'TIPO_ASI'=>$tipoasi,'FECHA_ASI'=>$dateto,'ASIENTO'=>$seatnumber,'CONCEPTO'=>$closingseatdetail,'DB'=>str_replace(',', '',$valueSet),'CR'=>str_replace(',', '',$valueSet), 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'CODMOV'=>$value["CODIGO"],'CERRADO'=>(int)1,'IMPORTE'=>str_replace(',', '',$resultdebcred));
+            array_push($datosMovimi, $datosMovimiArray);
+          }
+        }
       }
-      foreach($types_account["ACUMULADOA"] as $acreedora){
-        $accacreedora[] = Modelo_ChartAccount::getIndAux($acreedora); 
+      else{
+        foreach($types_account["ACUMULADOA"] as $acreedora){
+          $accacreedora[] = Modelo_ChartAccount::getIndAux($acreedora);
+          foreach ($accacreedora as $key => $value) {
+            $valueSet = $resultdebcred;
+            $datosMovimiArray = array('IDCONT'=>$cont,'TIPO_ASI'=>$tipoasi,'FECHA_ASI'=>$dateto,'ASIENTO'=>$seatnumber,'CONCEPTO'=>$closingseatdetail,'DB'=>str_replace(',', '',$valueSet),'CR'=>str_replace(',', '',$valueSet), 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'CODMOV'=>$value["CODIGO"],'CERRADO'=>(int)1,'IMPORTE'=>str_replace(',', '',$resultdebcred));
+            array_push($datosMovimi, $datosMovimiArray);
+          }
+        }
       }
-      echo "<br>";
-      print_r($accdeudora);
-      echo "<br>";
-      print_r($accacreedora);
-      exit();
+      if($debitos < 0){
+        $debitos *= -1;
+      }
+      if($creditos < 0){
+        $creditos *= -1;
+      }
+      $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$tipoasi,'FECHA_ASI'=>$dateto,'ASIENTO'=>$seatnumber,'DESC_ASI'=>$closingseatdetail,'DEBITOS'=>$debitos,'CREDITOS'=>$creditos,'USER_ID'=>$_SESSION['acfSession']['usuario'],'TIPO_MON'=>'DOL','FECHASYS'=>$dateSystem,'HORASYS'=>$hourSystem, 'CERRADO'=>(int)1, 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'FACTOR'=>'1');
 
-      // $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$seat,'CONCEPTO'=>$concept,'CODID'=>$_POST['benef'],'DB'=>str_replace(',', '',$db),'CR'=>str_replace(',', '',$cr), 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'CODIGO'=>$_POST['_accountycode'][$key],'CODMOV'=>$_POST['codep'][$key],'CERRADO'=>(int)1,'TIPO'=>$_POST['el_type'][$key],'REFER'=>$_POST['el_ref'][$key],'GRUPOCON'=>$_POST['_trans'][$key],'IMPORTE'=>str_replace(',', '',$importe), 'DOCUMENTO'=>$_POST['el_documento'][$key], 'LIQUIDA_NO'=>$_POST['la_liq'][$key]);
-
-
-      // echo "<br>";
-      // echo (169867.40000+19280.00000+46406.65000+7662.06166+10253.89063+(-36.47000)+64619.03000+6959.77000+4000.00000+3165.90000+(-114.82000));
-      // echo "<br>";
-      // echo (-4000.00000-168514.10223-173312.77000-36592.37000-1769.65000-103.02000-895.00000-50.00000-655.32000);
-      // echo "<br>";
-      // echo (332063.41229-385892.23223);
-      print_r("<br>".$creditos."<br>".$debitos."<br>Net income = :".(($creditos *-1)-$debitos));
-      // print_r($results);
-      exit();
-
-      // $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$tipoasi,'FECHA_ASI'=>$closingdate,'ASIENTO'=>$seat,'DESC_ASI'=>$memo,,'DEBITOS'=>$sum_db,'CREDITOS'=>$sum_cr,'USER_ID'=>$_SESSION['acfSession']['usuario'],'TIPO_MON'=>'DOL', 'CERRADO'=>(int)1, 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'FACTOR'=>'1', 'CEDRUC'=>$_POST['benef'], 'DOCUMENTO'=>$_POST['_documento'], 'LIQUIDA_NO'=>$_POST['_liq']);
-      // echo $dateSystem." - ".$hourSystem;
-
-
-      // exit();
-
-      // $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$_POST['_seleccion'],'FECHA_ASI'=>date("Y-m-d", strtotime($_POST['date'])),'ASIENTO'=>$seat,'CONCEPTO'=>$concept,'CODID'=>$_POST['benef'],'DB'=>str_replace(',', '',$db),'CR'=>str_replace(',', '',$cr), 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'CODIGO'=>$_POST['_accountycode'][$key],'CODMOV'=>$_POST['codep'][$key],'CERRADO'=>(int)1,'TIPO'=>$_POST['el_type'][$key],'REFER'=>$_POST['el_ref'][$key],'GRUPOCON'=>$_POST['_trans'][$key],'IMPORTE'=>str_replace(',', '',$importe), 'DOCUMENTO'=>$_POST['el_documento'][$key], 'LIQUIDA_NO'=>$_POST['la_liq'][$key]);
-
-
-      // echo "<br><br><br><br><br>";
-      // print_r($results);
-      // foreach ($results as $key => $value) {
-        
-      // }
-
-      // foreach($types_account["RESULTADOD"] as $deudora){
-      //   $accdeudora[] = Modelo_ChartAccount::getIndAux($deudora); 
-      // }
-      // foreach($types_account["RESULTADOA"] as $acreedora){
-      //   $accacreedora[] = Modelo_ChartAccount::getIndAux($acreedora); 
-      // }
-
-
+      $insertCabJournal = Modelo_Seat::insert($datos);
+      if($insertCabJournal == false){
+        throw new Exception("An error has occurred. try again");
+      }
+       
+      foreach ($datosMovimi as $key => $value) {
+        $insertMovimiJournal = Modelo_Dpmovimi::insert($value);
+        if($insertMovimiJournal == false){
+          throw new Exception("An error has occurred. try again.");
+          
+        }
+      }
       
-      
+      $GLOBALS['db']->commit();
+      $_SESSION['acfSession']['mostrar_exito'] = 'The year entries was successful.';
+      Utils::doRedirect(PUERTO.'://'.HOST.'/proccess/yearendentries/');
 
 
     } catch (Exception $e) {
       $_SESSION['acfSession']['mostrar_error'] = $e->getMessage();
+      Utils::doRedirect(PUERTO.'://'.HOST.'/proccess/yearendentries/');
     }
   }
 

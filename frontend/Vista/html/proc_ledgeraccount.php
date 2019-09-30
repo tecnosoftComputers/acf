@@ -29,6 +29,7 @@
                       <div class="form-group">
                         <label>Previous Account: </label>
                         <select class="form-control" name="prevaccount" id="prevaccount">
+                          <option value="0" selected="selected" disabled="disabled">Select an Option</option>
                           <?php 
                             if(!empty($listAccounts)){
 
@@ -46,6 +47,7 @@
                       <div class="form-group">
                         <label>New Account: </label>
                         <select class="form-control" name="newaccount" id="newaccount">
+                          <option value="0" selected="selected" disabled="disabled">Select an Option</option>
                           <?php 
                             if(!empty($listAccounts)){
                               foreach ($listAccounts as $key => $value) {
@@ -64,7 +66,7 @@
                   <div class="modal-footer">
                       <input type="hidden" name="create" id="create" value="1">
                       <?php 
-                        if($permission["edi"] == 1){
+                        if($permission["edi"]!= 1){
                           ?>
                             <button style="float: left;" type="submit" id="update" name="update" class="btn btn-primary"><span class="fa fa-retweet"></span> Update</button>
                           <?php
