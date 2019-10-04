@@ -35,7 +35,7 @@
 
                               foreach ($listAccounts as $key => $value) {
                                 $disabled = ($value["PLANMARCA"] != 1) ? $disabled = "disabled = 'disabled' style='font-weight: bold;'" : "";
-                                echo "<option value='".trim($value["CODIGO"])."' ".$disabled.">".trim($value["CODIGO"])." | ".$value["NOMBRE"]."</option>";
+                                echo "<option value='".trim($value["CODIGO"])."' ".$disabled.">".trim($value["CODIGO"])."&nbsp;&nbsp;".$value["NOMBRE"]."</option>";
                               }
                             }
                             else{
@@ -52,7 +52,7 @@
                             if(!empty($listAccounts)){
                               foreach ($listAccounts as $key => $value) {
                                 $disabled = ($value["PLANMARCA"] != 1) ? $disabled = "disabled = 'disabled' style='font-weight: bold;'" : "";
-                                echo "<option value='".trim($value["CODIGO"])."' ".$disabled.">".trim($value["CODIGO"])." | ".$value["NOMBRE"]."</option>";
+                                echo "<option value='".trim($value["CODIGO"])."' ".$disabled.">".trim($value["CODIGO"])."&nbsp;&nbsp;".$value["NOMBRE"]."</option>";
                               }
                             }
                             else{

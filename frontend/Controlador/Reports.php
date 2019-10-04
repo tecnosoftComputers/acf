@@ -69,7 +69,13 @@ class Controlador_Reports extends Controlador_Base {
   
   public function construirPagina(){}
 
-  public function printHeaderPdf($title,$from,$to,$new=false){    
+  public function printHeaderPdf($title,$from,$to,$new=false){  
+    if($from == false){
+      $from = date("m/d/Y");
+    }
+    if($to == false){
+      $to = date("m/d/Y");
+    }  
     $info_company = Modelo_Companie::searchCompanies($_SESSION['acfSession']['id_empresa']);
     $imageFormat = strtoupper((explode(".", $info_company["rentas_logo"]))[1]);
     if ($new == true){
@@ -81,27 +87,19 @@ class Controlador_Reports extends Controlador_Base {
 
     $this->objPdf->SetFont('Arial','B',14);
     $this->objPdf->Cell(189  ,5,'',0,1);//end of line
-    
     $this->objPdf->Cell(80 ,5,$info_company["nombre_empresa"],0,1);//end of line       
     $this->objPdf->SetFont('Arial','',10);   
     $this->objPdf->Cell(59 ,5,$info_company["direccion_empresa"],0,1);//end of line
     $this->objPdf->Cell(59 ,5,$info_company["telefono_empresa"],0,1);//end of line
     $this->objPdf->Cell(189  ,5,'',0,1); //end of line
     $this->objPdf->SetFont('Arial','B',12);   
-    $this->objPdf->Cell(246 ,5,$title,0,0);//end of line 
-    $this->objPdf->Cell(250 ,5,'Page: '.$this->objPdf->PageNo(),0,1);              
+    $this->objPdf->Cell(246 ,5,$title,0,0);//end of line            
     $this->objPdf->SetFont('Arial','',11);
-    $this->objPdf->Cell(11 ,5,'User:',0,0);
-    $this->objPdf->Cell(235 ,5,$_SESSION["acfSession"]["persona"],0,0);
-    $this->objPdf->Cell(11 ,5,'Time:',0,0);
-    $this->objPdf->Cell(20 ,5,date('h:i:s'),0,0);
     $this->objPdf->Cell(189 ,5,'',0,1); //end of line
     $this->objPdf->Cell(11 ,5,'From:',0,0);
     $this->objPdf->Cell(28 ,5, $from ,0,0);
     $this->objPdf->Cell(7, 5,'To:',0,0);
-    $this->objPdf->Cell(200 ,5, $to,0,0);
-    $this->objPdf->Cell(11 ,5,'Date:',0,0);
-    $this->objPdf->Cell(58 ,5,date('m/d/Y'),0,0);    
+    $this->objPdf->Cell(200 ,5, $to,0,0);    
     $this->objPdf->SetFont('Arial','',10);
     $this->objPdf->Cell(189  ,10,'',0,1); //end of line          
   }
@@ -113,9 +111,29 @@ class Controlador_Reports extends Controlador_Base {
     }    
     $this->objPdf->Cell(189,10,'',0,1); //end of line                       
     $this->objPdf->SetLineWidth(1.2);
-    $this->objPdf->Line(11, 63, 287, 63);
+    $this->objPdf->Line(11, 58, 287, 58);
     $this->objPdf->Cell(189,1,'',0,1); //end of line                       
     $this->objPdf->SetLineWidth(0.2);
+  }
+
+  public function printFooterPdf(){
+
+    $this->objPdf->AliasNbPages();
+    $this->objPdf->SetY(389);
+    // line of pdf
+    // $this->objPdf->SetLineWidth(1.2);
+    // $this->objPdf->Line(11, 392, 287, 392);                       
+    // $this->objPdf->SetLineWidth(0.2);
+
+    // footer
+    $this->objPdf->SetFont('Arial','',8);
+    $this->objPdf->Cell(189 ,5,'',0,1);
+    $this->objPdf->Cell(12 ,5,'User:',0,0);
+    $this->objPdf->Cell(105 ,5, $_SESSION["acfSession"]["persona"] ,0,0);
+    $this->objPdf->Cell(12 ,5,'Page:',0,0);
+    $this->objPdf->Cell(105 ,5, $this->objPdf->PageNo()."/{nb}",0,0);
+    $this->objPdf->Cell(12 ,5,'Date:',0,0);
+    $this->objPdf->Cell(12 ,5, date('m/d/Y h:i:s') ,0,0);
   }
 
   public function printHeaderExcel($title,$columns,$columlogo,$setxlogo,$info_company,$from,$to,$colummerge){

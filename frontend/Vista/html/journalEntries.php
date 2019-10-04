@@ -6,6 +6,10 @@
             <div class="col-lg-12">
                 <div class="form-row">
                     <div class="form-group col-md-3" style="padding-right: 0px;">
+                        <?php 
+                            if(!empty($fromAccountRevision)){?>
+                            <input type="hidden" name="fromAccountRevision" id="fromAccountRevision" value="<?php echo $fromAccountRevision; ?>">
+                            <?php } ?>
 
                         <?php if($_SESSION['acfSession']['permission'][$item]['rd'] == 1){ ?>
                             <span id="btnSearch1" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Search Journal"><i class="fa fa-search"></i></span> 

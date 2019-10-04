@@ -119,12 +119,7 @@ class Controlador_ProcYearEndEntries extends Controlador_Reports {
 
       }
 
-      // Utils::log("suma de primera: ".(169867.40000+19280.00000+46406.65000+7621.75640+10222.28911-36.47000+64619.03000+6959.77000+4000.00000+3165.90000-114.82000));
-
-      // Utils::log("suma de segunda: ".(-4000.00000-181368.30533-852203.93000-36592.37000-1769.65000-103.02000-895.00000-50.00000-655.32000));
-
       $resultdebcred = (($creditos *-1)-$debitos) * - 1;
-      Utils::log("res eder: ".$resultdebcred);
       $valueSet = 0;
       if($resultdebcred >=0){
         foreach($types_account["ACUMULADOD"] as $deudora){
@@ -153,7 +148,7 @@ class Controlador_ProcYearEndEntries extends Controlador_Reports {
         $creditos *= -1;
       }
       $datos = array('IDCONT'=>$cont,'TIPO_ASI'=>$tipoasi,'FECHA_ASI'=>$dateto,'ASIENTO'=>$seatnumber,'DESC_ASI'=>$closingseatdetail,'DEBITOS'=>$debitos,'CREDITOS'=>$creditos,'USER_ID'=>$_SESSION['acfSession']['usuario'],'TIPO_MON'=>'DOL','FECHASYS'=>$dateSystem,'HORASYS'=>$hourSystem, 'CERRADO'=>(int)1, 'ID_EMPRESA'=>$_SESSION['acfSession']['id_empresa'],'FACTOR'=>'1');
-
+      // exit();
       $insertCabJournal = Modelo_Seat::insert($datos);
       if($insertCabJournal == false){
         throw new Exception("An error has occurred. try again");

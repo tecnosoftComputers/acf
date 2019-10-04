@@ -20,7 +20,7 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
         $datebalanceaux =  date("Y-m-d", strtotime($datebalance));
         $tags["types_account"] = $types_account;
         $limit = Utils::getParam('limit','',$this->data);
-        $limit = (empty($limit)) ? $this->vlrecords[0] : $limit;
+        $limit = (empty($limit)) ? $this->vlrecords[3] : $limit;
         $page = Utils::getParam('page',1,$this->data);
         $start = ($page - 1) * $limit;
 
@@ -119,6 +119,7 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
           // printing pdf file
 
           if ($this->objPdf->GetY() > $this->limitline){
+            $this->printFooterPdf();
             $this->objPdf->AddPage();
             $this->printHeaderPdf("BALANCE SHEET REPORT",$from,$to);   
             $this->printHeaderTablePdf($columns);
@@ -151,7 +152,6 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
           $this->objPdf->Cell(69,5,$balance,0,0,"R"); 
           $this->objPdf->Cell(69,5,$total,0,0,"R");
 
-
           // break line
           $this->objPdf->SetFont('Arial','',9);
           $this->objPdf->Cell(69,5,'',0,1);
@@ -166,11 +166,7 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
         // $this->SetX(11.5);
         $this->objPdf->Cell(69,5,"",0,0,"R"); 
         $this->objPdf->Cell(69,5,number_format(bcdiv($totalresult["valuethis"],1,2),2,",","."),0,0,"R");
-
-
-        // exit();
-
-
+        $this->printFooterPdf();
         $this->objPdf->Output();
 
 

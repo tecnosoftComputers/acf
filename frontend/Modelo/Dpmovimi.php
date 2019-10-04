@@ -502,14 +502,14 @@ class Modelo_Dpmovimi{
             if($total > 0){
               foreach ($accdeudora as $deudora) {
                 if($deudora["CODIGO"] == $value["CODIGO"]){
-                  $results[$key]["capital"] = abs($total) + abs($acumcapital);
+                  $results[$key]["capital"] = round($total,6) - round($acumcapital,6);
                 }
               }
             }
             else{
               foreach ($accacreedora as $acreedora) {
                 if($acreedora["CODIGO"] == $value["CODIGO"]){
-                  $results[$key]["capital"] = abs($total) + abs($acumcapital);
+                  $results[$key]["capital"] = round($total,6) - round($acumcapital,6);
                 }
               }
             }
@@ -522,6 +522,14 @@ class Modelo_Dpmovimi{
           }
 
         }
+
+        foreach($results as $key=>$value){ 
+            if ((empty($value["activo"]) || $value['activo'] == 0)
+              && (empty($value["pasivo"]) || $value['pasivo'] == 0)
+              && (empty($value["capital"]) || $value['capital'] == 0)){
+              unset($results[$key]);
+            }
+          }
         $totalresult = array();
         $labelThis = "TOTAL";
         foreach ($results as $key => $value) {
@@ -553,7 +561,7 @@ class Modelo_Dpmovimi{
   }
 
   public static function accountRevision($empresa,$datefrom,$dateto){
-    $sql = "SELECT ASIENTO, CONCEPTO, TIPO_ASI, GROUP_CONCAT(TRIM(CODMOV)) as CODMOV, SUM(IMPORTE) AS IMPORTE, ID_EMPRESA FROM dpmovimi WHERE FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."' AND ID_EMPRESA = ".$empresa." GROUP BY TIPO_ASI, ASIENTO;";
+    $sql = "SELECT ASIENTO, CONCEPTO, TIPO_ASI, IDCONT  , GROUP_CONCAT(TRIM(CODMOV)) as CODMOV, SUM(IMPORTE) AS IMPORTE, ID_EMPRESA FROM dpmovimi WHERE FECHA_ASI BETWEEN '".$datefrom."' AND '".$dateto."' AND ID_EMPRESA = ".$empresa." GROUP BY TIPO_ASI, ASIENTO;";
     $results = $GLOBALS['db']->auto_array($sql,array(),true);
     return $results; 
   }
@@ -598,10 +606,10 @@ class Modelo_Dpmovimi{
         }
       }
 
-      foreach ($results as $key => $value) {
-        echo "<br>";
-        print_r($value);
-      }
+      // foreach ($results as $key => $value) {
+      //   echo "<br>";
+      //   print_r($value);
+      // }
 
       return $results;
   }

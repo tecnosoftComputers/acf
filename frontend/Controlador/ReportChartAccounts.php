@@ -15,7 +15,7 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         $accfrom = Utils::getParam('accfrom','',$this->data);
         $accto = Utils::getParam('accto','',$this->data);
         $limit = Utils::getParam('limit','',$this->data);
-        $limit = (empty($limit)) ? $this->vlrecords[0] : $limit; 
+        $limit = (empty($limit)) ? $this->vlrecords[3] : $limit; 
         $page = Utils::getParam('page',1,$this->data);        
         $tags["accfrom"] = $accfrom;
         $tags["accto"] = $accto;                
@@ -46,8 +46,10 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         $accfrom = Utils::getParam('accfrom','',$this->data);
         $accto = Utils::getParam('accto','',$this->data);
         $arr = Modelo_ChartAccount::report($accfrom,$accto);
+        $accfrom = (!empty($accfrom)) ? $accfrom : str_replace(',','.', $arr['records'][0]['CODIGO']) ;
+        $endarr = end($arr['records']);
+        $accto  = (!empty($accto)) ? $accto : $endarr['CODIGO'] ;
         $results = $arr["records"];
-
         $this->printHeaderPdf("CHART ACCOUNTS REPORT",$accfrom,$accto,true); 
 
         $columns = array();
@@ -60,6 +62,7 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
         if (!empty($results)){                      
           foreach($results as $key=>$value){   
             if ($this->objPdf->GetY() > $this->limitline){
+              $this->printFooterPdf();
               $this->objPdf->AddPage();
               $this->printHeaderPdf("CHART ACCOUNTS REPORT",$accfrom,$accto);   
               $this->printHeaderTablePdf($columns);              
@@ -87,12 +90,16 @@ class Controlador_ReportChartAccounts extends Controlador_Reports {
             $this->objPdf->Cell(189  ,5,'',0,1);//end of line              
           }                                  
         }
+        $this->printFooterPdf();
         $this->objPdf->Output();
       break; 
       case 'excel':
         $accfrom = Utils::getParam('accfrom','',$this->data);
         $accto = Utils::getParam('accto','',$this->data);
-        $arr = Modelo_ChartAccount::report($accfrom,$accto);    
+        $arr = Modelo_ChartAccount::report($accfrom,$accto);  
+        $accfrom = (!empty($accfrom)) ? $accfrom : str_replace(',','.', $arr['records'][0]['CODIGO']) ;
+        $endarr = end($arr['records']);
+        $accto  = (!empty($accto)) ? $accto : $endarr['CODIGO'] ;  
         $results = $arr["records"];
 
         $info_company = Modelo_Companie::searchCompanies($_SESSION['acfSession']['id_empresa']); 

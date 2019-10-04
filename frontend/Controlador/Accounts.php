@@ -100,6 +100,7 @@ class Controlador_Accounts extends Controlador_Base {
         $all_send = Modelo_Seat::searchMemorice();
         $all_send2 = Modelo_Seat::search($type_default,date("Y-m-d",strtotime(date('Y-m-d')."- 1 year")),date('Y-m-d'));
         $typeTrans = Modelo_TabGeneral::search('tab_trans');
+        $fromAccountRevision = Utils::getParam('fromAccountRevision','',$this->data);
 
         $fila = 0;
         $tags = array('userid'=>$userid,
@@ -113,7 +114,7 @@ class Controlador_Accounts extends Controlador_Base {
                       'typeTrans'=>$typeTrans,
                       'item'=>$item
                     );
-
+        $tags["fromAccountRevision"] = $fromAccountRevision;
         $tags["template_js"][] = "journalEntries";
         $tags["template_css"][] = "";
 

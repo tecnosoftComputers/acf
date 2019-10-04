@@ -15,6 +15,28 @@ $(document).ready(function(){
     showDropdowns: true,
     minYear: 1901,
   });
+
+  if($("#dateaccount").length){
+    var currentDate =  new Date();
+    var auxcurrentdate = "";
+    if($("#dateaccount").val() != ""){
+      auxcurrentdate = $("#dateaccount").val().split("/");
+      currentDate = new Date(parseInt(auxcurrentdate[1]),(parseInt(auxcurrentdate[0])-1),1);
+    }
+
+    $('#dateaccount').datepicker({
+        language: {
+          months: ['January','February','March','April','May','June', 'July','August','September','October','November','December'],
+          monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          today: 'Today',
+          clear: 'Clear',
+          dateFormat: 'mm/yyyy',
+          // months: ['Enero','Febrero','Marzo','Abril','Mayo','Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          // monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic']
+        },
+        autoClose : true,
+      }).data('datepicker').selectDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay()));
+  }
  
   $('#typeseatfrom').change(function(){
   	var value = $(this).val();  	  	

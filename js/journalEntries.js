@@ -1,7 +1,10 @@
 var data = [];
 
  $(document).ready(function(){ 
-
+  if($("#fromAccountRevision").length){
+    var valuefromAccountRevision = $("#fromAccountRevision").val();
+    searchJournal("", valuefromAccountRevision);
+  }
   var annul = false;
   $('#annul').val(annul);
 
@@ -557,7 +560,7 @@ function searchJournal(type,id){
         var rule = r.rule;
         var p = r.permission;
 
-        clearForm();
+        // clearForm();
 
         $('#myModalJournal').modal('hide');
         $('#myModalList').modal('hide');

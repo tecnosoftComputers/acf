@@ -12,13 +12,13 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Checks seats date:</label>
             <div class="col-md-3">
-              <input type="text" name="dateaccount" id="dateaccount" class="form-control myDatepicker" maxlength="10" size="10" value="<?php echo (isset($dateto)) ? $dateto : date("m/d/Y"); ?>" readonly />  
+              <input type="text" name="dateaccount" id="dateaccount" value= "<?php echo (!empty($dateto)) ? date("m/Y",strtotime($dateto)): date("m/Y"); ?>" data-min-view="months" data-view="months" readonly />  
             </div>
           </div>                                           
 
           <div class="modal-footer">            
             <button style="float: left;" type="submit" name="register" id="register" class="btn btn-primary"><i class="fa fa-eye"></i> Search</a></button>
-            <span style="float: left; margin-left: 15px;">
+            <span style="margin-right: 15px;">
               <a href="<?php echo PUERTO."://".HOST."/report/accountrevision/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
           </div>
@@ -87,10 +87,14 @@
                   </tr>
                 </thead>";
         foreach ($results as $key => $value) {
+          $idmov = Utils::encriptar($value["IDCONT"]);
           echo "<tr>
-                  <td width='40%'><h5>".$value["TIPO_ASI"]." ".$value["ASIENTO"]."</h5></td>
+                  <form method='post' action='".PUERTO.'://'.HOST."/journalEntries/'>
+                    <input type='hidden' value='".$idmov."' id='fromAccountRevision' name='fromAccountRevision'/>
+                    <td width='30%'><h5>".$value["TIPO_ASI"]." <input type='submit' style='background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; text-decoration: underline;'  value='".$value["ASIENTO"]."'/></h5></td>
+                  </form>
                   
-                  <td width='60%'>";
+                  <td width='70%'>";
                   if($value["IMPORTE"] != 0){
                     echo "<h5>The accounting entry is not square. Check.<br></h5>";
                   }

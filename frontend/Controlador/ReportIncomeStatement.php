@@ -38,7 +38,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         $tags["types_account"] = $types_account;
 
         $limit = Utils::getParam('limit','',$this->data);
-        $limit = (empty($limit)) ? $this->vlrecords[0] : $limit;
+        $limit = (empty($limit)) ? $this->vlrecords[3] : $limit;
         $page = Utils::getParam('page',1,$this->data);
         $start = ($page - 1) * $limit;
         // echo $datefrom."<br>";
@@ -148,6 +148,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
 
         foreach ($results as $key => $value) {
           if ($this->objPdf->GetY() > $this->limitline){
+            $this->printFooterPdf();
             $this->objPdf->AddPage();
             $this->printHeaderPdf("INCOME STATEMENT REPORT",$from,$to);   
             $this->printHeaderTablePdf($columns);
@@ -211,7 +212,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
             $this->objPdf->Cell(69.5,5,number_format($total,2,',','.'),0,0, "R");           
         }
        }
-
+      $this->printFooterPdf();
       $this->objPdf->Output();
 
       break;

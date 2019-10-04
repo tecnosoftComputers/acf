@@ -14,11 +14,15 @@ class Controlador_ReportAccountRevision extends Controlador_Reports {
       case 'search':
         $dateaux = Utils::getParam("dateaux", '', $this->data);
         $datereceiv = Utils::getParam("dateaccount",'',$this->data);
+        if(!empty($datereceiv)){
+          $explodedate = explode("/", $datereceiv);
+          $datereceiv = $explodedate[0]."/01/".$explodedate[1];
+        }
         $datereceiv = (!empty($dateaux)) ? date("m/d/Y", $dateaux) : $datereceiv ;
         $datefrom = date("Y-m-01", strtotime($datereceiv));
         $dateto = date("Y-m-t", strtotime($datereceiv));
         $limit = Utils::getParam('limit','',$this->data);
-        $limit = (empty($limit)) ? $this->vlrecords[0] : $limit;
+        $limit = (empty($limit)) ? $this->vlrecords[3] : $limit;
         $page = Utils::getParam('page',1,$this->data);
         $start = ($page - 1) * $limit;
 
@@ -48,17 +52,12 @@ class Controlador_ReportAccountRevision extends Controlador_Reports {
           $tags["pagination"] = $pagination->showPage();
         }
 
-
-
-        
-
-        
-
-
         $tags["limit"] = $limit; 
         $tags["vlrecords"] = $this->vlrecords;
         $tags["dateto"] = $datereceiv;
         $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
+        $tags["template_css"][] = "airdatepicker/datepicker";
+        $tags["template_js"][] = "airdatepicker/datepicker.min";
         $tags["template_js"][] = "reports";
         Vista::render('rpt_acc_accountrevision', $tags); 
       break;
@@ -75,11 +74,11 @@ class Controlador_ReportAccountRevision extends Controlador_Reports {
         // print_r($tags["results"]);
         $from = date("m/d/Y", strtotime($datefrom));
         $to = date("m/d/Y", strtotime($dateto)); 
-        $this->printHeaderPdf("BALANCE SHEET REPORT",$from,$to,true);
+        $this->printHeaderPdf("ACCOUNT REVISION REPORT",$from,$to,true);
         $columns = array();
-        $columns[] = array("width"=>80,"label"=>"SEAT");
+        $columns[] = array("width"=>50,"label"=>"SEAT");
         // $columns[] = array("width"=>,"label"=>"BALANCE");  
-        $columns[] = array("width"=>198,"label"=>"MESSAGE");    
+        $columns[] = array("width"=>228,"label"=>"MESSAGE");    
         $this->printHeaderTablePdf($columns);     
         $this->objPdf->SetXY(224, $this->objPdf->GetY());  
         $this->objPdf->SetFont('Arial','B',9);
@@ -87,20 +86,25 @@ class Controlador_ReportAccountRevision extends Controlador_Reports {
         $this->objPdf->SetFont('Arial','',9);
         $this->objPdf->Cell(80,5,'',0,1);
         if(!empty($result)){
+          if ($this->objPdf->GetY() > $this->limitline){
+            $this->objPdf->AddPage();
+            $this->printHeaderPdf("ACCOUNT REVISION REPORT",$from,$to);   
+            $this->printHeaderTablePdf($columns);
+          }
           foreach ($result as $key => $value) {
           // $this->objPdf->SetFont('Arial','',9);
-            $this->objPdf->Cell(80,5,$value["TIPO_ASI"]." ".$value["ASIENTO"],0,0);
+            $this->objPdf->Cell(50,5,$value["TIPO_ASI"]." ".$value["ASIENTO"],0,0);
             if($value["IMPORTE"] != 0){
               $this->objPdf->Cell(198,5,"The accounting entry is not square. Check.",0,0);
               $this->objPdf->Ln();
             }
             if(!empty($value["NOEXIST"]) && $value["IMPORTE"] != 0){
                $this->objPdf->SetFont('Arial','',9);
-              $this->objPdf->Cell(80,5,'',0,0);
-              $this->objPdf->Cell(198,5,"The accounts ".$value["NOEXIST"]." do not exist in the account plan",0,1);
+              $this->objPdf->Cell(50,5,'',0,0);
+              $this->objPdf->Cell(228,5,"The accounts ".$value["NOEXIST"]." do not exist in the account plan",0,1);
             }
             else{
-              $this->objPdf->Cell(198,5,"The accounts ".$value["NOEXIST"]." do not exist in the account plan",0,1);
+              $this->objPdf->Cell(228,5,"The accounts ".$value["NOEXIST"]." do not exist in the account plan",0,1);
             }
             
             $this->objPdf->SetFont('Arial','',9);
@@ -111,8 +115,7 @@ class Controlador_ReportAccountRevision extends Controlador_Reports {
           $this->objPdf->SetFont('Arial','',9);
           $this->objPdf->Cell(80,5,'Not found records',0,1);
         }
-        
-
+        $this->printFooterPdf();
         $this->objPdf->Output();
 
       break;
@@ -174,11 +177,29 @@ class Controlador_ReportAccountRevision extends Controlador_Reports {
       default:    
         // $tags["typereport"] = "A";     
         $tags["permission"] = $_SESSION['acfSession']['permission'][$this->item];
+        $tags["template_css"][] = "airdatepicker/datepicker";
+        $tags["template_js"][] = "airdatepicker/datepicker.min";
         $tags["template_js"][] = "reports";
         Vista::render('rpt_acc_accountrevision', $tags); 
       break;
     }
     
+  }
+
+  public function transformdate($datereceiv){
+    $datereceivExplode = explode("-", $datereceiv);
+    $month = "";
+    $day = "01";
+    $year = $datereceivExplode[1];
+    $arrayMonth = array('January'=>'01','February'=>'02','March'=>'03','April'=>'04','May'=>'05','June'=>'06', 'July'=>'07','August'=>'08','September'=>'09','October'=>'10','November'=>'11','December'=>'12');
+    foreach ($arrayMonth as $key => $value) {
+      if($key == $datereceivExplode[0]){
+        $month = $value;
+        break;
+      }
+    }
+    $datereturn = $month."-".$day."-".$year;
+    return $datereturn;
   }
 }
 ?>

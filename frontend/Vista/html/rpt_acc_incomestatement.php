@@ -53,7 +53,7 @@
             <?php }else{ ?>
               <button style="float: left;" type="button" class="btn btn-primary" onclick="viewMessage('You cannot execute this action');"><i class="fa fa-eye"></i> Search</a></button> 
             <?php } ?>  
-            <span style="float: left; margin-left: 15px;">
+            <span style="text-align: right; margin-right: 15px;">
               <a href="<?php echo PUERTO."://".HOST."/report/incomestatement/";?>" class="btn btn-success"><i class="fa fa-repeat"></i> Clean</a></span>            
             <span style="float: right"><a href="<?php echo PUERTO."://".HOST."/dashboard/";?>" class="btn btn-warning"><i class="fa fa-sign-out"></i> Exit</a></span>
           </div>
