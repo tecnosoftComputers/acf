@@ -80,8 +80,9 @@ class Controlador_Reports extends Controlador_Base {
     $imageFormat = strtoupper((explode(".", $info_company["rentas_logo"]))[1]);
     if ($new == true){
       $this->objPdf = new FPDF('P','mm','A3'); 
-      //$this->objPdf->SetMargins(7,7);     
+      $this->objPdf->SetAutoPageBreak(true, 0);     
       $this->objPdf->AddPage();
+
     }
     $this->objPdf->Image(FRONTEND_RUTA.PATH_LOGO.$info_company["rentas_logo"], 239,10,50,26,$imageFormat);
 
@@ -119,7 +120,7 @@ class Controlador_Reports extends Controlador_Base {
   public function printFooterPdf(){
 
     $this->objPdf->AliasNbPages();
-    $this->objPdf->SetY(389);
+    $this->objPdf->SetY(-15);
     // line of pdf
     // $this->objPdf->SetLineWidth(1.2);
     // $this->objPdf->Line(11, 392, 287, 392);                       
@@ -133,7 +134,7 @@ class Controlador_Reports extends Controlador_Base {
     $this->objPdf->Cell(12 ,5,'Page:',0,0);
     $this->objPdf->Cell(105 ,5, $this->objPdf->PageNo()."/{nb}",0,0);
     $this->objPdf->Cell(12 ,5,'Date:',0,0);
-    $this->objPdf->Cell(12 ,5, date('m/d/Y h:i:s') ,0,0);
+    $this->objPdf->Cell(105 ,5, date('m/d/Y h:i:s') ,0,0);
   }
 
   public function printHeaderExcel($title,$columns,$columlogo,$setxlogo,$info_company,$from,$to,$colummerge){

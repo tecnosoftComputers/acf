@@ -30,9 +30,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         $datefrom = date("Y-m-01",strtotime($dateto));
         $acclevel = Utils::getParam('acclevel',$this->maxlevel,$this->data);        
         $types_account = Modelo_Dasbal::getParams();              
-        $tags["dateto"] = $aux_dateto;  
-        // echo "eder dateto: ".$dateto." - ".$tags["dateto"];      
-                
+        $tags["dateto"] = $aux_dateto;
         $tags["typereport"] = $typereport;
         $tags["acclevel"] = $acclevel;
         $tags["types_account"] = $types_account;
@@ -41,12 +39,6 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         $limit = (empty($limit)) ? $this->vlrecords[3] : $limit;
         $page = Utils::getParam('page',1,$this->data);
         $start = ($page - 1) * $limit;
-        // echo $datefrom."<br>";
-        // echo date("Y-m-t", strtotime($dateto));
-        // exit();
-        //cuenta acreedora y deudora
-        // print_r($dateto);
-        // exit();
         $accdeudora = array();
         $accacreedora = array();
         foreach($types_account["RESULTADOD"] as $deudora){
@@ -127,7 +119,6 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
                                                             $types_account["EGRESOS"],$acclevel); 
         }
 
-
         // Reporte
         $from = date("m/d/Y", strtotime($datefrom));
         $to = date("m/d/Y", strtotime($dateto)); 
@@ -171,13 +162,13 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
           }
           $leveladjust = array("space"=>"","resalt"=>"B");
           $leveladjust['resalt'] = ($value['level'] == 3) ? "": $leveladjust['resalt'];
-          if($value['level'] == 2){$leveladjust['space'] = "  ";}elseif($value['level'] == 3){$leveladjust['space'] = "    ";}
+          if($value['level'] == 2){$leveladjust['space'] = "";}elseif($value['level'] == 3){$leveladjust['space'] = "";}
 
           $balance = (!empty($value["ingreso"])) ? $value["ingreso"] * -1 : $value["egreso"];           
           $total = ($value["level"] != 3) ? $balance : 0;   
           $balance = ($value["level"] == 3) ? $balance : 0;
-          $balance = ($balance != 0) ? number_format($balance,2,',','.') : "";
-          $total = ($total != 0) ? number_format($total,2,',','.') : ""; 
+          $balance = ($balance != 0) ? number_format(bcdiv($balance,1,2),2,',','.') : "";
+          $total = ($total != 0) ? number_format(bcdiv($total,1,2),2,',','.') : ""; 
             $this->objPdf->SetFont('Arial',$leveladjust['resalt'],9);
             $this->objPdf->Cell(69,5,'',0,1);
             $this->objPdf->Cell(69,5,$leveladjust['space'].$value["CODIGO"],0,0); 
@@ -199,7 +190,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
             $this->objPdf->Cell(69,5,$deudora["CODIGO"],0,0); 
             $this->objPdf->Cell(69,5,$deudora["NOMBRE"],0,0);
             $this->objPdf->Cell(69.5,5,"",0,0); 
-            $this->objPdf->Cell(69.5,5,number_format($total,2,',','.'),0,0, "R");           
+            $this->objPdf->Cell(69.5,5,number_format(bcdiv($total,1,2),2,',','.'),0,0, "R");           
          }
        }
        else{
@@ -209,7 +200,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
             $this->objPdf->Cell(69,5,$acreedora["CODIGO"],0,0); 
             $this->objPdf->Cell(69,5,$acreedora["NOMBRE"],0,0);
             $this->objPdf->Cell(69.5,5,"",0,0); 
-            $this->objPdf->Cell(69.5,5,number_format($total,2,',','.'),0,0, "R");           
+            $this->objPdf->Cell(69.5,5,number_format(bcdiv($total,1,2),2,',','.'),0,0, "R");           
         }
        }
       $this->printFooterPdf();
@@ -272,11 +263,9 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
         $acumingresos = 0;
         $acumegresos = 0;
 
-
-
         foreach($results as $key=>$value){ 
           $leveladjust = array("space"=>"");
-          if($value['level'] == 2){$leveladjust['space'] = "  ";}elseif($value['level'] == 3){$leveladjust['space'] = "    ";}
+          if($value['level'] == 2){$leveladjust['space'] = "";}elseif($value['level'] == 3){$leveladjust['space'] = "";}
           if (empty($value["ingreso"]) && $printblank == 0){
             $objPHPExcel->getActiveSheet()->mergeCells('A'.$this->line.':D'.$this->line); 
             $objPHPExcel->getActiveSheet()->getRowDimension($this->line)->setRowHeight($this->hexcel);  
@@ -309,8 +298,8 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
               $objPHPExcel->setActiveSheetIndex(0)
                   ->setCellValue('A'.$this->line,   $leveladjust['space'].$value["CODIGO"])
                   ->setCellValue('B'.$this->line, $leveladjust['space'].$value["NOMBRE"])
-                  ->setCellValue('C'.$this->line, ($balance != 0) ? number_format($balance,2,',','.') : "")
-                  ->setCellValue('D'.$this->line, ($total != 0) ? number_format($total,2,',','.') : "");
+                  ->setCellValue('C'.$this->line, ($balance != 0) ? number_format(bcdiv($balance,1,2),2,',','.') : "")
+                  ->setCellValue('D'.$this->line, ($total != 0) ? number_format(bcdiv($total,1,2),2,',','.') : "");
               $this->line++; 
             
         }
@@ -321,7 +310,6 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
 
           $total = abs($acumingresos) - abs($acumegresos);
            if ($total > 0){
-
              foreach($accdeudora as $deudora){
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':D'.$this->line)->applyFromArray($this->styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':D'.$this->line)->applyFromArray($this->BoldStyle);
@@ -330,7 +318,7 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
                     ->setCellValue('A'.$this->line, $deudora["CODIGO"])
                     ->setCellValue('B'.$this->line, $deudora["NOMBRE"])
                     ->setCellValue('C'.$this->line, "")
-                    ->setCellValue('D'.$this->line, number_format($total,2,',','.'));  
+                    ->setCellValue('D'.$this->line, number_format(bcdiv($total,1,2),2,',','.'));  
                     $this->line++;          
              }
            }
@@ -339,16 +327,14 @@ class Controlador_ReportIncomeStatement extends Controlador_Reports {
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':D'.$this->line)->applyFromArray($this->styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('A'.$this->line.':D'.$this->line)->applyFromArray($this->BoldStyle);
               $objPHPExcel->getActiveSheet()->getStyle('C'.$this->line.':D'.$this->line)->applyFromArray($this->AmtStyle);
-               $objPHPExcel->setActiveSheetIndex(0)
+              $objPHPExcel->setActiveSheetIndex(0)
                     ->setCellValue('A'.$this->line, $acreedora["CODIGO"])
                     ->setCellValue('B'.$this->line, $acreedora["NOMBRE"])
                     ->setCellValue('C'.$this->line, "")
-                    ->setCellValue('D'.$this->line, number_format($total,2,',','.'));   
+                    ->setCellValue('D'.$this->line, number_format(bcdiv($total,1,2),2,',','.'));   
                     $this->line++;      
             }
          }
-
-
         $this->outputExcel("INCOME STATEMENT REPORT");
       break;
       default:  

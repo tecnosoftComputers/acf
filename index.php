@@ -133,6 +133,9 @@ function obtieneControlador($nombre){
     case 'procyearendentries':
       return 'ProcYearEndEntries';
     break;
+    case 'financialplanning':
+      return 'FinancialPlanning';
+    break;
     /*default:
       return 'Operations'; 
     break;*/

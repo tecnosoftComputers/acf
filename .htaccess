@@ -190,3 +190,6 @@ RewriteRule ^report/chartaccount/(pdf|excel)/$ %{ENV:REWRITEBASE}index.php?mostr
 RewriteRule ^report/chartaccount/search/([0-9]+)/([0-9]+)/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=search&limit=$1&page=$2 [L]
 RewriteRule ^report/chartaccount/search/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43&action=search [L]
 RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reportChartAccounts&item=43 [L]
+
+#management financial planing
+RewriteRule ^financialplanning/$ %{ENV:REWRITEBASE}index.php?mostrar=financialplanning [L]

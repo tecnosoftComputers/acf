@@ -48,6 +48,28 @@ class Modelo_Dpmovimi{
     return $result = $GLOBALS['db']->insert('dpmovimi',$datos);
   }
 
+  public static function mInsert($data){
+    if(empty($data) || !is_array($data)){return false;}
+    $campos = array_keys($data[0]);
+    $auxcampos = "";
+    foreach ($campos as $key => $value) {
+      $auxcampos .= $value.",";
+    }
+    $auxcampos = substr($auxcampos, 0, -1);
+    $arrayData = array();
+    foreach ($data as $key => $value) {
+      $auxarray = array();
+      foreach ($value as $key1 => $value1) {
+        if(is_string($value1) && !is_float($value1)){
+          $value1 = "'".$value1."'";
+        }
+        array_push($auxarray,$value1);
+      }
+      array_push($arrayData , $auxarray);
+    }
+    return $result = $GLOBALS['db']->insert_multiple('dpmovimi', $auxcampos ,$arrayData);
+  }
+
   public static function report($empresa,$datefrom,$dateto,$typeseat='',$seatfrom='',$seatto='',
 		                        $accfrom='',$accto='',$orderby=array()){
 	if (empty($empresa) || empty($datefrom) || empty($dateto)){ return false; }       
@@ -266,7 +288,7 @@ class Modelo_Dpmovimi{
         elseif ($level == 2 && $value["level"] > $level){
           unset($results[$key]);
         }        
-      	if (empty($value["ingreso"]) && empty($value["egreso"])){
+      	if (empty($value["ingreso"]) && empty($value["egreso"]) ||($value['ingreso']==0 && $value['egreso'] == 0)){
       	  unset($results[$key]);
       	}
 

@@ -122,24 +122,34 @@
       $printblank = 0;        
       $acumingresos = 0;
       $acumegresos = 0;
-      foreach($results as $key=>$value){                    
+      foreach($results as $key=>$value){
+        $styleData = " style='font-weight: bold;' ";
+        $addspace = "";                    
         if (empty($value["ingreso"]) && $printblank == 0){
           echo "<tr>               
                 <td colspan='4'>&nbsp;</td>                  
                 </tr>";                                 
           $printblank = 1;      
         } 
-                
+        // $desplazar = count(explode(".", $value["CODIGO"]));
+        // if(substr($value["CODIGO"],-1) == '.'){
+        //   $desplazar -=1;
+        // }
+        // for ($i=0; $i < $desplazar; $i++) { 
+        //   $addspace .= "&nbsp;&nbsp;";
+        // }
+        $styleData = (substr($value["CODIGO"],-1) != ".") ? "" : $styleData;
+        // echo $desplazar;
         $balance = (!empty($value["ingreso"])) ? $value["ingreso"] * -1 : $value["egreso"];           
         $total = ($value["level"] != 3) ? $balance : 0;   
         $balance = ($value["level"] == 3) ? $balance : 0;
         $balance = ($balance != 0) ? number_format($balance,2,',','.') : "";
         $total = ($total != 0) ? number_format($total,2,',','.') : "";
         echo "<tr>               
-                <td>".$value["CODIGO"]."</td>
-                <td>".$value["NOMBRE"]."</td>                                                
-                <td align='right'>".$balance."</td>
-                <td align='right'>".$total."</td>                
+                <td ".$styleData.">".$addspace.$value["CODIGO"]."</td>
+                <td ".$styleData.">".$addspace.$value["NOMBRE"]."</td>                                                
+                <td ".$styleData." align='right'>".$balance."</td>
+                <td ".$styleData." align='right'>".$total."</td>                
               </tr>";                     
        }  
 
@@ -167,7 +177,7 @@
                   <td>".$deudora["CODIGO"]."</td>                
                   <td>".$deudora["NOMBRE"]."</td>                
                   <td>&nbsp;</td>                
-                  <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
+                  <td class='style-td-totals'>".number_format(bcdiv($total,1,2),2,',','.')."</td>
                 </tr>";             
              }
            }
@@ -177,7 +187,7 @@
                   <td>".$acreedora["CODIGO"]."</td>                
                   <td>".$acreedora["NOMBRE"]."</td>                
                   <td>&nbsp;</td>                
-                  <td class='style-td-totals'>".number_format($total,2,',','.')."</td>
+                  <td class='style-td-totals'>".number_format(bcdiv($total,1,2),2,',','.')."</td>
                 </tr>";           
             }
          }

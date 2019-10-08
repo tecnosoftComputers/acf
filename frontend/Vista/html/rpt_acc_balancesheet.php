@@ -135,21 +135,24 @@
         // echo "eder. ".$balance;
         if ($nro>1){
           for($i=1;$i<$nro;$i++){
-            $blank_spaces .= "&nbsp;&nbsp;";
+            // $blank_spaces .= "&nbsp;&nbsp;";
           }
         }   
+        $styleData = " style='font-weight: bold;' ";
+        $styleData = (substr($value["CODIGO"],-1) != ".") ? "" : $styleData;
+        
         if ($lastc == '.'){
-          echo "<td><strong>".$value["CODIGO"]."</strong></td>";
-          echo "<td><strong>".$blank_spaces.$value["NOMBRE"]."</strong></td>";
-          echo "<td align='right'><strong>".$balance."</strong></td>";
-          echo "<td align='right'><strong>".$total."</strong></td>";
+          echo "<td ".$styleData.">".$blank_spaces.$value["CODIGO"]."</td>";
+          echo "<td ".$styleData.">".$blank_spaces.$value["NOMBRE"]."</td>";
+          echo "<td ".$styleData." align='right'>".$balance."</td>";
+          echo "<td ".$styleData." align='right'>".$total."</td>";
         }     
         else{
-          $blank_spaces .= "&nbsp;&nbsp;&nbsp;";
-          echo "<td>".$value["CODIGO"]."</td>";
-          echo "<td>".$blank_spaces.$value["NOMBRE"]."</td>";
-          echo "<td align='right'><strong>".$balance."</strong></td>";
-          echo "<td align='right'><strong>".$total."</strong></td>";
+          // $blank_spaces .= "&nbsp;&nbsp;&nbsp;";
+          echo "<td ".$styleData.">".$blank_spaces.$value["CODIGO"]."</td>";
+          echo "<td ".$styleData.">".$blank_spaces.$value["NOMBRE"]."</td>";
+          echo "<td ".$styleData." align='right'>".$balance."</td>";
+          echo "<td ".$styleData." align='right'>".$total."</td>";
         }        
         ?>        
       </tr>            

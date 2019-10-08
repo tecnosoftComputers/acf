@@ -24,7 +24,6 @@ if($("#closingdate").length){
 	var getYear = "";
 	dateGet = $("#closingdate").val();
 	if(dateGet != "" && dateGet != null){
-		// alert("eder");
 		getYear = dateGet.split("/");
 		if(closingseatdetail != null && closingseatdetail != ""){
 			closingseatdetail.val("Year-end accounting period (" + getYear[2] + ")");
@@ -62,22 +61,20 @@ if(closingseatdetail != null && closingseatdetail != ""){
 if($("#update").length){
 	$("#update").on("click", function(){
 		var dateForm = $("#closingdate").val();
-		$("#update").on("click", function(){
-			$.ajax({
-	        url: $('#puerto_host').val()+"/index.php?mostrar=procyearendentries&action=getCabtra&date="+dateForm,
-	        dataType: "json",
-	        type: "GET",
-	        success: function( data ) {
-	          if(data.returnData == 1){
-	          	$("#yearendentriesModal").modal("show");
-	          }
-	          else{
-	          	var formYearendentries = $("#formYearEndEntries");
-				formYearendentries.submit();
-	          }
-	        }
-	      });
-		})
+		$.ajax({
+        url: $('#puerto_host').val()+"/index.php?mostrar=procyearendentries&action=getCabtra&date="+dateForm,
+        dataType: "json",
+        type: "GET",
+        success: function( data ) {
+          if(data.returnData == 1){
+          	$("#yearendentriesModal").modal("show");
+          }
+          else{
+          	var formYearendentries = $("#formYearEndEntries");
+			formYearendentries.submit();
+          }
+        }
+      });
 	})
 }
 

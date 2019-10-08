@@ -142,8 +142,8 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
           }        
           $total = ($value["level"] != 3) ? $balance : 0;   
           $balance = ($value["level"] == 3) ? $balance : 0;
-          $balance = ($balance != 0) ? number_format($balance,2,',','.') : "";
-          $total = ($total != 0) ? number_format($total,2,',','.') : "";
+          $balance = ($balance != 0) ? number_format(bcdiv($balance,1,2),2,',','.') : "";
+          $total = ($total != 0) ? number_format(bcdiv($total,1,2),2,',','.') : "";
 
           $this->objPdf->Cell(69,5,$value["CODIGO"],0,0); 
           $this->objPdf->Cell(69,5,$value["NOMBRE"],0,0);
@@ -223,8 +223,8 @@ class Controlador_ReportBalanceSheet extends Controlador_Reports {
           }        
           $total = ($value["level"] != 3) ? $balance : 0;   
           $balance = ($value["level"] == 3) ? $balance : 0;
-          $balance = ($balance != 0) ? number_format($balance,2,',','.') : "";
-          $total = ($total != 0) ? number_format($total,2,',','.') : "";
+          $balance = ($balance != 0) ? number_format(bcdiv($balance,1,2),2,',','.') : "";
+          $total = ($total != 0) ? number_format(bcdiv($total,1,2),2,',','.') : "";
 
           if($value["level"] == 1){
             $objPHPExcel->getActiveSheet()->mergeCells('A'.$this->line.':D'.$this->line); 
