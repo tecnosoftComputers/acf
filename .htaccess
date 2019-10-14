@@ -2,6 +2,8 @@ Options -Indexes
 
 ########################################
 
+php_value max_input_vars 10000
+
 RewriteEngine On
 
 # RewriteBase - Production
@@ -193,3 +195,5 @@ RewriteRule ^report/chartaccount/$ %{ENV:REWRITEBASE}index.php?mostrar=reportCha
 
 #management financial planing
 RewriteRule ^financialplanning/$ %{ENV:REWRITEBASE}index.php?mostrar=financialplanning [L]
+RewriteRule ^saveFP/$ %{ENV:REWRITEBASE}index.php?mostrar=financialplanning&action=saveFP [L]
+RewriteRule ^saveFP/$ %{ENV:REWRITEBASE}index.php?mostrar=financialplanning&action=saveFP [L]

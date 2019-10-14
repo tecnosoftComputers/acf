@@ -40,7 +40,25 @@ class Modelo_ChartAccount{
     if($detail != false){
       $sql .= " AND t1.PLANMARCA = $detail";
     }
-    return $rs = $GLOBALS['db']->auto_array($sql,array(),true);
+    $results = $GLOBALS['db']->auto_array($sql,array(),true);
+    // if (!empty($results)){
+    //     foreach ($results as $key => $value) {
+    //       $codigoaux = $value["CODIGO"];
+    //       $cod = substr($codigoaux,0,strrpos($codigoaux,".")); 
+    //       $results[$key]["level"] = 3;
+    //       //$contlevel = 0;
+    //       while (!empty($cod)){                                    
+    //         $keyparent = array_search($cod.".", array_column($results, 'CODIGO')); 
+    //         $results[$keyparent]["level"] = 2;
+    //         $cod = substr($cod,0,strrpos($cod,"."));            
+    //         $results[$keyparent]["level"] = (empty($cod)) ? 1 : 2;
+    //       } 
+    //     }
+
+    // }
+    // echo count($results);
+    // print_r($results);
+    return $results;
   }
 
   public static function getUpdate($codigo){

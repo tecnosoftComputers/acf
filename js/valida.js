@@ -823,3 +823,81 @@ function viewMessage(msj){
   });   
 } 
 
+function pointsMultiple(where,dec)
+{
+  console.log(dec);
+  var character = where[0].value.charAt(where[0].value.length-1);
+  var decimals = true;
+
+  pat = /[\*,.\+,.\(,.\),.\?,.\\,.\$,.\[,.\],.\^]/
+  valor = where.val();
+  largo = valor.length;
+  crtr = true;
+  if(isNaN(character) || pat.test(character) == true)
+  { 
+    if (pat.test(character)==true) 
+    {
+      character = "\\" + character;
+    }
+    carcter = new RegExp(character,"g");
+    valor = valor.replace(carcter,"");
+    where.val(valor);
+    crtr = false;
+  }
+  else
+  {
+    var nums = new Array()
+    cont = 0
+    for(m=0;m<largo;m++)
+    {
+      if(valor.charAt(m) == "." || valor.charAt(m) == " " || valor.charAt(m) == ",")
+      {
+        continue;  
+      }
+      else{
+        nums[cont] = valor.charAt(m)
+        cont++
+      }
+      
+    }
+  }
+
+  if(decimals == true) {
+    ctdd = eval(1 + dec);
+    nmrs = dec - 1;
+  }
+  else {
+    ctdd = 1; nmrs = 3
+  }
+
+  var cad1="",cad2="",cad3="",tres=0
+  if(largo > nmrs && crtr == true)
+  {
+    for (k=nums.length-ctdd;k>=0;k--){
+      cad1 = nums[k];
+      cad2 = cad1 + cad2;
+      tres++
+      if((tres%3) == 0){
+        if(k!=0){
+          cad2 = "." + cad2;
+          }
+        }
+      }
+      
+    for (dd = dec; dd > 0; dd--)  
+    {
+      cad3 += nums[nums.length-dd]; 
+    }
+
+    if(decimals == true)
+    {
+      if(cad2!=''){
+        cad2 += "," + cad3;
+        
+      }else{
+        cad2 += cad3;
+      }
+    }
+    where.val(cad2);
+  }
+}
